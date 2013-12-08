@@ -1,0 +1,48 @@
+.. link: 
+.. description: 
+.. tags: ebook, calibre, bash, awk
+.. date: 2013/11/11 21:47:06
+.. title: Tri / Nettoyage des ebooks en double avant import
+.. slug: tri-nettoyage-des-ebooks-en-double-avant-import
+.. tribe: shell
+
+
+.. class:: alert alert-info
+
+*One-liner* pour gagner du temps avant une mise à jour / import massif d'ebooks 
+
+* Bien utile quand la bibliothèque *Calibre* est bien propre, et que le *.zip* *"Domaine public / tout zola+hugo+balzac+inédits"* donne envie, sauf l'étape du tri des doublons...
+
+D'abord
+-------
+
+* Récupérer *fdupes* qui va faire le job à notre place!
+
+.. code:: bash
+
+	sudo pacman -Suy fdupes
+	
+
+.. TEASER_END
+
+Ensuite
+-------
+
+* Décompresser / rassembler les ebooks nouveaux dans un dossier identifiable, ici **temp** situé dans le même dossier que la bibli calibre *propre*, nommée **ebooks**.
+* Exécuter la commande suivante :
+
+.. code:: bash
+
+	fdupes -r ebooks temp | grep "temp/" 
+
+* Elle n'affiche que les traces de fichiers dupliqués situés dans le dossier *temp*, mais présents égalements dans *ebooks*
+
+* Vérification via *calibre* sur un nom ou deux, hein, manière, viens pas pleurer si t'as les doigts de poulet, sinon...
+
+* Et puis la moulinette qui va supprimer les doublons à la volée.
+
+.. code:: bash
+
+	fdupes -r ebooks temp | grep "temp/" |awk '{ print "rm \"" $0 "\"" }' | sh
+
+* Maintenant que *temp* est nettoyé, faut importer !

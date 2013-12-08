@@ -1,0 +1,62 @@
+<p class="alert alert-info">Le truc le plus simple du monde... sauf que non, en fait...</p>
+<ul class="simple">
+<li>Et bienvenue en mode bricolage...</li>
+</ul>
+<div class="section" id="d-abord">
+<h2>D'abord</h2>
+<ul class="simple">
+<li>Rajouter les couleurs désirées dans le CSS  (dans <em>nikola</em> c'est <em>custom.css</em> au fond de template...) sous forme de classe</li>
+</ul>
+<pre class="code css literal-block">
+<span class="nc">.blue</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;}</span>
+<span class="nc">.red</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;}</span>
+<span class="nc">.green</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="nb">green</span><span class="p">;}</span>
+<span class="nc">.orange</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="nb">orange</span><span class="p">;}</span>
+<span class="nc">.blue-vp</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="m">#123789</span><span class="p">;}</span>
+<span class="nc">.magenta</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="m">#ff00ff</span><span class="p">;}</span>
+</pre>
+<!-- TEASER_END -->
+</div>
+<div class="section" id="ensuite">
+<h2>Ensuite</h2>
+<ul class="simple">
+<li>Rajouter la définition des classes dans le texte du post</li>
+<li>Par exemple, cet article-ci:</li>
+</ul>
+<pre class="code bash literal-block">
+.. slug: changer-la-couleur-du-texte-en-rst-restructuredtext
+
+.. role:: red
+.. role:: blue
+.. role:: blue-vp
+.. role:: magenta
+.. role:: green
+.. role:: orange
+</pre>
+</div>
+<div class="section" id="enfin">
+<h2>Enfin</h2>
+<ul class="simple">
+<li>S'en servir dans le texte avec <strong>:</strong> <em>le_nom_donné_à_la_couleur</em> <strong>:</strong>  <em>`</em> le texte à colorer <strong>`</strong> (&lt;= <em>backquotes</em> !)</li>
+<li>Par exemple :</li>
+</ul>
+<!-- code
+
+Ceci est un texte :red:`bleu`
+Ceci est un texte :magenta:`orange`
+Ceci n'est pas écrit en :green:`rouge` ni en :blue-vp:`vert`
+:blue:`merci de relire ça à haute voix pour écouter son cerveau crier à l'aide.` -->
+<div class="line-block">
+<div class="line">Ceci est un texte <span class="red">bleu</span></div>
+<div class="line">Ceci est un texte <span class="magenta">orange</span></div>
+<div class="line">Ceci n'est pas écrit en <span class="green">rouge</span> ni en <span class="blue-vp">vert</span></div>
+<div class="line"><span class="blue">merci de relire ça à haute voix pour écouter son cerveau crier à l'aide.</span></div>
+</div>
+</div>
+<div class="section" id="a-noter">
+<h2>A noter</h2>
+<ul class="simple">
+<li>Supporte pas/mal l'association avec les marqueurs <strong>**gras**</strong> et <em>*italique*</em></li>
+<li>Toujours plus propre que <strong>.. raw:: html</strong> mais chacun ses gouts.</li>
+</ul>
+</div>

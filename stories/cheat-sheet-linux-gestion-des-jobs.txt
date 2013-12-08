@@ -1,0 +1,33 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2013/11/19 21:26:50
+.. title: Cheat-Sheet Linux : Gestion des Jobs
+.. slug: cheat-sheet-linux-gestion-des-jobs
+
+
+
+
+================== =======================================================
+Commande            Description
+================== =======================================================
+[commande ] **&**   Exécute la commande en arrière-plan (background)
+**jobs**            Liste les process en background et donne leur index   
+%[x]                Fait référence au process d'index indiqué par 'jobs'
+%?[x lettres]       Affiche le process correspondant aux lettres 
+**kill** %[x]       Supprime le process d'index indiqué par 'jobs'              
+Ctrl z              Arrête le process au premier plan (foreground)
+**bg**              bascule le process du foreground vers le background
+**fg**              bascule le process du background vers le foreground
+================== =======================================================
+
+
+
+* WIP
+
+
+-------
+
+.. class: btn btn-lg more
+
+`Retour aux Cheat-sheets </stories/cheatsheets.html>`_

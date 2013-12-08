@@ -1,0 +1,28 @@
+<p class="alert alert-info"><a class="reference external" href="http://openwrt.org">OpenWRT</a> est un firmware alternatif compatible avec de nombreux routeurs. Il rajoute des fonctions parfois bien utiles...</p>
+<ul class="simple">
+<li>La méthode ci-dessous est tirée de la procédure d' <a class="reference external" href="http://blog.alexandredubois.com/2012/02/22/transformez-votre-neufbox4-en-mini-serveur-linux-avec-openwrt/">Alexandre Dubois</a> , gloire à lui, et testée avec succés sur ma vieille Neufbox v4</li>
+</ul>
+<!-- TEASER_END -->
+<p><strong>Avant de commencer</strong></p>
+<ul class="simple">
+<li>Un pc sous linux / python installé / récupérer ce <a class="reference external" href="/repo/NB4-openwrt.zip">fichier d'installation</a> et le décompresser</li>
+<li>Brancher la Neufbox sur le port TV (tester aussi sur PC1 si ça échoue) mais <strong>power off</strong></li>
+</ul>
+<p><strong>Choses sérieuses</strong></p>
+<ul class="simple">
+<li>Allumer la Neufbox en mode download : se référer au wiki <a class="reference external" href="http://www.neufbox4.org/wiki/index.php?title=Reflasher_un_firmware_:_m%C3%A9thode_flashimage.py#Flashage_de_la_neufbox4">neufbox4.org</a> ... et tenter toutes les combinaisons, ça n'a pas l'air si carré que ça, d'expérience...</li>
+<li>Exécuter le script python :</li>
+</ul>
+<pre class="code python literal-block">
+<span class="n">sudo</span> <span class="n">python</span> <span class="o">./</span><span class="n">flashimage</span><span class="o">.</span><span class="n">py</span> <span class="n">eth0</span> <span class="o">./</span><span class="n">openwrt</span><span class="o">-</span><span class="n">NB4</span><span class="o">-</span><span class="n">squashfs</span><span class="o">-</span><span class="n">full</span>
+</pre>
+<p><em>eth0</em> étant le port ethernet du PC connecté... à changer si plusieurs cartes...</p>
+<ul class="simple">
+<li>Taper <strong>y</strong> dans l'invite shell pour lancer le flashage...</li>
+<li>Patienter le temps du flash, y en a pas pour long, et la neuf reboote d'elle même.</li>
+</ul>
+<p><strong>Vérification</strong></p>
+<ul class="simple">
+<li>Accéder à la page <a class="reference external" href="http://192.168.1.1">http://192.168.1.1</a> et constater la mise à jour !</li>
+<li>De suite, changer le mot de passe, activer le SSH etc etc !</li>
+</ul>

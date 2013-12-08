@@ -1,0 +1,51 @@
+.. link: 
+.. description: 
+.. tags: todo
+.. date: 2013/10/09 14:48:43
+.. title: What's next
+.. slug: whats-next
+
+
+.. image:: /res/mini-ico-favicon.png
+	:align: left
+   
+   
+.. class:: alert alert-info
+
+A plus ou moins longue échéance et court-terme, sujets à évoquer ici...
+
+
+* Sauf que je vais oublier encore si je le note pas vite... *(c) moi*
+
+
+A venir :
+---------
+
+* Scripts VBS - faut bien manger
+* DHCP liste ip d'étendues
+* Archlinux & Bluetooth & A2dp audio
+* Archlinux & Bluetooth & ... Wiimote 
+* Archlinux & Bluetooth & ... Wiiboard
+* Refonte NesMediaPlayer
+
+----
+
+Evo Wibfi: 
+----------
+
+* maj template posts / stories
+* template "nikolaali"
+* wrap de browshot en python 
+* plugininisation
+
+----
+
+Side-Projects:
+--------------
+* Php & 3DS HomePass
+* Taskwarrior & php
+* www
+* tldr.vp
+* www/cloud
+
+

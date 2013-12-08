@@ -1,0 +1,43 @@
+.. link: 
+.. description: 
+.. tags: gnome, kde, tips, shell, archlinux
+.. date: 2013/11/23 22:31:08
+.. title: Rétablir le choix entre Gnome ou KDE
+.. slug: retablir-le-choix-entre-gnome-ou-kde
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Après avoir installé **kde**, difficile d'organiser la bascule ? GDM refuse tout net !
+
+* Y a une petite feinte ... comme d'hab faut le savoir ...
+
+D'abord
+-------
+
+* Si l'ouverture de session est automatique *sans* saisie du mot de passe
+* Si la tentative de bascule via gdm vers une session *kde* échoue en mettant en cause le mot de passe ...
+
+* Si le  */etc/gdm/custom.conf* ressemble à :
+
+.. code:: bash
+
+	cat /etc/gdm/custom.conf
+	# GDM configuration storage
+
+	[daemon]
+
+	AutomaticLoginEnable=True
+	AutomaticLogin=dje
+	...
+
+.. TEASER_END
+
+
+Alors
+-----
+
+* Il faut éditer **/etc/gdm/custom.conf** et mettre **false** à AutomaticLoginEnable !
+* Et ça ira beaucoup mieux !
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (réseau)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/reseau.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Sat, 07 Dec 2013 21:29:04 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Passer sa connexion à la loupe grâce à Netalyzr</title><link>http://wibfi.virtua-peanuts.net/posts/passer-sa-connexion-a-la-loupe-grace-a-netalyzr.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Envie de rentrer dans les détails au delà du &lt;em&gt;ping 8.8.8.8&lt;/em&gt; ?&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Les p'tits gars de l'&lt;a class="reference external" href="http://www.netalyzr.icsi.berkeley.edu/cli.html"&gt;université de Berkeley ont codé l'outil&lt;/a&gt; qu'il nous faut !&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Récuperer le &lt;a class="reference external" href="http://www.netalyzr.icsi.berkeley.edu/NetalyzrCLI.jar"&gt;client java&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/passer-sa-connexion-a-la-loupe-grace-a-netalyzr.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>réseau</category><category>tips</category><category>android</category><category>java</category><guid>http://wibfi.virtua-peanuts.net/posts/passer-sa-connexion-a-la-loupe-grace-a-netalyzr.html</guid><pubDate>Fri, 22 Nov 2013 12:25:22 GMT</pubDate></item><item><title>A bookmarker : downforeveryoneorjustme.com</title><link>http://wibfi.virtua-peanuts.net/posts/a-bookmarker-downforeveryoneorjustmecom.html</link><description>&lt;p class="alert alert-info"&gt;Le cas classique de la question "c'est moi ou eux ?", enfin résolue ...&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.downforeveryoneorjustme.com"&gt;http://www.downforeveryoneorjustme.com&lt;/a&gt;&lt;/p&gt;</description><category>bookmark</category><category>réseau</category><guid>http://wibfi.virtua-peanuts.net/posts/a-bookmarker-downforeveryoneorjustmecom.html</guid><pubDate>Fri, 22 Nov 2013 09:46:26 GMT</pubDate></item><item><title>Connexion wi-fi via dongle usb sur Archlinux</title><link>http://wibfi.virtua-peanuts.net/posts/connexion-wi-fi-via-dongle-usb-sur-archlinux.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Situation banale où la connexion RJ45 est coupée, mais il reste un dongle usb wifi pas loin, et un réseau &lt;strong&gt;FON&lt;/strong&gt; à portée...&lt;/p&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Avoir un identifiant &lt;em&gt;FON&lt;/em&gt; !&lt;/li&gt;
+&lt;li&gt;Vérifier la reconnaissance du stick usb wifi par un lsusb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;dje@pc01&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;lsusb
+Bus 001 Device 006: ID 148f:2770 Ralink Technology, Corp. RT2770 Wireless Adapter
+...
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="ensuite"&gt;
+&lt;h2&gt;Ensuite :&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Lancer la commande &lt;em&gt;wifi-menu&lt;/em&gt; depuis un terminal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/connexion-wi-fi-via-dongle-usb-sur-archlinux.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>linux</category><category>archlinux</category><category>wifi</category><category>usb</category><category>réseau</category><guid>http://wibfi.virtua-peanuts.net/posts/connexion-wi-fi-via-dongle-usb-sur-archlinux.html</guid><pubDate>Fri, 15 Nov 2013 21:09:09 GMT</pubDate></item><item><title>A bookmarker : ifconfig.me</title><link>http://wibfi.virtua-peanuts.net/posts/a-bookmarker-ifconfigme.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Plus fort que &lt;em&gt;whatismyip.com&lt;/em&gt; !&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://ifconfig.me"&gt;http://ifconfig.me&lt;/a&gt;&lt;/p&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/a-bookmarker-ifconfigme.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>bookmark</category><category>réseau</category><guid>http://wibfi.virtua-peanuts.net/posts/a-bookmarker-ifconfigme.html</guid><pubDate>Sat, 26 Oct 2013 16:36:52 GMT</pubDate></item><item><title>Installer OpenWrt dans une Neufbox</title><link>http://wibfi.virtua-peanuts.net/posts/installer-openwrt-dans-une-neufbox.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;&lt;a class="reference external" href="http://openwrt.org"&gt;OpenWRT&lt;/a&gt; est un firmware alternatif compatible avec de nombreux routeurs. Il rajoute des fonctions parfois bien utiles...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;La méthode ci-dessous est tirée de la procédure d' &lt;a class="reference external" href="http://blog.alexandredubois.com/2012/02/22/transformez-votre-neufbox4-en-mini-serveur-linux-avec-openwrt/"&gt;Alexandre Dubois&lt;/a&gt; , gloire à lui, et testée avec succés sur ma vieille Neufbox v4&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/installer-openwrt-dans-une-neufbox.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>tips</category><category>linux</category><category>réseau</category><category>openwrt</category><guid>http://wibfi.virtua-peanuts.net/posts/installer-openwrt-dans-une-neufbox.html</guid><pubDate>Sun, 29 Sep 2013 13:17:03 GMT</pubDate></item><item><title>Changer l'IP d'une NeufBox SFR</title><link>http://wibfi.virtua-peanuts.net/posts/changer-lip-dune-neufbox-sfr.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Je cherche à faire cohabiter &lt;strong&gt;deux&lt;/strong&gt; neufbox SFR, il me faut donc pouvoir changer l'adresse IP d'une des deux.&lt;/p&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/changer-lip-dune-neufbox-sfr.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>tips</category><category>réseau</category><guid>http://wibfi.virtua-peanuts.net/posts/changer-lip-dune-neufbox-sfr.html</guid><pubDate>Fri, 27 Sep 2013 19:01:24 GMT</pubDate></item><item><title>Troubleshoot Réseau 01</title><link>http://wibfi.virtua-peanuts.net/posts/troubleshoot-reseau-01.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;PC présentant le réseau bloqué ( &lt;strong&gt;no ping&lt;/strong&gt;, &lt;em&gt;va mourir&lt;/em&gt;), mais aucun port de bloqué sur les switchs...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;En creusant un peu, on apprend que le pc a &lt;em&gt;pas mal bougé&lt;/em&gt; de ports en ports... de quoi affoler un peu le stack cisco&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/troubleshoot-reseau-01.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>tips</category><category>réseau</category><category>cisco</category><guid>http://wibfi.virtua-peanuts.net/posts/troubleshoot-reseau-01.html</guid><pubDate>Tue, 24 Sep 2013 20:46:35 GMT</pubDate></item></channel></rss>

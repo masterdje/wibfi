@@ -1,0 +1,18 @@
+.. link: 
+.. description: 
+.. tags: game-dev, bon-plan
+.. date: 2013/11/30 17:30:33
+.. title: GameMaker Standard Gratuit
+.. slug: gamemaker-standard-gratuit
+.. tribe: tips
+
+ 
+.. class:: alert alert-info
+
+Le célèbre IDE Game Maker (tres limité en version free) bascule du bon coté en offrant la gratuité à sa version standard...
+
+* de quoi faire des ptits jeux sans coder ? Feignasse, va...
+
+.. TEASER_END
+
+* Récupérer l'exe windows sur `le site officiel <http://gamemakerblog.com/2013/11/25/gamemaker-studio-standard-edition-is-currently-free-50-value/>`_

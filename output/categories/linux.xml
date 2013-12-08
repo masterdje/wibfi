@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (linux)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/linux.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Sat, 07 Dec 2013 21:29:04 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Nouvelle Cheatsheet Linux : Sudo</title><link>http://wibfi.virtua-peanuts.net/posts/nouvelle-cheatsheet-linux-sudo.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Le &lt;a class="reference external" href="http://xkcd.com/149/"&gt;super-pouvoir le plus simple à invoquer&lt;/a&gt; ...&lt;/p&gt;
+&lt;p&gt;Inauguration de la Cheat-Sheet &lt;a class="reference external" href="http://wibfi.virtua-peanuts.net/stories/cheatsheet-linux-sudo.html"&gt;Linux : Sudo&lt;/a&gt; !&lt;/p&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/nouvelle-cheatsheet-linux-sudo.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>vie-du-site</category><category>cheat-sheet</category><category>linux</category><category>tips</category><guid>http://wibfi.virtua-peanuts.net/posts/nouvelle-cheatsheet-linux-sudo.html</guid><pubDate>Fri, 06 Dec 2013 11:05:49 GMT</pubDate></item><item><title>Recherche d'un pattern dans une liste de fichiers avec Grep</title><link>http://wibfi.virtua-peanuts.net/posts/recherche-dun-pattern-dans-une-liste-de-fichiers-avec-grep.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Comme c'est malin &lt;em&gt;grep&lt;/em&gt; ...&lt;/p&gt;
+&lt;div class="section" id="usage"&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Affiche le nom du fichier contenant le pattern cible (regex / texte)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+grep -il &lt;span class="s2"&gt;"pattern"&lt;/span&gt; emplacement/des/fichiers/*
+
+&lt;span class="c"&gt;#Exemple
+&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;dje@ORD ~&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;grep -l &lt;span class="s2"&gt;"winRM"&lt;/span&gt; mydev/wibfi/posts/*
+mydev/wibfi/posts/lister-les-etendues-dhcp-en-powershell.txt
+mydev/wibfi/posts/lister-les-ip-reservees-dun-scope-dhcp-en-powershell.txt
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/recherche-dun-pattern-dans-une-liste-de-fichiers-avec-grep.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>linux</category><category>grep</category><category>tips</category><category>bash</category><guid>http://wibfi.virtua-peanuts.net/posts/recherche-dun-pattern-dans-une-liste-de-fichiers-avec-grep.html</guid><pubDate>Tue, 03 Dec 2013 09:25:33 GMT</pubDate></item><item><title>Rajouter un chemin à $PATH</title><link>http://wibfi.virtua-peanuts.net/posts/rajouter-un-chemin-a-path.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Un truc à noter en passant...&lt;/p&gt;
+&lt;div class="section" id="rajout-definitif"&gt;
+&lt;h2&gt;Rajout définitif&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Editer &lt;strong&gt;/etc/profile&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+sudo vi /etc/profile
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/rajouter-un-chemin-a-path.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>tips</category><category>linux</category><guid>http://wibfi.virtua-peanuts.net/posts/rajouter-un-chemin-a-path.html</guid><pubDate>Mon, 02 Dec 2013 14:21:31 GMT</pubDate></item><item><title>Hello-World Android avec Apache Cordova</title><link>http://wibfi.virtua-peanuts.net/posts/hello-world-android-avec-apache-cordova.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Passage d'&lt;a class="reference external" href="http://cordova.apache.org/announcements/2013/11/22/cordova-320.html"&gt;Apache Cordova en v3.2&lt;/a&gt;, ça mérite un focus &lt;strong&gt;Hello-world&lt;/strong&gt;, pour commencer&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;ben, comme phonegap, quoi ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/hello-world-android-avec-apache-cordova.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>hello-world</category><category>cordova</category><category>android</category><category>linux</category><guid>http://wibfi.virtua-peanuts.net/posts/hello-world-android-avec-apache-cordova.html</guid><pubDate>Wed, 27 Nov 2013 20:40:49 GMT</pubDate></item><item><title>Nouvelle Cheatsheet : Wine</title><link>http://wibfi.virtua-peanuts.net/posts/nouvelle-cheatsheet-wine.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;&lt;strong&gt;Wine&lt;/strong&gt; , le dernier espoir avant de 're' monter une xième &lt;em&gt;VM XPsp3&lt;/em&gt; ...&lt;/p&gt;
+&lt;p&gt;Inauguration de la Cheat-Sheet &lt;a class="reference external" href="http://wibfi.virtua-peanuts.net/stories/cheat-sheet-wine.html"&gt;Wine&lt;/a&gt; !&lt;/p&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/nouvelle-cheatsheet-wine.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>vie-du-site</category><category>cheat-sheet</category><category>linux</category><category>wine</category><guid>http://wibfi.virtua-peanuts.net/posts/nouvelle-cheatsheet-wine.html</guid><pubDate>Thu, 21 Nov 2013 10:00:50 GMT</pubDate></item><item><title>Nouvelle Cheatsheet : Gestion des jobs Linux</title><link>http://wibfi.virtua-peanuts.net/posts/nouvelle-cheatsheet-gestion-des-jobs-linux.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Se repérer dans la jungle des process au premier ou second plan ...&lt;/p&gt;
+&lt;p&gt;Inauguration de la Cheat-Sheet &lt;a class="reference external" href="http://wibfi.virtua-peanuts.net/stories/cheat-sheet-linux-gestion-des-jobs.html"&gt;Linux : Gestion des jobs&lt;/a&gt; !&lt;/p&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/nouvelle-cheatsheet-gestion-des-jobs-linux.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>vie-du-site</category><category>cheat-sheet</category><category>linux</category><category>tips</category><guid>http://wibfi.virtua-peanuts.net/posts/nouvelle-cheatsheet-gestion-des-jobs-linux.html</guid><pubDate>Tue, 19 Nov 2013 20:56:02 GMT</pubDate></item><item><title>Connexion wi-fi via dongle usb sur Archlinux</title><link>http://wibfi.virtua-peanuts.net/posts/connexion-wi-fi-via-dongle-usb-sur-archlinux.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Situation banale où la connexion RJ45 est coupée, mais il reste un dongle usb wifi pas loin, et un réseau &lt;strong&gt;FON&lt;/strong&gt; à portée...&lt;/p&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Avoir un identifiant &lt;em&gt;FON&lt;/em&gt; !&lt;/li&gt;
+&lt;li&gt;Vérifier la reconnaissance du stick usb wifi par un lsusb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;dje@pc01&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="nv"&gt;$ &lt;/span&gt;lsusb
+Bus 001 Device 006: ID 148f:2770 Ralink Technology, Corp. RT2770 Wireless Adapter
+...
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="ensuite"&gt;
+&lt;h2&gt;Ensuite :&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Lancer la commande &lt;em&gt;wifi-menu&lt;/em&gt; depuis un terminal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/connexion-wi-fi-via-dongle-usb-sur-archlinux.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>linux</category><category>archlinux</category><category>wifi</category><category>usb</category><category>réseau</category><guid>http://wibfi.virtua-peanuts.net/posts/connexion-wi-fi-via-dongle-usb-sur-archlinux.html</guid><pubDate>Fri, 15 Nov 2013 21:09:09 GMT</pubDate></item><item><title>Compter les fichiers en bash</title><link>http://wibfi.virtua-peanuts.net/posts/compter-les-fichiers-en-bash.html</link><description>&lt;p class="alert alert-info"&gt;Voila pourquoi j'ai commencé à noter tout ça, pour avoir un endroit où laisser ce genre d'info que j'oublie à la seconde où je m'en sers plus...&lt;/p&gt;
+&lt;div class="section" id="code"&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="c"&gt;#commande :
+&lt;/span&gt;ls -1 | wc -l
+
+&lt;span class="c"&gt;#exemple:
+&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;dje@pc01&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ls -1 posts | wc -l
+61
+&lt;/pre&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Clair et élégant, et je peux encore &lt;a class="reference external" href="http://www.nemocorp.info/posts/il-est-la.html"&gt;laisser le champ' au frais&lt;/a&gt; , moi ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</description><category>bash</category><category>shell</category><category>linux</category><category>tips</category><guid>http://wibfi.virtua-peanuts.net/posts/compter-les-fichiers-en-bash.html</guid><pubDate>Wed, 13 Nov 2013 21:37:02 GMT</pubDate></item><item><title>Reconnaissance Garmin Forerunner 10 / Archlinux</title><link>http://wibfi.virtua-peanuts.net/posts/reconnaissance-garmin-forerunner-10-archlinux.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Une montre gps &lt;em&gt;relativement&lt;/em&gt; classe, 5h d'autonomie en mode trace avec un socle disposant d'un port USB, ça fait pas réver ça ?&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;...ah oui, aussi, faut aller courrir, aussi, sinon ça sert moins...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Connecter le socle, la montre et le port usb, (sans ralonge intermédiaire) et vérifier que :&lt;/li&gt;
+&lt;li&gt;l'écran annonce le mode recharge : &lt;strong&gt;▲&lt;/strong&gt; s'affiche&lt;/li&gt;
+&lt;li&gt;la commande &lt;strong&gt;lsusb&lt;/strong&gt; affiche &lt;strong&gt;Garmin&lt;/strong&gt; quelque part !&lt;/li&gt;
+&lt;li&gt;Accéder à la page &lt;a class="reference external" href="http://connect.garmin.com/"&gt;http://connect.garmin.com/&lt;/a&gt; , créer son compte gratos, tenter un upload et constater que la montre n'est pas reconnue ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/reconnaissance-garmin-forerunner-10-archlinux.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>gps</category><category>linux</category><category>archlinux</category><category>shell</category><category>usb</category><guid>http://wibfi.virtua-peanuts.net/posts/reconnaissance-garmin-forerunner-10-archlinux.html</guid><pubDate>Wed, 13 Nov 2013 20:29:06 GMT</pubDate></item><item><title>Fonction de log One-liner en bash</title><link>http://wibfi.virtua-peanuts.net/posts/fonction-de-log-one-liner-en-bash.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Le truc tout bête mais futé pour savoir quand/quoi a planté ...&lt;/p&gt;
+&lt;div class="section" id="code"&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Rajouter cette fonction dans un script&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+logthis&lt;span class="o"&gt;(){&lt;/span&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"$(date +%Y-%m-%d-%H:%M) [$0] - $1 a échoué"&lt;/span&gt; &amp;gt;&amp;gt; MonFichier.log ; &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/fonction-de-log-one-liner-en-bash.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>bash</category><category>linux</category><category>tips</category><guid>http://wibfi.virtua-peanuts.net/posts/fonction-de-log-one-liner-en-bash.html</guid><pubDate>Wed, 06 Nov 2013 21:03:12 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,23 @@
+.. link: 
+.. description: 
+.. tags: tips, réseau
+.. date: 2013/09/27 21:01:24
+.. title: Changer l'IP d'une NeufBox SFR
+.. slug: changer-lip-dune-neufbox-sfr
+.. tribe: RJ45
+
+
+   
+.. class:: alert alert-info
+
+Je cherche à faire cohabiter **deux** neufbox SFR, il me faut donc pouvoir changer l'adresse IP d'une des deux.
+
+
+.. TEASER_END
+
+* Accéder à la page dédiée *mais cachée* `<http://192.168.1.1/network/lan>`_ (ou, si firmware ancien `<http://192.168.1.1/2_4_1>`_ ) et procéder au changement ...
+
+
+* Attention à répercuter le changement de passerelle sur les éléments du réseau en ip fixe !
+
+

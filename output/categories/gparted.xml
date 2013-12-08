@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (gparted)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/gparted.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Tue, 03 Dec 2013 16:02:37 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Clé USB + fat en erreur GPT corrompue</title><link>http://wibfi.virtua-peanuts.net/posts/cle-usb-fat-en-erreur-gpt-corrompue.html</link><description>&lt;p class="alert alert-info"&gt;Mauvaise manip de ma part ou mauvaise humeur de la sienne, en tout cas ma clé usb 32go classe 10 ( parce que sur une vieille 2go classe 4 noname, elle aurait fini direct poubelle ) plus moyen d'accéder en écriture nulle part, ni de modifier la table des partitions, PLUS un gros message GPT &lt;strong&gt;pas bien&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;gnome-disks&lt;/strong&gt; dans les choux ...&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;Fdisk&lt;/strong&gt; :&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Le périphérique ne contient pas de table de partitions reconnue
+Construction d'une nouvelle étiquette pour disque de type DOS avec identifiant de disque 0x31607b60.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mais pas plus, et refus d'ajouter une nouvelle table de partitions / partitions, ni d'écrire sur la clé&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;&lt;strong&gt;Gparted&lt;/strong&gt; :&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;/dev/sdg contains GPT signatures, indicating that it has a GPT table.  However, it does not have a valid fake msdos partition table, as it should.  Perhaps it was corrupted -- possibly by a program that doesn't understand GPT partition tables.  Or perhaps you deleted the GPT table, and are now using an msdos partition table.  Is this a GPT partition table?
+The backup GPT table is not at the end of the disk, as it should be.  This might mean that another operating system believes the disk is smaller.  Fix, by moving the backup to the end (and removing the old backup)?
+Not all of the space available to /dev/sdg appears to be used, you can fix the GPT to use all of the space (an extra 59529216 blocks) or continue with the current setting?
+Unable to satisfy all constraints on the partition.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mais j'ai pu formater le bouzin complet, et remettre une paire de partitions propres...&lt;/p&gt;
+&lt;p&gt;Vainqueur : &lt;strong&gt;Gparted&lt;/strong&gt;&lt;/p&gt;</description><category>gparted</category><category>usb</category><category>tips</category><guid>http://wibfi.virtua-peanuts.net/posts/cle-usb-fat-en-erreur-gpt-corrompue.html</guid><pubDate>Sat, 19 Oct 2013 10:43:06 GMT</pubDate></item></channel></rss>

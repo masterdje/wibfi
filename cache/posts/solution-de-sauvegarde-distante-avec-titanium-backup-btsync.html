@@ -1,0 +1,48 @@
+<p class="alert alert-info">Un backup c'est bien, mais en avoir une sauvegarde distante, c'est mieux.</p>
+<div class="section" id="d-abord">
+<h2>D'abord</h2>
+<ul class="simple">
+<li>un smartphone <em>android</em> <em>rooté</em></li>
+<li>Installer <a class="reference external" href="https://play.google.com/store/apps/details?id=com.keramidas.TitaniumBackup&amp;hl=fr">Titanium backup (free)</a> ou donateur édition, et sauver ses applis/données.</li>
+<li>Installer l'appli mobile <a class="reference external" href="https://play.google.com/store/apps/details?id=com.bittorrent.sync&amp;hl=fr">BtSync</a> sur le Play Store</li>
+<li>Un PC / NAS avec de la place</li>
+<li>Récupérer la <a class="reference external" href="http://www.bittorrent.com/intl/fr/sync/downloads">dernière version de Btsync</a> correspondant à l'OS du PC : exemple : <a class="reference external" href="http://download-lb.utorrent.com/endpoint/btsync/os/linux-glibc23-x64/track/stable">linux x64</a></li>
+</ul>
+<!-- TEASER_END -->
+</div>
+<div class="section" id="ensuite">
+<h2>Ensuite</h2>
+<ul class="simple">
+<li>Créer un dossier pour recevoir les fichiers</li>
+<li>Décompresser le <em>.gz</em></li>
+<li>Exécuter le fichier <em>btsync</em> via</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="nv">$ </span>./btsync
+BitTorrent Sync forked to background. <span class="nv">pid</span> <span class="o">=</span> 1813
+</pre>
+<ul class="simple">
+<li>Accéder au site web intégré pour finir l'installation locale : <a class="reference external" href="127.0.0.1:8888">127.0.0.1:8888</a> (conf admin, langue, etc)</li>
+<li>Cliquer sur <em>Add folder</em> pour choisir un dossier hôte ET générer un code secret.</li>
+<li>Afficher le <em>QR code</em> à l'écran</li>
+</ul>
+</div>
+<div class="section" id="enfin">
+<h2>Enfin</h2>
+<ul class="simple">
+<li>Choisir le dossier cible à sauvegarder : <em>/storage/sdcard0/TitaniumBackup</em> (peut varier selon le montage des partitions / conf. de la rom )</li>
+<li>Choisir de lire le code QR et ça lance tout seul le bouzin ...ou taper le code à la mano (moins fun)</li>
+</ul>
+</div>
+<div class="section" id="a-noter">
+<h2>A noter</h2>
+<ul class="simple">
+<li>le QR encapsule les reférences du dossier local vu depuis le lan, ce qui implique donc un accès au lan <em>via</em> wifi du smartphone.</li>
+</ul>
+<p><strong>OU BIEN si on est joueur :</strong></p>
+<ul class="simple">
+<li>configurer sa box,</li>
+<li>le nat qui va bien,</li>
+<li>s'attendre à flinguer son forfait <em>data</em> !</li>
+</ul>
+</div>

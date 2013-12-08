@@ -1,0 +1,48 @@
+.. link: 
+.. description: 
+.. tags: powershell, dhcp
+.. date: 2013/11/05 21:35:13
+.. title: Lister les IP réservées d'un scope DHCP en Powershell
+.. slug: lister-les-ip-reservees-dun-scope-dhcp-en-powershell
+.. tribe: powershell
+
+
+.. class:: alert alert-info
+
+Mini script de liste des adresses ip réservées d'une étendue dhcp sur un serveur DHCP distant
+
+* Comme d'hab, Il faut bien sur qu' *invoke-command* soit autorisé sur le serveur distant  Go go go *winRM* ... sinon faudra retrouver les *pstools* de *sysinternals* ...
+
+.. TEASER_END
+
+Code
+----
+
+.. code:: powershell
+
+	$scope = $args[0]
+	$a = Invoke-Command -ComputerName monserveurdhcp.fqdn -scriptblock{netsh dhcp server monserveur.fqdn scope $args[0] show reservedip} -args $scope
+	$tabl= $a[7..($a.length-6)]
+	$ip = New-Object System.Collections.ArrayList
+	foreach($a in $tabl) {
+	$ip.add( $a.trim().split("-")[0].trimend()) > $null
+	}
+	$ip.sort()
+	$ip |out-file $env:temp\scope.txt
+
+Usage
+-----
+
+* A copier dans un fichier *.ps1*
+* Exécuter le *.ps1* en indiquant l'étendue dhcp cible en argument.
+* Créera aussi un fichier scope.txt dans le **%temp%** ( mon besoin perso, tout à fait inutile si on veut *juste* un affichage de liste)
+
+Infos
+-----
+
+* Juste un wrap de **netsh** et un trim/split qui va bien derrière pour garder l'essentiel, une fois de plus
+
+
+
+
+

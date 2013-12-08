@@ -1,0 +1,55 @@
+.. link: 
+.. description: 
+.. tags: tips, image, bash
+.. date: 2013/10/04 22:05:22
+.. title: Screenshot depuis le shell
+.. slug: screenshot-depuis-le-shell
+
+
+.. image:: /res/mini-ico-draw.png
+	:align: left
+   
+   
+.. class:: alert alert-info
+
+Cherchant la méthode la plus propre et solide pour faire des screenshots depuis la console, j'ai évacué les solutions python (trop de lib tiers)
+
+* Par contre j'ai trouvé le site `<http://browshot.com/>`_ qui offre - moyennant une inscription gratuite - 100 captures/mois, le tout accessible via **wget**
+
+.. TEASER_END
+
+
+.. code:: bash
+
+	[dje@pc01 ~]$ key=24JNkAYV1TZ4OEcE3uCnigLA7XXXX
+	[dje@pc01 ~]$ wget "https://api.browshot.com/api/v1/simple?url=http://wibfi.virtua-peanuts.net/&key=$key" -O wibfi.png
+
+
+Ce qui produira :
+
+.. code:: bash
+
+	--2013-10-04 21:58:24--  https://api.browshot.com/api/v1/simple?url=http://wibfi.virtua-peanuts.net/&key=24JNkAYV1TZ4OEcE3uCnigLA7XXXX
+	Résolution de api.browshot.com (api.browshot.com)... 5.9.67.236
+	Connexion vers api.browshot.com (api.browshot.com)|5.9.67.236|:443...connecté.
+	requête HTTP transmise, en attente de la réponse...302 Found
+	Emplacement: /wait?s=20&r=%2Fapi%2Fv1%2Fsimple%2F4596856%3Fwidth%3D0%26height%3D0%26scale%3D0%26ratio%3Dfit%26key%3D24JNkAYV1TZ4OEcE3uCnigLAXXXX&t=1 [suivant]
+	--2013-10-04 21:58:24--  https://api.browshot.com/wait?s=20&r=%2Fapi%2Fv1%2Fsimple%2F4596856%3Fwidth%3D0%26height%3D0%26scale%3D0%26ratio%3Dfit%26key%3D24JNkAYV1TZ4OEcE3uCnigLXXXXX&t=1
+	Réutilisation de la connexion existante vers api.browshot.com:443.
+	requête HTTP transmise, en attente de la réponse...302 Found
+	Emplacement: /api/v1/simple/4596856?width=0&height=0&scale=0&ratio=fit&key=24JNkAYV1TZ4OEcE3uCnigLAXXXX&t=2 [suivant]
+	--2013-10-04 21:58:50--  https://api.browshot.com/api/v1/simple/4596856?width=0&height=0&scale=0&ratio=fit&key=24JNkAYV1TZ4OEcE3uCnigLAXXXX=2
+	Réutilisation de la connexion existante vers api.browshot.com:443.
+	requête HTTP transmise, en attente de la réponse...200 OK
+	Longueur: 48327 (47K) [image/png]
+	Sauvegarde en : «wibfi.png»
+	
+	100%[======================================>] 48 327      --.-K/s   ds 0,1s    
+
+	2013-10-04 21:58:50 (355 KB/s) - «wibfi.png» sauvegardé [48327/48327]
+
+
+* Apres un coup de *convert* 50% :
+
+.. image:: /images/wibfi.png
+	:align: center

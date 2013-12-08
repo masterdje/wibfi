@@ -1,0 +1,41 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2013/11/21 11:00:50
+.. title: Cheat-Sheet Wine
+.. slug: cheat-sheet-wine
+
+
+Recap commandes
+---------------
+
+================== =======================================================
+Commande            Description
+================== =======================================================
+wine control       Affiche un control panel
+wine uninstaller   Affiche le panel pour désinstaller les programmes
+wine cmd           Lance un pseudo cmd
+wine regedit       Affiche l'éditeur de registre
+wine taskmgr       Affiche le gestionnaire des taches
+wine console       Lance une console (proche cmd)
+winecfg            Lance l'editeur de configuration de wine
+wine net           suivi de start ou stop + nom de service
+wineboot           Effectue un reboot
+wine iexplore      Lance Internet explorer !
+winefile           Ouvre un explorateur de fichiers
+================== =======================================================
+
+Infos supp.
+-----------
+* Emplacement du simulacre c:\ : **~/.wine/drive_c**
+
+
+
+* WIP
+
+
+-------
+
+.. class: btn btn-lg more
+
+`Retour aux Cheat-sheets </stories/cheatsheets.html>`_

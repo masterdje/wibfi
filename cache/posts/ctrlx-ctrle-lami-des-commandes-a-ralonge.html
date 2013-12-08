@@ -1,0 +1,45 @@
+<p class="alert alert-info">P'tite astuce pour quand il faudrait pouvoir se relire avant de lancer une commande à ralonge ...</p>
+<div class="section" id="d-abord">
+<h2>D'abord :</h2>
+<ul class="simple">
+<li>si ça rale en réclamant <em>vim</em>, faut modifier <em>.bashrc</em> et corriger la variable <strong>EDITOR</strong>, en mettant <em>vi</em> par exemple</li>
+</ul>
+</div>
+<div class="section" id="ensuite">
+<h2>Ensuite :</h2>
+<ul class="simple">
+<li>Commande :</li>
+</ul>
+<pre class="code bash literal-block">
+Ctrl X <span class="o">[</span>puis<span class="o">]</span> Ctrl E
+</pre>
+<ul class="simple">
+<li>lance l'éditeur pour pouvoir rédiger the ligne de commande ...</li>
+</ul>
+<!-- TEASER_END -->
+<pre class="code bash literal-block">
+ls -l| awk <span class="o">{</span>print<span class="s1">' $1 $3'</span><span class="o">}</span> <span class="c">#on peut faire mieux
+</span>~
+~
+~
+~
+~
+~
+~
+<span class="s2">&quot;/tmp/bash-fc-7504821865&quot;</span> 1 line, 1 character
+</pre>
+<ul class="simple">
+<li>... qui sera exécutée en sortant</li>
+</ul>
+<pre class="code bash literal-block">
+ls -l| awk <span class="o">{</span>print<span class="s1">' $1 $3'</span><span class="o">}</span> <span class="c">#on peut faire mieux
+</span>total
+drwxr-xr-xdje
+drwxr-xr-xdje
+-rw-r--r--dje
+-rw-r--r--dje
+</pre>
+<ul class="simple">
+<li>Enjoy !</li>
+</ul>
+</div>

@@ -1,0 +1,14 @@
+.. link: 
+.. description: 
+.. tags: bookmark, benchmark
+.. date: 2013/11/19 09:57:50
+.. title: A Bookmarker : webkit.org / Sunspider
+.. slug: a-bookmarker-webkitorg-sunspider
+.. tribe: tips
+
+   
+.. class:: alert alert-info
+
+Le site indispensable pour se faire une idée de l'efficacité du traitement javascript en quelques secondes... et éviter les bouses qui se trainent...
+
+`<http://www.webkit.org/perf/sunspider/sunspider.html>`_

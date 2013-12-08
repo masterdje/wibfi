@@ -1,0 +1,100 @@
+.. link: 
+.. description: 
+.. tags: powershell
+.. date: 2013/12/03 11:02:24
+.. title: Manipulations et sessions distantes en powershell
+.. slug: manipulations-et-sessions-distantes-en-powershell
+.. tribe: powershell
+
+
+.. class:: alert alert-info
+
+Comment accéder à distance sans passer par *remote desktop* ...
+
+* *WinRM* et *new-pssession* sont sur un bateau ...
+
+.. TEASER_END
+
+
+D'abord
+-------
+
+* Autoriser l'exécution de scripts powershell sur le serveur distant
+* Attention c'est mal !
+
+.. code:: powershell
+	
+	set-executionpolicy unrestricted
+
+
+* Autoriser les sessions distantes
+
+.. code:: powershell
+	
+	Enable-PsRemoting -force
+	
+* Redémarrer WinRM
+
+.. code:: powershell
+	
+	restart-service WinRM
+	
+
+Ensuite
+-------
+
+* Tester la connexion distante :
+
+.. code:: powershell
+	
+	Test-Wsman [machine distante]
+	
+
+Enfin
+-----
+
+* Exécution de commandes distantes
+
+.. code:: powershell
+	
+	invoke-command -computername [machinedistante] -scriptblock { scommandes ou script à exécuter }
+	
+* Ouvrir une session Powershell distante
+
+.. code:: powershell
+	
+	#creation
+	new-PsSession -computername [machinedistante]
+	...
+	Enter-Session XX # le numéro d'ID indiqué par la cmdlet new-pssession
+	
+	#mode direct
+	Enter-PsSession -computername [machinedistante]
+
+* Lister les sessions Powershell
+
+.. code:: powershell
+	
+	get-psSession
+
+	
+* Cloturer une session
+
+.. code:: powershell
+	
+	#depuis une session ouverte
+	exit-PsSession
+
+
+	
+
+	
+
+
+
+
+
+A noter
+-------
+
+* Windows 2012 propulse *powershell v4* nativement configuré pour l'accès distant...

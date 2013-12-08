@@ -1,0 +1,108 @@
+.. link: 
+.. description: 
+.. tags: tips, 3DS, openwrt, HomePass
+.. date: 2013/10/01 21:34:35
+.. title: Hack 3DS StreetPass basique via OpenWRT
+.. slug: hack-3ds-streetpass-basique-via-openwrt
+.. tribe: RJ45
+
+
+.. class:: alert alert-info
+
+Il s'agit d'exploiter l'ingéniosité des ptits malins du net pour la mise en place d'un **HomePass** sur une base de routeur OpenWRT... ça tombe bien !
+
+* Pré-requis #1 : 1 3DS / `1 Routeur OpenWRT <installer-openwrt-dans-une-neufbox.html>`_ 
+
+.. TEASER_END
+
+* Pré-requis #2 : Quelques Adresses MAC
+
+Du genre de celles -ci, mais y en a d'autres `ici <https://docs.google.com/spreadsheet/ccc?key=0AvvH5W4E2lIwdEFCUkxrM085ZGp0UkZlenp6SkJablE#gid=0>`_
+
+	4E:53:50:4F:4F:40 |
+	4E:53:50:4F:4F:41 |
+	4E:53:50:4F:4F:42 |
+	4E:53:50:4F:4F:43 |
+	4E:53:50:4F:4F:44 |
+	4E:53:50:4F:4F:45 |
+	4E:53:50:4F:4F:46 |
+	4E:53:50:4F:4F:47 |
+	4E:53:50:4F:4F:48 |
+	4E:53:50:4F:4F:49 |
+	4E:53:50:4F:4F:4A |
+	4E:53:50:4F:4F:4B |
+	4E:53:50:4F:4F:4C |
+	4E:53:50:4F:4F:4D |
+	4E:53:50:4F:4F:4E |
+	4E:53:50:4F:4F:4F |
+
+
+* Pré - requis #3 : Configurer un Wlan Wifi nommé **attwifi** et **SANS Sécurité**
+
+
+Au boulot
+=========
+
+Accès au routeur OpenWRT en SSH
+-------------------------------
+
+.. code:: bash
+
+	$ ssh root@192.168.1.XX #Addresse IP du routeur OpenWRT
+	
+	
+Et l'on obtient, si c'est la première fois, l'avertissement de fingerprint... suivi du message d'accueil...
+	
+	
+.. code:: bash
+
+	$ ssh root@192.168.1.XX
+	
+	The authenticity of host '192.168.1.XX (192.168.1.XX)' can't be established.
+	RSA key fingerprint is XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX.
+	Are you sure you want to continue connecting (yes/no)? yes
+	Warning: Permanently added '192.168.1.XX' (RSA) to the list of known hosts.
+	root@192.168.1.XX's password: 
+
+	BusyBox v1.15.3 (2011-11-24 04:32:28 CET) built-in shell (ash)
+	Enter 'help' for a list of built-in commands.
+
+	_______                     ________        __
+	|       |.-----.-----.-----.|  |  |  |.----.|  |_
+	|   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+	|_______||   __|_____|__|__||________||__|  |____|
+			|__| W I R E L E S S   F R E E D O M
+	Backfire (10.03.1, r29592) ------------------------
+	* 1/3 shot Kahlua    In a shot glass, layer Kahlua 
+	* 1/3 shot Bailey's  on the bottom, then Bailey's, 
+	* 1/3 shot Vodka     then Vodka.
+	---------------------------------------------------
+	root@OpenWrt:~# 
+
+Ma version d'OpenWRT date pas mal ...
+
+
+Commandes
+---------
+
+On utilise les commandes intégrées de l'**uci** :
+
+.. code:: bash
+
+	// Création du dummy StreetPass basé sur une adresses MAC de la liste ...
+	root@OpenWrt:~# uci set wireless.@wifi-iface[0].macaddr=00:18:F8:DA:62:41       
+	// Validation des changements
+	root@OpenWrt:~# uci commit wireless
+	// Re-init du wifi
+	root@OpenWrt:~# wifi
+	
+	
+Enjoy
+-----
+
+30 secondes plus tard, la 3DS annonce la couleur : elle est Streetpassifiée !
+
+Re-joy
+------
+
+On recommence avec une autre addresse, et zou, bonheur.

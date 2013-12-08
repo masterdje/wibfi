@@ -1,0 +1,69 @@
+<p class="alert alert-info">Ancien fan de la PAlib, j'apprends avec tristesse qu'elle est plus ou moins maintenue, et qu'il vaut mieux se tourner vers la libnds pour coder sérieux.</p>
+<ul class="simple">
+<li>Donc recompiler mes vieilles sources PALib, j'oublie pour le moment ...</li>
+</ul>
+<!-- TEASER_END -->
+<ul class="simple">
+<li>Téléchargement des libs &amp; env de dev.</li>
+</ul>
+<p>Aller <a class="reference external" href="http://sourceforge.net/projects/devkitpro/files/?source=navbar">chez sourceforge</a> et récupérer:
+1 devkitARM (x86_64 pour un os 64b , i686 sinon)
+2 dswifi
+3 libnds
+4 libfat-nds
+5 maxmod-nds
+6 default arm7
+7 examples-for-nds</p>
+<ul class="simple">
+<li>Préparation des dossiers</li>
+</ul>
+<pre class="code bash literal-block">
+mkdir devkitpro
+mkdir devkitpro/libnds
+mkdir devkitpro/exemples
+</pre>
+<ul class="simple">
+<li>Décompression</li>
+</ul>
+<pre class="code bash literal-block">
+tar -xjf Téléchargements/devkitARM_r41-x86_64-linux.tar.bz2 -C devkitpro/
+tar -xjf Téléchargements/libnds-1.5.7.tar.bz2  -C devkitpro/libnds/
+tar -xjf Téléchargements/dswifi-0.3.15.tar.bz2  -C devkitpro/libnds/
+tar -xjf Téléchargements/libfat-nds-1.0.11.tar.bz2  -C devkitpro/libnds/
+tar -xjf Téléchargements/maxmod-nds-1.0.8.tar.bz2  -C devkitpro/libnds/
+tar -xjf Téléchargements/default_arm7-0.5.24.tar.bz2  -C devkitpro/libnds/
+tar -xjf Téléchargements/nds-examples-20120410.tar.bz2  -C devkitpro/exemples
+</pre>
+<ul class="simple">
+<li>Export des variables d'environnement indispensable à la compilation</li>
+</ul>
+<pre class="code bash literal-block">
+gedit ~/.bashrc
+</pre>
+<ul>
+<li><p class="first">Rajouter à la fin du fichier :</p>
+<blockquote>
+<p>export DEVKITPRO=/home/dje/devkitpro</p>
+<p>export DEVKITARM=/home/dje/devkitpro/devkitARM</p>
+</blockquote>
+</li>
+<li><p class="first">relancer bashrc pour prise en compte immédiate</p>
+</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="nb">source</span> ~/.bashrc
+</pre>
+<ul class="simple">
+<li>Vérification :</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="o">[</span>dje&#64;pc01<span class="o">]</span><span class="nv">$ </span>env | grep DEVKITPRO
+<span class="nv">DEVKITPRO</span><span class="o">=</span>/home/dje/devkitpro
+</pre>
+<ul class="simple">
+<li>Compilation du hello_world</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="nb">cd </span>devkitpro/exemples/hello_world/
+make
+</pre>

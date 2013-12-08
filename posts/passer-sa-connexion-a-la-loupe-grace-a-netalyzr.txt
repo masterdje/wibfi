@@ -1,0 +1,49 @@
+.. link: 
+.. description: 
+.. tags: réseau, tips, android, java
+.. date: 2013/11/22 13:25:22
+.. title: Passer sa connexion à la loupe grâce à Netalyzr
+.. slug: passer-sa-connexion-a-la-loupe-grace-a-netalyzr
+.. tribe: RJ45
+
+
+.. class:: alert alert-info
+
+Envie de rentrer dans les détails au delà du *ping 8.8.8.8* ?
+
+* Les p'tits gars de l'`université de Berkeley ont codé l'outil <http://www.netalyzr.icsi.berkeley.edu/cli.html>`_ qu'il nous faut !
+
+D'abord
+-------
+
+* Récuperer le `client java <http://www.netalyzr.icsi.berkeley.edu/NetalyzrCLI.jar>`_
+
+.. TEASER_END
+
+* L'exécuter :
+
+.. code:: bash
+
+	java -jar NetalyzrCLI.jar
+	
+	====      ICSI Netalyzr CLI, build 54440       ====
+	====          22-11-2013 12:12:27 UTC          ====
+	==== ID 43ca253f-15766-384264b2-a382-465d-913f ====
+	....
+
+* Il mouline tout sa série de test ...
+
+* Et renvoie vers une page web historisant tous les détails mis en lumière:
+
+.. code:: bash
+
+	...
+	Tests complete, results available at:
+	http://n1.netalyzr.icsi.berkeley.edu/summary/id=43ca253f-15766-384264b2-a382-465d-913f
+
+A noter
+-------
+
+* L'appli gratuite android existe aussi sur le `play store <https://play.google.com/store/apps/details?id=edu.berkeley.icsi.netalyzr.android>`_
+
+* Reste plus qu'à constater les bienfaits du mode **patate** ...

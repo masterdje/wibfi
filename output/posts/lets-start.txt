@@ -1,0 +1,29 @@
+.. link: 
+.. description: 
+.. tags: vie-du-site, nikola
+.. date: 2013/09/12 19:00:00
+.. title: Let's Start
+.. slug: lets-start
+
+
+.. image:: /res/mini-ico-favicon.png
+	:align: left
+   
+   
+.. class:: alert alert-info
+
+Extrait du journal de bord
+
+
+
+**30ème jour** :
+
+- jusqu'à présent je me suis nourri des post-it entourant mon écran. J'arrive au bout. J'ai tout recopié sur mes avant-bras. Mais la place manque.
+
+**32ème jour** :
+
+- Les molets ne suffisent plus, je passe aux creux poplités.
+
+**37ème jour** :
+
+- J'ouvre ce site...

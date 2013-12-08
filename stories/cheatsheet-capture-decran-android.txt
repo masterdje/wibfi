@@ -1,0 +1,71 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2013/11/07 21:29:36
+.. title: Cheat-Sheet Capture d'écran Android
+.. slug: cheatsheet-capture-decran-android
+
+
+Manips fréquentes
+-----------------
+
+* Android GingerBread : **rien de standard**, faut trouver une appli sur le market.
+* Android ICS : **Bouton Power** + **Bouton Home**
+* Android Jelly Bean : **Bouton Power** + **Vol Bas** *pendant +- 2 secondes*
+
+
+Récap.
+------
+
++------------------+---------------+---------------------------------------------------+
++ **Constructeur** | **Modèle**    | **Manipulation**                                  +
++==================+===============+===================================================+
++ Acer             |Liquid E1, E2  | Manip standard Jelly Bean                         | 
++------------------+---------------+---------------------------------------------------+
++ HTC              |Desire, S,C,HD | Bouton power + bouton home                        | 
++------------------+---------------+---------------------------------------------------+
++ HTC              |One            | Manip standard Jelly Bean                         | 
++------------------+---------------+---------------------------------------------------+
++ HTC              |One X          | Bouton power + bouton home                        | 
++------------------+---------------+---------------------------------------------------+
++ Huawei           |Ascend P6      | Manip standard Jelly Bean                         | 
++------------------+---------------+---------------------------------------------------+
++ LG               | Optimus 2X    | Bouton power + bouton home                        | 
++------------------+---------------+---------------------------------------------------+
++ LG               | Optimus L5 L7 | Manip standard Jelly Bean et maintenir 6 secs.    |
++------------------+---------------+---------------------------------------------------+
++ LG               | G2            | Manip standard Jelly Bean ou passer par quickmemo |
++------------------+---------------+---------------------------------------------------+
++ Samsung          |Galaxy Note 1  | Frotter la tranche de la main sur l'écran         |
++------------------+---------------+---------------------------------------------------+
++ Samsung          |Galaxy Note2   | appuyer le Spen sur l'écran pendant 2 sec.        |
++------------------+---------------+---------------------------------------------------+
++ Samsung          |Galaxy S3      | bouton home pendant 2 sec.                        |
++------------------+---------------+---------------------------------------------------+
++ Samsung          |Galaxy S4      | Manip standard Jelly Bean                         |
++------------------+---------------+---------------------------------------------------+
++ Google / Asus    |Nexus 7        | bouton home pendant 2 sec.                        |
++------------------+---------------+---------------------------------------------------+
++ Google / LG      |Nexus 4        | bouton home pendant 2 sec.                        |
++------------------+---------------+---------------------------------------------------+
++ Sony             |Xperia S       | bouton power + bouton home                        |
++------------------+---------------+---------------------------------------------------+
++ Sony             |Xperia Z       | Manip standard Jelly Bean                         |
++------------------+---------------+---------------------------------------------------+
++ Wiko             |cink Slim, Peax| Manip standard Jelly Bean                         |
++------------------+---------------+---------------------------------------------------+
++ Wiko             |Cink King, Five| Manip standard Jelly Bean                         |
++------------------+---------------+---------------------------------------------------+
+
+
+
+* WIP ...
+
+
+-----
+
+.. class: btn btn-lg more
+
+`Retour aux Cheat-sheets </stories/cheatsheets.html>`_
+
+

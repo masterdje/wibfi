@@ -1,0 +1,67 @@
+.. link: 
+.. description: 
+.. tags: powershell, bash, tips
+.. date: 2013/10/26 21:40:02
+.. title: Mesure du temps d'exécution d'un script - Powershell-Bash
+.. slug: mesure-du-temps-dexecution-dun-script-powershell-bash
+.. tribe: powershell
+
+   
+.. class:: alert alert-info
+
+...mais c'est quoi qui prend 20 secondes dans mon script ??
+
+* réponse : *wmi via rpc*, toujours ...
+
+.. TEASER_END
+
+Cmdlet Powershell
+-----------------
+
+.. code:: powershell
+	
+	measure-command { # du genre get-process, ou ./monscript.ps1 }
+	
+
+
+* Renvoie la durée d'éxécution (en plein de formats inutiles):
+
+.. code:: bash
+
+	Days              : 0
+	Hours             : 0
+	Minutes           : 0
+	Seconds           : 0
+	Milliseconds      : 0
+	Ticks             : 0
+	TotalDays         : 0
+	TotalHours        : 0
+	TotalMinutes      : 0
+	TotalSeconds      : 0
+	TotalMilliseconds : 0
+	
+
+Commande Bash
+-------------
+
+.. code:: bash
+
+	time [script-ou-commande]
+	
+* exemple :
+
+.. code:: bash
+
+	[dje@pc01]$ time ps ex
+	PID TTY      STAT   TIME COMMAND
+		292 ?        Ss     0:00 /usr/lib/systemd/systemd --user PATH=/usr/local/sbin:
+		294 ?        S      0:00 (sd-pam)  
+		(...)
+		2841 pts/0    R+     0:00 ps ex XDG_VTNR=1 SSH_AGENT_PID=315 XDG_SESSION_ID=1 V
+
+	real	0m0.012s
+	user	0m0.007s
+	sys		0m0.003s
+
+* 0n retrouve donc la durée d'exécution réelle, celle ressentie par l'utilisateur et un compteur en tick de cpu?
+

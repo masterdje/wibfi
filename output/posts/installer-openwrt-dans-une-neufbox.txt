@@ -1,0 +1,44 @@
+.. link: 
+.. description: 
+.. tags: tips, linux, réseau, openwrt
+.. date: 2013/09/29 15:17:03
+.. title: Installer OpenWrt dans une Neufbox
+.. slug: installer-openwrt-dans-une-neufbox
+
+
+.. image:: /res/mini-ico-RJ45.png
+	:align: left
+   
+   
+.. class:: alert alert-info
+
+`OpenWRT <http://openwrt.org>`_ est un firmware alternatif compatible avec de nombreux routeurs. Il rajoute des fonctions parfois bien utiles...
+
+* La méthode ci-dessous est tirée de la procédure d' `Alexandre Dubois <http://blog.alexandredubois.com/2012/02/22/transformez-votre-neufbox4-en-mini-serveur-linux-avec-openwrt/>`_ , gloire à lui, et testée avec succés sur ma vieille Neufbox v4
+
+.. TEASER_END
+
+**Avant de commencer**
+
+* Un pc sous linux / python installé / récupérer ce `fichier d'installation </repo/NB4-openwrt.zip>`_ et le décompresser
+* Brancher la Neufbox sur le port TV (tester aussi sur PC1 si ça échoue) mais **power off**
+
+**Choses sérieuses**
+
+* Allumer la Neufbox en mode download : se référer au wiki `neufbox4.org <http://www.neufbox4.org/wiki/index.php?title=Reflasher_un_firmware_:_m%C3%A9thode_flashimage.py#Flashage_de_la_neufbox4>`_ ... et tenter toutes les combinaisons, ça n'a pas l'air si carré que ça, d'expérience...
+* Exécuter le script python :
+
+.. code:: python
+		
+		sudo python ./flashimage.py eth0 ./openwrt-NB4-squashfs-full
+		
+*eth0* étant le port ethernet du PC connecté... à changer si plusieurs cartes...
+
+* Taper **y** dans l'invite shell pour lancer le flashage...
+* Patienter le temps du flash, y en a pas pour long, et la neuf reboote d'elle même.
+
+**Vérification**
+
+* Accéder à la page `<http://192.168.1.1>`_ et constater la mise à jour !
+* De suite, changer le mot de passe, activer le SSH etc etc !
+	

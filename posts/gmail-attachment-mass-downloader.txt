@@ -1,0 +1,34 @@
+.. link: 
+.. description: 
+.. tags: gmail, python
+.. date: 2013/09/19 22:30:26
+.. title: Gmail Attachment Mass Downloader
+.. slug: gmail-attachment-mass-downloader
+.. tribe: python
+
+
+   
+.. class:: alert alert-info
+
+Je voulais faire du ménage dans ma Boite aux lettres gmail ... tout en récupérant les pièces jointes éparpillées dans les pseudo-dossiers IMAP...
+
+
+* Petit code *forké* github et bricolé vite fait...
+
+
+.. TEASER_END
+
+.. gist:: 5937270
+	
+
+	
+
+.. admonition:: **A noter :**
+	
+	* 	*Ahum,* **Pas terminé !**	
+	*	**Plante** lors du download de certains fichiers *pdf*	
+	*	*kof kof,* **et pas terminé !**	
+	*	Si on le **relance**, il **recommence** à télécharger *depuis le début*	
+	*	*pas fini, quoi...*
+	
+

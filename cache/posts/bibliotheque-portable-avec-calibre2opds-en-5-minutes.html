@@ -1,0 +1,46 @@
+<p class="alert alert-info">Un générateur de web statique <em>mais costaud</em> à partir d'une bibiothèque Calibre...</p>
+<ul class="simple">
+<li>Départ en vacances, pc+calibre Off, Box adsl toujours up avec son port usb vide qui traine... hop hop hop idée !</li>
+</ul>
+<div class="section" id="d-abord">
+<h2>D'abord</h2>
+<ul class="simple">
+<li>Télécharger la version de Calibre2Opds actuelle <strong>V3.2</strong> ici : <a class="reference external" href="http://calibre2opds.com/downloads/">http://calibre2opds.com/downloads/</a></li>
+</ul>
+<!-- TEASER_END -->
+<ul class="simple">
+<li>Java nécessaire. erk.</li>
+</ul>
+<pre class="code bash literal-block">
+sudo pacman -S openjdk
+</pre>
+</div>
+<div class="section" id="ensuite">
+<h2>Ensuite</h2>
+<ul class="simple">
+<li>Exécuter le .jar pour lancer l'installation</li>
+</ul>
+<pre class="code java literal-block">
+<span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="err">'</span><span class="n">calibre2opds</span><span class="o">-</span><span class="n">derniereversion</span><span class="o">.</span><span class="na">jar</span><span class="err">'</span>
+</pre>
+<p><strong>ou</strong></p>
+<ul class="simple">
+<li>Décompresser le .zip et lancer :</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="nv">$sudo</span> ./rungui.sh
+</pre>
+</div>
+<div class="section" id="enfin">
+<h2>Enfin</h2>
+<p>Dans <strong>Calibre2Opds</strong>, il faut surtout indiquer :</p>
+<ul class="simple">
+<li>Quel est le chemin de la bibliothèque <strong>Calibre</strong> que l'on veut traiter</li>
+<li>Quel est le dossier de génération voulu.</li>
+<li>Ce que l'on veut comme type d'info affichée ... Garder en mémoire la cible (navigateur PC, smartphone, liseuse) pour optimiser la densité de l'affichage et la fluidité de navigation.</li>
+<li>Ne pas oublier de sauvegarder les paramêtres,</li>
+<li>Jouer et rejouer pour découvrir ce que bien vouloir dire certaines traductions hasardeuses.</li>
+<li>Ne pas oublier que la version actuelle <strong>3.2</strong> est <strong>BUGUéE</strong> : il est nécessaire de relancer Calibre2Opds entre 2 générations, sinon la copie de fichier n'est pas réalisée.</li>
+</ul>
+<p><strong>Site/forum officiel</strong> : <a class="reference external" href="http://wiki.mobileread.com/wiki/Calibre2OpdsRunning#Running_calibre2opds">http://wiki.mobileread.com/wiki/Calibre2OpdsRunning#Running_calibre2opds</a></p>
+</div>

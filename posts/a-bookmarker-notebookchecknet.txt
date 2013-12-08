@@ -1,0 +1,15 @@
+.. link: 
+.. description: 
+.. tags: bookmark, benchmark, cpu
+.. date: 2013/11/13 21:49:00
+.. title: A bookmarker : notebookcheck.net
+.. slug: a-bookmarker-notebookchecknet
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Plus de 800 modèles de processeurs soumis aux mêmes tests, de quoi éviter les mauvaises surprises vu les sales habitudes qu'ont les fondeurs pour rendre leurs gammes obscures ...
+
+
+`<http://www.notebookcheck.net/Mobile-Processors-Benchmarklist.2436.0.html>`_

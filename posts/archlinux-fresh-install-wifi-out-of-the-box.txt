@@ -1,0 +1,46 @@
+.. link: 
+.. description: 
+.. tags: archlinux, wifi, tips
+.. date: 2013/12/04 19:51:59
+.. title: Archlinux fresh-install & wifi out-of-the-box
+.. slug: archlinux-fresh-install-wifi-out-of-the-box
+.. tribe: linux
+
+   
+.. class:: alert alert-info
+
+Le wiki archlinux détaille parfaitement comment réussir une fresh-install, sauf qu'un détail est oublié concernant le wifi...
+
+* Procédure testée le 4/12/2013, avec l'image iso archlinux du 1/12/2013
+
+D'abord
+-------
+
+* Ne s'applique que dans le cas d'une installation via stick usb / liveCD + connexion wifi
+
+* Le wiki recommande d'installer **wireless-tools** pour pouvoir utiliser les commandes liées au wifi (iwconfig etc...) ...
+
+.. TEASER_END
+
+* Mais il manque les programmes dont dépend **wifi-menu** pour être opérationnel ... programmes pourtant chargés en ram en *liveCD* ...
+
+* Pour les installer :
+
+.. code:: bash
+
+	pacstap /mnt wireless_tools dialog wpa_supplicant
+	
+
+A noter
+-------
+
+* Il est tout à fait possible de rater le "bon moment" pour installer ces pseudo-dépendances, et de se retrouver ainsi sans connexion...
+* Pour y remédier:
+
+| - Booter sur le liveCD / Stick Usb
+| - Monter /dev/sdX sur /mnt ( *mount /mnt /dev/sdX* )
+| - Lancer **wifi-menu** et configurer la connexion
+| - Exécuter la commande **pacstrap /mnt ...**
+
+
+

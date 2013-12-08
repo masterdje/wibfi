@@ -1,0 +1,48 @@
+<p class="alert alert-info">En récupérant un scope dns fourni par <strong>dnscmd</strong></p>
+<ul class="simple">
+<li>Les cmdlets <em>get-dns</em> &amp; co' ne sont dispos qu'avec Powershell v4 sur w8 / w2012 ... d'où la feinte du parsing...</li>
+</ul>
+<!-- TEASER_END -->
+<div class="section" id="code">
+<h2>Code</h2>
+<pre class="code powershell literal-block">
+<span class="nv">$server</span> <span class="p">=</span> <span class="s2">&quot;monserveur.fqdn&quot;</span>
+<span class="nv">$list</span> <span class="p">=</span> <span class="n">dnscmd</span> <span class="nv">$server</span> <span class="p">/</span><span class="n">enumrecords</span>  <span class="n">zone_dns_cible</span> <span class="n">sous_zone</span>
+<span class="nv">$tabl</span><span class="p">=</span> <span class="nv">$list</span><span class="p">[</span><span class="n">1</span><span class="p">..(</span><span class="nv">$list</span><span class="p">.</span><span class="n">length</span><span class="p">-</span><span class="n">4</span><span class="p">)]</span> <span class="c">#nettoyage</span>
+<span class="nv">$dnsrec</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Collections</span><span class="p">.</span><span class="n">ArrayList</span>
+<span class="nv">$coldns</span> <span class="p">=</span> <span class="err">&#64;</span><span class="p">()</span>
+
+<span class="c">#Approche v2</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$a</span> <span class="k">in</span> <span class="nv">$tabl</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="nv">$adddns</span><span class="p">=</span> <span class="nb">new-object</span> <span class="n">System</span><span class="p">.</span><span class="n">Object</span>
+        <span class="nv">$adddns</span> <span class="p">|</span><span class="nb">add-member</span> <span class="n">-type</span> <span class="n">NoteProperty</span> <span class="n">-name</span> <span class="k">Alias</span> <span class="n">-value</span> <span class="nv">$a</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;[`t ]&quot;</span><span class="p">)[</span><span class="n">0</span><span class="p">]</span>
+        <span class="nv">$adddns</span> <span class="p">|</span><span class="nb">add-member</span> <span class="n">-type</span> <span class="n">NoteProperty</span> <span class="n">-name</span> <span class="n">IP</span> <span class="n">-value</span> <span class="nv">$a</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;[`t ]&quot;</span><span class="p">)[</span><span class="n">3</span><span class="p">]</span>
+        <span class="nv">$coldns</span> <span class="p">+=</span> <span class="nv">$adddns</span>
+<span class="p">}</span>
+
+<span class="nb">write-host</span> <span class="nv">$coldns</span>
+</pre>
+<ul class="simple">
+<li>Variante</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="c">#Approche v1</span>
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$a</span> <span class="k">in</span> <span class="nv">$tabl</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dnsrec</span><span class="p">.</span><span class="n">add</span><span class="p">(</span> <span class="nv">$a</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;[`t ]&quot;</span><span class="p">)</span> <span class="n">-join</span> <span class="s2">&quot; | &quot;</span><span class="p">)</span> <span class="p">&gt;</span> <span class="nv">$null</span>
+        <span class="p">}</span>
+        <span class="nv">$dnsrec</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+
+<span class="p">...</span>
+
+<span class="c">#produira :</span>
+<span class="n">ssq-B013</span><span class="p">-</span><span class="n">1</span> <span class="p">|</span> <span class="n">3600</span> <span class="p">|</span> <span class="n">A</span> <span class="p">|</span> <span class="n">168</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">21</span><span class="p">.</span><span class="n">192</span>
+</pre>
+</div>
+<div class="section" id="a-noter">
+<h2>A noter</h2>
+<ul class="simple">
+<li>Echouera lamentablement si <strong>dnscmd</strong> n'est pas installé + droits qui vont bien sur le serveur dns ...</li>
+<li><em>zone_dns_cible</em> a une syntaxe bien moisie : <em>zone.principale sous.zone</em></li>
+</ul>
+</div>

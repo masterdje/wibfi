@@ -1,0 +1,30 @@
+<p class="alert alert-info">Après avoir installé <strong>kde</strong>, difficile d'organiser la bascule ? GDM refuse tout net !</p>
+<ul class="simple">
+<li>Y a une petite feinte ... comme d'hab faut le savoir ...</li>
+</ul>
+<div class="section" id="d-abord">
+<h2>D'abord</h2>
+<ul class="simple">
+<li>Si l'ouverture de session est automatique <em>sans</em> saisie du mot de passe</li>
+<li>Si la tentative de bascule via gdm vers une session <em>kde</em> échoue en mettant en cause le mot de passe ...</li>
+<li>Si le  <em>/etc/gdm/custom.conf</em> ressemble à :</li>
+</ul>
+<pre class="code bash literal-block">
+cat /etc/gdm/custom.conf
+<span class="c"># GDM configuration storage
+</span>
+<span class="o">[</span>daemon<span class="o">]</span>
+
+<span class="nv">AutomaticLoginEnable</span><span class="o">=</span>True
+<span class="nv">AutomaticLogin</span><span class="o">=</span>dje
+...
+</pre>
+<!-- TEASER_END -->
+</div>
+<div class="section" id="alors">
+<h2>Alors</h2>
+<ul class="simple">
+<li>Il faut éditer <strong>/etc/gdm/custom.conf</strong> et mettre <strong>false</strong> à AutomaticLoginEnable !</li>
+<li>Et ça ira beaucoup mieux !</li>
+</ul>
+</div>

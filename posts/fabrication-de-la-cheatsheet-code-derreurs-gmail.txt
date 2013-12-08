@@ -1,0 +1,108 @@
+.. link: 
+.. description: 
+.. tags: python, awk, bash, gmail
+.. date: 2013/11/25 17:02:21
+.. title: Fabrication de la cheatsheet code d'erreurs gmail
+.. slug: fabrication-de-la-cheatsheet-code-derreurs-gmail
+.. tribe: python
+
+   
+.. class:: alert alert-info
+
+Pour le fun, j'ai voulu me monter une base des codes erreurs gmail...
+
+* Et pour les avoir quelque part à dispo, aussi...
+
+
+D'abord
+-------
+
+* Sur le site de gmail, les pages d'erreurs sont numérotées et nommées selon le code erreur, donc les récupérer n'est pas compliqué
+
+.. code:: bash
+
+	for i in {1..10000}; 
+	do 
+	wget https://support.google.com/mail/answer/$i  ; 
+	done
+	
+* On se retrouve avec +- 68 fichiers nommés XXXX (<= code erreur)
+
+.. TEASER_END
+
+Ensuite
+-------
+
+* Chance, la structure est identique dans chaque fichier. une étude rapide monte qu'il nous faut le contenu du *h1* et du div *suivant*
+
+* Création du fichier du contenu des articles :
+
+.. code:: python
+
+	from bs4 import BeautifulSoup
+	import sys
+	f=open(sys.argv[1],'r')
+	soup=BeautifulSoup(f.read())
+
+	print ("\t<li><strong>Erreur: <a name='{}'>{}</a></strong>".format(sys.argv[1],sys.argv[1]))
+	print ("\t{}".format( soup.h1))
+	print ("\t{}".format( soup.select('.main-section--answer')[0]).replace('\n','\n\t'))
+	print ("\t</li>")
+
+* Regex peu fonctionnelle du fait des div imbriqués, donc solution script vim , sed, ou awk testées et abandonnées.
+
+.. code:: bash
+	
+	#avec sed
+	cat 9377 | sed -e 's/<\/h1>/<\/h1>\n/g' | sed -n -e 's/.*<h1>\(.*\)<\/h1>.*/\1/p'
+	#avec vim
+	vim +"argdo 4,5d | 1,2d | %s/.*<h1>/<h1>/g | %s/<\/div>.*/<\/div>/g | w | q" 9377
+	#avec awk
+	awk '/h1/{gsub(/.*<h1>/,"<h1>");gsub(/<\/div>.*/,"</div>");print $0}' 9377
+
+* Création du fichier contenant les articles expurgés
+
+.. code:: python
+
+	from bs4 import BeautifulSoup
+	import sys
+	f=open(sys.argv[1],'r')
+	soup=BeautifulSoup(f.read())
+
+	print ("\t<li><strong>Erreur: <a name='{}'>{}</a></strong>".format(sys.argv[1],sys.argv[1]))
+	print ("\t{}".format( soup.h1))
+	print ("\t{}".format( soup.select('.main-section--answer')[0]).replace('\n','\n\t'))
+	print ("\t</li>")
+
+
+* Création du fichier d'indéxation des articles :
+
+.. code:: python
+
+	from bs4 import BeautifulSoup
+	import sys
+	f=open(sys.argv[1],'r')
+	soup=BeautifulSoup(f.read())
+
+	print ("\t<li><strong><a href='#{}'>{} - {}</a></strong></li>".format(sys.argv[1],sys.argv[1], soup.h1.string))
+
+* Exécution des scripts :
+
+.. code:: bash
+
+	for i in *; 
+	do echo $i; 
+	python gmail.py $i >> ../all.html;
+	python .gmail-index.py $i >> ../all-index.html ;
+	done
+
+
+* Concaténation des fichiers
+
+.. code:: bash
+
+	cat wibfi/stories/cheatsheet-codes-derreurs-gmail.txt all-index.html all.html > cheatsheet-codes-derreurs-gmail.txt
+
+* + Nettoyage des lignes vides
+
+* Gros coup de chapeau au `maitre des regex <http://www.nemocorp.info>`_ encore une fois plein de ressources...

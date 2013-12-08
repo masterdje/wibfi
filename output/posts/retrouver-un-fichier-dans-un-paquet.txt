@@ -1,0 +1,26 @@
+.. link: 
+.. description: 
+.. tags: linux, ubuntu, tips
+.. date: 2013/09/13 12:15:00
+.. title: Retrouver un fichier dans un paquet
+.. slug: retrouver-un-fichier-dans-un-paquet
+
+.. image:: /res/mini-ico-shell.png
+	:align: left
+   
+   
+.. class:: alert alert-info
+
+Trouver un fichier dans une meule de foin, c'est pas simple.
+
+En retrouver un dans la liste des paquets dispos c'est carrement pire.
+
+Avec *apt-file* c'est déjà plus simple...
+
+.. code:: bash
+	
+	apt-get install apt-file && apt-get update
+	apt-file search [nom du fichier cherché]
+
+
+Et ça fait le boulot. Reste à choisir 1 paquet dans la liste proposée...

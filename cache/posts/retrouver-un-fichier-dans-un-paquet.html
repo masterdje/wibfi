@@ -1,0 +1,8 @@
+<p class="alert alert-info">Trouver un fichier dans une meule de foin, c'est pas simple.</p>
+<p>En retrouver un dans la liste des paquets dispos c'est carrement pire.</p>
+<p>Avec <em>apt-file</em> c'est déjà plus simple...</p>
+<pre class="code bash literal-block">
+apt-get install apt-file <span class="o">&amp;&amp;</span> apt-get update
+apt-file search <span class="o">[</span>nom du fichier cherché<span class="o">]</span>
+</pre>
+<p>Et ça fait le boulot. Reste à choisir 1 paquet dans la liste proposée...</p>

@@ -1,0 +1,61 @@
+.. link: 
+.. description: 
+.. tags: powershell, dns
+.. date: 2013/11/22 11:58:54
+.. title: Lister les enregistrements DNS en powershell
+.. slug: lister-les-enregistrements-dns-en-powershell
+.. tribe: powershell
+
+   
+.. class:: alert alert-info
+
+En récupérant un scope dns fourni par **dnscmd**
+
+* Les cmdlets *get-dns* & co' ne sont dispos qu'avec Powershell v4 sur w8 / w2012 ... d'où la feinte du parsing...
+
+.. TEASER_END
+
+Code
+----
+
+.. code:: powershell
+
+	$server = "monserveur.fqdn"
+	$list = dnscmd $server /enumrecords  zone_dns_cible sous_zone
+	$tabl= $list[1..($list.length-4)] #nettoyage
+	$dnsrec = New-Object System.Collections.ArrayList
+	$coldns = @()
+	
+	#Approche v2
+	foreach($a in $tabl)
+	{
+		$adddns= new-object System.Object
+		$adddns |add-member -type NoteProperty -name Alias -value $a.trim().split("[`t ]")[0]
+		$adddns |add-member -type NoteProperty -name IP -value $a.trim().split("[`t ]")[3]
+		$coldns += $adddns
+	}
+	
+	write-host $coldns
+
+* Variante 
+
+.. code :: powershell
+
+	#Approche v1
+	foreach($a in $tabl) {
+		$dnsrec.add( $a.split("[`t ]") -join " | ") > $null
+		}
+		$dnsrec.sort()
+	
+	...
+	
+	#produira :
+	ssq-B013-1 | 3600 | A | 168.168.21.192
+
+
+A noter
+-------
+
+* Echouera lamentablement si **dnscmd** n'est pas installé + droits qui vont bien sur le serveur dns ...
+* *zone_dns_cible* a une syntaxe bien moisie : *zone.principale sous.zone*
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (mysql)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/mysql.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Tue, 03 Dec 2013 16:02:37 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Monter un LAMP / Archlinux</title><link>http://wibfi.virtua-peanuts.net/posts/monter-un-lamp-archlinux.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;On a toujours besoin d'avoir un LAMP dans un coin !&lt;/p&gt;
+&lt;div class="section" id="installer"&gt;
+&lt;h2&gt;Installer :&lt;/h2&gt;
+&lt;pre class="code bash literal-block"&gt;
+sudo pacman -S apache php php-apache php-gd mysql
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/monter-un-lamp-archlinux.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>archlinux</category><category>apache</category><category>mysql</category><category>linux</category><guid>http://wibfi.virtua-peanuts.net/posts/monter-un-lamp-archlinux.html</guid><pubDate>Tue, 01 Oct 2013 08:14:39 GMT</pubDate></item></channel></rss>

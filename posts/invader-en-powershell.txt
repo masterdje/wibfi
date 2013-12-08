@@ -1,0 +1,76 @@
+.. link: 
+.. description: 
+.. tags: powershell
+.. date: 2013/10/03 18:55:22
+.. title: Invader en Powershell
+.. slug: invader-en-powershell
+.. tribe: powershell
+
+
+   
+   
+.. class:: alert alert-info
+
+Fond d'écran animé, dans le cadre d'un atelier d'`OpenClassRoom <http://fr.openclassrooms.com/forum/sujet/atelier-fond-anime-space-invaders>`_ (ex Site du Zero)
+
+.. image:: /images/invader.png
+	:align: center
+
+* Ma participation...
+
+.. TEASER_END
+
+.. code:: powershell
+
+	[reflection.assembly]::LoadWithPartialName( "System.Windows.Forms") |out-null
+	[reflection.assembly]::LoadWithPartialName( "System.Drawing")|out-null
+	$eyebrush = new-object Drawing.SolidBrush black
+	$form = New-Object Windows.Forms.Form
+	$form.WindowState="Maximized"
+	$form.size= New-Object System.Drawing.Size($form.width,$form.height) 
+	$formGraphics = $form.createGraphics()
+	$form.backcolor="white"
+	$size=((6,7),(8,11))
+	$si = ((0,0,1,0,1,0,0), (0,1,1,1,1,1,0), (0,1,2,1,2,1,0), (0,1,2,1,2,1,0), (1,1,1,1,1,1,1), (1,0,1,0,1,0,1)),((0,0,1,0,0,0,0,0,1,0,0),(0,0,0,1,0,0,0,1,0,0,0),(0,0,1,1,1,1,1,1,1,0,0),(0,1,1,2,1,1,1,2,1,1,0),(1,1,1,2,1,1,1,2,1,1,1),(1,0,1,1,1,1,1,1,1,0,1),(1,0,1,0,0,0,0,0,1,0,1),(0,0,0,1,1,0,1,1,0,0,0))
+	$eyes=(1,1,0,0),(1,0,0,1),(0,1,1,0),(0,0,1,1)
+
+   $form.add_paint({
+   $currentinvader=(get-random -maximum 2)
+   $currentbrush = new-object Drawing.SolidBrush $([System.Drawing.Color]::FromArgb((get-random -maximum 256),(get-random -maximum 256),(get-random -maximum 256)))
+   $currenteyes = (get-random -maximum 4)
+   $lenght=(get-random -maximum 40 ) +10
+   $eyesindex=0
+      $xmax=($form.width - ($size[$currentinvader][1] * $lenght))
+      $ymax=($form.height - ($size[$currentinvader][0] * $lenght))
+      if ($xmax -le 0){$xmax=0}
+      if ($ymax -le 0){$ymax=0}
+      $x= (get-random -maximum ($xmax))
+      $y= (get-random -maximum ($ymax))
+      for ($j=0;$j -lt $size[$currentinvader][0];$j++)
+      {
+         for ($i=0;$i -lt $size[$currentinvader][1];$i++)
+         { 
+            if ($si[$currentinvader][$j][$i] -ne 0)
+            {
+               $xstart=$x
+               $ystart=$y
+               $xstart = $xstart + ($i * $lenght)
+               $ystart = $ystart + ($j * $lenght)
+               $rect = new-object Drawing.Rectangle $xstart,$ystart, $lenght,$lenght
+               
+               if ($si[$currentinvader][$j][$i] -eq 2)
+               { 
+                  if ($eyes[$currenteyes][$eyesindex] -eq 1){$formGraphics.FillRectangle($eyebrush, $rect)}
+                  $eyesindex ++;
+               }
+               else
+               {
+               $formGraphics.FillRectangle($currentbrush, $rect)
+               }   
+            }         
+         }
+      }
+      start-sleep 1
+      $form.refresh()
+	})
+	$form.ShowDialog() |out-null 

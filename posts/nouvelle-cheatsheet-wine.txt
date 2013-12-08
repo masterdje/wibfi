@@ -1,0 +1,24 @@
+.. link: 
+.. description: 
+.. tags: vie-du-site, cheat-sheet, linux, wine
+.. date: 2013/11/21 11:00:50
+.. title: Nouvelle Cheatsheet : Wine
+.. slug: nouvelle-cheatsheet-wine
+.. tribe: favicon
+
+
+   
+.. class:: alert alert-info
+
+**Wine** , le dernier espoir avant de 're' monter une xième *VM XPsp3* ...
+
+Inauguration de la Cheat-Sheet `Wine </stories/cheat-sheet-wine.html>`_ !
+
+.. TEASER_END
+
+Toujours au même endroit ...
+
+.. class: btn btn-lg more
+
+`Accéder aux Cheat-sheets </stories/cheatsheets.html>`_
+

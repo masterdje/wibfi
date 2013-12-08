@@ -1,0 +1,42 @@
+.. link: 
+.. description: 
+.. tags: python, tips
+.. date: 2013/11/09 15:54:44
+.. title: Récupération de vidéo depuis Pluzz.fr en python
+.. slug: recuperation-de-video-depuis-pluzzfr-en-python
+.. tribe: python
+
+
+.. class:: alert alert-info
+
+**Pluzz.fr** c'est très bien *sauf* quand flash n'est pas supporté par le lecteur cible ...
+
+* Alors faut passer par un fichier local *temporaire* ... que **Pluzzdl** se charge de constituer à partir de l'url donnée.
+
+
+.. TEASER_END
+
+D'abord
+-------
+
+* Site Officiel : `<http://code.google.com/p/tvdownloader/wiki/pluzzdl>`_
+* Récupérer le fichier `pluzzdl.tgz </repo/pluzzdl.tgz>`_ et le décompresser quelque part.
+
+
+Ensuite
+-------
+
+* Usage :
+
+.. code:: bash
+
+	sh pluzzdl http://pluzz.francetv.fr/......html  #[url complète de la page]
+
+* Un fichier se constitue peu à peu sur le disque.
+
+A noter
+-------
+
+* Eventuellement, renommer en *.mkv* le fichier produit.
+* un message d"erreur **403** peut se produire en fin de téléchargement... pas grave.
+* Régulièrement **Pluzz** fait évoluer ses algos, donc faut suivre à la trace les maj de pluzzdl...

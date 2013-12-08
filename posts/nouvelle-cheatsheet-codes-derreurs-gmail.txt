@@ -1,0 +1,22 @@
+.. link: 
+.. description: 
+.. tags: cheat-sheet, gmail, tips
+.. date: 2013/11/25 16:43:48
+.. title: Nouvelle CheatSheet : Codes d'erreurs Gmail
+.. slug: nouvelle-cheatsheet-codes-derreurs-gmail
+.. tribe: favicon
+
+   
+.. class:: alert alert-info
+
+...Le gmail Mailer daemon n'est pas toujours très clair dans ses messages d'erreurs, ni très lisible. voici un inventaire direct à la source.
+
+Inauguration de la `Cheat-Sheet Codes d'erreurs de gmail </stories/cheatsheet-codes-derreurs-gmail>`_ !
+
+.. TEASER_END
+
+Toujours au même endroit ...
+
+.. class: btn btn-lg more
+
+`Accéder aux Cheat-sheets </stories/cheatsheets.html>`_

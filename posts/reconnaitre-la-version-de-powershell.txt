@@ -1,0 +1,54 @@
+.. link: 
+.. description: 
+.. tags: powershell, tips
+.. date: 2013/11/22 09:46:49
+.. title: Reconnaitre la version de powershell
+.. slug: reconnaitre-la-version-de-powershell
+.. tribe: powershell
+
+   
+.. class:: alert alert-info
+
+Truc tout simple à priori, sauf que ...
+
+
+Code
+----
+
+
+.. code:: powershell
+
+	# Si powershell v2 
+	
+	$PSversiontable.psversion
+
+	Major  Minor  Build  Revision
+	-----  -----  -----  --------
+	2      0      -1     -1
+
+
+.. TEASER_END
+
+* et en plus détaillée :
+
+.. code:: powershell
+
+	$PSversiontable
+
+	Name                           Value
+	----                           -----
+	CLRVersion                     2.0.50727.3082
+	BuildVersion                   6.0.6002.18111
+	PSVersion                      2.0
+	WSManStackVersion              2.0
+	PSCompatibleVersions           {1.0, 2.0}
+	SerializationVersion           1.1.0.1
+	PSRemotingProtocolVersion      2.1
+	
+	
+A noter
+-------
+
+* **$host** est un alias de **get-host**  qui retourne les infos de la console / IDE utilisé, et non la version utilisée
+* *A vérifier* (pas sous la main) : en powershell V1, $psversiontable n'existerait pas ?! et se reporter sur $host
+

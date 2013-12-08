@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dje">
+    <title>Clé USB + fat en erreur GPT corrompue | Write it before forget it</title>
+    
+            <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+            <link href="../assets/css/custom.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+            <link rel="icon" href="../favicon.ico" sizes="16x16">
+            <link rel="icon" href="../favicon.png" sizes="64x64">
+
+    <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+    
+
+
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-44317802-1']);
+  _gaq.push(['_setDomainName', 'virtua-peanuts.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../">Write it before forget it</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            
+                <li><a href="../stories/cheatsheets.html">Cheat-Sheets</a>
+                </li><li><a href="../stories/what-s-next.html">What's next</a>
+                </li><li><a href="../archive.html">Archives</a>
+                </li><li><a href="../categories/index.html">Tags</a>
+                </li><li><a href="../rss.xml">RSS</a>
+
+        </li></ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li><a href="../stories/admin.html"><span class="glyphicon glyphicon-cog"></span></a></li>
+		</ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+    <div class="postbox">
+    <div class="alert alert-info">
+    <h1>Clé USB + fat en erreur GPT corrompue</h1>
+
+    
+		
+            <a class="tag" href="../categories/gparted.html"><span class="badge">gparted</span></a>
+            <a class="tag" href="../categories/usb.html"><span class="badge">usb</span></a>
+            <a class="tag" href="../categories/tips.html"><span class="badge">tips</span></a>
+          
+
+		<time class="published" datetime="2013-10-19T12:43:06+02:00">2013-10-19 12:43</time>
+        
+
+   
+       </div>
+    <p class="alert alert-info">Mauvaise manip de ma part ou mauvaise humeur de la sienne, en tout cas ma clé usb 32go classe 10 ( parce que sur une vieille 2go classe 4 noname, elle aurait fini direct poubelle ) plus moyen d'accéder en écriture nulle part, ni de modifier la table des partitions, PLUS un gros message GPT <strong>pas bien</strong></p>
+<ul>
+<li><p class="first"><strong>gnome-disks</strong> dans les choux ...</p>
+</li>
+<li><p class="first"><strong>Fdisk</strong> :</p>
+<blockquote>
+<p>Le périphérique ne contient pas de table de partitions reconnue
+Construction d'une nouvelle étiquette pour disque de type DOS avec identifiant de disque 0x31607b60.</p>
+</blockquote>
+</li>
+</ul>
+<p>Mais pas plus, et refus d'ajouter une nouvelle table de partitions / partitions, ni d'écrire sur la clé</p>
+<ul>
+<li><p class="first"><strong>Gparted</strong> :</p>
+<blockquote>
+<p>/dev/sdg contains GPT signatures, indicating that it has a GPT table.  However, it does not have a valid fake msdos partition table, as it should.  Perhaps it was corrupted -- possibly by a program that doesn't understand GPT partition tables.  Or perhaps you deleted the GPT table, and are now using an msdos partition table.  Is this a GPT partition table?
+The backup GPT table is not at the end of the disk, as it should be.  This might mean that another operating system believes the disk is smaller.  Fix, by moving the backup to the end (and removing the old backup)?
+Not all of the space available to /dev/sdg appears to be used, you can fix the GPT to use all of the space (an extra 59529216 blocks) or continue with the current setting?
+Unable to satisfy all constraints on the partition.</p>
+</blockquote>
+</li>
+</ul>
+<p>Mais j'ai pu formater le bouzin complet, et remettre une paire de partitions propres...</p>
+<p>Vainqueur : <strong>Gparted</strong></p>
+    
+    <ul class="pager">
+        <li class="previous">
+            <a href="cheatsheet-recherche-gmail.html">← Billet précédent</a>
+        </li>
+        <li class="next">
+            <a href="theme-sympa-numix-faeza.html">Billet suivant →</a>
+        </li>
+    </ul>
+
+        
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        var disqus_shortname ="wibfi";
+            var disqus_url="http://wibfi.virtua-peanuts.net/posts/cle-usb-fat-en-erreur-gpt-corrompue.html";
+        var disqus_title="Cl\u00e9 USB + fat en erreur GPT corrompue";
+        var disqus_identifier="cache/posts/cle-usb-fat-en-erreur-gpt-corrompue.html";
+        var disqus_config = function () {
+            this.language = "fr";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    
+
+    </div>
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            2013         <a href="mailto:wibfi@virtua-peanuts.net">Dje</a> mais c'est <a href="http://getnikola.com">Nikola</a> qui bosse.        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/fr/"><img title="TL;DR" alt="Licence Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/fr/88x31.png"></a> - <a href="http://www.xiti.com/xiti.asp?s=538203" title="WebAnalytics" target="_top">
+<script type="text/javascript">
+<!--
+Xt_param = 's=538203&p=index';
+try {Xt_r = top.document.referrer;}
+catch(e) {Xt_r = document.referrer; }
+Xt_h = new Date();
+Xt_i = '<img width="80" height="15" border="0" alt="" ';
+Xt_i += 'src="http://logv4.xiti.com/g.xiti?'+Xt_param;
+Xt_i += '&hl='+Xt_h.getHours()+'x'+Xt_h.getMinutes()+'x'+Xt_h.getSeconds();
+if(parseFloat(navigator.appVersion)>=4)
+{Xt_s=screen;Xt_i+='&r='+Xt_s.width+'x'+Xt_s.height+'x'+Xt_s.pixelDepth+'x'+Xt_s.colorDepth;}
+document.write(Xt_i+'&ref='+Xt_r.replace(/[<>"]/g, '').replace(/&/g, '$')+'" title="Internet Audience">');
+//-->
+</script>
+<noscript>
+<img width="80" height="15" src="http://logv4.xiti.com/g.xiti?s=538203&amp;p=index" alt="WebAnalytics">
+</noscript></a>
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../assets/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+            <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../assets/js/jquery.colorbox-min.js" type="text/javascript"></script>
+
+
+	
+
+    <script type="text/javascript">jQuery("a.image-reference").colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    
+
+</body>
+</html>

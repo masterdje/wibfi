@@ -1,0 +1,36 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2013/10/17 22:12:56
+.. title: Administration Wibfi
+.. slug: admin
+.. password: yut502zet
+
+
+Liens
+-----
+* `Google Analytics <https://www.google.com/analytics/web/?et&authuser=0#home/a44317802w74614604p77030202/>`_
+* `Disqus <http://wibfi.disqus.com/admin/moderate/#/all>`_
+* `FTP 1&1 <ftp://u45372881:aqwarez@virtua-peanuts.net/wibfi>`_
+
+Sauvegardes
+-----------
+* Dernier backup : `save-wibfi.tgz </backup/_save-wibfi_.tgz>`_
+* Olds : *à venir*
+
+
+Notes
+-----
+* A venir
+* Faudrait ..
+* Faudrait...
+
+
+Todo
+----
+
+* Améliorer les saves
+* + templates
+* maj whats next
+
+

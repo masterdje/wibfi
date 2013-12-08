@@ -1,0 +1,54 @@
+.. link: 
+.. description: 
+.. tags: android, sauvegarde
+.. date: 2013/11/05 22:15:38
+.. title: Solution de sauvegarde distante avec Titanium Backup & BTsync
+.. slug: solution-de-sauvegarde-distante-avec-titanium-backup-btsync
+.. tribe: android
+
+.. class:: alert alert-info
+
+Un backup c'est bien, mais en avoir une sauvegarde distante, c'est mieux.
+
+D'abord
+-------
+
+* un smartphone *android* *rooté*
+* Installer `Titanium backup (free) <https://play.google.com/store/apps/details?id=com.keramidas.TitaniumBackup&hl=fr>`_ ou donateur édition, et sauver ses applis/données.
+* Installer l'appli mobile `BtSync <https://play.google.com/store/apps/details?id=com.bittorrent.sync&hl=fr>`_ sur le Play Store
+* Un PC / NAS avec de la place
+* Récupérer la `dernière version de Btsync <http://www.bittorrent.com/intl/fr/sync/downloads>`_ correspondant à l'OS du PC : exemple : `linux x64 <http://download-lb.utorrent.com/endpoint/btsync/os/linux-glibc23-x64/track/stable>`_
+
+.. TEASER_END
+
+Ensuite
+-------
+* Créer un dossier pour recevoir les fichiers
+* Décompresser le *.gz*
+* Exécuter le fichier *btsync* via
+
+.. code:: bash
+
+	$ ./btsync 
+	BitTorrent Sync forked to background. pid = 1813
+
+* Accéder au site web intégré pour finir l'installation locale : `<127.0.0.1:8888>`_ (conf admin, langue, etc)
+* Cliquer sur *Add folder* pour choisir un dossier hôte ET générer un code secret. 
+* Afficher le *QR code* à l'écran
+
+Enfin
+-----
+
+* Choisir le dossier cible à sauvegarder : */storage/sdcard0/TitaniumBackup* (peut varier selon le montage des partitions / conf. de la rom )
+* Choisir de lire le code QR et ça lance tout seul le bouzin ...ou taper le code à la mano (moins fun)
+
+A noter
+-------
+
+* le QR encapsule les reférences du dossier local vu depuis le lan, ce qui implique donc un accès au lan *via* wifi du smartphone. 
+
+**OU BIEN si on est joueur :** 
+
+* configurer sa box, 
+* le nat qui va bien, 
+* s'attendre à flinguer son forfait *data* !

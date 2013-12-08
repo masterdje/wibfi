@@ -1,0 +1,15 @@
+.. link: 
+.. description: 
+.. tags: bookmark, benchmark, gpu
+.. date: 2013/11/13 20:39:41
+.. title: A bookmarker : Gfxbench.com
+.. slug: a-bookmarker-gfxbenchcom
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+L'intêret des benchmarks réside évidement dans la comparaison, et non dans le score sorti du chapeau... Et gfxbench a une sacrée base de matos testé ...
+
+
+`<http://gfxbench.com/compare.jsp>`_

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (rst)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/rst.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Tue, 03 Dec 2013 16:02:37 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Changer la couleur du texte en rst / restructuredtext</title><link>http://wibfi.virtua-peanuts.net/posts/changer-la-couleur-du-texte-en-rst-restructuredtext.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Le truc le plus simple du monde... sauf que non, en fait...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Et bienvenue en mode bricolage...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Rajouter les couleurs désirées dans le CSS  (dans &lt;em&gt;nikola&lt;/em&gt; c'est &lt;em&gt;custom.css&lt;/em&gt; au fond de template...) sous forme de classe&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code css literal-block"&gt;
+&lt;span class="nc"&gt;.blue&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;blue&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.red&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.green&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;green&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.orange&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;orange&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.blue-vp&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#123789&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.magenta&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#ff00ff&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/changer-la-couleur-du-texte-en-rst-restructuredtext.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>nikola</category><category>rst</category><category>css</category><guid>http://wibfi.virtua-peanuts.net/posts/changer-la-couleur-du-texte-en-rst-restructuredtext.html</guid><pubDate>Mon, 02 Dec 2013 12:15:26 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,40 @@
+<p class="alert alert-info">Mini script trouvé quelque part et bien utile, affichage <strong>du</strong> amélioré via moulinette <em>awk</em></p>
+<ul class="simple">
+<li>Ajusté à mes besoins ...</li>
+</ul>
+<!-- TEASER_END -->
+<div class="section" id="code">
+<h2>Code:</h2>
+<pre class="code bash literal-block">
+    <span class="c">#/bin/sh
+</span>    du --max-depth<span class="o">=</span>1 <span class="nv">$1</span> | sort -n | awk <span class="s1">'
+ BEGIN {
+    split(&quot;Ko,Mo,Go,To,Po&quot;, Unites, &quot;,&quot;);
+ }
+ {
+    c = 1;
+    while ($1 &gt;= 1024) {
+       $1 = $1 / 1024;
+       c += 1
+    }
+    $1 = sprintf(&quot;%.1f %s&quot;, $1, Unites[c]);
+    print $0;
+ }
+'</span>
+</pre>
+</div>
+<div class="section" id="usage">
+<h2>Usage:</h2>
+<ul>
+<li><p class="first">chmod qui va bien et feu !</p>
+<blockquote>
+<p>sudo chmod a+x [fichier.sh]</p>
+</blockquote>
+</li>
+<li><p class="first">Exécution</p>
+<blockquote>
+<p>./[fichier.sh] /mon/emplacement/</p>
+</blockquote>
+</li>
+</ul>
+</div>

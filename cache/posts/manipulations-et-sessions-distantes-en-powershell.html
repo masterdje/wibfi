@@ -1,0 +1,76 @@
+<p class="alert alert-info">Comment accéder à distance sans passer par <em>remote desktop</em> ...</p>
+<ul class="simple">
+<li><em>WinRM</em> et <em>new-pssession</em> sont sur un bateau ...</li>
+</ul>
+<!-- TEASER_END -->
+<div class="section" id="d-abord">
+<h2>D'abord</h2>
+<ul class="simple">
+<li>Autoriser l'exécution de scripts powershell sur le serveur distant</li>
+<li>Attention c'est mal !</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="nb">set-executionpolicy</span> <span class="n">unrestricted</span>
+</pre>
+<ul class="simple">
+<li>Autoriser les sessions distantes</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="nb">Enable-PsRemoting</span> <span class="n">-force</span>
+</pre>
+<ul class="simple">
+<li>Redémarrer WinRM</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="nb">restart-service</span> <span class="n">WinRM</span>
+</pre>
+</div>
+<div class="section" id="ensuite">
+<h2>Ensuite</h2>
+<ul class="simple">
+<li>Tester la connexion distante :</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="nb">Test-Wsman</span> <span class="no">[machine distante]</span>
+</pre>
+</div>
+<div class="section" id="enfin">
+<h2>Enfin</h2>
+<ul class="simple">
+<li>Exécution de commandes distantes</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="nb">invoke-command</span> <span class="n">-computername</span> <span class="no">[machinedistante]</span> <span class="n">-scriptblock</span> <span class="p">{</span> <span class="n">scommandes</span> <span class="n">ou</span> <span class="n">script</span> <span class="err">à</span> <span class="n">ex</span><span class="err">é</span><span class="n">cuter</span> <span class="p">}</span>
+</pre>
+<ul class="simple">
+<li>Ouvrir une session Powershell distante</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="c">#creation</span>
+<span class="nb">new-PsSession</span> <span class="n">-computername</span> <span class="no">[machinedistante]</span>
+<span class="p">...</span>
+<span class="nb">Enter-Session</span> <span class="n">XX</span> <span class="c"># le numéro d'ID indiqué par la cmdlet new-pssession</span>
+
+<span class="c">#mode direct</span>
+<span class="nb">Enter-PsSession</span> <span class="n">-computername</span> <span class="no">[machinedistante]</span>
+</pre>
+<ul class="simple">
+<li>Lister les sessions Powershell</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="nb">get-psSession</span>
+</pre>
+<ul class="simple">
+<li>Cloturer une session</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="c">#depuis une session ouverte</span>
+<span class="nb">exit-PsSession</span>
+</pre>
+</div>
+<div class="section" id="a-noter">
+<h2>A noter</h2>
+<ul class="simple">
+<li>Windows 2012 propulse <em>powershell v4</em> nativement configuré pour l'accès distant...</li>
+</ul>
+</div>

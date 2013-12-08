@@ -1,0 +1,82 @@
+.. link: 
+.. description: 
+.. tags: archlinux, ubuntu, linux, scanner, usb
+.. date: 2013/10/07 21:11:35
+.. title: Reconnaissance de scanners Epson sous linux
+.. slug: reconnaissance-de-scanners-epson-sous-linux
+.. tribe: linux
+   
+   
+.. class:: alert alert-info
+
+L'achat de mon second scanner m'autorise à me prendre pour un pro de la reconnaissance des scanners Epson sous linux...
+
+
+* Sauf que je vais oublier encore si je le note pas vite...
+
+.. TEASER_END
+
+D'abord :
+---------
+
+
+.. code:: bash
+
+	- Archlinux-
+	sudo pacman -S simple-scan
+	-Ubuntu-
+	sudo apt-get install simple-scan
+	
+
+
+Epson Perfection 640
+--------------------
+
+* Editer le fichier **/etc/sane.d/dll.conf**
+* Décommenter *Epson*
+* Commenter *Epson2*
+* **That's all folks**
+
+
+
+Epson Perfection 660
+--------------------
+
+* **D'abord** récupérer `ce fichier </repo/TAIL_061.BIN.zip>`_ (firmware issu de la derniere version du pilote pour XP, en 2009) et le décompresser quelque part.
+
+* Copier le fichier décompressé dans */usr/share/sane/snapscan/*
+
+.. code:: bash
+	
+	sudo cp TAIL_061.BIN /usr/share/sane/snapscan/tail_061.bin
+
+* Editer */etc/sane.d/snapscan.conf*
+
+.. code:: bash
+
+	sudo gedit /etc/sane.d/snapscan.conf
+	
+* Pour remplacer : *myfirmware* par **firmware /usr/share/sane/snapscan/tail_061.bin**
+
+
+Tests
+-----
+
+.. code :: bash
+
+	sudo scanimage -L
+
+* S'il trouve rien, mauvais temps... débrancher/rebrancher le scan, puis
+	
+.. code:: bash
+
+	sudo sane-find-scanner
+	
+* S'il trouve rien, faut rebooter le pc aussi...	
+
+.. code:: bash
+
+	simple-scan
+	
+* S'il trouve rien il le dira...
+	

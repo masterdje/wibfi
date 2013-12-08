@@ -1,0 +1,74 @@
+.. link: 
+.. description: 
+.. tags: linux, archlinux, wifi, usb, réseau
+.. date: 2013/11/15 22:09:09
+.. title: Connexion wi-fi via dongle usb sur Archlinux
+.. slug: connexion-wi-fi-via-dongle-usb-sur-archlinux
+.. tribe: linux
+
+
+.. class:: alert alert-info
+
+Situation banale où la connexion RJ45 est coupée, mais il reste un dongle usb wifi pas loin, et un réseau **FON** à portée... 
+
+D'abord
+-------
+
+* Avoir un identifiant *FON* !
+* Vérifier la reconnaissance du stick usb wifi par un lsusb
+
+.. code:: bash
+	
+	[dje@pc01] $ lsusb
+	Bus 001 Device 006: ID 148f:2770 Ralink Technology, Corp. RT2770 Wireless Adapter
+	...
+
+Ensuite :
+---------
+
+* Lancer la commande *wifi-menu* depuis un terminal
+
+.. TEASER_END
+
+.. code:: bash
+
+	[dje@pc01 ~]$ sudo wifi-menu
+	:: Scanning for networks                                                                            [ DONE ] 
+                                 ┌────────────────────────────────────────────────┐
+                                 │ Select the network you wish to use             │  
+                                 │ Flags description:                             │  
+                                 │  * - handmade profile present                  │  
+                                 │  + - automatically generated profile present   │  
+                                 │  - - no profile present                        │  
+                                 │  ! - active connection present                 │  
+                                 │ ┌────────────────────────────────────────────┐ │  
+                                 │ │       DartyBox_dXXX    - wep     -62       │ │  
+                                 │ │       SFR WiFi Mobile  - wpa2    -78       │ │  
+                                 │ │       SFR WiFi FON     - none    -78       │ │  
+                                 │ │       SFR_EXXX         - wpa     -78       │ │  
+                                 │ │       FreeWifi_secure  - wpa     -80       │ │  
+                                 │ │       FreeWifi         - none    -80       │ │  
+                                 │ │       wifinetw         - wpa     -80       │ │  
+                                 │ │       NEUF_AXXX        - wpa     -82       │ │  
+                                 │ │                        ! wpa2    -82       │ │  
+                                 │ │       freebox_QXXXXX   - wep     -82       │ │  
+                                 │ │       NEUF_XXXX        - wpa     -82       │ │  
+                                 │ │                                            │ │  
+                                 │ └────────────────────────────────────────────┘ │  
+                                 ├────────────────────────────────────────────────┤  
+                                 │           <Accepter>      <Annuler >           │  
+                                 └────────────────────────────────────────────────┘  
+                                   
+	:: wlan0-SFR WiFi FON up                                                                            [ BUSY ] 
+	Successfully initialized wpa_supplicant
+	                                                                                                    [ DONE ]
+
+* Choisir le réseau wifi **FON** 
+* A la navigation, on est redirigé vers le portail captif de login...
+
+* Et ça m'évite de sortir *backtrack* pour casser (ou tenter de) du wep 
+
+A Noter
+-------
+
+* Navigation web ok, mais ftp bloqué. FON filtre ?!

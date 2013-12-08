@@ -1,0 +1,23 @@
+<p class="alert alert-info">Suite à Maj, Calibre <em>kaputt</em> ...</p>
+<ul class="simple">
+<li>Avec un vilain message d'erreur :</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="o">[</span>dje&#64;pc01<span class="nv">$ </span>calibre
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+File <span class="s2">&quot;site.py&quot;</span>, line 56, in main
+File <span class="s2">&quot;site-packages/calibre/gui2/__init__.py&quot;</span>, line 7, in &lt;module&gt;
+ImportError: cannot import name QDesktopServices
+</pre>
+<ul class="simple">
+<li>bien évidement, télécharger la moitié du net en package plus ou moins liés à Qt s'avère inutile ...</li>
+</ul>
+<!-- TEASER_END -->
+<ul class="simple">
+<li>Heureusement, <a class="reference external" href="https://bugs.launchpad.net/calibre/+bug/1247315/comments/7">Kovid goyal</a> veille au grain, et corrige le pb de dépendance lié à la lib <em>zlib</em> ...</li>
+</ul>
+<p><em>Time to reinstall</em></p>
+<pre class="code bash literal-block">
+sudo rm -rf /opt/calibre/*
+sudo python -c <span class="s2">&quot;import sys; py3 = sys.version_info[0] &gt; 2; u = __import__('urllib.request' if py3 else 'urllib', fromlist=1); exec(u.urlopen('http://status.calibre-ebook.com/linux_installer').read()); main(install_dir='/opt')&quot;</span>
+</pre>

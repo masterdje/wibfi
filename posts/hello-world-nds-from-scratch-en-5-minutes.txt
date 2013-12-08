@@ -1,0 +1,81 @@
+.. link: 
+.. description: 
+.. tags: nds, devkitpro, hello-world, linux, game-dev
+.. date: 2013/10/20 21:21:32
+.. title: Hello-World NDS from scratch en 5 minutes
+.. slug: hello-world-nds-from-scratch-en-5-minutes
+.. tribe: shell
+
+
+   
+.. class:: alert alert-info
+
+Ancien fan de la PAlib, j'apprends avec tristesse qu'elle est plus ou moins maintenue, et qu'il vaut mieux se tourner vers la libnds pour coder sérieux.
+
+* Donc recompiler mes vieilles sources PALib, j'oublie pour le moment ...
+
+.. TEASER_END
+
+* Téléchargement des libs & env de dev.
+
+Aller `chez sourceforge <http://sourceforge.net/projects/devkitpro/files/?source=navbar>`_ et récupérer:
+1 devkitARM (x86_64 pour un os 64b , i686 sinon)
+2 dswifi 
+3 libnds 
+4 libfat-nds 
+5 maxmod-nds 
+6 default arm7 
+7 examples-for-nds 
+
+* Préparation des dossiers
+
+.. code:: bash
+
+	mkdir devkitpro
+	mkdir devkitpro/libnds
+	mkdir devkitpro/exemples
+
+* Décompression 
+
+.. code:: bash
+
+	tar -xjf Téléchargements/devkitARM_r41-x86_64-linux.tar.bz2 -C devkitpro/
+	tar -xjf Téléchargements/libnds-1.5.7.tar.bz2  -C devkitpro/libnds/
+	tar -xjf Téléchargements/dswifi-0.3.15.tar.bz2  -C devkitpro/libnds/
+	tar -xjf Téléchargements/libfat-nds-1.0.11.tar.bz2  -C devkitpro/libnds/
+	tar -xjf Téléchargements/maxmod-nds-1.0.8.tar.bz2  -C devkitpro/libnds/
+	tar -xjf Téléchargements/default_arm7-0.5.24.tar.bz2  -C devkitpro/libnds/
+	tar -xjf Téléchargements/nds-examples-20120410.tar.bz2  -C devkitpro/exemples
+
+* Export des variables d'environnement indispensable à la compilation
+
+.. code:: bash
+
+	gedit ~/.bashrc
+
+* Rajouter à la fin du fichier :
+
+	export DEVKITPRO=/home/dje/devkitpro
+	
+	export DEVKITARM=/home/dje/devkitpro/devkitARM
+
+* relancer bashrc pour prise en compte immédiate
+
+.. code:: bash
+
+	source ~/.bashrc
+
+* Vérification :
+
+.. code:: bash
+
+	[dje@pc01]$ env | grep DEVKITPRO
+	DEVKITPRO=/home/dje/devkitpro
+
+* Compilation du hello_world
+
+.. code:: bash
+
+	cd devkitpro/exemples/hello_world/
+	make
+

@@ -1,0 +1,70 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2013/10/17 23:10:05
+.. title: Cheat-Sheet recherche Gmail
+.. slug: cheatsheet-recherche-gmail
+
+
+Date
+----
+
+* **before:AAAA/MM/JJ** => les messages reçus avant cette date
+* **after:AAAA/MM/JJ** => les messages reçus après cette date
+* **older_than:** => utiliser **d** **m** **y** pour indiquer l'age recherché
+* **newer_than:** => exemple : 5d pour *plus récents que 5 jours*
+
+
+Taille
+------
+
+* **larger:XXX[k/m]** => les messages dont la taille totale (pj incluse) dépasse XXXX k(o) ou m(o)
+* **smaller:XXX[k/m]** => les messages dont la taille totale (pj incluse) est inférieure à XXXX k(o) ou m(o)
+
+Expéditeur / Destinataire
+-------------------------
+
+* **from:[email/nom]** => les messages émis par cet email
+* **to:[email/nom/me]** =>les messages addressés à cet email, libellé ou **mot-clé** *me* (c'est à dire le titulaire du compte)
+* **from:me to:me**  => les messages que l'on s'est envoyé. moi je fais ça souvent, post-it, reminder, todo, etc...
+* **deliveredto:** => Spécifier un destinataire particulier ou un alias
+
+Texte
+-----
+
+* **(groupe de mots)** => mots à retrouver dans le message. AND implicite, OR à rajouter
+* **" groupe de mot"** => groupe EXACT à retrouver
+* **+** => recherche du mot exact (pluriels exclus)
+
+Contenu / PJ
+------------
+
+* **has:attachment** => les messages contenant une piece jointe
+* **filename [nom à préciser]** => les messages contenant une piece jointe de ce nom là
+
+Divers
+------
+
+* **is:unread** => pas lu
+* **is:chat** ==> ne cherche que dans les sessions de chats
+
+
+Scope de recherche:
+-------------------
+* **in:** => *spam* ,  *trash*, *inbox* : choix du dossier imap dans lequel rechercher
+
+MetaDonnées utilisateur
+-----------------------
+
+* **is:starred** => les messages marqués importants (avec une étoile)
+* **has:** *red-star* / *yellow-star* / *blue-star* / *orange-star* / *purple-star* etc => précisions d'étoile...
+* **has:** *red-bang* / *yellow-bang* => exclamation
+* **has:** *purple-question*  => interrogation
+
+-------
+
+.. class: btn btn-lg more
+
+`Retour aux Cheat-sheets </stories/cheatsheets.html>`_
+
+

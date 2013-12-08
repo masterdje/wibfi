@@ -1,0 +1,62 @@
+.. link: 
+.. description: 
+.. tags: powershell
+.. date: 2013/11/15 09:46:04
+.. title: Gestion de l'historique powershell
+.. slug: gestion-de-lhistorique-powershell
+.. tribe: powershell
+
+
+   
+.. class:: alert alert-info
+
+Astuces diverses et cmdlets autour de l'historique des commandes en powershell
+
+
+* *Comme en bash, mais en pas pareil, mais pas loin...*
+
+Code
+----
+
+.. code:: powershell
+
+	# avec la Cmdlet dédiée :
+	
+	PS C:\Documents and Settings\user1\>Get-history
+		
+	 Id CommandLine
+	 -- -----------
+	  1 clear
+	  
+	# ou l'alias :
+	
+	PS C:\Documents and Settings\user1\>history
+		
+	 Id CommandLine
+	 -- -----------
+	  1 clear
+	  2 get-history
+	
+
+.. TEASER_END
+
+Usage
+-----
+
+======================== =======================================================================================
+Commande                 Description
+======================== =======================================================================================
+history					 Affiche les 30 dernières commandes
+history -count 64        Affiche 64 lignes d'historique
+invoke-history XXX       Rejoue la commande XXX
+clear-history			 Supprime l'historique (pas d'impact sur les infos de F7
+$maximumhistorycount=XXX Augmente le nombre de commandes stockées dans l'historique (max 4096 en powershell v2)
+Touche F7                Affiche une "popup" contenant les denières commandes unitaires ! 
+                         Exemple : répeter *clear* 30 fois va pourrir l'historique  mais
+                         *clear* ne sera pas affiché 30 fois de suite dans la popup 
+Touche F8                Affiche la dernière commande unitaire jouée ( F8 pour cycler )
+Touche F9                Affiche une invite de saisie de n° de commande unitaire
+$^                       Affiche la dernière commande exécutée (1er membre du pipeline)
+. $^                     Rejoue la dernière commande exécutée (1er membre du pipeline)
+======================== =======================================================================================
+

@@ -1,0 +1,37 @@
+.. link: 
+.. description: 
+.. tags: gparted, usb, tips
+.. date: 2013/10/19 12:43:06
+.. title: Clé USB + fat en erreur GPT corrompue
+.. slug: cle-usb-fat-en-erreur-gpt-corrompue
+.. tribe: tips
+
+
+   
+.. class:: alert alert-info
+
+Mauvaise manip de ma part ou mauvaise humeur de la sienne, en tout cas ma clé usb 32go classe 10 ( parce que sur une vieille 2go classe 4 noname, elle aurait fini direct poubelle ) plus moyen d'accéder en écriture nulle part, ni de modifier la table des partitions, PLUS un gros message GPT **pas bien**
+
+
+* **gnome-disks** dans les choux ...
+
+
+* **Fdisk** :
+
+	Le périphérique ne contient pas de table de partitions reconnue
+	Construction d'une nouvelle étiquette pour disque de type DOS avec identifiant de disque 0x31607b60.
+
+Mais pas plus, et refus d'ajouter une nouvelle table de partitions / partitions, ni d'écrire sur la clé
+
+* **Gparted** :
+
+	/dev/sdg contains GPT signatures, indicating that it has a GPT table.  However, it does not have a valid fake msdos partition table, as it should.  Perhaps it was corrupted -- possibly by a program that doesn't understand GPT partition tables.  Or perhaps you deleted the GPT table, and are now using an msdos partition table.  Is this a GPT partition table?
+	The backup GPT table is not at the end of the disk, as it should be.  This might mean that another operating system believes the disk is smaller.  Fix, by moving the backup to the end (and removing the old backup)?
+	Not all of the space available to /dev/sdg appears to be used, you can fix the GPT to use all of the space (an extra 59529216 blocks) or continue with the current setting? 
+	Unable to satisfy all constraints on the partition.
+
+
+Mais j'ai pu formater le bouzin complet, et remettre une paire de partitions propres...
+
+
+Vainqueur : **Gparted**

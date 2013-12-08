@@ -1,0 +1,32 @@
+.. link: 
+.. description: 
+.. tags: powershell, impression, wmi
+.. date: 2013/10/06 08:39:03
+.. title: Lister les pilotes d'impression en Powershell
+.. slug: lister-les-pilotes-dimpression-en-powershell
+.. tribe: powershell
+
+
+   
+.. class:: alert alert-info
+
+Affichage des pilotes d'impressions installés sur un serveur distant (ou pc local) en powershell & wmi
+
+
+.. TEASER_END
+
+.. code:: powershell
+
+	# Liste des pilotes d'impression installés sur un serveur/Pc
+	# usage : . list-printerdriver.pS1 "nom du serveur"
+
+	if ($args[0] -ne $Null)
+		{$serveur = $args[0]}
+	else
+		{$serveur = "."}
+       
+	$liste=@()
+	$collection =Get-WmiObject -computer $serveur win32_Printerdriver | select name,version, supportedplatform
+	foreach ($drivers in $collection)
+	{ $liste+=($drivers.name -split ",")[0]} #split pour afficher juste le nom
+	write-output $liste

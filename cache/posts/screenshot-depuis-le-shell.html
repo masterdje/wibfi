@@ -1,0 +1,34 @@
+<p class="alert alert-info">Cherchant la méthode la plus propre et solide pour faire des screenshots depuis la console, j'ai évacué les solutions python (trop de lib tiers)</p>
+<ul class="simple">
+<li>Par contre j'ai trouvé le site <a class="reference external" href="http://browshot.com/">http://browshot.com/</a> qui offre - moyennant une inscription gratuite - 100 captures/mois, le tout accessible via <strong>wget</strong></li>
+</ul>
+<!-- TEASER_END -->
+<pre class="code bash literal-block">
+<span class="o">[</span>dje&#64;pc01 ~<span class="o">]</span><span class="nv">$ key</span><span class="o">=</span>24JNkAYV1TZ4OEcE3uCnigLA7XXXX
+<span class="o">[</span>dje&#64;pc01 ~<span class="o">]</span><span class="nv">$ </span>wget <span class="s2">&quot;https://api.browshot.com/api/v1/simple?url=http://wibfi.virtua-peanuts.net/&amp;key=$key&quot;</span> -O wibfi.png
+</pre>
+<p>Ce qui produira :</p>
+<pre class="code bash literal-block">
+--2013-10-04 21:58:24--  https://api.browshot.com/api/v1/simple?url<span class="o">=</span>http://wibfi.virtua-peanuts.net/&amp;key<span class="o">=</span>24JNkAYV1TZ4OEcE3uCnigLA7XXXX
+Résolution de api.browshot.com <span class="o">(</span>api.browshot.com<span class="o">)</span>... 5.9.67.236
+Connexion vers api.browshot.com <span class="o">(</span>api.browshot.com<span class="o">)</span>|5.9.67.236|:443...connecté.
+requête HTTP transmise, en attente de la réponse...302 Found
+Emplacement: /wait?s<span class="o">=</span>20&amp;r<span class="o">=</span>%2Fapi%2Fv1%2Fsimple%2F4596856%3Fwidth%3D0%26height%3D0%26scale%3D0%26ratio%3Dfit%26key%3D24JNkAYV1TZ4OEcE3uCnigLAXXXX&amp;t<span class="o">=</span>1 <span class="o">[</span>suivant<span class="o">]</span>
+--2013-10-04 21:58:24--  https://api.browshot.com/wait?s<span class="o">=</span>20&amp;r<span class="o">=</span>%2Fapi%2Fv1%2Fsimple%2F4596856%3Fwidth%3D0%26height%3D0%26scale%3D0%26ratio%3Dfit%26key%3D24JNkAYV1TZ4OEcE3uCnigLXXXXX&amp;t<span class="o">=</span>1
+Réutilisation de la connexion existante vers api.browshot.com:443.
+requête HTTP transmise, en attente de la réponse...302 Found
+Emplacement: /api/v1/simple/4596856?width<span class="o">=</span>0&amp;height<span class="o">=</span>0&amp;scale<span class="o">=</span>0&amp;ratio<span class="o">=</span>fit&amp;key<span class="o">=</span>24JNkAYV1TZ4OEcE3uCnigLAXXXX&amp;t<span class="o">=</span>2 <span class="o">[</span>suivant<span class="o">]</span>
+--2013-10-04 21:58:50--  https://api.browshot.com/api/v1/simple/4596856?width<span class="o">=</span>0&amp;height<span class="o">=</span>0&amp;scale<span class="o">=</span>0&amp;ratio<span class="o">=</span>fit&amp;key<span class="o">=</span><span class="nv">24JNkAYV1TZ4OEcE3uCnigLAXXXX</span><span class="o">=</span>2
+Réutilisation de la connexion existante vers api.browshot.com:443.
+requête HTTP transmise, en attente de la réponse...200 OK
+Longueur: 48327 <span class="o">(</span>47K<span class="o">)</span> <span class="o">[</span>image/png<span class="o">]</span>
+Sauvegarde en : «wibfi.png»
+
+100%<span class="o">[======================================</span>&gt;<span class="o">]</span> 48 327      --.-K/s   ds 0,1s
+
+2013-10-04 21:58:50 <span class="o">(</span>355 KB/s<span class="o">)</span> - «wibfi.png» sauvegardé <span class="o">[</span>48327/48327<span class="o">]</span>
+</pre>
+<ul class="simple">
+<li>Apres un coup de <em>convert</em> 50% :</li>
+</ul>
+<img alt="/images/wibfi.png" class="align-center" src="/images/wibfi.png" />

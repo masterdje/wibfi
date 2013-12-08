@@ -1,0 +1,63 @@
+<p class="alert alert-info">Situation banale où la connexion RJ45 est coupée, mais il reste un dongle usb wifi pas loin, et un réseau <strong>FON</strong> à portée...</p>
+<div class="section" id="d-abord">
+<h2>D'abord</h2>
+<ul class="simple">
+<li>Avoir un identifiant <em>FON</em> !</li>
+<li>Vérifier la reconnaissance du stick usb wifi par un lsusb</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="o">[</span>dje&#64;pc01<span class="o">]</span> <span class="nv">$ </span>lsusb
+Bus 001 Device 006: ID 148f:2770 Ralink Technology, Corp. RT2770 Wireless Adapter
+...
+</pre>
+</div>
+<div class="section" id="ensuite">
+<h2>Ensuite :</h2>
+<ul class="simple">
+<li>Lancer la commande <em>wifi-menu</em> depuis un terminal</li>
+</ul>
+<!-- TEASER_END -->
+<pre class="code bash literal-block">
+<span class="o">[</span>dje&#64;pc01 ~<span class="o">]</span><span class="nv">$ </span>sudo wifi-menu
+:: Scanning <span class="k">for </span>networks                                                                            <span class="o">[</span> DONE <span class="o">]</span>
+                         ┌────────────────────────────────────────────────┐
+                         │ Select the network you wish to use             │
+                         │ Flags description:                             │
+                         │  * - handmade profile present                  │
+                         │  + - automatically generated profile present   │
+                         │  - - no profile present                        │
+                         │  ! - active connection present                 │
+                         │ ┌────────────────────────────────────────────┐ │
+                         │ │       DartyBox_dXXX    - wep     -62       │ │
+                         │ │       SFR WiFi Mobile  - wpa2    -78       │ │
+                         │ │       SFR WiFi FON     - none    -78       │ │
+                         │ │       SFR_EXXX         - wpa     -78       │ │
+                         │ │       FreeWifi_secure  - wpa     -80       │ │
+                         │ │       FreeWifi         - none    -80       │ │
+                         │ │       wifinetw         - wpa     -80       │ │
+                         │ │       NEUF_AXXX        - wpa     -82       │ │
+                         │ │                        ! wpa2    -82       │ │
+                         │ │       freebox_QXXXXX   - wep     -82       │ │
+                         │ │       NEUF_XXXX        - wpa     -82       │ │
+                         │ │                                            │ │
+                         │ └────────────────────────────────────────────┘ │
+                         ├────────────────────────────────────────────────┤
+                         │           &lt;Accepter&gt;      &lt;Annuler &gt;           │
+                         └────────────────────────────────────────────────┘
+
+:: wlan0-SFR WiFi FON up                                                                            <span class="o">[</span> BUSY <span class="o">]</span>
+Successfully initialized wpa_supplicant
+                                                                                                    <span class="o">[</span> DONE <span class="o">]</span>
+</pre>
+<ul class="simple">
+<li>Choisir le réseau wifi <strong>FON</strong></li>
+<li>A la navigation, on est redirigé vers le portail captif de login...</li>
+<li>Et ça m'évite de sortir <em>backtrack</em> pour casser (ou tenter de) du wep</li>
+</ul>
+</div>
+<div class="section" id="a-noter">
+<h2>A Noter</h2>
+<ul class="simple">
+<li>Navigation web ok, mais ftp bloqué. FON filtre ?!</li>
+</ul>
+</div>

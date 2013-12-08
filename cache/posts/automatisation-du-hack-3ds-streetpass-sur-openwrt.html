@@ -1,0 +1,76 @@
+<p class="alert alert-info">Script futé de cyclage des adresses MAC spoofées des NintendoZone, pour tirer le meilleur des <a class="reference external" href="hack-3ds-streetpass-basique-via-openwrt.html">capacités des routeurs OpenWRT</a></p>
+<ul class="simple">
+<li>Récup d'une grosse liste d'adresses MAC &amp; en wrappant les commandes qui vont bien de l'<strong>uci</strong></li>
+</ul>
+<!-- TEASER_END -->
+<div class="section" id="code">
+<h2>Code:</h2>
+<script src="https://gist.github.com/7031189.js"></script><noscript><pre class="literal-block">
+#/bin/sh
+# HomePass
+DATE=$(date)
+# Put a filename and path in here if you wish to log each profile change
+LOG=&quot;HomePass.log&quot;
+# The WiFi network number we need to toggle the MAC address of
+# You must have already added a WiFi network with the ssid &quot;attwifi&quot; and clicked &quot;save &amp; apply&quot;
+WIFI=$(uci show wireless | grep &quot;ssid=attwifi&quot; | awk 'NR&gt;1{print $1}' RS=[ FS=])
+# MAC address list is missing or empty, reload it from the server
+if [ ! -s HomePass.list ]; then
+  # If you only want to use the primaries and Nintendo World (not the SPOOF range)
+  # then delete the current HomePass.list and add ?new=1 to the end of the next line
+  wget -O HomePass.list http://csdprojects.co.uk/3DS/HomePass.php
+fi                                                 
+                                                   
+if [ ! -s HomePass.list ]; then                  
+  echo &quot;MAC address list is missing or zero in length and we were unable to update it.  Try again later.&quot;
+  exit                                                
+fi
+
+LENGTH=$(wc -l &lt; HomePass.list)
+
+if [ -z &quot;$WIFI&quot; ]; then
+  echo Unable to identify the WiFi configuration for the attwifi network!
+  echo Please make sure you have created a Wifi network with the ssid attwifi before running this script.
+  exit
+fi
+
+# If no profile was manually specified then read it from uci
+if [ -z &quot;$1&quot; ]; then
+  I=$(uci get wireless.&#64;wifi-iface[$((WIFI))].profile)
+  # If there is no uci entry then we start from scratch
+  if [ -z &quot;$I&quot; ]; then
+    I=1
+  else
+    I=$((I+1))
+  fi
+  # If we went over the last profile we reset back to $MIN
+  if [ $I -gt $LENGTH ]; then
+    I=1
+  fi
+else
+  I=$1
+fi
+# Read MAC address number $I from the list
+MAC=$(sed -n $((I))p HomePass.list)
+# Make sure we actually got a MAC address from the list
+if [ -n &quot;$MAC&quot; ]; then
+  echo Setting profile $I, $MAC, $DATE
+  # Write profile changes to a log file
+  if [ -n &quot;$LOG&quot; ]; then                  
+    echo Setting profile $I, $MAC, $DATE &gt;&gt; $LOG          
+  fi                                                      
+  # Save a custom config called profile so that we know where we are in the list next time
+  uci set wireless.&#64;wifi-iface[$((WIFI))].profile=$I
+  # Save the new MAC address
+  uci set wireless.&#64;wifi-iface[$((WIFI))].macaddr=$MAC
+  # Restart the WiFi
+  wifi 2&gt;1 &gt;/dev/null
+else
+  echo &quot;We had a problem reading the MAC address from the list, aborting.&quot;
+fi
+
+</pre>
+</noscript><ul class="simple">
+<li>Source : <a class="reference external" href="https://gist.github.com/masterdje/7031189">https://gist.github.com/masterdje/7031189</a></li>
+</ul>
+</div>

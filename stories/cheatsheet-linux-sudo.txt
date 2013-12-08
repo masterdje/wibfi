@@ -1,0 +1,88 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2013/12/06 11:56:36
+.. title: CheatSheet Linux : Sudo
+.. slug: cheatsheet-linux-sudo
+
+
+Installation
+============
+
+* Depuis un contexte root (natif ou *su -* )
+
+.. code:: bash
+	
+	pacman -S sudo
+	
+
+
+Donner à un utilisateur le pouvoir d'invoquer sudo 
+==================================================
+
+* Toujours depuis un contexte root (natif ou *su -* )
+
+Approche rapide  
+---------------
+
+.. code:: bash
+
+	visudo
+
+* Rajouter l'utilisateur sous la ligne **root ALL=(ALL) ALL**  :
+
+.. code:: bash
+
+	## User privilege specification
+	##
+	root ALL=(ALL) ALL
+	user1 ALL=(ALL) ALL
+
+* Sauver **:wq**
+
+* Rebooter
+
+
+Approche propre
+---------------
+
+* Exécuter visudo
+
+.. code:: bash
+
+	visudo
+
+* Décommenter la ligne *# %wheel ALL=(ALL) ALL*
+
+.. code:: bash
+
+	## Uncomment to allow members of group wheel to execute any command
+	%wheel ALL=(ALL) ALL
+
+* Ajouter l'utilisateur au groupe *wheel*
+
+.. code:: bash
+
+	[root@ORD1]# gpasswd -a dje wheel
+
+* Rebooter
+
+
+A noter
+-------
+
+* Archlinux n'a pas de groupe *sudo* ou *sudoers* par défaut... donc go go go *wheel*
+* Forcer la completion via TAB :
+	* Rajouter **complete -cf sudo** à **~/.bashrc**
+
+
+
+
+* WIP
+
+
+-------
+
+.. class: btn btn-lg more
+
+`Retour aux Cheat-sheets </stories/cheatsheets.html>`_

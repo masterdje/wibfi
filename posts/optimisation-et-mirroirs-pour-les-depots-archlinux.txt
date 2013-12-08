@@ -1,0 +1,48 @@
+.. link: 
+.. description: 
+.. tags: archlinux, tips, bash
+.. date: 2013/12/06 16:58:31
+.. title: Optimisation et miroirs pour les dépots Archlinux
+.. slug: optimisation-et-mirroirs-pour-les-depots-archlinux
+.. tribe: linux
+
+   
+.. class:: alert alert-info
+
+*Pacman* rame ? Peut-être est-ce possible d'arranger un peu ça...
+
+D'abord
+-------
+
+* Au cas où ça vient du disque :
+
+.. code:: bash
+
+	pacman-optimize
+	
+* Rafraichir la liste
+
+.. code:: bash
+
+	sudo pacman -Syy
+
+Ensuite
+-------
+
+* Editer la liste des mirroirs pour posisitionner en haut le meilleur...
+
+.. code:: bash
+
+	sudo vi /etc/pacman.d/mirrorlist
+
+
+.. TEASER_END
+
+* Ou Utiliser le script **rankmirrors** pour rétablir l'ordre le plus adapté (il re-commentera les moins bien notés)
+
+.. code:: bash
+	
+	#sauvegarde de la liste avant optimisation
+	sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-save
+	sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist-save > /etc/pacman.d/mirrorlist
+

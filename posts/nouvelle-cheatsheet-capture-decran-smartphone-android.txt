@@ -1,0 +1,24 @@
+.. link: 
+.. description: 
+.. tags: vie-du-site, cheat-sheet, android, tips
+.. date: 2013/11/07 21:26:02
+.. title: Nouvelle Cheatsheet : Capture d'écran / Smartphone android
+.. slug: nouvelle-cheatsheet-capture-decran-smartphone-android
+.. tribe: favicon
+
+
+   
+.. class:: alert alert-info
+
+...ça n'aurait pas pu être totalement harmonisé, ça, depuis le temps ?
+
+Inauguration de la `Cheat-Sheet Capture d'écran sur un smartphone Android </stories/cheatsheet-capture-decran-android.html>`_ !
+
+.. TEASER_END
+
+Toujours au même endroit ...
+
+.. class: btn btn-lg more
+
+`Accéder aux Cheat-sheets </stories/cheatsheets.html>`_
+

@@ -1,0 +1,34 @@
+<p class="alert alert-info"><em>Pacman</em> rame ? Peut-être est-ce possible d'arranger un peu ça...</p>
+<div class="section" id="d-abord">
+<h2>D'abord</h2>
+<ul class="simple">
+<li>Au cas où ça vient du disque :</li>
+</ul>
+<pre class="code bash literal-block">
+pacman-optimize
+</pre>
+<ul class="simple">
+<li>Rafraichir la liste</li>
+</ul>
+<pre class="code bash literal-block">
+sudo pacman -Syy
+</pre>
+</div>
+<div class="section" id="ensuite">
+<h2>Ensuite</h2>
+<ul class="simple">
+<li>Editer la liste des mirroirs pour posisitionner en haut le meilleur...</li>
+</ul>
+<pre class="code bash literal-block">
+sudo vi /etc/pacman.d/mirrorlist
+</pre>
+<!-- TEASER_END -->
+<ul class="simple">
+<li>Ou Utiliser le script <strong>rankmirrors</strong> pour rétablir l'ordre le plus adapté (il re-commentera les moins bien notés)</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="c">#sauvegarde de la liste avant optimisation
+</span>sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-save
+sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist-save &gt; /etc/pacman.d/mirrorlist
+</pre>
+</div>

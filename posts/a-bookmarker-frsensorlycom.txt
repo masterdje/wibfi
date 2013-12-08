@@ -1,0 +1,15 @@
+.. link: 
+.. description: 
+.. tags: bookmark, 
+.. date: 2013/12/05 20:10:30
+.. title: A bookmarker : fr.sensorly.com
+.. slug: a-bookmarker-frsensorlycom
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Un site de cartes de couverture 3G / 4G , données communautaires et une app android gratuite ... bien joué sensorly !
+
+
+`<http://fr.sensorly.com/>`_

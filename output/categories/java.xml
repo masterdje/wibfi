@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (java)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/java.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Tue, 03 Dec 2013 16:02:37 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Passer sa connexion à la loupe grâce à Netalyzr</title><link>http://wibfi.virtua-peanuts.net/posts/passer-sa-connexion-a-la-loupe-grace-a-netalyzr.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Envie de rentrer dans les détails au delà du &lt;em&gt;ping 8.8.8.8&lt;/em&gt; ?&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Les p'tits gars de l'&lt;a class="reference external" href="http://www.netalyzr.icsi.berkeley.edu/cli.html"&gt;université de Berkeley ont codé l'outil&lt;/a&gt; qu'il nous faut !&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Récuperer le &lt;a class="reference external" href="http://www.netalyzr.icsi.berkeley.edu/NetalyzrCLI.jar"&gt;client java&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/passer-sa-connexion-a-la-loupe-grace-a-netalyzr.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>réseau</category><category>tips</category><category>android</category><category>java</category><guid>http://wibfi.virtua-peanuts.net/posts/passer-sa-connexion-a-la-loupe-grace-a-netalyzr.html</guid><pubDate>Fri, 22 Nov 2013 12:25:22 GMT</pubDate></item><item><title>Bibliothèque portable avec Calibre2opds en 5 minutes</title><link>http://wibfi.virtua-peanuts.net/posts/bibliotheque-portable-avec-calibre2opds-en-5-minutes.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Un générateur de web statique &lt;em&gt;mais costaud&lt;/em&gt; à partir d'une bibiothèque Calibre...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Départ en vacances, pc+calibre Off, Box adsl toujours up avec son port usb vide qui traine... hop hop hop idée !&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Télécharger la version de Calibre2Opds actuelle &lt;strong&gt;V3.2&lt;/strong&gt; ici : &lt;a class="reference external" href="http://calibre2opds.com/downloads/"&gt;http://calibre2opds.com/downloads/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/bibliotheque-portable-avec-calibre2opds-en-5-minutes.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>calibre</category><category>ebook</category><category>opds</category><category>java</category><guid>http://wibfi.virtua-peanuts.net/posts/bibliotheque-portable-avec-calibre2opds-en-5-minutes.html</guid><pubDate>Mon, 28 Oct 2013 20:17:19 GMT</pubDate></item></channel></rss>

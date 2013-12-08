@@ -1,0 +1,50 @@
+.. link: 
+.. description: 
+.. tags: powershell, AD
+.. date: 2013/11/20 18:47:54
+.. title: Lister les fichiers ouverts distants en powershell
+.. slug: lister-les-fichiers-ouverts-distants-en-powershell
+.. tribe: powershell
+
+
+   
+.. class:: alert alert-info
+
+Mini script de liste des fichiers ouverts sur un serveur distant
+
+* Script trouvé quelque part et utilisant [ADSI],  *mais ça marche* ...
+
+.. TEASER_END
+
+Code
+----
+
+.. code:: powershell
+
+	function get-openedfiles{
+	param(
+    $computername=@($env:computername), $verbose=$false)
+    $tab = @()
+	foreach ($computer in $computername){
+		$remotefile = [ADSI]"WinNT://$computer/LanmanServer"
+ 
+        $remotefile.Invoke("Resources") | foreach {
+            try{
+                $collection += New-Object PsObject -Property @{
+                  Id = $_.GetType().InvokeMember("Name", 'GetProperty', $null, $_, $null)
+                  itemPath = $_.GetType().InvokeMember("Path", 'GetProperty', $null, $_, $null)
+                  UserName = $_.GetType().InvokeMember("User", 'GetProperty', $null, $_, $null)
+                  LockCount = $_.GetType().InvokeMember("LockCount", 'GetProperty', $null, $_, $null)
+                  Server = $computer
+                }
+            }
+            catch{
+                if ($verbose){write-warning $error[0]}
+            }
+        }
+    }
+    Return $tab
+	}
+
+
+* A exécuter avec *dot-sourcing* ...

@@ -1,0 +1,113 @@
+.. link: 
+.. description: 
+.. tags: gps, linux, archlinux, shell, usb
+.. date: 2013/11/13 21:29:06
+.. title: Reconnaissance Garmin Forerunner 10 / Archlinux
+.. slug: reconnaissance-garmin-forerunner-10-archlinux
+.. tribe: gps
+
+
+.. class:: alert alert-info
+
+Une montre gps *relativement* classe, 5h d'autonomie en mode trace avec un socle disposant d'un port USB, ça fait pas réver ça ?
+
+* ...ah oui, aussi, faut aller courrir, aussi, sinon ça sert moins...
+
+D'abord
+-------
+
+* Connecter le socle, la montre et le port usb, (sans ralonge intermédiaire) et vérifier que :
+* l'écran annonce le mode recharge : **▲** s'affiche
+* la commande **lsusb** affiche **Garmin** quelque part !
+
+* Accéder à la page `<http://connect.garmin.com/>`_ , créer son compte gratos, tenter un upload et constater que la montre n'est pas reconnue ...
+
+.. TEASER_END
+
+Ensuite
+-------
+
+* Télécharger quelques outils :
+
+.. code:: bash
+
+	yaourt -s garmintools
+	yaourt -s garminplugin
+	yaourt -s gpsbabel
+	yaourt -s gebabbel
+	yaourt -s garmin-forerunner-610-extractor-git # pas sur que ça serve celui là, mais vu qu'il est loggué comme installé et que ça fonctionne...
+
+* Les wikis sont assez formels, garmin_gps est de trop, faut le sortir avec modprobe -r , surtout cas d'utilisation de *garmintools*
+
+.. code:: bash
+
+	sudo modprobe -r garmin_gps
+	
+
+D'ailleurs, on peut voir avec **dmesg** avant **modprobe -r garmin_gps** et après la différence :
+
+* Avant :
+
+.. code:: bash
+
+	dmesg
+	...
+	[42250.519232] usbcore: registered new interface driver usbserial
+	[42250.519248] usbcore: registered new interface driver usbserial_generic
+	[42250.519259] usbserial: USB Serial support registered for generic
+	[42250.520555] usbcore: registered new interface driver garmin_gps
+	[42250.520572] usbserial: USB Serial support registered for Garmin GPS usb/tty
+	[42258.595794] usb 2-1: new full-speed USB device number 4 using uhci_hcd
+	[42258.737188] usb-storage 2-1:1.0: USB Mass Storage device detected
+	[42258.737282] scsi6 : usb-storage 2-1:1.0
+	[42259.744163] scsi 6:0:0:0: Direct-Access     Garmin   FR10 Flash       1.00 PQ: 0 ANSI: 5
+	[42259.754151] sd 6:0:0:0: [sde] 2135 512-byte logical blocks: (1.09 MB/1.04 MiB)
+	[42259.757148] sd 6:0:0:0: [sde] Write Protect is off
+	[42259.757153] sd 6:0:0:0: [sde] Mode Sense: 23 00 00 00
+	[42259.760149] sd 6:0:0:0: [sde] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+	[42259.811152]  sde:
+	[42259.830151] sd 6:0:0:0: [sde] Attached SCSI removable disk
+
+
+* Après :
+
+.. code:: bash
+
+	dmesg
+	...
+	[42543.015762] usb 2-1: new full-speed USB device number 5 using uhci_hcd
+	[42543.157173] usb-storage 2-1:1.0: USB Mass Storage device detected
+	[42543.157218] scsi7 : usb-storage 2-1:1.0
+	[42544.164137] scsi 7:0:0:0: Direct-Access     Garmin   FR10 Flash       1.00 PQ: 0 ANSI: 5
+	[42544.175125] sd 7:0:0:0: [sde] 2135 512-byte logical blocks: (1.09 MB/1.04 MiB)
+	[42544.178120] sd 7:0:0:0: [sde] Write Protect is off
+	[42544.178125] sd 7:0:0:0: [sde] Mode Sense: 23 00 00 00
+	[42544.181120] sd 7:0:0:0: [sde] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+	[42544.229126]  sde:
+	[42544.248122] sd 7:0:0:0: [sde] Attached SCSI removable disk
+	...
+
+
+Enfin
+-----
+
+* Les fichiers de trace gps au format *FIT* sont trouvables dans le dossier monté *GARMIN/GARMIN/ACTIVITY*
+
+.. code:: bash
+
+	[dje@pc01]$ ls -l /run/media/dje/GARMIN/GARMIN/ACTIVITY/
+	total 6
+	-rw-r--r-- 1 dje users  563 22 août  17:46 38MG4551.FIT
+	-rw-r--r-- 1 dje users  784 12 nov.  19:04 3BCJ0248.FIT
+	-rw-r--r-- 1 dje users 3628 13 nov.  10:11 3BD95746.FIT
+
+... Et sont exportables * à la mano* au besoin via le bouton "manuel" sur `<http://connect.garmin.com/>`_
+
+* Mais après un reboot, l'interface `<http://connect.garmin.com/>`_ reconnait la ForeRunner 10 et importe tout seul les dernières activités.
+
+A noter
+-------
+
+* **Gpsbabel** continue à ne pas trouver de gps usb
+* **garmin_get_info** renvoie un *"garmin unit could not be opened!"*
+* J'ai **vraiment** du mal avec les périphériques usb sous linux.

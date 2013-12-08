@@ -1,0 +1,36 @@
+.. link: 
+.. description: 
+.. tags: bug, calibre, ebook, bugfix
+.. date: 2013/11/10 21:32:49
+.. title: Calibre 1.10 corrige le bug "QDesktopServices"
+.. slug: calibre-110-corrige-le-bug-qdesktopservices
+.. tribe: ebook
+
+   
+.. class:: alert alert-info
+
+Suite à Maj, Calibre *kaputt* ... 
+
+* Avec un vilain message d'erreur :
+
+.. code:: bash
+
+	[dje@pc01$ calibre
+	Traceback (most recent call last):
+	File "site.py", line 56, in main
+	File "site-packages/calibre/gui2/__init__.py", line 7, in <module>
+	ImportError: cannot import name QDesktopServices
+
+* bien évidement, télécharger la moitié du net en package plus ou moins liés à Qt s'avère inutile ...
+
+.. TEASER_END
+
+* Heureusement, `Kovid goyal <https://bugs.launchpad.net/calibre/+bug/1247315/comments/7>`_ veille au grain, et corrige le pb de dépendance lié à la lib *zlib* ...
+
+*Time to reinstall*
+
+.. code:: bash
+
+	sudo rm -rf /opt/calibre/*
+	sudo python -c "import sys; py3 = sys.version_info[0] > 2; u = __import__('urllib.request' if py3 else 'urllib', fromlist=1); exec(u.urlopen('http://status.calibre-ebook.com/linux_installer').read()); main(install_dir='/opt')"
+

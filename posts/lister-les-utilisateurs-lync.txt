@@ -1,0 +1,39 @@
+.. link: 
+.. description: 
+.. tags: powershell, lync
+.. date: 2013/12/02 17:05:11
+.. title: Lister les utilisateurs Lync
+.. slug: lister-les-utilisateurs-lync
+.. tribe: lync
+
+   
+.. class:: alert alert-info
+
+Mini script de liste des utilisateurs **enabled** de Lync
+
+* ... cette fameuse liste introuvable ailleurs dans lync ...
+
+.. TEASER_END
+
+Code
+----
+
+* Approche laborieuse :
+
+.. code:: powershell
+
+	$list = get-csuser |select displayname, sipaddress, enabled |sort displayname
+	
+	foreach ($user in $list){
+		if ($user.enabled){
+			write-host $user.displayname - $user.sipaddress
+			}
+		}
+
+* Approche améliorée :
+
+.. code:: powershell
+
+	$list = get-csuser | where-object {$_.enabled -eq "True"} |select displayname, sipaddress, enabled |sort displayname
+	write-host $list
+	

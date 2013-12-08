@@ -1,0 +1,32 @@
+.. link: 
+.. description: 
+.. tags: python, kobo, ebook
+.. date: 2013/09/20 22:11:45
+.. title: Modification de .cbz/r en python
+.. slug: modification-de-cbzr-en-python
+
+.. image:: /res/mini-ico-python.png
+	:align: left
+   
+   
+.. class:: alert alert-info
+
+Mon lecteur d'ebook Kobo Glo sait correctement lire les fichiers .cbr et .cbz ... mais ceux-ci utilisent souvent des images au format Double-page, 
+peu adapté à la lecture en mode portrait.
+
+* Une mission pour du *python* peu optimisé/cracra -aucune illusion à ce niveau là- , mais qui va se débrouiller pour conserver l'ordre des pages même après avoir découpé les doubles-pages en deux ...
+
+.. TEASER_END
+
+
+.. gist:: 6643474
+	
+	
+.. admonition:: **A noter:**	
+
+	* Utilise les libs zip et rar, et prendre l'un pour l'autre bloque la kobo... méfiance
+	* Détection du rar pas fiable
+
+
+	
+	

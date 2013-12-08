@@ -1,0 +1,47 @@
+.. link: 
+.. description: 
+.. tags: archlinux, tips
+.. date: 2013/12/07 21:19:59
+.. title: X, kdm et wifi en vrac ? et si ça venait de syslinux ?
+.. slug: x-kdm-et-wifi-en-vrac-et-si-ca-venait-de-syslinux
+.. tribe: linux
+
+
+.. class:: alert alert-info
+
+Gros paquets de mises à jour ... sauf qu'au boot suivant... misère
+
+D'abord
+-------
+* Situation vécue avec Archlinux 3.12.2-1-ARCH x64 , kde4 (kdm) et syslinux
+
+Ensuite
+-------
+
+* Au boot, syslinux joue son rôle mais 
+* *startx* échoue : impossible de se connecter au serveur
+* *kdm* idem
+* *wifi-menu* ne voit rien
+* *netctl* refuse de lancer un profil car ...
+* *iwconfig* ne trouve meme pas de carte wifi ...
+
+Enfin
+-----
+
+* Etonnament, le */boot* ne contenait plus *syslinux*, qui avait bougé à la racine **/**
+* Et aussi 
+
+| initramfs-linux-fallback.img  
+| initramfs-linux.img
+| vmlinuz-linux
+
+avait été dupliqués (regénérés ?) à la racine **/**
+
+* donc :
+
+.. code:: bash
+
+	mv /syslinux /boot
+	
+* et un reboot a rétabli la situation.
+

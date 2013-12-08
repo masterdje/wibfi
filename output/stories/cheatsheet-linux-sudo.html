@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dje">
+    <title>CheatSheet Linux : Sudo | Write it before forget it</title>
+    
+            <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+            <link href="../assets/css/custom.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+            <link rel="icon" href="../favicon.ico" sizes="16x16">
+            <link rel="icon" href="../favicon.png" sizes="64x64">
+
+    <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+    
+
+
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-44317802-1']);
+  _gaq.push(['_setDomainName', 'virtua-peanuts.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../">Write it before forget it</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            
+                <li><a href="cheatsheets.html">Cheat-Sheets</a>
+                </li><li><a href="what-s-next.html">What's next</a>
+                </li><li><a href="../archive.html">Archives</a>
+                </li><li><a href="../categories/index.html">Tags</a>
+                </li><li><a href="../rss.xml">RSS</a>
+
+        </li></ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li><a href="admin.html"><span class="glyphicon glyphicon-cog"></span></a></li>
+		</ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+    <h1>CheatSheet Linux : Sudo</h1>
+    <div class="section" id="installation">
+<h2>Installation</h2>
+<ul class="simple">
+<li>Depuis un contexte root (natif ou <em>su -</em> )</li>
+</ul>
+<pre class="code bash literal-block">
+pacman -S sudo
+</pre>
+</div>
+<div class="section" id="donner-a-un-utilisateur-le-pouvoir-d-invoquer-sudo">
+<h2>Donner à un utilisateur le pouvoir d'invoquer sudo</h2>
+<ul class="simple">
+<li>Toujours depuis un contexte root (natif ou <em>su -</em> )</li>
+</ul>
+<div class="section" id="approche-rapide">
+<h3>Approche rapide</h3>
+<pre class="code bash literal-block">
+visudo
+</pre>
+<ul class="simple">
+<li>Rajouter l'utilisateur sous la ligne <strong>root ALL=(ALL) ALL</strong>  :</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="c">## User privilege specification
+##
+</span>root <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
+user1 <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
+</pre>
+<ul class="simple">
+<li>Sauver <strong>:wq</strong></li>
+<li>Rebooter</li>
+</ul>
+</div>
+<div class="section" id="approche-propre">
+<h3>Approche propre</h3>
+<ul class="simple">
+<li>Exécuter visudo</li>
+</ul>
+<pre class="code bash literal-block">
+visudo
+</pre>
+<ul class="simple">
+<li>Décommenter la ligne <em># %wheel ALL=(ALL) ALL</em></li>
+</ul>
+<pre class="code bash literal-block">
+<span class="c">## Uncomment to allow members of group wheel to execute any command
+</span>%wheel <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
+</pre>
+<ul class="simple">
+<li>Ajouter l'utilisateur au groupe <em>wheel</em></li>
+</ul>
+<pre class="code bash literal-block">
+<span class="o">[</span>root@ORD1<span class="o">]</span><span class="c"># gpasswd -a dje wheel</span>
+</pre>
+<ul class="simple">
+<li>Rebooter</li>
+</ul>
+</div>
+<div class="section" id="a-noter">
+<h3>A noter</h3>
+<ul>
+<li><p class="first">Archlinux n'a pas de groupe <em>sudo</em> ou <em>sudoers</em> par défaut... donc go go go <em>wheel</em></p>
+</li>
+<li><dl class="first docutils">
+<dt>Forcer la completion via TAB :</dt>
+<dd><ul class="first last simple">
+<li>Rajouter <strong>complete -cf sudo</strong> à <strong>~/.bashrc</strong></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">WIP</p>
+</li>
+</ul>
+<hr class="docutils">
+<!-- class: btn btn-lg more -->
+<p><a class="reference external" href="cheatsheets.html">Retour aux Cheat-sheets</a></p>
+</div>
+</div>
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            2013         <a href="mailto:wibfi@virtua-peanuts.net">Dje</a> mais c'est <a href="http://getnikola.com">Nikola</a> qui bosse.        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/fr/"><img title="TL;DR" alt="Licence Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/fr/88x31.png"></a> - <a href="http://www.xiti.com/xiti.asp?s=538203" title="WebAnalytics" target="_top">
+<script type="text/javascript">
+<!--
+Xt_param = 's=538203&p=index';
+try {Xt_r = top.document.referrer;}
+catch(e) {Xt_r = document.referrer; }
+Xt_h = new Date();
+Xt_i = '<img width="80" height="15" border="0" alt="" ';
+Xt_i += 'src="http://logv4.xiti.com/g.xiti?'+Xt_param;
+Xt_i += '&hl='+Xt_h.getHours()+'x'+Xt_h.getMinutes()+'x'+Xt_h.getSeconds();
+if(parseFloat(navigator.appVersion)>=4)
+{Xt_s=screen;Xt_i+='&r='+Xt_s.width+'x'+Xt_s.height+'x'+Xt_s.pixelDepth+'x'+Xt_s.colorDepth;}
+document.write(Xt_i+'&ref='+Xt_r.replace(/[<>"]/g, '').replace(/&/g, '$')+'" title="Internet Audience">');
+//-->
+</script>
+<noscript>
+<img width="80" height="15" src="http://logv4.xiti.com/g.xiti?s=538203&amp;p=index" alt="WebAnalytics">
+</noscript></a>
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../assets/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+            <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../assets/js/jquery.colorbox-min.js" type="text/javascript"></script>
+
+
+	
+
+    <script type="text/javascript">jQuery("a.image-reference").colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    
+
+</body>
+</html>

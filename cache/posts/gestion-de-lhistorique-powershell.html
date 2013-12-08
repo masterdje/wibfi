@@ -1,0 +1,74 @@
+<p class="alert alert-info">Astuces diverses et cmdlets autour de l'historique des commandes en powershell</p>
+<ul class="simple">
+<li><em>Comme en bash, mais en pas pareil, mais pas loin...</em></li>
+</ul>
+<div class="section" id="code">
+<h2>Code</h2>
+<pre class="code powershell literal-block">
+<span class="c"># avec la Cmdlet dédiée :</span>
+
+<span class="n">PS</span> <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">Documents</span> <span class="n">and</span> <span class="n">Settings</span><span class="p">\</span><span class="n">user1</span><span class="p">\&gt;</span><span class="nb">Get-history</span>
+
+ <span class="n">Id</span> <span class="n">CommandLine</span>
+ <span class="p">--</span> <span class="p">-----------</span>
+  <span class="n">1</span> <span class="n">clear</span>
+
+<span class="c"># ou l'alias :</span>
+
+<span class="n">PS</span> <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">Documents</span> <span class="n">and</span> <span class="n">Settings</span><span class="p">\</span><span class="n">user1</span><span class="p">\&gt;</span><span class="n">history</span>
+
+ <span class="n">Id</span> <span class="n">CommandLine</span>
+ <span class="p">--</span> <span class="p">-----------</span>
+  <span class="n">1</span> <span class="n">clear</span>
+  <span class="n">2</span> <span class="nb">get-history</span>
+</pre>
+<!-- TEASER_END -->
+</div>
+<div class="section" id="usage">
+<h2>Usage</h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Commande</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>history</td>
+<td>Affiche les 30 dernières commandes</td>
+</tr>
+<tr><td>history -count 64</td>
+<td>Affiche 64 lignes d'historique</td>
+</tr>
+<tr><td>invoke-history XXX</td>
+<td>Rejoue la commande XXX</td>
+</tr>
+<tr><td>clear-history</td>
+<td>Supprime l'historique (pas d'impact sur les infos de F7</td>
+</tr>
+<tr><td>$maximumhistorycount=XXX</td>
+<td>Augmente le nombre de commandes stockées dans l'historique (max 4096 en powershell v2)</td>
+</tr>
+<tr><td>Touche F7</td>
+<td>Affiche une &quot;popup&quot; contenant les denières commandes unitaires !
+Exemple : répeter <em>clear</em> 30 fois va pourrir l'historique  mais
+<em>clear</em> ne sera pas affiché 30 fois de suite dans la popup</td>
+</tr>
+<tr><td>Touche F8</td>
+<td>Affiche la dernière commande unitaire jouée ( F8 pour cycler )</td>
+</tr>
+<tr><td>Touche F9</td>
+<td>Affiche une invite de saisie de n° de commande unitaire</td>
+</tr>
+<tr><td>$^</td>
+<td>Affiche la dernière commande exécutée (1er membre du pipeline)</td>
+</tr>
+<tr><td>. $^</td>
+<td>Rejoue la dernière commande exécutée (1er membre du pipeline)</td>
+</tr>
+</tbody>
+</table>
+</div>

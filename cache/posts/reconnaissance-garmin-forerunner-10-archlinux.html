@@ -1,0 +1,99 @@
+<p class="alert alert-info">Une montre gps <em>relativement</em> classe, 5h d'autonomie en mode trace avec un socle disposant d'un port USB, ça fait pas réver ça ?</p>
+<ul class="simple">
+<li>...ah oui, aussi, faut aller courrir, aussi, sinon ça sert moins...</li>
+</ul>
+<div class="section" id="d-abord">
+<h2>D'abord</h2>
+<ul class="simple">
+<li>Connecter le socle, la montre et le port usb, (sans ralonge intermédiaire) et vérifier que :</li>
+<li>l'écran annonce le mode recharge : <strong>▲</strong> s'affiche</li>
+<li>la commande <strong>lsusb</strong> affiche <strong>Garmin</strong> quelque part !</li>
+<li>Accéder à la page <a class="reference external" href="http://connect.garmin.com/">http://connect.garmin.com/</a> , créer son compte gratos, tenter un upload et constater que la montre n'est pas reconnue ...</li>
+</ul>
+<!-- TEASER_END -->
+</div>
+<div class="section" id="ensuite">
+<h2>Ensuite</h2>
+<ul class="simple">
+<li>Télécharger quelques outils :</li>
+</ul>
+<pre class="code bash literal-block">
+yaourt -s garmintools
+yaourt -s garminplugin
+yaourt -s gpsbabel
+yaourt -s gebabbel
+yaourt -s garmin-forerunner-610-extractor-git <span class="c"># pas sur que ça serve celui là, mais vu qu'il est loggué comme installé et que ça fonctionne...</span>
+</pre>
+<ul class="simple">
+<li>Les wikis sont assez formels, garmin_gps est de trop, faut le sortir avec modprobe -r , surtout cas d'utilisation de <em>garmintools</em></li>
+</ul>
+<pre class="code bash literal-block">
+sudo modprobe -r garmin_gps
+</pre>
+<p>D'ailleurs, on peut voir avec <strong>dmesg</strong> avant <strong>modprobe -r garmin_gps</strong> et après la différence :</p>
+<ul class="simple">
+<li>Avant :</li>
+</ul>
+<pre class="code bash literal-block">
+dmesg
+...
+<span class="o">[</span>42250.519232<span class="o">]</span> usbcore: registered new interface driver usbserial
+<span class="o">[</span>42250.519248<span class="o">]</span> usbcore: registered new interface driver usbserial_generic
+<span class="o">[</span>42250.519259<span class="o">]</span> usbserial: USB Serial support registered <span class="k">for </span>generic
+<span class="o">[</span>42250.520555<span class="o">]</span> usbcore: registered new interface driver garmin_gps
+<span class="o">[</span>42250.520572<span class="o">]</span> usbserial: USB Serial support registered <span class="k">for </span>Garmin GPS usb/tty
+<span class="o">[</span>42258.595794<span class="o">]</span> usb 2-1: new full-speed USB device number 4 using uhci_hcd
+<span class="o">[</span>42258.737188<span class="o">]</span> usb-storage 2-1:1.0: USB Mass Storage device detected
+<span class="o">[</span>42258.737282<span class="o">]</span> scsi6 : usb-storage 2-1:1.0
+<span class="o">[</span>42259.744163<span class="o">]</span> scsi 6:0:0:0: Direct-Access     Garmin   FR10 Flash       1.00 PQ: 0 ANSI: 5
+<span class="o">[</span>42259.754151<span class="o">]</span> sd 6:0:0:0: <span class="o">[</span>sde<span class="o">]</span> 2135 512-byte logical blocks: <span class="o">(</span>1.09 MB/1.04 MiB<span class="o">)</span>
+<span class="o">[</span>42259.757148<span class="o">]</span> sd 6:0:0:0: <span class="o">[</span>sde<span class="o">]</span> Write Protect is off
+<span class="o">[</span>42259.757153<span class="o">]</span> sd 6:0:0:0: <span class="o">[</span>sde<span class="o">]</span> Mode Sense: 23 00 00 00
+<span class="o">[</span>42259.760149<span class="o">]</span> sd 6:0:0:0: <span class="o">[</span>sde<span class="o">]</span> Write cache: enabled, <span class="nb">read </span>cache: enabled, doesn<span class="err">'</span>t support DPO or FUA
+<span class="o">[</span>42259.811152<span class="o">]</span>  sde:
+<span class="o">[</span>42259.830151<span class="o">]</span> sd 6:0:0:0: <span class="o">[</span>sde<span class="o">]</span> Attached SCSI removable disk
+</pre>
+<ul class="simple">
+<li>Après :</li>
+</ul>
+<pre class="code bash literal-block">
+dmesg
+...
+<span class="o">[</span>42543.015762<span class="o">]</span> usb 2-1: new full-speed USB device number 5 using uhci_hcd
+<span class="o">[</span>42543.157173<span class="o">]</span> usb-storage 2-1:1.0: USB Mass Storage device detected
+<span class="o">[</span>42543.157218<span class="o">]</span> scsi7 : usb-storage 2-1:1.0
+<span class="o">[</span>42544.164137<span class="o">]</span> scsi 7:0:0:0: Direct-Access     Garmin   FR10 Flash       1.00 PQ: 0 ANSI: 5
+<span class="o">[</span>42544.175125<span class="o">]</span> sd 7:0:0:0: <span class="o">[</span>sde<span class="o">]</span> 2135 512-byte logical blocks: <span class="o">(</span>1.09 MB/1.04 MiB<span class="o">)</span>
+<span class="o">[</span>42544.178120<span class="o">]</span> sd 7:0:0:0: <span class="o">[</span>sde<span class="o">]</span> Write Protect is off
+<span class="o">[</span>42544.178125<span class="o">]</span> sd 7:0:0:0: <span class="o">[</span>sde<span class="o">]</span> Mode Sense: 23 00 00 00
+<span class="o">[</span>42544.181120<span class="o">]</span> sd 7:0:0:0: <span class="o">[</span>sde<span class="o">]</span> Write cache: enabled, <span class="nb">read </span>cache: enabled, doesn<span class="err">'</span>t support DPO or FUA
+<span class="o">[</span>42544.229126<span class="o">]</span>  sde:
+<span class="o">[</span>42544.248122<span class="o">]</span> sd 7:0:0:0: <span class="o">[</span>sde<span class="o">]</span> Attached SCSI removable disk
+...
+</pre>
+</div>
+<div class="section" id="enfin">
+<h2>Enfin</h2>
+<ul class="simple">
+<li>Les fichiers de trace gps au format <em>FIT</em> sont trouvables dans le dossier monté <em>GARMIN/GARMIN/ACTIVITY</em></li>
+</ul>
+<pre class="code bash literal-block">
+<span class="o">[</span>dje&#64;pc01<span class="o">]</span><span class="nv">$ </span>ls -l /run/media/dje/GARMIN/GARMIN/ACTIVITY/
+total 6
+-rw-r--r-- 1 dje users  563 22 août  17:46 38MG4551.FIT
+-rw-r--r-- 1 dje users  784 12 nov.  19:04 3BCJ0248.FIT
+-rw-r--r-- 1 dje users 3628 13 nov.  10:11 3BD95746.FIT
+</pre>
+<p>... Et sont exportables * à la mano* au besoin via le bouton &quot;manuel&quot; sur <a class="reference external" href="http://connect.garmin.com/">http://connect.garmin.com/</a></p>
+<ul class="simple">
+<li>Mais après un reboot, l'interface <a class="reference external" href="http://connect.garmin.com/">http://connect.garmin.com/</a> reconnait la ForeRunner 10 et importe tout seul les dernières activités.</li>
+</ul>
+</div>
+<div class="section" id="a-noter">
+<h2>A noter</h2>
+<ul class="simple">
+<li><strong>Gpsbabel</strong> continue à ne pas trouver de gps usb</li>
+<li><strong>garmin_get_info</strong> renvoie un <em>&quot;garmin unit could not be opened!&quot;</em></li>
+<li>J'ai <strong>vraiment</strong> du mal avec les périphériques usb sous linux.</li>
+</ul>
+</div>

@@ -1,0 +1,33 @@
+.. link: 
+.. description: 
+.. tags: linux, gnome, tips
+.. date: 2013/09/30 13:21:43
+.. title: Réactiver la touche SUPPR dans Nautilus 3.8.2
+.. slug: reactiver-la-touche-suppr-dans-nautilus-382
+
+.. image:: /res/mini-ico-tips.png
+	:align: left
+   
+   
+.. class:: alert alert-info
+
+Au fil des maj, la conf des touches va et vient... Ctrl + Suppr c'est pénible ...
+
+
+* Il faut jouer avec les *accels*
+
+.. TEASER_END
+
+Edition du fichier **~/.config/nautilus/accels**
+
+.. code:: bash
+	
+	Remplacer		
+	; (gtk_accel_path "<Actions>/DirViewActions/Trash" "<primary>Delete")
+	Par
+	(gtk_accel_path "<Actions>/DirViewActions/Trash" "Delete")
+	
+	
+.. Admonition:: **Attention**
+
+	**Rebooter** pour prise en compte

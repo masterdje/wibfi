@@ -1,0 +1,333 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dje">
+    <title>Vieux scripts Powershell | Write it before forget it</title>
+    
+            <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+            <link href="../assets/css/custom.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+            <link rel="icon" href="../favicon.ico" sizes="16x16">
+            <link rel="icon" href="../favicon.png" sizes="64x64">
+
+    <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+    
+
+
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-44317802-1']);
+  _gaq.push(['_setDomainName', 'virtua-peanuts.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../">Write it before forget it</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            
+                <li><a href="../stories/cheatsheets.html">Cheat-Sheets</a>
+                </li><li><a href="../stories/what-s-next.html">What's next</a>
+                </li><li><a href="../archive.html">Archives</a>
+                </li><li><a href="../categories/index.html">Tags</a>
+                </li><li><a href="../rss.xml">RSS</a>
+
+        </li></ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li><a href="../stories/admin.html"><span class="glyphicon glyphicon-cog"></span></a></li>
+		</ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+    <div class="postbox">
+    <div class="alert alert-info">
+    <h1>Vieux scripts Powershell</h1>
+
+    
+		
+            <a class="tag" href="../categories/powershell.html"><span class="badge">powershell</span></a>
+            <a class="tag" href="../categories/ad.html"><span class="badge">AD</span></a>
+            <a class="tag" href="../categories/dhcp.html"><span class="badge">dhcp</span></a>
+            <a class="tag" href="../categories/impression.html"><span class="badge">impression</span></a>
+          
+
+		<time class="published" datetime="2013-09-25T20:45:09+02:00">2013-09-25 20:45</time>
+        
+
+   
+       </div>
+    <p class="alert alert-info">Collection de scripts qui ont fait le boulot mais dont l'approche est probablement dépassée...</p>
+<ul class="simple">
+<li>Mais j'avais quand même envie de les garder sous le coude...</li>
+</ul>
+<!-- TEASER_END -->
+<div class="section" id="lister-les-machines-d-un-domaine">
+<h2>Lister les machines d'un domaine</h2>
+<pre class="code powershell literal-block">
+<span class="nv">$filtre</span> <span class="p">=</span> <span class="s2">"(objectCategory=Computer)"</span>
+<span class="nv">$domaine</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">DirectoryServices</span><span class="p">.</span><span class="n">DirectoryEntry</span>
+<span class="nv">$chercheur</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">DirectoryServices</span><span class="p">.</span><span class="n">DirectorySearcher</span>
+<span class="nv">$chercheur</span><span class="p">.</span><span class="n">SearchRoot</span> <span class="p">=</span> <span class="nv">$domaine</span>
+<span class="nv">$chercheur</span><span class="p">.</span><span class="n">PageSize</span> <span class="p">=</span> <span class="n">1000</span>
+<span class="nv">$chercheur</span><span class="p">.</span><span class="k">Filter</span> <span class="p">=</span> <span class="nv">$filtre</span>
+
+<span class="c"># Ajout de la propriété que l'on recherche...</span>
+<span class="nv">$prop</span> <span class="p">=</span> <span class="s2">"name"</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$i</span> <span class="k">in</span> <span class="nv">$prop</span><span class="p">){</span><span class="nv">$chercheur</span><span class="p">.</span><span class="n">PropertiesToLoad</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="nv">$i</span><span class="p">)}</span>
+
+<span class="nv">$colResults</span> <span class="p">=</span> <span class="nv">$chercheur</span><span class="p">.</span><span class="n">FindAll</span><span class="p">()</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$objResult</span> <span class="k">in</span> <span class="nv">$colResults</span><span class="p">)</span> <span class="p">{</span>
+<span class="nv">$objItem</span> <span class="p">=</span> <span class="nv">$objResult</span><span class="p">.</span><span class="n">Properties</span>
+<span class="c"># Sortie vers l'écran</span>
+<span class="nb">write-host</span> <span class="nv">$objItem</span><span class="p">.</span><span class="n">name</span>
+<span class="p">}</span>
+</pre>
+</div>
+<div class="section" id="ping-v1">
+<h2>Ping v1</h2>
+<pre class="code powershell literal-block">
+<span class="nv">$ping</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Networkinformation</span><span class="p">.</span><span class="n">Ping</span>
+<span class="nv">$ping</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s2">"[nom du serveur]"</span><span class="p">)</span>
+</pre>
+</div>
+<div class="section" id="ping-v2">
+<h2>Ping v2</h2>
+<pre class="code powershell literal-block">
+<span class="nv">$ping</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="err">«</span> <span class="no">[nm du serveur]</span><span class="err">«</span> <span class="p">).</span><span class="n">status</span>
+</pre>
+</div>
+<div class="section" id="ping-d-une-plage-d-ip">
+<h2>Ping d'une plage d'IP</h2>
+<pre class="code powershell literal-block">
+<span class="nv">$ping</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">system</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">networkinformation</span><span class="p">.</span><span class="n">ping</span> <span class="err">;</span> <span class="n">10</span><span class="p">..</span><span class="n">20</span> <span class="p">|</span> <span class="k">foreach</span> <span class="p">{</span> <span class="nv">$ip</span> <span class="p">=</span> <span class="s2">"XXX.XXX.$_.XXX"</span> <span class="err">;</span> <span class="nv">$ping</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="nv">$ip</span><span class="p">)</span> <span class="p">}</span> <span class="p">|</span><span class="n">select</span> <span class="n">Address</span><span class="p">,</span> <span class="n">Status</span>
+</pre>
+</div>
+<div class="section" id="nslookup-d-une-plage-d-ip">
+<h2>Nslookup d'une plage d'IP</h2>
+<pre class="code powershell literal-block">
+<span class="n">1</span><span class="p">..</span><span class="n">255</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span> <span class="no">[System.Net.Dns]</span><span class="err">::</span><span class="n">GetHostByAddress</span><span class="p">(</span><span class="s2">"XXX.XXX.XXX.$_"</span><span class="p">)</span> <span class="p">}</span> <span class="n">2</span><span class="p">&gt;</span> <span class="nb">Out-Null</span> <span class="p">|</span> <span class="n">ft</span>
+</pre>
+</div>
+<div class="section" id="rajout-dune-plage-dexclusion-dhcp-pour-chaque-scope-dhcp">
+<h2>Rajout d’une plage d’exclusion DHCP pour chaque scope DHCP</h2>
+<ul class="simple">
+<li>Attention, deux serveurs dhcp...</li>
+<li>Rediriger la sortie vers un .bat</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="nv">$scopes</span><span class="p">=</span><span class="err">@</span><span class="p">(</span><span class="n">101</span><span class="p">,</span><span class="n">103</span><span class="p">,</span><span class="n">104</span><span class="p">,</span><span class="n">111</span><span class="p">,</span><span class="n">112</span><span class="p">,</span><span class="n">113</span><span class="p">,</span><span class="n">114</span><span class="p">,</span><span class="n">121</span><span class="p">,</span><span class="n">122</span><span class="p">,</span><span class="n">123</span><span class="p">,</span><span class="n">124</span><span class="p">,</span><span class="n">131</span><span class="p">,</span><span class="n">132</span><span class="p">,</span><span class="n">133</span><span class="p">,</span><span class="n">134</span><span class="p">,</span><span class="n">141</span><span class="p">,</span><span class="n">142</span><span class="p">,</span><span class="n">143</span><span class="p">,</span><span class="n">144</span><span class="p">,</span><span class="n">151</span><span class="p">,</span><span class="n">152</span><span class="p">,</span><span class="n">153</span><span class="p">,</span><span class="n">154</span><span class="p">)</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$scope</span> <span class="k">in</span> <span class="nv">$scopes</span><span class="p">){</span><span class="n">1</span><span class="p">..</span><span class="n">2</span> <span class="p">|</span> <span class="p">%</span> <span class="p">{</span><span class="s2">"netsh dhcp server \\[ServeurDHCP]$_ scope XXX.$scope.0.0 add excluderange XXX.$scope.2.0 XXX.$scope.2.0"</span><span class="p">}}</span>
+</pre>
+</div>
+<div class="section" id="ping-des-controleurs-de-domaine">
+<h2>Ping des controleurs de domaine</h2>
+<pre class="code powershell literal-block">
+<span class="nv">$ping</span> <span class="p">=</span> <span class="nb">new-object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">Networkinformation</span><span class="p">.</span><span class="n">Ping</span>
+<span class="nv">$objDomain</span> <span class="p">=</span> <span class="no">[System.DirectoryServices.ActiveDirectory.Domain]</span><span class="err">::</span><span class="n">GetCurrentDomain</span><span class="p">()</span>
+<span class="nv">$dc</span><span class="p">=</span><span class="nv">$objDomain</span><span class="p">.</span><span class="n">FindAllDomainControllers</span><span class="p">()</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span><span class="n">IpAddress</span> <span class="p">|</span><span class="n">sort</span> <span class="n">name</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span><span class="p">=</span><span class="n">0</span><span class="err">;</span> <span class="nv">$i</span> <span class="o">-le</span> <span class="nv">$dc</span><span class="p">.</span><span class="n">count</span><span class="p">-</span><span class="n">1</span> <span class="err">;</span><span class="nv">$i</span><span class="p">++)</span> <span class="p">{</span>
+        <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="s2">"white"</span> <span class="nv">$dc</span><span class="p">[</span><span class="nv">$i</span><span class="p">].</span><span class="n">name</span> <span class="n">-NoNewLine</span> <span class="s2">" - IP-&gt; "</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$ping</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="nv">$dc</span><span class="p">[</span><span class="nv">$i</span><span class="p">].</span><span class="n">name</span><span class="p">).</span><span class="n">status</span> <span class="o">-eq</span> <span class="s2">"success"</span> <span class="p">)</span>
+        <span class="p">{</span> <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="s2">"green"</span> <span class="n">-NoNewLine</span> <span class="nv">$dc</span><span class="p">[</span><span class="nv">$i</span><span class="p">].</span><span class="n">ipaddress</span><span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span> <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="s2">"red"</span> <span class="n">-NoNewLine</span> <span class="nv">$dc</span><span class="p">[</span><span class="nv">$i</span><span class="p">].</span><span class="n">ipaddress</span><span class="p">}</span>
+        <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="s2">"white"</span> <span class="n">-NoNewLine</span> <span class="s2">" - R-&gt; "</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$dc</span><span class="p">[</span><span class="nv">$i</span><span class="p">].</span><span class="n">name</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="n">0</span><span class="p">,</span><span class="n">2</span><span class="p">)</span> <span class="o">-eq</span> <span class="s2">"cm"</span><span class="p">)</span>
+        <span class="p">{</span><span class="nv">$ip</span><span class="p">=</span><span class="nv">$dc</span><span class="p">[</span><span class="nv">$i</span><span class="p">].</span><span class="n">Ipaddress</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="n">0</span><span class="p">,</span><span class="nv">$dc</span><span class="p">[</span><span class="nv">$i</span><span class="p">].</span><span class="n">Ipaddress</span><span class="p">.</span><span class="n">length</span> <span class="p">-</span><span class="n">3</span><span class="p">)</span> <span class="p">+</span> <span class="s2">"XXX"</span><span class="err">;</span>    <span class="c">#&lt;- à modifier pour votre pattern à vous</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$ping</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="nv">$ip</span><span class="p">).</span><span class="n">status</span> <span class="o">-eq</span> <span class="s2">"success"</span> <span class="p">)</span>
+                <span class="p">{</span> <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="s2">"green"</span> <span class="nv">$ip</span><span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span> <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="s2">"red"</span> <span class="nv">$ip</span><span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+        <span class="nv">$Config</span> <span class="p">=</span> <span class="nb">Get-Wmiobject</span> <span class="n">win32_NetworkAdapterConfiguration</span> <span class="n">-comp</span> <span class="nv">$dc</span><span class="p">[</span><span class="nv">$i</span><span class="p">].</span><span class="n">name</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nv">$j</span><span class="p">=</span><span class="n">0</span><span class="err">;</span> <span class="nv">$j</span> <span class="o">-le</span> <span class="nv">$config</span><span class="p">.</span><span class="n">count</span> <span class="p">-</span><span class="n">1</span><span class="err">;</span><span class="nv">$j</span><span class="p">++)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$config</span><span class="p">[</span><span class="nv">$j</span><span class="p">].</span><span class="n">IPAddress</span> <span class="o">-ne</span> <span class="nv">$null</span> <span class="p">){</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="nv">$ping</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="nv">$config</span><span class="p">[</span><span class="nv">$j</span><span class="p">].</span><span class="n">DefaultIPGateway</span><span class="p">).</span><span class="n">status</span> <span class="o">-eq</span> <span class="s2">"success"</span> <span class="p">)</span>
+                        <span class="p">{</span> <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="s2">"green"</span> <span class="nv">$config</span><span class="p">[</span><span class="nv">$j</span><span class="p">].</span><span class="n">DefaultIPGateway</span><span class="p">}</span>
+                        <span class="k">else</span>
+                        <span class="p">{</span> <span class="nb">Write-Host</span> <span class="n">-ForegroundColor</span> <span class="s2">"red"</span> <span class="nv">$config</span><span class="p">[</span><span class="nv">$j</span><span class="p">].</span><span class="n">DefaultIPGateway</span><span class="p">}</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+<div class="section" id="acces-a-une-cle-de-registre">
+<h2>Accès à une clé de Registre</h2>
+<pre class="code powershell literal-block">
+<span class="nv">$key</span><span class="p">=</span> <span class="nb">get-item</span> <span class="s2">"HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\"</span>
+</pre>
+</div>
+<div class="section" id="acces-a-une-propriete-dune-cle-de-registre">
+<h2>Accès à une propriété d’une clé de Registre</h2>
+<pre class="code powershell literal-block">
+<span class="nv">$key</span><span class="p">=</span> <span class="nb">get-item</span> <span class="s2">"HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\"</span>
+<span class="nv">$val</span><span class="p">=</span> <span class="nb">get-itemProperty</span> <span class="nv">$key</span><span class="p">.</span><span class="n">PSPath</span> <span class="p">|</span><span class="n">select</span> <span class="n">ProductName</span>
+</pre>
+</div>
+<div class="section" id="creation-unitaire-dune-file-dimpression">
+<h2>Création unitaire d’une file d’impression</h2>
+<pre class="code powershell literal-block">
+<span class="nv">$Name</span><span class="p">=</span><span class="s2">"IMP-machintruc"</span>
+<span class="nv">$Comment</span><span class="p">=</span><span class="s2">"Patati..."</span>
+<span class="nv">$Emplacement</span><span class="p">=</span><span class="s2">"Bureau XXX"</span>
+<span class="nv">$DriverName</span> <span class="p">=</span> <span class="s2">"Lexmark Universal XL"</span> <span class="c">#&lt;== Tres important !!</span>
+<span class="nv">$IPAddress</span> <span class="p">=</span> <span class="s2">"192.168.XXX.XXX"</span>
+<span class="nv">$PortName</span> <span class="p">=</span> <span class="s2">"Port-IPXXX"</span>
+
+<span class="c"># creation du port</span>
+<span class="nv">$ClassIPPrnPort</span><span class="p">=</span> <span class="no">[wmiclass]</span><span class="s1">'Win32_TCPIPPrinterPort'</span>
+<span class="nv">$NewPort</span><span class="p">=</span> <span class="nv">$ClassIPPrnPort</span><span class="p">.</span><span class="n">CreateInstance</span><span class="p">()</span>
+<span class="nv">$NewPort</span><span class="p">.</span><span class="n">HostAddress</span> <span class="p">=</span> <span class="nv">$IPAddress</span>
+<span class="nv">$NewPort</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="nv">$PortName</span>
+<span class="nv">$NewPort</span><span class="p">.</span><span class="n">Protocol</span> <span class="p">=</span> <span class="n">1</span> <span class="c">#  1 = Raw, 2 = LPR</span>
+<span class="nv">$NewPort</span><span class="p">.</span><span class="n">SNMPEnabled</span> <span class="p">=</span> <span class="nv">$false</span>
+<span class="nv">$ResultPort</span><span class="p">=</span><span class="nv">$NewPort</span><span class="p">.</span><span class="n">Put</span><span class="p">()</span>
+
+<span class="c"># ajout de la file</span>
+<span class="nv">$ClassPrinter</span><span class="p">=</span> <span class="no">[wmiclass]</span><span class="s1">'Win32_Printer'</span>
+<span class="nv">$NewPrinter</span><span class="p">=</span> <span class="nv">$ClassPrinter</span><span class="p">.</span><span class="n">CreateInstance</span><span class="p">()</span>
+<span class="nv">$NewPrinter</span><span class="p">.</span><span class="n">DriverName</span> <span class="p">=</span> <span class="nv">$DriverName</span>
+<span class="nv">$NewPrinter</span><span class="p">.</span><span class="n">DeviceID</span> <span class="p">=</span> <span class="nv">$Name</span>
+<span class="nv">$NewPrinter</span><span class="p">.</span><span class="n">PortName</span> <span class="p">=</span> <span class="nv">$PortName</span>
+<span class="nv">$newprinter</span><span class="p">.</span><span class="n">Shared</span> <span class="p">=</span> <span class="nv">$true</span>
+<span class="nv">$newprinter</span><span class="p">.</span><span class="n">Published</span> <span class="p">=</span> <span class="nv">$true</span>
+<span class="nv">$newprinter</span><span class="p">.</span><span class="n">Sharename</span> <span class="p">=</span> <span class="nv">$Name</span>
+<span class="nv">$newprinter</span><span class="p">.</span><span class="n">Location</span> <span class="p">=</span> <span class="nv">$Emplacement</span>
+<span class="nv">$newprinter</span><span class="p">.</span><span class="n">Comment</span> <span class="p">=</span> <span class="nv">$Comment</span>
+
+<span class="nv">$ResultPrinter</span><span class="p">=</span><span class="nv">$NewPrinter</span><span class="p">.</span><span class="n">Put</span><span class="p">()</span>
+</pre>
+</div>
+<div class="section" id="liste-des-services-arretes-dune-machine-distante">
+<h2>Liste des services arrêtés d’une machine distante</h2>
+<pre class="code powershell literal-block">
+<span class="nb">get-service</span> <span class="n">-computername</span> <span class="s2">"ordXXXX"</span> <span class="p">|</span> <span class="n">where</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">status</span> <span class="o">-eq</span> <span class="s2">"stopped"</span> <span class="p">}</span>
+</pre>
+</div>
+<div class="section" id="parcours-dun-tableau-concatenation-et-transtypage">
+<h2>Parcours d’un tableau, concaténation et transtypage</h2>
+<pre class="code powershell literal-block">
+<span class="nv">$var</span><span class="p">=</span><span class="n">0</span><span class="p">..</span><span class="n">4</span><span class="err">;</span><span class="nv">$result</span><span class="p">=</span><span class="s2">""</span><span class="err">;</span><span class="nv">$result</span><span class="p">=</span><span class="err">@</span><span class="p">()</span> <span class="err">;</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$val</span> <span class="k">in</span> <span class="nv">$var</span><span class="p">)</span> <span class="p">{</span><span class="nv">$result</span><span class="p">+=</span><span class="no">[int]</span><span class="p">(</span><span class="no">[string]</span><span class="nv">$val</span> <span class="p">+</span> <span class="s2">"01"</span><span class="p">)</span><span class="err">;</span><span class="p">}</span>
+</pre>
+</div>
+    
+    <ul class="pager">
+        <li class="previous">
+            <a href="troubleshoot-reseau-01.html">← Billet précédent</a>
+        </li>
+        <li class="next">
+            <a href="php-54-chez-11.html">Billet suivant →</a>
+        </li>
+    </ul>
+
+        
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        var disqus_shortname ="wibfi";
+            var disqus_url="http://wibfi.virtua-peanuts.net/posts/vieux-scripts-powershell.html";
+        var disqus_title="Vieux scripts Powershell";
+        var disqus_identifier="cache/posts/vieux-scripts-powershell.html";
+        var disqus_config = function () {
+            this.language = "fr";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    
+
+    </div>
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            2013         <a href="mailto:wibfi@virtua-peanuts.net">Dje</a> mais c'est <a href="http://getnikola.com">Nikola</a> qui bosse.        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/fr/"><img title="TL;DR" alt="Licence Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/fr/88x31.png"></a> - <a href="http://www.xiti.com/xiti.asp?s=538203" title="WebAnalytics" target="_top">
+<script type="text/javascript">
+<!--
+Xt_param = 's=538203&p=index';
+try {Xt_r = top.document.referrer;}
+catch(e) {Xt_r = document.referrer; }
+Xt_h = new Date();
+Xt_i = '<img width="80" height="15" border="0" alt="" ';
+Xt_i += 'src="http://logv4.xiti.com/g.xiti?'+Xt_param;
+Xt_i += '&hl='+Xt_h.getHours()+'x'+Xt_h.getMinutes()+'x'+Xt_h.getSeconds();
+if(parseFloat(navigator.appVersion)>=4)
+{Xt_s=screen;Xt_i+='&r='+Xt_s.width+'x'+Xt_s.height+'x'+Xt_s.pixelDepth+'x'+Xt_s.colorDepth;}
+document.write(Xt_i+'&ref='+Xt_r.replace(/[<>"]/g, '').replace(/&/g, '$')+'" title="Internet Audience">');
+//-->
+</script>
+<noscript>
+<img width="80" height="15" src="http://logv4.xiti.com/g.xiti?s=538203&amp;p=index" alt="WebAnalytics">
+</noscript></a>
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../assets/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+            <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../assets/js/jquery.colorbox-min.js" type="text/javascript"></script>
+
+
+	
+
+    <script type="text/javascript">jQuery("a.image-reference").colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+.. link: 
+.. description: 
+.. tags: powershell, dns, AD
+.. date: 2013/10/21 22:09:25
+.. title: Backup zone DNS
+.. slug: backup-zone-dns
+.. tribe: dns
+
+
+   
+.. class:: alert alert-info
+
+Micro script destiné à sauver frequement ( *task*) une zone DNS depuis 2 serveurs, en vue de comparaison ultérieure (si besoin) ou de re-importation (si besoin)
+
+* Windows 2008 R2 / **Tasks** est ton ami pour la mise en oeuvre.
+
+.. TEASER_END
+
+.. code:: powershell
+
+	$date = get-date
+	$vardate =$date.year.tostring() +"-" + $date.month.tostring() + "-" + $date.day.tostring()
+	#[remplacer les noms de serveurs !]
+	rm \\serveur01\c$\windows\system32\dns\export-dns.txt
+	dnscmd serveur01 /zoneexport zonedns.priv export-dns.txt
+	cp \\serveur01\c$\windows\system32\dns\export-dns.txt c:\diag\Diag-dns\$vardate-serveur01.txt
+	
+	rm \\serveur02\c$\windows\system32\dns\export-dns.txt
+	dnscmd serveur02 /zoneexport cg31.priv export-dns.txt
+	cp \\serveur02\c$\windows\system32\dns\export-dns.txt c:\diag\Diag-dns\$vardate-serveur02.txt
+	
+
+* **Dnscmd** doit donc être présent sur le serveur d'éxécution du script,sinon, *invoke-command* !

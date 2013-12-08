@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (bash)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/bash.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Fri, 06 Dec 2013 17:15:38 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Optimisation et miroirs pour les dépots Archlinux</title><link>http://wibfi.virtua-peanuts.net/posts/optimisation-et-mirroirs-pour-les-depots-archlinux.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;&lt;em&gt;Pacman&lt;/em&gt; rame ? Peut-être est-ce possible d'arranger un peu ça...&lt;/p&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Au cas où ça vient du disque :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+pacman-optimize
+&lt;/pre&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Rafraichir la liste&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+sudo pacman -Syy
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="ensuite"&gt;
+&lt;h2&gt;Ensuite&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Editer la liste des mirroirs pour posisitionner en haut le meilleur...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+sudo vi /etc/pacman.d/mirrorlist
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/optimisation-et-mirroirs-pour-les-depots-archlinux.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>archlinux</category><category>tips</category><category>bash</category><guid>http://wibfi.virtua-peanuts.net/posts/optimisation-et-mirroirs-pour-les-depots-archlinux.html</guid><pubDate>Fri, 06 Dec 2013 15:58:31 GMT</pubDate></item><item><title>Recherche d'un pattern dans une liste de fichiers avec Grep</title><link>http://wibfi.virtua-peanuts.net/posts/recherche-dun-pattern-dans-une-liste-de-fichiers-avec-grep.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Comme c'est malin &lt;em&gt;grep&lt;/em&gt; ...&lt;/p&gt;
+&lt;div class="section" id="usage"&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Affiche le nom du fichier contenant le pattern cible (regex / texte)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+grep -il &lt;span class="s2"&gt;"pattern"&lt;/span&gt; emplacement/des/fichiers/*
+
+&lt;span class="c"&gt;#Exemple
+&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;dje@ORD ~&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;grep -l &lt;span class="s2"&gt;"winRM"&lt;/span&gt; mydev/wibfi/posts/*
+mydev/wibfi/posts/lister-les-etendues-dhcp-en-powershell.txt
+mydev/wibfi/posts/lister-les-ip-reservees-dun-scope-dhcp-en-powershell.txt
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/recherche-dun-pattern-dans-une-liste-de-fichiers-avec-grep.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>linux</category><category>grep</category><category>tips</category><category>bash</category><guid>http://wibfi.virtua-peanuts.net/posts/recherche-dun-pattern-dans-une-liste-de-fichiers-avec-grep.html</guid><pubDate>Tue, 03 Dec 2013 09:25:33 GMT</pubDate></item><item><title>Fabrication de la cheatsheet code d'erreurs gmail</title><link>http://wibfi.virtua-peanuts.net/posts/fabrication-de-la-cheatsheet-code-derreurs-gmail.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Pour le fun, j'ai voulu me monter une base des codes erreurs gmail...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Et pour les avoir quelque part à dispo, aussi...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Sur le site de gmail, les pages d'erreurs sont numérotées et nommées selon le code erreur, donc les récupérer n'est pas compliqué&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="k"&gt;for &lt;/span&gt;i in &lt;span class="o"&gt;{&lt;/span&gt;1..10000&lt;span class="o"&gt;}&lt;/span&gt;;
+&lt;span class="k"&gt;do
+&lt;/span&gt;wget https://support.google.com/mail/answer/&lt;span class="nv"&gt;$i&lt;/span&gt;  ;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/pre&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;On se retrouve avec +- 68 fichiers nommés XXXX (&amp;lt;= code erreur)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/fabrication-de-la-cheatsheet-code-derreurs-gmail.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>python</category><category>awk</category><category>bash</category><category>gmail</category><guid>http://wibfi.virtua-peanuts.net/posts/fabrication-de-la-cheatsheet-code-derreurs-gmail.html</guid><pubDate>Mon, 25 Nov 2013 16:02:21 GMT</pubDate></item><item><title>Compter les fichiers en bash</title><link>http://wibfi.virtua-peanuts.net/posts/compter-les-fichiers-en-bash.html</link><description>&lt;p class="alert alert-info"&gt;Voila pourquoi j'ai commencé à noter tout ça, pour avoir un endroit où laisser ce genre d'info que j'oublie à la seconde où je m'en sers plus...&lt;/p&gt;
+&lt;div class="section" id="code"&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="c"&gt;#commande :
+&lt;/span&gt;ls -1 | wc -l
+
+&lt;span class="c"&gt;#exemple:
+&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;dje@pc01&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ls -1 posts | wc -l
+61
+&lt;/pre&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Clair et élégant, et je peux encore &lt;a class="reference external" href="http://www.nemocorp.info/posts/il-est-la.html"&gt;laisser le champ' au frais&lt;/a&gt; , moi ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</description><category>bash</category><category>shell</category><category>linux</category><category>tips</category><guid>http://wibfi.virtua-peanuts.net/posts/compter-les-fichiers-en-bash.html</guid><pubDate>Wed, 13 Nov 2013 21:37:02 GMT</pubDate></item><item><title>Tri / Nettoyage des ebooks en double avant import</title><link>http://wibfi.virtua-peanuts.net/posts/tri-nettoyage-des-ebooks-en-double-avant-import.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;&lt;em&gt;One-liner&lt;/em&gt; pour gagner du temps avant une mise à jour / import massif d'ebooks&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Bien utile quand la bibliothèque &lt;em&gt;Calibre&lt;/em&gt; est bien propre, et que le &lt;em&gt;.zip&lt;/em&gt; &lt;em&gt;"Domaine public / tout zola+hugo+balzac+inédits"&lt;/em&gt; donne envie, sauf l'étape du tri des doublons...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Récupérer &lt;em&gt;fdupes&lt;/em&gt; qui va faire le job à notre place!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+sudo pacman -Suy fdupes
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/tri-nettoyage-des-ebooks-en-double-avant-import.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>ebook</category><category>calibre</category><category>bash</category><category>awk</category><guid>http://wibfi.virtua-peanuts.net/posts/tri-nettoyage-des-ebooks-en-double-avant-import.html</guid><pubDate>Mon, 11 Nov 2013 20:47:06 GMT</pubDate></item><item><title>Fonction de log One-liner en bash</title><link>http://wibfi.virtua-peanuts.net/posts/fonction-de-log-one-liner-en-bash.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Le truc tout bête mais futé pour savoir quand/quoi a planté ...&lt;/p&gt;
+&lt;div class="section" id="code"&gt;
+&lt;h2&gt;Code&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Rajouter cette fonction dans un script&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+logthis&lt;span class="o"&gt;(){&lt;/span&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"$(date +%Y-%m-%d-%H:%M) [$0] - $1 a échoué"&lt;/span&gt; &amp;gt;&amp;gt; MonFichier.log ; &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/fonction-de-log-one-liner-en-bash.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>bash</category><category>linux</category><category>tips</category><guid>http://wibfi.virtua-peanuts.net/posts/fonction-de-log-one-liner-en-bash.html</guid><pubDate>Wed, 06 Nov 2013 21:03:12 GMT</pubDate></item><item><title>Ctrl+X Ctrl+E l'ami des commandes à ralonge</title><link>http://wibfi.virtua-peanuts.net/posts/ctrlx-ctrle-lami-des-commandes-a-ralonge.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;P'tite astuce pour quand il faudrait pouvoir se relire avant de lancer une commande à ralonge ...&lt;/p&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord :&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;si ça rale en réclamant &lt;em&gt;vim&lt;/em&gt;, faut modifier &lt;em&gt;.bashrc&lt;/em&gt; et corriger la variable &lt;strong&gt;EDITOR&lt;/strong&gt;, en mettant &lt;em&gt;vi&lt;/em&gt; par exemple&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="ensuite"&gt;
+&lt;h2&gt;Ensuite :&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Commande :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+Ctrl X &lt;span class="o"&gt;[&lt;/span&gt;puis&lt;span class="o"&gt;]&lt;/span&gt; Ctrl E
+&lt;/pre&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;lance l'éditeur pour pouvoir rédiger the ligne de commande ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/ctrlx-ctrle-lami-des-commandes-a-ralonge.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>bash</category><category>tips</category><guid>http://wibfi.virtua-peanuts.net/posts/ctrlx-ctrle-lami-des-commandes-a-ralonge.html</guid><pubDate>Wed, 30 Oct 2013 08:23:05 GMT</pubDate></item><item><title>Mesure du temps d'exécution d'un script - Powershell-Bash</title><link>http://wibfi.virtua-peanuts.net/posts/mesure-du-temps-dexecution-dun-script-powershell-bash.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;...mais c'est quoi qui prend 20 secondes dans mon script ??&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;réponse : &lt;em&gt;wmi via rpc&lt;/em&gt;, toujours ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/mesure-du-temps-dexecution-dun-script-powershell-bash.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>powershell</category><category>bash</category><category>tips</category><guid>http://wibfi.virtua-peanuts.net/posts/mesure-du-temps-dexecution-dun-script-powershell-bash.html</guid><pubDate>Sat, 26 Oct 2013 19:40:02 GMT</pubDate></item><item><title>Automatisation du hack 3DS StreetPass sur OpenWRT</title><link>http://wibfi.virtua-peanuts.net/posts/automatisation-du-hack-3ds-streetpass-sur-openwrt.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Script futé de cyclage des adresses MAC spoofées des NintendoZone, pour tirer le meilleur des &lt;a class="reference external" href="http://wibfi.virtua-peanuts.net/posts/hack-3ds-streetpass-basique-via-openwrt.html"&gt;capacités des routeurs OpenWRT&lt;/a&gt;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Récup d'une grosse liste d'adresses MAC &amp;amp; en wrappant les commandes qui vont bien de l'&lt;strong&gt;uci&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/automatisation-du-hack-3ds-streetpass-sur-openwrt.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>tips</category><category>3DS</category><category>openwrt</category><category>HomePass</category><category>bash</category><guid>http://wibfi.virtua-peanuts.net/posts/automatisation-du-hack-3ds-streetpass-sur-openwrt.html</guid><pubDate>Thu, 17 Oct 2013 19:59:49 GMT</pubDate></item><item><title>Taille des dossiers en bash / awk</title><link>http://wibfi.virtua-peanuts.net/posts/taille-des-dossiers-en-bash-awk.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Mini script trouvé quelque part et bien utile, affichage &lt;strong&gt;du&lt;/strong&gt; amélioré via moulinette &lt;em&gt;awk&lt;/em&gt;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Ajusté à mes besoins ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/taille-des-dossiers-en-bash-awk.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>bash</category><category>awk</category><category>tips</category><guid>http://wibfi.virtua-peanuts.net/posts/taille-des-dossiers-en-bash-awk.html</guid><pubDate>Tue, 15 Oct 2013 14:49:11 GMT</pubDate></item></channel></rss>

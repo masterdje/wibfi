@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (css)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/css.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Tue, 03 Dec 2013 16:02:37 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Changer la couleur du texte en rst / restructuredtext</title><link>http://wibfi.virtua-peanuts.net/posts/changer-la-couleur-du-texte-en-rst-restructuredtext.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Le truc le plus simple du monde... sauf que non, en fait...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Et bienvenue en mode bricolage...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Rajouter les couleurs désirées dans le CSS  (dans &lt;em&gt;nikola&lt;/em&gt; c'est &lt;em&gt;custom.css&lt;/em&gt; au fond de template...) sous forme de classe&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code css literal-block"&gt;
+&lt;span class="nc"&gt;.blue&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;blue&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.red&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;red&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.green&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;green&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.orange&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;orange&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.blue-vp&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#123789&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;span class="nc"&gt;.magenta&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#ff00ff&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/changer-la-couleur-du-texte-en-rst-restructuredtext.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>nikola</category><category>rst</category><category>css</category><guid>http://wibfi.virtua-peanuts.net/posts/changer-la-couleur-du-texte-en-rst-restructuredtext.html</guid><pubDate>Mon, 02 Dec 2013 12:15:26 GMT</pubDate></item><item><title>Nikola / Bootstrap / Css Madness</title><link>http://wibfi.virtua-peanuts.net/posts/nikola-bootstrap-css-madness.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Après avoir cherché pendant des heures... workaround/solution trouvée !&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Sachant que le pb venait certainement de moi quand même...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Si la &lt;em&gt;navbar&lt;/em&gt; présente un décallage de 60px ( &lt;em&gt;margin-top: 60px;&lt;/em&gt; / &lt;strong&gt;Theme.css&lt;/strong&gt;, ligne 2 ... des heures je vous dis...) vers le bas sous certaines conditions (affichage mobile, certaines pages, certaines largeurs ?) et pas d'autres,
+et - sinon c'est pas drôle - le code de la page -quand ça déconne- est &lt;strong&gt;identique&lt;/strong&gt; au code d'une page restant &lt;strong&gt;toujours&lt;/strong&gt; correcte ...&lt;/p&gt;
+&lt;p&gt;Si la lecture des fichiers &lt;strong&gt;tmpl&lt;/strong&gt; ne montre rien de logique avec ce comportement...&lt;/p&gt;
+&lt;p&gt;Si ça vous dérange et/ou contrarie aussi fort que moi qui aime bien comprendre, même les inconsistences de CSS -j'aime souffrir-&lt;/p&gt;
+&lt;p&gt;alors...&lt;/p&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/nikola-bootstrap-css-madness.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>nikola</category><category>python</category><category>bootstrap</category><category>css</category><category>vie-du-site</category><guid>http://wibfi.virtua-peanuts.net/posts/nikola-bootstrap-css-madness.html</guid><pubDate>Sun, 13 Oct 2013 20:57:05 GMT</pubDate></item></channel></rss>

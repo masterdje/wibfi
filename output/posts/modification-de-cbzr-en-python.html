@@ -1,0 +1,396 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dje">
+    <title>Modification de .cbz/r en python | Write it before forget it</title>
+    
+            <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+            <link href="../assets/css/custom.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+            <link rel="icon" href="../favicon.ico" sizes="16x16">
+            <link rel="icon" href="../favicon.png" sizes="64x64">
+
+    <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+    
+
+
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-44317802-1']);
+  _gaq.push(['_setDomainName', 'virtua-peanuts.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../">Write it before forget it</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            
+                <li><a href="../stories/cheatsheets.html">Cheat-Sheets</a>
+                </li><li><a href="../stories/what-s-next.html">What's next</a>
+                </li><li><a href="../archive.html">Archives</a>
+                </li><li><a href="../categories/index.html">Tags</a>
+                </li><li><a href="../rss.xml">RSS</a>
+
+        </li></ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li><a href="../stories/admin.html"><span class="glyphicon glyphicon-cog"></span></a></li>
+		</ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+    <div class="postbox">
+    <div class="alert alert-info">
+    <h1>Modification de .cbz/r en python</h1>
+
+    
+		
+            <a class="tag" href="../categories/python.html"><span class="badge">python</span></a>
+            <a class="tag" href="../categories/kobo.html"><span class="badge">kobo</span></a>
+            <a class="tag" href="../categories/ebook.html"><span class="badge">ebook</span></a>
+          
+
+		<time class="published" datetime="2013-09-20T22:11:45+02:00">2013-09-20 22:11</time>
+        
+
+   
+       </div>
+    <p class="alert alert-info">Mon lecteur d'ebook Kobo Glo sait correctement lire les fichiers .cbr et .cbz ... mais ceux-ci utilisent souvent des images au format Double-page,
+peu adapté à la lecture en mode portrait.</p>
+<ul class="simple">
+<li>Une mission pour du <em>python</em> peu optimisé/cracra -aucune illusion à ce niveau là- , mais qui va se débrouiller pour conserver l'ordre des pages même après avoir découpé les doubles-pages en deux ...</li>
+</ul>
+<!-- TEASER_END -->
+<script src="https://gist.github.com/6643474.js"></script><noscript><pre class="literal-block">
+# Open any graphical ebook file ( cbr / cbz),
+# and check every pic inside for anything in landscape mode, to cut it in half.
+# Then reorder everything, and save the cbr/z as if nothing happened (huh huh)
+#
+# There are un bunch of more switchs (force b&amp;w render, reverse order (manga anyone ?), jump to page X etc) to play with.
+#
+# Mangasplit.py is still really -rough to the edge-
+# Feel free to improve...
+
+
+#!/usr/bin/python
+from PIL import Image
+from subprocess import call
+
+import re
+import sys
+import string
+import random
+import os
+import zipfile
+import shutil
+import getopt
+
+
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+	return ''.join(random.choice(chars) for x in range(size))
+
+def makemydir(whatever):
+  try:
+    os.makedirs(whatever)
+  except OSError:
+    pass
+
+def verboseprint (level,cvl,text):
+	#currentverboselevel
+	if ( cvl &gt;= level ) : print text
+	return 
+
+def conversionbw(filename, convertbw):
+	if convertbw:
+		img=Image.open(filename)
+		img=img.convert('L')
+		img.save(filename) 
+		return "+ Conversion NB de %s" % filename
+	else:
+		return "+ pas de conversion de %s" % filename
+
+def help():
+	return "mangasplit.py -i &lt;inputfile&gt; -s &lt;startpage&gt; -v &lt;verboselevel&gt; -r &lt;reversemode&gt; -c &lt;convert&gt;"
+
+def main(argv):
+	inputfile=""
+	startpage=0
+	reversemode=False
+	convertbw=False
+	cvl=1
+				
+	try:
+		opts,args= getopt.getopt(argv,"hi:s:v:rc",["help", "ifile=","startpage=","verboselevel="])
+	except getopt.GetoptError:
+		verboseprint(0,cvl, help())
+		
+			
+	for opt, arg in opts:
+		if opt in ('-h','--help'):
+			verboseprint(0,cvl, help())
+			sys.exit()
+		elif opt in ("-i", "--ifile"):
+			inputfile = arg
+		elif opt in ("-s","--startpage"):
+			startpage = int(arg)
+		elif opt in ("-v","--verboselevel"):
+			cvl = int(arg)			
+		elif opt in ("-r","--reversemode"):
+			reversemode = True
+		elif opt in ("-c","--convert"):
+			convertbw = True
+		else:
+			verboseprint(0,cvl, help())
+			sys.exit(2)
+	#check du fichier source
+	if  not os.path.isfile(inputfile):
+		verboseprint(0,cvl,"&lt;!&gt; Fichier non trouve : %s" % inputfile) ; 
+		verboseprint(0,cvl, help())
+		sys.exit(2)
+	
+	#check du fichier zip/cbz
+	fullpathfile = os.path.abspath(inputfile)
+	
+	if zipfile.is_zipfile(fullpathfile):
+		z = zipfile.ZipFile(fullpathfile)
+	else:
+		verboseprint(0,cvl,"&lt;!&gt; Fichier cbz non valide : %s" % inputfile) ;
+		verboseprint(0,cvl,"&lt;!&gt; Essai de unrar : %s" % inputfile) ;
+		os.system("unrar x %s" %inputfile)
+		#variable = "CF_tome_03_017_scanddl.com.jpg"
+		#regex re.compile('[0-9]{2,5}')
+		#regex = re.search('[0-9]{3sud,5}',variable)
+		#if regex:
+		#	print "variable : " , variable
+		#	print "donc : ", regex.group()
+		sys.exit(2)
+		
+	#print inputfile[:-4]
+	[a,b]=[1,2]
+	if  reversemode:[a,b]=[b,a]
+	prefix= inputfile[:5]
+	verboseprint(1,cvl, "! Start")
+	verboseprint(2,cvl, "+ Creation du dossier temp - %s" % rndfolder)
+	makemydir(rndfolder)
+	verboseprint(2,cvl, "+-&gt;Creation ok")
+	verboseprint(2,cvl, "+ Extraction de %s" % inputfile)
+	z.extractall(rndfolder)
+	verboseprint(2,cvl, "+-&gt; Extraction de ok")
+	os.chdir(rndfolder)
+
+	
+	for dirname, dirnames, filenames in os.walk('.'):
+	    for filename in filenames:
+			verboseprint(1,cvl, "+ Traitement - %s" % os.path.join(dirname, filename))
+			#test du convertbw
+			verboseprint(1,cvl,conversionbw(os.path.join(dirname, filename),convertbw))
+			#test du startpage
+			
+			#a attraper si y a pas de compteur !
+			try:
+				#mega test de la mort
+				obvious_string = int(filename[-7:-4])
+				if (int(filename[-7:-4]) &lt;= startpage):  
+					verboseprint(2,cvl, "+--Image non decoupee")
+					ficname = prefix+str(filename[-7:-4]) +"0" +".jpg"
+					os.rename(os.path.join(dirname, filename), ficname)
+					verboseprint(2,cvl, "+-&gt;Sauvegarde - %s" % ficname)
+					verboseprint(1,cvl, "+ Rajout a l'archive  - %s" % ficname)
+					with zipfile.ZipFile(racine + rndarchive, 'a') as myzip:
+						myzip.write(os.path.join(ficname),inputfile[:-4] + os.path.sep +os.path.join(ficname),zipfile.ZIP_DEFLATED)    
+						#myzip.write(os.path.join(ficname),inputfile[:-4] + os.path.sep +os.path.join(ficname),zipfile.ZIP_DEFLATED)    
+					verboseprint(2,cvl, "+-&gt;Rajout ok")				
+				else:
+					img = Image.open(os.path.join(dirname, filename))
+					width, height = img.size
+					if (width &gt;  height) :
+						verboseprint(2,cvl, "+--Infos : Paysage | W : %i px H : %i px" %( width , height))
+						box = (0, 0, width/2, height)
+						area = img.crop(box)
+						ficname = prefix+str(filename[-7:-4]) +str(a)+ ".jpg" 
+						area.save(ficname, 'jpeg')
+						verboseprint(2,cvl, "+-&gt;Sauvegarde - %s" % ficname)
+						verboseprint(1,cvl, "+ Rajout a l'archive  - %s" % ficname)
+						with zipfile.ZipFile(racine + rndarchive, 'a') as myzip:
+							myzip.write(os.path.join(ficname),inputfile[:-4] + os.path.sep +os.path.join(ficname),zipfile.ZIP_DEFLATED)    
+						verboseprint(2,cvl, "+-&gt;Rajout ok")
+						box = (width/2, 0, width, height)
+						area = img.crop(box)
+						ficname = prefix+str(filename[-7:-4]) +str(b) + ".jpg" 
+						area.save(ficname, 'jpeg')
+						verboseprint(2,cvl, "+-&gt;Sauvegarde - %s" % ficname)
+						verboseprint(1,cvl, "+ Rajout a l'archive  - %s" % ficname)
+						with zipfile.ZipFile(racine + rndarchive, 'a') as myzip:
+							#myzip.write(os.path.join(ficname))
+							myzip.write(os.path.join(ficname),inputfile[:-4] + os.path.sep +os.path.join(ficname),zipfile.ZIP_DEFLATED)    
+						verboseprint(2,cvl, "+-&gt;Rajout ok")
+					else:
+						verboseprint(2,cvl, "+--Infos : Portrait | W : %i px H : %i px" %( width , height))
+						ficname = prefix+str(filename[-7:-4]) +"0" +".jpg"
+						os.rename(os.path.join(dirname, filename), ficname)
+						verboseprint(2,cvl, "+-&gt;Sauvegarde - %s" % ficname)
+						verboseprint(1,cvl, "+ Rajout a l'archive  - %s" % ficname)
+						with zipfile.ZipFile(racine + rndarchive, 'a') as myzip:
+							#myzip.write(os.path.join(ficname))    
+							myzip.write(os.path.join(ficname),inputfile[:-4] + os.path.sep + os.path.join(ficname),zipfile.ZIP_DEFLATED)    
+						verboseprint(2,cvl, "+-&gt;Rajout ok")
+			except ValueError:
+				verboseprint(2,cvl, "+-&gt;Sauvegarde - %s" % filename)
+				verboseprint(1,cvl, "+ Rajout a l'archive  - %s" % filename)
+				with zipfile.ZipFile(racine + rndarchive, 'a') as myzip:
+					myzip.write(os.path.join(dirname, filename),inputfile[:-4] + os.path.sep + os.path.join(filename),zipfile.ZIP_DEFLATED)    
+					#myzip.write(os.path.join(ficname),inputfile[:-4] + os.path.sep +os.path.join(ficname),zipfile.ZIP_DEFLATED)    
+				verboseprint(2,cvl, "+-&gt;Rajout ok")	
+				
+
+			
+			
+			
+	
+	
+	#renommer le fichier d'orgine
+	os.rename(fullpathfile,racine + "old_"+inputfile)
+	#renommer l'archive en fichier d'origine
+	os.rename(racine + rndarchive,fullpathfile[:-4]+".cbz")
+	
+	#regex re.compile('[0-9]{2,5}')
+	#re.search(variable)
+	os.chdir(racine)
+	verboseprint(2,cvl, "+ Suppression du dossier temp - %s" % rndfolder)
+	shutil.rmtree(rndfolder)
+	verboseprint(2,cvl, "+-&gt;Suppression ok")
+	verboseprint(1,cvl, "! End")
+
+racine= os.getcwd() + "/"
+rndfolder = os.getcwd() + "/" + id_generator()
+rndarchive = id_generator()
+retval = os.getcwd()
+
+if __name__ == "__main__":
+	main(sys.argv[1:])
+
+</pre>
+</noscript><div class="admonition-a-noter admonition">
+<p class="first admonition-title"><strong>A noter:</strong></p>
+<ul class="last simple">
+<li>Utilise les libs zip et rar, et prendre l'un pour l'autre bloque la kobo... méfiance</li>
+<li>Détection du rar pas fiable</li>
+</ul>
+</div>
+    
+    <ul class="pager">
+        <li class="previous">
+            <a href="gmail-attachment-mass-downloader.html">← Billet précédent</a>
+        </li>
+        <li class="next">
+            <a href="gmail-search-cheat-sheet.html">Billet suivant →</a>
+        </li>
+    </ul>
+
+        
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        var disqus_shortname ="wibfi";
+            var disqus_url="http://wibfi.virtua-peanuts.net/posts/modification-de-cbzr-en-python.html";
+        var disqus_title="Modification de .cbz/r en python";
+        var disqus_identifier="cache/posts/modification-de-cbzr-en-python.html";
+        var disqus_config = function () {
+            this.language = "fr";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    
+
+    </div>
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            2013         <a href="mailto:wibfi@virtua-peanuts.net">Dje</a> mais c'est <a href="http://getnikola.com">Nikola</a> qui bosse.        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/fr/"><img title="TL;DR" alt="Licence Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/fr/88x31.png"></a> - <a href="http://www.xiti.com/xiti.asp?s=538203" title="WebAnalytics" target="_top">
+<script type="text/javascript">
+<!--
+Xt_param = 's=538203&p=index';
+try {Xt_r = top.document.referrer;}
+catch(e) {Xt_r = document.referrer; }
+Xt_h = new Date();
+Xt_i = '<img width="80" height="15" border="0" alt="" ';
+Xt_i += 'src="http://logv4.xiti.com/g.xiti?'+Xt_param;
+Xt_i += '&hl='+Xt_h.getHours()+'x'+Xt_h.getMinutes()+'x'+Xt_h.getSeconds();
+if(parseFloat(navigator.appVersion)>=4)
+{Xt_s=screen;Xt_i+='&r='+Xt_s.width+'x'+Xt_s.height+'x'+Xt_s.pixelDepth+'x'+Xt_s.colorDepth;}
+document.write(Xt_i+'&ref='+Xt_r.replace(/[<>"]/g, '').replace(/&/g, '$')+'" title="Internet Audience">');
+//-->
+</script>
+<noscript>
+<img width="80" height="15" src="http://logv4.xiti.com/g.xiti?s=538203&amp;p=index" alt="WebAnalytics">
+</noscript></a>
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../assets/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+            <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../assets/js/jquery.colorbox-min.js" type="text/javascript"></script>
+
+
+	
+
+    <script type="text/javascript">jQuery("a.image-reference").colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    
+
+</body>
+</html>

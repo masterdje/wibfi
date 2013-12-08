@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (awk)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/awk.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Tue, 03 Dec 2013 16:02:37 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Fabrication de la cheatsheet code d'erreurs gmail</title><link>http://wibfi.virtua-peanuts.net/posts/fabrication-de-la-cheatsheet-code-derreurs-gmail.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Pour le fun, j'ai voulu me monter une base des codes erreurs gmail...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Et pour les avoir quelque part à dispo, aussi...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Sur le site de gmail, les pages d'erreurs sont numérotées et nommées selon le code erreur, donc les récupérer n'est pas compliqué&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="k"&gt;for &lt;/span&gt;i in &lt;span class="o"&gt;{&lt;/span&gt;1..10000&lt;span class="o"&gt;}&lt;/span&gt;;
+&lt;span class="k"&gt;do
+&lt;/span&gt;wget https://support.google.com/mail/answer/&lt;span class="nv"&gt;$i&lt;/span&gt;  ;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/pre&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;On se retrouve avec +- 68 fichiers nommés XXXX (&amp;lt;= code erreur)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/fabrication-de-la-cheatsheet-code-derreurs-gmail.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>python</category><category>awk</category><category>bash</category><category>gmail</category><guid>http://wibfi.virtua-peanuts.net/posts/fabrication-de-la-cheatsheet-code-derreurs-gmail.html</guid><pubDate>Mon, 25 Nov 2013 16:02:21 GMT</pubDate></item><item><title>Tri / Nettoyage des ebooks en double avant import</title><link>http://wibfi.virtua-peanuts.net/posts/tri-nettoyage-des-ebooks-en-double-avant-import.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;&lt;em&gt;One-liner&lt;/em&gt; pour gagner du temps avant une mise à jour / import massif d'ebooks&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Bien utile quand la bibliothèque &lt;em&gt;Calibre&lt;/em&gt; est bien propre, et que le &lt;em&gt;.zip&lt;/em&gt; &lt;em&gt;"Domaine public / tout zola+hugo+balzac+inédits"&lt;/em&gt; donne envie, sauf l'étape du tri des doublons...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Récupérer &lt;em&gt;fdupes&lt;/em&gt; qui va faire le job à notre place!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+sudo pacman -Suy fdupes
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/tri-nettoyage-des-ebooks-en-double-avant-import.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>ebook</category><category>calibre</category><category>bash</category><category>awk</category><guid>http://wibfi.virtua-peanuts.net/posts/tri-nettoyage-des-ebooks-en-double-avant-import.html</guid><pubDate>Mon, 11 Nov 2013 20:47:06 GMT</pubDate></item><item><title>Taille des dossiers en bash / awk</title><link>http://wibfi.virtua-peanuts.net/posts/taille-des-dossiers-en-bash-awk.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Mini script trouvé quelque part et bien utile, affichage &lt;strong&gt;du&lt;/strong&gt; amélioré via moulinette &lt;em&gt;awk&lt;/em&gt;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Ajusté à mes besoins ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/taille-des-dossiers-en-bash-awk.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>bash</category><category>awk</category><category>tips</category><guid>http://wibfi.virtua-peanuts.net/posts/taille-des-dossiers-en-bash-awk.html</guid><pubDate>Tue, 15 Oct 2013 14:49:11 GMT</pubDate></item></channel></rss>

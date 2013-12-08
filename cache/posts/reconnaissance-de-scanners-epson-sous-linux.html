@@ -1,0 +1,63 @@
+<p>L'achat de mon second scanner m'autorise à me prendre pour un pro de la reconnaissance des scanners Epson sous linux...</p>
+<ul class="simple">
+<li>Sauf que je vais oublier encore si je le note pas vite...</li>
+</ul>
+<!-- TEASER_END -->
+<div class="section" id="d-abord">
+<h2>D'abord :</h2>
+<pre class="code bash literal-block">
+- Archlinux-
+sudo pacman -S simple-scan
+-Ubuntu-
+sudo apt-get install simple-scan
+</pre>
+</div>
+<div class="section" id="epson-perfection-640">
+<h2>Epson Perfection 640</h2>
+<ul class="simple">
+<li>Editer le fichier <strong>/etc/sane.d/dll.conf</strong></li>
+<li>Décommenter <em>Epson</em></li>
+<li>Commenter <em>Epson2</em></li>
+<li><strong>That's all folks</strong></li>
+</ul>
+</div>
+<div class="section" id="epson-perfection-660">
+<h2>Epson Perfection 660</h2>
+<ul class="simple">
+<li><strong>D'abord</strong> récupérer <a class="reference external" href="/repo/TAIL_061.BIN.zip">ce fichier</a> (firmware issu de la derniere version du pilote pour XP, en 2009) et le décompresser quelque part.</li>
+<li>Copier le fichier décompressé dans <em>/usr/share/sane/snapscan/</em></li>
+</ul>
+<pre class="code bash literal-block">
+sudo cp TAIL_061.BIN /usr/share/sane/snapscan/tail_061.bin
+</pre>
+<ul class="simple">
+<li>Editer <em>/etc/sane.d/snapscan.conf</em></li>
+</ul>
+<pre class="code bash literal-block">
+sudo gedit /etc/sane.d/snapscan.conf
+</pre>
+<ul class="simple">
+<li>Pour remplacer : <em>myfirmware</em> par <strong>firmware /usr/share/sane/snapscan/tail_061.bin</strong></li>
+</ul>
+</div>
+<div class="section" id="tests">
+<h2>Tests</h2>
+<pre class="code bash literal-block">
+sudo scanimage -L
+</pre>
+<ul class="simple">
+<li>S'il trouve rien, mauvais temps... débrancher/rebrancher le scan, puis</li>
+</ul>
+<pre class="code bash literal-block">
+sudo sane-find-scanner
+</pre>
+<ul class="simple">
+<li>S'il trouve rien, faut rebooter le pc aussi...</li>
+</ul>
+<pre class="code bash literal-block">
+simple-scan
+</pre>
+<ul class="simple">
+<li>S'il trouve rien il le dira...</li>
+</ul>
+</div>

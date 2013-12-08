@@ -1,0 +1,15 @@
+.. link: 
+.. description: 
+.. tags: bookmark
+.. date: 2013/11/26 18:15:27
+.. title: A bookmarker : oldversion.fr
+.. slug: a-bookmarker-oldversionfr
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Etre capable de retrouver la version n-3 **qui marchait** ... C'est une sorte de super-pouvoir facile à acquérir...
+
+
+`<http://www.oldversion.fr/>`_

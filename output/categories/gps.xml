@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (gps)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/gps.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Tue, 03 Dec 2013 16:02:37 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Reconnaissance Garmin Forerunner 10 / Archlinux</title><link>http://wibfi.virtua-peanuts.net/posts/reconnaissance-garmin-forerunner-10-archlinux.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Une montre gps &lt;em&gt;relativement&lt;/em&gt; classe, 5h d'autonomie en mode trace avec un socle disposant d'un port USB, ça fait pas réver ça ?&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;...ah oui, aussi, faut aller courrir, aussi, sinon ça sert moins...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Connecter le socle, la montre et le port usb, (sans ralonge intermédiaire) et vérifier que :&lt;/li&gt;
+&lt;li&gt;l'écran annonce le mode recharge : &lt;strong&gt;▲&lt;/strong&gt; s'affiche&lt;/li&gt;
+&lt;li&gt;la commande &lt;strong&gt;lsusb&lt;/strong&gt; affiche &lt;strong&gt;Garmin&lt;/strong&gt; quelque part !&lt;/li&gt;
+&lt;li&gt;Accéder à la page &lt;a class="reference external" href="http://connect.garmin.com/"&gt;http://connect.garmin.com/&lt;/a&gt; , créer son compte gratos, tenter un upload et constater que la montre n'est pas reconnue ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/reconnaissance-garmin-forerunner-10-archlinux.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>gps</category><category>linux</category><category>archlinux</category><category>shell</category><category>usb</category><guid>http://wibfi.virtua-peanuts.net/posts/reconnaissance-garmin-forerunner-10-archlinux.html</guid><pubDate>Wed, 13 Nov 2013 20:29:06 GMT</pubDate></item><item><title>A bookmarker : mygpsfiles.com</title><link>http://wibfi.virtua-peanuts.net/posts/a-bookmarker-mygpsfilescom.html</link><description>&lt;p class="alert alert-info"&gt;Visualisateur / éditeur ultra-simple de trace GPS au format &lt;strong&gt;gpx&lt;/strong&gt;, &lt;strong&gt;tcx&lt;/strong&gt; , &lt;strong&gt;tcs&lt;/strong&gt; avec rendu via &lt;em&gt;google map/earth&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.mygpsfiles.com/app/"&gt;http://www.mygpsfiles.com/app/&lt;/a&gt;&lt;/p&gt;</description><category>bookmark</category><category>gps</category><category>gpx</category><category>tcx</category><guid>http://wibfi.virtua-peanuts.net/posts/a-bookmarker-mygpsfilescom.html</guid><pubDate>Sun, 03 Nov 2013 14:44:07 GMT</pubDate></item><item><title>Trace Gps facile et complète avec Mes Parcours</title><link>http://wibfi.virtua-peanuts.net/posts/trace-gps-facile-et-complete-avec-mes-parcours.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Obtenir un export &lt;em&gt;kml&lt;/em&gt;, &lt;em&gt;gpx&lt;/em&gt;, &lt;em&gt;tcx&lt;/em&gt; d'une trace GPS lancée en 2 clics ..&lt;/p&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord :&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;on admet qu'encore une fois c'est &lt;em&gt;google&lt;/em&gt; qui fournit l'appli au meilleur rapport prix/fonctionnalité ...&lt;/li&gt;
+&lt;li&gt;Et on la récupère sur le GooglePlay Store : &lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.google.android.maps.mytracks"&gt;My Tracks / Mes Parcours&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/trace-gps-facile-et-complete-avec-mes-parcours.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>gps</category><category>kml</category><category>gpx</category><category>tcx</category><category>android</category><guid>http://wibfi.virtua-peanuts.net/posts/trace-gps-facile-et-complete-avec-mes-parcours.html</guid><pubDate>Sat, 02 Nov 2013 13:20:44 GMT</pubDate></item></channel></rss>

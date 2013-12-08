@@ -1,0 +1,54 @@
+.. link: 
+.. description: 
+.. tags: bookmark, réseau
+.. date: 2013/10/26 18:36:52
+.. title: A bookmarker : ifconfig.me
+.. slug: a-bookmarker-ifconfigme
+.. tribe: tips
+
+   
+.. class:: alert alert-info
+
+Plus fort que *whatismyip.com* !
+
+`<http://ifconfig.me>`_
+
+
+.. TEASER_END
+
+Usage
+-----
+* Accès web normal, ou via le shell :
+
+.. code:: bash
+	
+	curl http://ifconfig.me/all
+
+
+* Retourne :
+
+.. code:: bash
+
+	ip_addr: 84.101.XXX.XXX
+	remote_host: XXX.XXX.101.84.rev.sfr.net
+	user_agent: curl/7.33.0
+	port: 46757
+	lang: 
+	connection: 
+	keep_alive: 
+	encoding: 
+	mime: */*
+	charset: 
+	via: 
+	forwarded: 
+
+* variante en *wget* :
+
+.. code:: bash
+
+	wget -O myIP.txt http://ifconfig.me/all
+
+Inscrira toutes ces infos dans le fichier indiqué par le paramètre **-O** , l' *user-agent* sera différent, forcément.
+
+
+

@@ -1,0 +1,76 @@
+.. link: 
+.. description: 
+.. tags: GTK, thême, gnome
+.. date: 2013/10/19 21:23:45
+.. title: Thême sympa : numix + Faenza
+.. slug: theme-sympa-numix-faeza
+.. tribe: shell
+
+  
+   
+.. class:: alert alert-info
+
+On peut se lasser de radiance ... allez, on change tout !
+
+.. TEASER_END
+
+D'abord...
+----------
+
+
+* Avec un thême GTK3 / GTK2 flat et sobre : `Numix <http://satya164.deviantart.com/art/Numix-GTK3-theme-360223962>`_
+
+.. code:: bash
+
+	yaourt -s numix
+
+**Numix-blue** existe aussi ! **muy** bueno !
+
+
+puis ...
+
+
+.. code:: bash
+	
+	gsettings set org.gnome.desktop.interface gtk-theme "Numix"
+	gsettings set org.gnome.desktop.wm.preferences theme "Numix"
+
+ou depuis **tweaks**, ça le fera aussi
+
+Et ensuite...
+-------------
+
+* **Faenza** à la rescousse !
+
+
+.. code:: bash
+
+	yaourt -s faenza
+	#c'est la fête y a whatmille variantes, help yourself
+
+
+* Bon, on peut rester dans le pack **numix**
+
+.. code:: bash
+
+	yaourt -s numix-utouch-icon-theme
+
+
+A activer par :
+
+.. code:: bash
+
+	gsettings set org.gnome.desktop.interface icon-theme "Numix-uTouch"
+
+
+
+Et pour finir
+-------------
+
+Les curseurs **bisigi**
+
+.. code:: bash
+
+	yaourt -s bisigi
+
+* Qui arrivent en 3 couleurs, blancs, noir & gris...

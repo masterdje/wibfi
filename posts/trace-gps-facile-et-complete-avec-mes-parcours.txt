@@ -1,0 +1,35 @@
+.. link: 
+.. description: 
+.. tags: gps, kml, gpx, tcx, android, 
+.. date: 2013/11/02 14:20:44
+.. title: Trace Gps facile et complète avec Mes Parcours
+.. slug: trace-gps-facile-et-complete-avec-mes-parcours
+.. tribe: gps
+
+.. class:: alert alert-info
+
+Obtenir un export *kml*, *gpx*, *tcx* d'une trace GPS lancée en 2 clics ..
+
+D'abord :
+---------
+
+* on admet qu'encore une fois c'est *google* qui fournit l'appli au meilleur rapport prix/fonctionnalité ...
+* Et on la récupère sur le GooglePlay Store : `My Tracks / Mes Parcours <https://play.google.com/store/apps/details?id=com.google.android.maps.mytracks>`_
+
+.. TEASER_END
+
+Ensuite :
+---------
+
+* Appuyer sur *Enregistrer* pour lancer une trace
+
+...[marcher/courrir/rouler]...
+
+* *Stop* pour arrêter, et saisir quelques infos supplémentaires (nom, type, etc)
+* Menu pour choisir un format d'export : *kml* , *gpx* , *csv* (voire sur support *gdrive* )
+
+Le + :
+------
+
+* On peut rejouer le parcours au sein de *google maps* / * streetview*, c'est assez bluffant.
+

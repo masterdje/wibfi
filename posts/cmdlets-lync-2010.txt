@@ -1,0 +1,114 @@
+.. link: 
+.. description: 
+.. tags: powershell, lync
+.. date: 2013/10/22 22:48:34
+.. title: Cmdlets Lync 2010
+.. slug: cmdlets-lync-2010
+.. tribe: lync
+
+.. class:: alert alert-info
+
+Collection de cmdlets Lync 2010  ...
+
+.. TEASER_END
+
+
+Désactiver l'accès lync d'un utilisateur
+----------------------------------------
+
+.. code:: powershell
+
+	Disable-CSuser -Identity [identité]
+
+
+
+Activation d'un utilisateur Administrateur du domaine
+-----------------------------------------------------
+
+.. code:: powershell
+
+	Enable-CsUser -Identity [identité] -RegistrarPool [lepooldudomaine] -SipAddressType SamAccountName -SipDomain [nomdusipdomain]
+
+* Attention, nécessite aussi la manip' dans *dsa.msc*
+
+Paramétrage du type de conférence
+---------------------------------
+
+* Nécessaire pour les comptes d'administrateurs domaine/entreprise, pour les comptes lambda, l'interface console suffit.
+* Manip supplémentaire à effectuer coté AD pour activer les Admins (Domaine, Entreprise)
+
+* un seul utilisateur :
+
+.. code:: powershell
+	
+	Grant-CsConferencingPolicy -identity [identity] -PolicyName [nomdelapolicy]
+
+*variante  :*
+
+.. code:: powershell
+	
+	Get-CsUser -Identity [identity] | Grant-CsConferencingPolicy -PolicyName [nomdelapolicy]
+
+* toute une **OU** à la fois :
+
+.. code:: powershell
+	
+	Get-CsUser -OU "OU=Utilisateurs,OU=Administrateurs,dc=XX,dc=XX" | Grant-CsConferencingPolicy -PolicyName [nomdelapolicy]
+
+
+Créer une nouvelle Stratégie de client
+--------------------------------------
+
+.. code:: powershell
+	
+	New-CsClientPolicy
+
+* Attention, cette stratégie n'est PAS visible dans l'interface d'admin silverlight, juste visible par cmdlet.
+  
+
+Empêcher l'affichage des contacts Outlooks dans le client Lync
+--------------------------------------------------------------
+
+.. code:: powershell
+
+	Set-CsClientPolicy -identity [nom de la policy choisie] -ExcludedContactFolders "Contacts;Contacts suggérés;IPM.Contact"
+
+* Ne pas oublier de positionner cette policy en tant que Stratégie de client, pour l'utilisateur concerné.
+* ... Et redémarrer Lync. (La déco est insuffisante) 
+
+
+Vérification de la réplication lync <-> Edge
+--------------------------------------------
+
+* A jouer depuis serveur lync
+
+.. code:: powershell
+
+	Get-CsManagementStoreReplicationStatus
+
+Doit produire :
+
+.. code:: bash
+
+	UpToDate           : True
+	ReplicaFqdn        : serveur.fqdn
+	LastStatusReport   : 09/10/2013 11:48:35
+	LastUpdateCreation : 09/10/2013 09:53:27
+	ProductVersion     : 4.0.7577.0
+
+	UpToDate           : True
+	ReplicaFqdn        : edge.fqdn
+	LastStatusReport   : 09/10/2013 09:53:30
+	LastUpdateCreation : 09/10/2013 09:53:27
+	ProductVersion     : 4.0.7577.0
+
+* *Uptodate* doit donc être **true** et *LastUpdateCreation* présenter un horaire identique 
+
+Forcer la réplication lync <-> Edge
+-----------------------------------
+
+* A jouer depuis serveur lync 
+
+.. code:: powershell
+
+	invoke-csmanagementstorereplication 

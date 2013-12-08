@@ -1,0 +1,59 @@
+<p class="alert alert-info">Les variables d'environnement c'est pain béni pour les scripts bricolés ...</p>
+<ul class="simple">
+<li>Encore une fois, $env <span class="red">.</span> [nomdelavariable] ça n'aurait pas été plus logique ?</li>
+</ul>
+<div class="section" id="code">
+<h2>Code</h2>
+<pre class="code powershell literal-block">
+<span class="c"># Avec l'accès au magasin de données 'env' :</span>
+<span class="nb">get-item</span> <span class="n">env</span><span class="err">:</span>
+</pre>
+<!-- TEASER_END -->
+<pre class="code powershell literal-block">
+<span class="n">Name</span>                           <span class="n">Value</span>
+<span class="p">----</span>                           <span class="p">-----</span>
+<span class="n">Path</span>                           <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">WINDOWS</span><span class="p">\</span><span class="n">system32</span><span class="err">;</span><span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">WINDOWS</span><span class="err">;</span><span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">WINDOWS</span><span class="p">\</span><span class="n">System32</span><span class="p">\</span><span class="n">Wbem</span><span class="err">;</span><span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">ESM</span><span class="err">;</span><span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">ESM</span><span class="p">\</span><span class="n">AlertMan</span><span class="p">\</span><span class="n">Progra</span><span class="p">...</span>
+<span class="n">TEMP</span>                           <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">DOCUME</span><span class="p">~</span><span class="n">1</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">LOCALS</span><span class="p">~</span><span class="n">1</span><span class="p">\</span><span class="n">Temp</span><span class="p">\</span><span class="n">1</span>
+<span class="n">SESSIONNAME</span>                    <span class="n">RDP-Tcp</span><span class="c">#1</span>
+<span class="n">PATHEXT</span>                        <span class="p">.</span><span class="n">COM</span><span class="err">;</span><span class="p">.</span><span class="n">EXE</span><span class="err">;</span><span class="p">.</span><span class="n">BAT</span><span class="err">;</span><span class="p">.</span><span class="n">CMD</span><span class="err">;</span><span class="p">.</span><span class="n">VBS</span><span class="err">;</span><span class="p">.</span><span class="n">VBE</span><span class="err">;</span><span class="p">.</span><span class="n">JS</span><span class="err">;</span><span class="p">.</span><span class="n">JSE</span><span class="err">;</span><span class="p">.</span><span class="n">WSF</span><span class="err">;</span><span class="p">.</span><span class="n">WSH</span><span class="err">;</span><span class="p">.</span><span class="n">PSC1</span>
+<span class="n">USERDOMAIN</span>                     <span class="n">CG</span>
+<span class="n">PROCESSOR_ARCHITECTURE</span>         <span class="n">x86</span>
+<span class="n">SystemDrive</span>                    <span class="n">C</span><span class="err">:</span>
+<span class="n">APPDATA</span>                        <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">Documents</span> <span class="n">and</span> <span class="n">Settings</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">Application</span> <span class="n">Data</span>
+<span class="n">windir</span>                         <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">WINDOWS</span>
+<span class="n">ESMDIR</span>                         <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">ESM</span>
+<span class="n">TMP</span>                            <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">DOCUME</span><span class="p">~</span><span class="n">1</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">LOCALS</span><span class="p">~</span><span class="n">1</span><span class="p">\</span><span class="n">Temp</span><span class="p">\</span><span class="n">1</span>
+<span class="n">UATDATA</span>                        <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">WINDOWS</span><span class="p">\</span><span class="n">system32</span><span class="p">\</span><span class="n">CCM</span><span class="p">\</span><span class="n">UATData</span><span class="p">\</span><span class="n">D9F5-CAB8</span><span class="p">-</span><span class="n">491d-B8AC</span><span class="p">-</span><span class="n">179A1FE1BE77</span>
+<span class="n">USERPROFILE</span>                    <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">Documents</span> <span class="n">and</span> <span class="n">Settings</span><span class="p">\</span><span class="n">user</span>
+<span class="n">ProgramFiles</span>                   <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">Program</span> <span class="n">Files</span>
+<span class="n">FP_NO_HOST_CHECK</span>               <span class="n">NO</span>
+<span class="n">HOMEPATH</span>                       <span class="p">\</span><span class="n">Documents</span> <span class="n">and</span> <span class="n">Settings</span><span class="p">\</span><span class="n">user</span>
+<span class="n">COMPUTERNAME</span>                   <span class="n">SERVER01</span>
+<span class="n">USERNAME</span>                       <span class="n">moi</span>
+<span class="n">NUMBER_OF_PROCESSORS</span>           <span class="n">4</span>
+<span class="n">PROCESSOR_IDENTIFIER</span>           <span class="n">x86</span> <span class="n">Family</span> <span class="n">15</span> <span class="n">Model</span> <span class="n">4</span> <span class="n">Stepping</span> <span class="n">1</span><span class="p">,</span> <span class="n">GenuineIntel</span>
+<span class="n">ClusterLog</span>                     <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">WINDOWS</span><span class="p">\</span><span class="n">Cluster</span><span class="p">\</span><span class="n">cluster</span><span class="p">.</span><span class="n">log</span>
+<span class="n">SystemRoot</span>                     <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">WINDOWS</span>
+<span class="n">ComSpec</span>                        <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">WINDOWS</span><span class="p">\</span><span class="n">system32</span><span class="p">\</span><span class="n">cmd</span><span class="p">.</span><span class="n">exe</span>
+<span class="n">LOGONSERVER</span>                    <span class="p">\\</span><span class="n">HD-AD03</span>
+<span class="n">CommonProgramFiles</span>             <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">Program</span> <span class="n">Files</span><span class="p">\</span><span class="n">Fichiers</span> <span class="n">communs</span>
+<span class="n">PROCESSOR_LEVEL</span>                <span class="n">15</span>
+<span class="n">PROCESSOR_REVISION</span>             <span class="n">0401</span>
+<span class="n">CLIENTNAME</span>                     <span class="n">CP1320</span>
+<span class="n">PSModulePath</span>                   <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">Documents</span> <span class="n">and</span> <span class="n">Settings</span><span class="p">\</span><span class="n">user</span><span class="p">\</span><span class="n">Mes</span> <span class="n">documents</span><span class="p">\</span><span class="n">WindowsPowerShell</span><span class="p">\</span><span class="n">Modules</span><span class="err">;</span><span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">WINDOW</span><span class="p">...</span>
+<span class="n">ALLUSERSPROFILE</span>                <span class="n">C</span><span class="err">:</span><span class="p">\</span><span class="n">Documents</span> <span class="n">and</span> <span class="n">Settings</span><span class="p">\</span><span class="n">All</span> <span class="n">Users</span>
+<span class="n">OS</span>                             <span class="n">Windows_NT</span>
+<span class="n">USERDNSDOMAIN</span>                  <span class="n">MONDOMAINE</span>
+<span class="n">HOMEDRIVE</span>                      <span class="n">C</span><span class="err">:</span>
+</pre>
+</div>
+<div class="section" id="usage">
+<h2>Usage</h2>
+<ul class="simple">
+<li>Utilisation d'une valeur : <em>$env</em> <span class="red">:</span> <em>nomdelavariable</em></li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="nv">$env:os</span>
+<span class="n">Windows_NT</span>
+</pre>
+</div>

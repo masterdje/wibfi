@@ -1,0 +1,59 @@
+.. link: 
+.. description: 
+.. tags: powershell, tips
+.. date: 2013/11/08 21:16:58
+.. title: Tri human-readable d'adresses IP en Powershell
+.. slug: tri-human-readable-dadresses-ip-en-powershell
+.. tribe: powershell
+
+.. class:: alert alert-info
+
+Comment classer de manière logique *d'un point de vue humain* une liste d'adresses IP , en préférant que x.x.x.1 soit suivi par x.x.x.2 plutot que x.x.x.10 ...
+
+
+* Plutôt que découper les octets, façon puzzle, et rajouter 1 ou 2  zéros si besoin est... faut transtyper / recaster une *string* en *net.ipaddress* ... mais faut assurer la logistique ensuite !
+
+.. TEASER_END
+
+D'abord
+-------
+
+* Mettons on dispose d'un fichier *liste.txt* tout bidon mais c'est pour l'exemple :
+
+.. code:: bash
+
+	192.168.1.1
+	192.168.1.6
+	192.168.1.10
+	192.168.1.11
+	192.168.1.2
+	192.168.1.9
+	192.168.10.1
+	192.168.10.10
+	192.168.2.5
+	192.168.10.2
+
+Code
+----
+
+.. code:: powershell
+
+	[net.ipaddress[]] (gc .\liste.txt) |sort address |select ipaddresstostring
+
+
+* On obtient à l'écran une belle liste bien classée :
+
+.. code:: bash
+	
+	192.168.1.1
+	192.168.1.2
+	192.168.1.6
+	192.168.1.9
+	192.168.1.10
+	192.168.1.11
+	192.168.2.5
+	192.168.10.1
+	192.168.10.2
+	192.168.10.10
+
+* Méfiance, le champs à récupérer si besoin est **ipaddresstostring** et non *address*, qui n'a servi qu'au tri (cf *.net* )

@@ -1,0 +1,48 @@
+.. link: 
+.. description: 
+.. tags: tips, linux
+.. date: 2013/12/02 15:21:31
+.. title: Rajouter un chemin à $PATH
+.. slug: rajouter-un-chemin-a-path
+.. tribe: linux
+
+   
+.. class:: alert alert-info
+
+Un truc à noter en passant... 
+
+
+Rajout définitif
+----------------
+
+* Editer **/etc/profile**
+
+.. code:: bash
+
+	sudo vi /etc/profile
+
+.. TEASER_END	
+
+* Rajouter le(s) chemin(s) à la variable PATH
+
+* Prendre en compte les modifs dès à présent.
+
+.. code:: bash
+	
+	sudo source /etc/profile
+	
+
+Rajout temporaire
+-----------------
+
+.. code:: bash
+
+	export PATH=/nouveau/chemin-a-rajouter/:$PATH
+	
+
+Afficher le $PATH
+------------------
+
+.. code:: bash
+
+	echo $PATH

@@ -1,0 +1,206 @@
+.. link: 
+.. description: 
+.. tags: hello-world, cordova, android, linux
+.. date: 2013/11/27 21:40:49
+.. title: Hello-World Android avec Apache Cordova
+.. slug: hello-world-android-avec-apache-cordova
+.. tribe: shell
+
+ 
+.. class:: alert alert-info
+
+Passage d'`Apache Cordova en v3.2 <http://cordova.apache.org/announcements/2013/11/22/cordova-320.html>`_, ça mérite un focus **Hello-world**, pour commencer
+
+* ben, comme phonegap, quoi ...
+
+.. TEASER_END
+
+D'abord
+-------
+
+* Installer Node.js
+
+.. code:: bash
+
+	#archlinux...
+	sudo pacman -S nodejs
+	
+	#ubuntu
+	sudo apt-get install nodejs
+	
+
+* Installer Cordova
+
+.. code:: bash
+
+	sudo npm install -g cordova
+
+	npm http GET https://registry.npmjs.org/cordova                                                                       
+	npm http 200 https://registry.npmjs.org/cordova                                                                       
+	npm http GET https://registry.npmjs.org/cordova/-/cordova-3.2.0-0.2.0.tgz                                             
+	npm http 200 https://registry.npmjs.org/cordova/-/cordova-3.2.0-0.2.0.tgz                                             
+	npm http GET https://registry.npmjs.org/colors
+	npm http GET https://registry.npmjs.org/elementtree/0.1.5
+	npm http GET https://registry.npmjs.org/plugman
+	npm http GET https://registry.npmjs.org/plist
+	npm http GET https://registry.npmjs.org/xcode/0.6.2
+	npm http GET https://registry.npmjs.org/express/3.0.0
+	...
+	...
+
+
+Ensuite
+-------
+
+* Se positionner dans son dossier de travail (genre ~/mydev ) et lancer la commande qui créera un dossier **hello** , d'**id** *com.example.hello* ...
+
+.. code:: bash
+
+	[dje@pc01 mydev]$ cordova create hello com.example.hello Helloworld
+	Creating a new cordova project with name "Helloworld" and id "com.example.hello" at location "/home/dje/mydev/hello"
+	Downloading cordova library for www...
+	...
+	...
+	
+* Ajouter la platerforme cible *android*
+
+.. code:: bash
+
+	[dje@pc01 hello]$ cordova platform add android
+	Downloading cordova library for android...
+	Download complete
+	Checking Android requirements...
+	[Error: Please install Android target 17 (the Android 4.2 SDK). Make sure you have the latest Android tools installed as well. 
+	Run `android` from your command-line to install/update any missing SDKs or tools.]
+
+* OK mon sdk est trop vieux...
+
+.. code:: bash 
+
+	sudo android sdk update
+	#la fenêtre se lance...
+	#décocher Api 19 et choisir Api 17 (android 4.2)
+	
+
+* On recommence une fois le sdk up-to-date
+
+.. code:: bash
+
+	Checking Android requirements...
+	Creating android project...
+	[Error: An error occured during creation of android sub-project. 
+	[Error: ERROR : executing command 'ant', make sure you have ant installed and added to your path.]
+
+
+* Il faut donc installer **apache-ant**
+
+.. code:: bash
+
+	sudo pacman -S apache-ant
+	...
+	Paquets (1): apache-ant-1.9.2-3
+	Taille totale de téléchargement : 12,56 MiB
+	Taille totale installé :           14,25 MiB
+	...
+
+* et c'est ok pour l'ajout d'android comme plate-forme cible.
+
+.. code:: bash
+
+	[dje@pc01 hello]$ cordova platform add android
+	Checking Android requirements...
+	Creating android project...
+	Preparing android project
+
+* on lance le build du projet **hello**
+
+.. code:: bash
+
+	[dje@pc01 hello]$ cordova build
+	Generating config.xml from defaults for platform "android"
+	Preparing android project
+	Compiling app on platform "android" via command "/home/dje/dev/hello/platforms/android/cordova/build" 
+	Platform "android" compiled successfully.
+
+* test sur émulateur ... qui échoue si on a pas monté d'image
+
+.. code:: bash
+	
+	cordova emulate android
+	Generating config.xml from defaults for platform "android"
+	Preparing android project
+	Running on emulator for platform "android" via command "/home/dje/dev/hello/platforms/android/cordova/run" --emulator
+	[Error: An error occurred while emulating/deploying the android project. 
+	/home/dje/dev/hello/platforms/android/cordova/node_modules/q/q.js:126
+                    throw e;
+                          ^
+	ERROR : No emulator images (avds) found, if you would like to create an	avd follow the instructions provided here:
+	...
+
+* Donc il faut créér l'émulateur
+
+.. code:: bash
+
+	android create avd --name emu --target 1 --abi x86
+	Android 4.2.2 is a basic Android platform.
+	Do you wish to create a custom hardware profile [no]
+	Created AVD 'test' based on Android 4.2.2, Intel Atom (x86) processor,
+	with the following hardware config:
+	hw.lcd.density=240
+	vm.heapSize=48
+	hw.ramSize=512
+	
+
+* **--target** correspond à la version d'android / sdk installée . 
+* **--abi** est la plateforme du cpu cible
+* On peut trouver des infos en jouant **android list target** pour identifier s'y retrouver
+* Ce sont les options par défaut, qui produisent donc un émulateur de specs vraiment faibles (et x86 est peu judicieux.)
+
+* Et lancer l'émulateur une fois l'image validée
+
+.. code:: bash
+
+	cordova emulate android
+	Generating config.xml from defaults for platform "android"
+	Preparing android project
+	Running on emulator for platform "android" via command "/home/dje/mydev/hello/platforms/android/cordova/run" --emulator
+	Platform "android" deployed to emulator.
+
+* On obtient le lancement automatique de l'appli
+
+.. image:: /images/cordova-2.png
+	:align: center
+	
+* Mais elle se retrouve aussi dans le *drawer* des applis 
+
+.. image:: /images/cordova-1.png
+	:align: center
+	
+* ça reste plus que basique pour un *hello-world*, on peut faire mieux. Le projet **hello** est un site web **dummy**, donc :
+
+* Editer **hello/www/index.html**
+
+* Rajouter :
+
+.. code:: bash
+
+	<hr/>
+    <h1><a href:"http://wibfi.virtua-peanuts.net">Wibfi</a></h1>
+    <p>Lorem ipsum etc caetera</p>
+    
+* Et relancer un **build**
+
+.. image:: /images/cordova-3.png
+	:align: center
+	
+* bien mieux !
+
+A Noter
+-------
+
+* L'**apk** compilé est disponible dans le dossier **hello/platforms/android/bin** (version debug)... ou `à télécharger ici </repo/Helloworld-debug.apk>`_
+
+
+
+
+

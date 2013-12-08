@@ -1,0 +1,40 @@
+.. link: 
+.. description: 
+.. tags: vie-du-site, nikola, python
+.. date: 2013/10/06 21:32:53
+.. title: Mise à jour Nikola 6.10
+.. slug: mise-a-jour-nikola-610
+.. tribe: favicon
+
+   
+.. class:: alert alert-info
+
+Le moteur de blog statiques `Nikola <https://github.com/getnikola/nikola/releases>`_ est mis à jours très régulièrement...
+
+V. 6.10 Changelog / Feature
+---------------------------
+
+- Added slug support to the magic link:// URLs
+- New Esperanto translation.
+- New -q flag for quiet running
+- Added author field in RSS items
+- Annotations using annotateit.org
+- New GALLERY_SORT_BY_DATE option, defaulting to True. If set to False, sorts by name
+
+J'ai pas encore trouvé quoi faire de la directive *link*, mais ça m'intrigue !
+
+
+Installation
+------------
+
+* *master.zip* c'est fini, maintenant l'installation & la mise à jour c'est via :
+
+.. code:: bash
+	
+	sudo pip install nikola --upgrade
+
+
+.. TEASER_END
+
+* Et la 6.11 est arrivée 10 heures apres... ça sent le bugfix, tout ça ...
+

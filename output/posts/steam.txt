@@ -1,0 +1,24 @@
+.. link: 
+.. description: 
+.. tags: steam, linux
+.. date: 2013/09/13 12:00:00
+.. title: Steam réclame une lib déjà présente ?
+.. slug: steam
+
+.. image:: /res/mini-ico-tips.png
+	:align: left
+   
+   
+.. class:: alert alert-info
+
+Tout à coup, Steam kaputt ...
+
+J'ai eu beau réinstaller un énorme tas de paquets, Steam ne voulait rien savoir, jusqu'à ce que je trouve cette astuce...
+
+
+.. code:: bash
+
+	sudo ln -s /usr/lib/i386-linux-gnu/mesa/libGL.so.1 /usr/lib
+
+
+Bon ben ça fait le boulot.

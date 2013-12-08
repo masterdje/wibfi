@@ -1,0 +1,27 @@
+.. link: 
+.. description: 
+.. tags: ImageMagick, tips, image, bash
+.. date: 2013/09/18 20:56:28
+.. title: ImageMagick Trick 04
+.. slug: imagemagick-trick-04
+
+
+.. image:: /res/mini-ico-draw.png
+	:align: left
+   
+   
+.. class:: alert alert-info
+
+ImageMagick est bon pour à peu près tout, *ET aussi* pour traiter des fichiers en batch ...
+Mais il a fallu que je *RTFM* pour m'en rendre compte...
+
+
+
+.. code:: bash
+	
+	$ convert '*.jpg' -resize 120x120 thumbnail%03d.png
+	
+	
+On aura donc X fichiers nommés **thumbnailXXX.png** , ce qui peut être vite limitant.
+
+Source : http://www.imagemagick.org/script/command-line-processing.php

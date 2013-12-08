@@ -1,0 +1,18 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2013/10/17 23:15:05
+.. title: Cheat-Sheet Format Rst
+.. slug: cheatsheet-format-rst
+
+
+* WIP
+
+
+-------
+
+.. class: btn btn-lg more
+
+`Retour aux Cheat-sheets </stories/cheatsheets.html>`_
+
+

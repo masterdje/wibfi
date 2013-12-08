@@ -1,0 +1,84 @@
+.. link: 
+.. description: 
+.. tags: nikola, rst, css
+.. date: 2013/12/02 13:15:26
+.. title: Changer la couleur du texte en rst / restructuredtext
+.. slug: changer-la-couleur-du-texte-en-rst-restructuredtext
+.. tribe: tips
+
+.. role:: red
+.. role:: blue
+.. role:: blue-vp
+.. role:: magenta
+.. role:: green
+.. role:: orange
+
+.. class:: alert alert-info
+
+Le truc le plus simple du monde... sauf que non, en fait...
+
+
+* Et bienvenue en mode bricolage...
+
+
+D'abord
+-------
+
+* Rajouter les couleurs désirées dans le CSS  (dans *nikola* c'est *custom.css* au fond de template...) sous forme de classe
+
+.. code :: css
+
+	.blue {color: blue;}
+	.red {color: red;}
+	.green {color: green;}
+	.orange {color: orange;}
+	.blue-vp {color: #123789;}
+	.magenta {color: #ff00ff;}
+
+.. TEASER_END
+
+Ensuite
+-------
+
+* Rajouter la définition des classes dans le texte du post
+
+* Par exemple, cet article-ci:
+
+.. code:: bash
+
+	.. slug: changer-la-couleur-du-texte-en-rst-restructuredtext
+	
+	.. role:: red
+	.. role:: blue
+	.. role:: blue-vp
+	.. role:: magenta
+	.. role:: green
+	.. role:: orange
+
+
+Enfin
+-----
+	
+* S'en servir dans le texte avec **:** *le_nom_donné_à_la_couleur* **:**  *\`* le texte à colorer **\`** (<= *backquotes* !)
+
+* Par exemple : 
+
+.. code
+
+	Ceci est un texte :red:`bleu`
+	Ceci est un texte :magenta:`orange`
+	Ceci n'est pas écrit en :green:`rouge` ni en :blue-vp:`vert`
+	:blue:`merci de relire ça à haute voix pour écouter son cerveau crier à l'aide.`
+
+
+| Ceci est un texte :red:`bleu`
+| Ceci est un texte :magenta:`orange`
+| Ceci n'est pas écrit en :green:`rouge` ni en :blue-vp:`vert`
+| :blue:`merci de relire ça à haute voix pour écouter son cerveau crier à l'aide.`
+	
+
+A noter
+-------
+
+* Supporte pas/mal l'association avec les marqueurs **\*\*gras\*\*** et *\*italique\**
+* Toujours plus propre que **.. raw:: html** mais chacun ses gouts.

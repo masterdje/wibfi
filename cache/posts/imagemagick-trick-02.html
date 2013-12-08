@@ -1,0 +1,18 @@
+<p class="alert alert-info">ImageMagick est bon pour à peu près tout, sauf pour traiter des fichiers en batch ...</p>
+<p>Il faut donc se tourner vers une solution <strong>bash</strong></p>
+<pre class="code bash literal-block">
+<span class="k">for </span>i in *; <span class="k">do </span>convert <span class="nv">$i</span> -resize 50% <span class="nv">$i</span>.png; <span class="k">done</span>
+</pre>
+<!-- TEASER_END -->
+<div class="admonition-a-noter admonition">
+<p class="first admonition-title"><strong>A noter:</strong></p>
+<table class="last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">convert etc:</th><td class="field-body">La commande proprement dite...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>On aura donc un fichier nommé <em>nom-du-fichier-dorigine</em> <strong>.png</strong></p>

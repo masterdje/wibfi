@@ -1,0 +1,21 @@
+.. link: 
+.. description: 
+.. tags: tips, php
+.. date: 2013/09/25 21:15:07
+.. title: Php 5.4+ chez 1&1
+.. slug: php-54-chez-11
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Maj de la version de prise en charge php chez le FAI 1&1 (5.4). Sauf que quand ça veut pas, faut l'aider :
+
+Avec un *.htaccess* bien senti:
+
+.. TEASER_END
+
+.. code:: bash
+
+	AddType x-mapp-php6 .php
+	AddHandler x-mapp-php6 .php

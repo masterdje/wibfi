@@ -1,0 +1,31 @@
+.. link: 
+.. description: 
+.. tags: ImageMagick, tips, image
+.. date: 2013/09/13 12:15:15
+.. title: ImageMagick Trick 01
+.. slug: imagemagick-trick-01
+
+
+
+.. image:: /res/mini-ico-draw.png
+	:align: left
+   
+   
+.. class:: alert alert-info
+
+Miniature INRATABLE de la première page d'un PDF
+
+
+.. code:: bash
+	
+	convert fichier_source_en_pdf.pdf[0] -flatten -resize 20% -background white fichier_destination.png
+	
+
+.. TEASER_END
+	
+.. admonition:: **A noter:**
+
+	:[0]: Page de rang 0 du document
+	:flatten: Rendu "à plat" du document
+	:background: force une couleur de fond
+	:resize: Redimensionne l'image

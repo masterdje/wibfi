@@ -1,0 +1,37 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2013/11/03 14:17:47
+.. title: CheatSheet OpenWrt
+.. slug: cheatsheet-openwrt
+
+.. class:: alert alert-info
+
+Bon à savoir concernant OpenWrt
+
+Gestion des paquets:
+--------------------
+
+* avec **opkg** :
+
+=================== ==================================================================================================
+Commande             usage
+=================== ==================================================================================================
+opkg update 		Mise à jour de la liste des packages
+opkg list 			Liste les packages dispos
+opkg list_installed Liste les packages installés
+opkg install xxxx 	Installe le package xxxx
+opkg remove xxxx	supprime le package xxxx
+opkg install 		http://downloads.openwrt.org/.../packages/xxxx.ipk (url complète du package)
+=================== ==================================================================================================
+
+
+
+* WIP
+
+
+-------
+
+.. class: btn btn-lg more
+
+`Retour aux Cheat-sheets </stories/cheatsheets.html>`_

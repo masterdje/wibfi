@@ -1,0 +1,27 @@
+<p class="alert alert-info">Mini script de liste des utilisateurs <strong>enabled</strong> de Lync</p>
+<ul class="simple">
+<li>... cette fameuse liste introuvable ailleurs dans lync ...</li>
+</ul>
+<!-- TEASER_END -->
+<div class="section" id="code">
+<h2>Code</h2>
+<ul class="simple">
+<li>Approche laborieuse :</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="nv">$list</span> <span class="p">=</span> <span class="nb">get-csuser</span> <span class="p">|</span><span class="n">select</span> <span class="n">displayname</span><span class="p">,</span> <span class="n">sipaddress</span><span class="p">,</span> <span class="n">enabled</span> <span class="p">|</span><span class="n">sort</span> <span class="n">displayname</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$user</span> <span class="k">in</span> <span class="nv">$list</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$user</span><span class="p">.</span><span class="n">enabled</span><span class="p">){</span>
+                <span class="nb">write-host</span> <span class="nv">$user</span><span class="p">.</span><span class="n">displayname</span> <span class="p">-</span> <span class="nv">$user</span><span class="p">.</span><span class="n">sipaddress</span>
+                <span class="p">}</span>
+        <span class="p">}</span>
+</pre>
+<ul class="simple">
+<li>Approche améliorée :</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="nv">$list</span> <span class="p">=</span> <span class="nb">get-csuser</span> <span class="p">|</span> <span class="nb">where-object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">enabled</span> <span class="o">-eq</span> <span class="s2">&quot;True&quot;</span><span class="p">}</span> <span class="p">|</span><span class="n">select</span> <span class="n">displayname</span><span class="p">,</span> <span class="n">sipaddress</span><span class="p">,</span> <span class="n">enabled</span> <span class="p">|</span><span class="n">sort</span> <span class="n">displayname</span>
+<span class="nb">write-host</span> <span class="nv">$list</span>
+</pre>
+</div>

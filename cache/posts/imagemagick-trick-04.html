@@ -1,0 +1,7 @@
+<p class="alert alert-info">ImageMagick est bon pour à peu près tout, <em>ET aussi</em> pour traiter des fichiers en batch ...
+Mais il a fallu que je <em>RTFM</em> pour m'en rendre compte...</p>
+<pre class="code bash literal-block">
+<span class="nv">$ </span>convert <span class="s1">'*.jpg'</span> -resize 120x120 thumbnail%03d.png
+</pre>
+<p>On aura donc X fichiers nommés <strong>thumbnailXXX.png</strong> , ce qui peut être vite limitant.</p>
+<p>Source : <a class="reference external" href="http://www.imagemagick.org/script/command-line-processing.php">http://www.imagemagick.org/script/command-line-processing.php</a></p>

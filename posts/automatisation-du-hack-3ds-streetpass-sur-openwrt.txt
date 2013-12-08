@@ -1,0 +1,24 @@
+.. link: 
+.. description: 
+.. tags: tips, 3DS, openwrt, HomePass, bash
+.. date: 2013/10/17 21:59:49
+.. title: Automatisation du hack 3DS StreetPass sur OpenWRT
+.. slug: automatisation-du-hack-3ds-streetpass-sur-openwrt
+.. tribe: shell
+
+
+      
+.. class:: alert alert-info
+
+Script futé de cyclage des adresses MAC spoofées des NintendoZone, pour tirer le meilleur des `capacités des routeurs OpenWRT <hack-3ds-streetpass-basique-via-openwrt.html>`_
+
+* Récup d'une grosse liste d'adresses MAC & en wrappant les commandes qui vont bien de l'**uci** 
+
+.. TEASER_END
+
+Code:
+-----
+
+.. gist :: 7031189
+
+* Source : `<https://gist.github.com/masterdje/7031189>`_

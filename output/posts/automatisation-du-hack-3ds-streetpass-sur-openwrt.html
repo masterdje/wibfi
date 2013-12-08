@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dje">
+    <title>Automatisation du hack 3DS StreetPass sur OpenWRT | Write it before forget it</title>
+    
+            <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+            <link href="../assets/css/custom.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+            <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+            <link rel="icon" href="../favicon.ico" sizes="16x16">
+            <link rel="icon" href="../favicon.png" sizes="64x64">
+
+    <link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+    
+
+
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-44317802-1']);
+  _gaq.push(['_setDomainName', 'virtua-peanuts.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../">Write it before forget it</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            
+                <li><a href="../stories/cheatsheets.html">Cheat-Sheets</a>
+                </li><li><a href="../stories/what-s-next.html">What's next</a>
+                </li><li><a href="../archive.html">Archives</a>
+                </li><li><a href="../categories/index.html">Tags</a>
+                </li><li><a href="../rss.xml">RSS</a>
+
+        </li></ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            
+            
+            <li><a href="../stories/admin.html"><span class="glyphicon glyphicon-cog"></span></a></li>
+		</ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+
+<!-- End of Menubar -->
+
+<div class="container">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+    <div class="postbox">
+    <div class="alert alert-info">
+    <h1>Automatisation du hack 3DS StreetPass sur OpenWRT</h1>
+
+    
+		
+            <a class="tag" href="../categories/tips.html"><span class="badge">tips</span></a>
+            <a class="tag" href="../categories/3ds.html"><span class="badge">3DS</span></a>
+            <a class="tag" href="../categories/openwrt.html"><span class="badge">openwrt</span></a>
+            <a class="tag" href="../categories/homepass.html"><span class="badge">HomePass</span></a>
+            <a class="tag" href="../categories/bash.html"><span class="badge">bash</span></a>
+          
+
+		<time class="published" datetime="2013-10-17T21:59:49+02:00">2013-10-17 21:59</time>
+        
+
+   
+       </div>
+    <p class="alert alert-info">Script futé de cyclage des adresses MAC spoofées des NintendoZone, pour tirer le meilleur des <a class="reference external" href="hack-3ds-streetpass-basique-via-openwrt.html">capacités des routeurs OpenWRT</a></p>
+<ul class="simple">
+<li>Récup d'une grosse liste d'adresses MAC &amp; en wrappant les commandes qui vont bien de l'<strong>uci</strong></li>
+</ul>
+<!-- TEASER_END -->
+<div class="section" id="code">
+<h2>Code:</h2>
+<script src="https://gist.github.com/7031189.js"></script><noscript><pre class="literal-block">
+#/bin/sh
+# HomePass
+DATE=$(date)
+# Put a filename and path in here if you wish to log each profile change
+LOG="HomePass.log"
+# The WiFi network number we need to toggle the MAC address of
+# You must have already added a WiFi network with the ssid "attwifi" and clicked "save &amp; apply"
+WIFI=$(uci show wireless | grep "ssid=attwifi" | awk 'NR&gt;1{print $1}' RS=[ FS=])
+# MAC address list is missing or empty, reload it from the server
+if [ ! -s HomePass.list ]; then
+  # If you only want to use the primaries and Nintendo World (not the SPOOF range)
+  # then delete the current HomePass.list and add ?new=1 to the end of the next line
+  wget -O HomePass.list http://csdprojects.co.uk/3DS/HomePass.php
+fi                                                 
+                                                   
+if [ ! -s HomePass.list ]; then                  
+  echo "MAC address list is missing or zero in length and we were unable to update it.  Try again later."
+  exit                                                
+fi
+
+LENGTH=$(wc -l &lt; HomePass.list)
+
+if [ -z "$WIFI" ]; then
+  echo Unable to identify the WiFi configuration for the attwifi network!
+  echo Please make sure you have created a Wifi network with the ssid attwifi before running this script.
+  exit
+fi
+
+# If no profile was manually specified then read it from uci
+if [ -z "$1" ]; then
+  I=$(uci get wireless.@wifi-iface[$((WIFI))].profile)
+  # If there is no uci entry then we start from scratch
+  if [ -z "$I" ]; then
+    I=1
+  else
+    I=$((I+1))
+  fi
+  # If we went over the last profile we reset back to $MIN
+  if [ $I -gt $LENGTH ]; then
+    I=1
+  fi
+else
+  I=$1
+fi
+# Read MAC address number $I from the list
+MAC=$(sed -n $((I))p HomePass.list)
+# Make sure we actually got a MAC address from the list
+if [ -n "$MAC" ]; then
+  echo Setting profile $I, $MAC, $DATE
+  # Write profile changes to a log file
+  if [ -n "$LOG" ]; then                  
+    echo Setting profile $I, $MAC, $DATE &gt;&gt; $LOG          
+  fi                                                      
+  # Save a custom config called profile so that we know where we are in the list next time
+  uci set wireless.@wifi-iface[$((WIFI))].profile=$I
+  # Save the new MAC address
+  uci set wireless.@wifi-iface[$((WIFI))].macaddr=$MAC
+  # Restart the WiFi
+  wifi 2&gt;1 &gt;/dev/null
+else
+  echo "We had a problem reading the MAC address from the list, aborting."
+fi
+
+</pre>
+</noscript><ul class="simple">
+<li>Source : <a class="reference external" href="https://gist.github.com/masterdje/7031189">https://gist.github.com/masterdje/7031189</a></li>
+</ul>
+</div>
+    
+    <ul class="pager">
+        <li class="previous">
+            <a href="boite-a-outils-scripts-vbs.html">← Billet précédent</a>
+        </li>
+        <li class="next">
+            <a href="cheatsheet-recherche-gmail.html">Billet suivant →</a>
+        </li>
+    </ul>
+
+        
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        var disqus_shortname ="wibfi";
+            var disqus_url="http://wibfi.virtua-peanuts.net/posts/automatisation-du-hack-3ds-streetpass-sur-openwrt.html";
+        var disqus_title="Automatisation du hack 3DS StreetPass sur OpenWRT";
+        var disqus_identifier="cache/posts/automatisation-du-hack-3ds-streetpass-sur-openwrt.html";
+        var disqus_config = function () {
+            this.language = "fr";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    
+
+    </div>
+
+        </div>
+        <!--End of body content-->
+
+        <footer>
+            2013         <a href="mailto:wibfi@virtua-peanuts.net">Dje</a> mais c'est <a href="http://getnikola.com">Nikola</a> qui bosse.        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/fr/"><img title="TL;DR" alt="Licence Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/3.0/fr/88x31.png"></a> - <a href="http://www.xiti.com/xiti.asp?s=538203" title="WebAnalytics" target="_top">
+<script type="text/javascript">
+<!--
+Xt_param = 's=538203&p=index';
+try {Xt_r = top.document.referrer;}
+catch(e) {Xt_r = document.referrer; }
+Xt_h = new Date();
+Xt_i = '<img width="80" height="15" border="0" alt="" ';
+Xt_i += 'src="http://logv4.xiti.com/g.xiti?'+Xt_param;
+Xt_i += '&hl='+Xt_h.getHours()+'x'+Xt_h.getMinutes()+'x'+Xt_h.getSeconds();
+if(parseFloat(navigator.appVersion)>=4)
+{Xt_s=screen;Xt_i+='&r='+Xt_s.width+'x'+Xt_s.height+'x'+Xt_s.pixelDepth+'x'+Xt_s.colorDepth;}
+document.write(Xt_i+'&ref='+Xt_r.replace(/[<>"]/g, '').replace(/&/g, '$')+'" title="Internet Audience">');
+//-->
+</script>
+<noscript>
+<img width="80" height="15" src="http://logv4.xiti.com/g.xiti?s=538203&amp;p=index" alt="WebAnalytics">
+</noscript></a>
+        </footer>
+    </div>
+</div>
+
+
+            <script src="../assets/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+            <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../assets/js/jquery.colorbox-min.js" type="text/javascript"></script>
+
+
+	
+
+    <script type="text/javascript">jQuery("a.image-reference").colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script>
+    
+
+</body>
+</html>

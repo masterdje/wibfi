@@ -1,0 +1,335 @@
+.. link: 
+.. description: 
+.. tags: vbs, wmi
+.. date: 2013/10/17 14:59:43
+.. title: Boite à outils - scripts VBS
+.. slug: boite-a-outils-scripts-vbs
+.. tribe: vbs
+
+
+   
+.. class:: alert alert-info
+
+Collection de vieux scripts vbs fonctionnels, au cas où ...
+
+
+.. TEASER_END
+
+LECTURE d'un fichier
+--------------------
+
+.. code:: vb.net
+	
+	'déclaration file system object Dim fso
+
+	'instanciation 
+	Set FSO = CreateObject("Scripting.FileSystemObject")
+
+	'on instance le fichier texte 
+	Set Ftxt = FSO.OpenTextFile("Monchemin")
+
+	'on parcourt chaque ligne du fichier texte 
+	Do While Not Ftxt.AtEndOfStream 
+		MaVariable = Ftxt.Readline 
+		'...;- votre code ici pour traiter chaque ligne 
+	Loop
+	Ftxt.Close
+
+
+ECRITURE dans un fichier
+------------------------
+
+.. code:: vb.net
+
+	'déclaration file system object 
+	Dim fso
+
+	'instanciation 
+	Set FSO = CreateObject("Scripting.FileSystemObject")
+
+	'on instance le fichier texte dans lequel on veut ecrire 
+	Set Ftxt = FSO.createTextFile("Monchemin",true) 'true=ecrase
+
+	'On ecrit ce que l'on veut dans le fichier 
+	Ftxt.writeline ("Mon texte à écrire ou ma Variable texte")
+
+	Ftxt.Close
+
+
+DEPLACER un fichier
+-------------------
+
+.. code:: vb.net
+
+	'déclaration file system object 
+	Dim fso
+
+	'instanciation 
+	Set FSO = CreateObject("Scripting.FileSystemObject")
+
+	'Déplacement du fichier 
+	Set Ftxt = fso.GetFile("moncheminsource") 
+	'Fichier origine 
+	Ftxt.move("monchemindestination") 'emplacement destination
+
+
+COPIER un fichier
+--------------------
+
+.. code:: vb.net
+
+	'déclaration file system object 
+	Dim fso
+
+	'instanciation 
+	Set FSO = CreateObject("Scripting.FileSystemObject")
+
+	'Copie du fichier 
+	Set Ftxt = fso.GetFile("moncheminsource") 
+	'Fichier origine 
+	Ftxt.copy("monchemindestination") 'emplacement destination
+
+
+SUPPRIMER un fichier
+--------------------
+
+.. code:: vb.net
+
+	'déclaration file system object Dim fso
+
+	'instanciation 
+	Set FSO = CreateObject("Scripting.FileSystemObject")
+
+	'Suppression du fichier 
+	Set Ftxt = fso.GetFile("moncheminsource") 
+	'Fichier origine 
+	Ftxt.delete
+
+
+LISTER les fichiers d'un dossier
+--------------------------------
+
+.. code:: vb.net
+
+  Const ctePourLecture = 1
+  Const ctePourEcrire = 2
+  Const ctePourAjouter = 8
+
+  Dim objFSO, objDossier, objFichier, objResultat
+  Dim Repertoire, NomFichierTxt
+
+  On Error Resume Next
+
+  Repertoire = "\\MONSERVEUR\scripts"
+  NomFichierTxt = "Resultat.txt"
+  Set objFSO = CreateObject("Scripting.FileSystemObject")
+  Set objDossier = objFSO.GetFolder(Repertoire)
+  Set objResultat = objFSO.CreateTextFile(("c:" & "\" & NomFichierTxt),ctePourEcrire)
+
+
+  If (objDossier.Files.Count > 0) Then
+     For Each objFichier In objDossier.Files
+        If (InStr(1, objFichier.Name, ".bat", 1) > 0) Then
+            objResultat.WriteLine objFichier.Name
+        End If
+     Next
+   End If
+
+  objResultat.Close
+  Set objResultat = Nothing
+  Set objDossier = Nothing
+  Set objFSO = Nothing
+
+
+LISTER les sous-dossiers d'un dossier
+-------------------------------------
+
+.. code:: vb.net
+
+	Set objFSO = CreateObject("Scripting.FileSystemObject")
+	Set objFolder = objFSO.GetFolder("c:\windows")
+	Set colSubfolders = objFolder.Subfolders
+	For Each objSubfolder in colSubfolders
+		msgbox objSubfolder.name
+	next
+
+
+CONCATENATION de fichiers d'un dossier
+--------------------------------------
+
+.. code:: vb.net
+
+	On error resume next
+	Dim fso,f,fd,txt,Dest
+	Const ForAppending=8, ForReading=1 
+
+	critere = "BAT" 'à mettre en majuscules, pour éviter les erreurs
+	dossier_cible ="\\MONSERVEUR\scripts"
+	fic_cible= "C:\resultats.txt"
+  
+	Set fso = CreateObject("Scripting.FileSystemObject")
+	set fd=fso.GetFolder(dossier_cible)
+	Set Dest=fso.OpenTextFile(fic_cible,ForAppending,true)
+
+    for each f in fd.files
+	If Ucase(Mid(f.Name,len(f.name)-2,3))=critere Then 
+ 
+	Set fic=fso.OpenTextFile(fd & "\" & f.Name,ForReading)
+       txt=fic.ReadAll
+		fic.close    
+		Dest.Write f.name & txt & vbcrlf 'afficher le nom du fichier & son contenu
+		'Dest.Write txt 'afficher seulement le contenu du fichier
+	End if
+	next
+	Dest.Close
+
+
+LECTURE d'un fichier CSV
+------------------------
+
+.. code:: vb.net
+
+	Set FSO = CreateObject("Scripting.FileSystemObject")
+	Set Ftxt = FSO.OpenTextFile("liste.csv")
+
+	Do While Not Ftxt.AtEndOfStream 
+	MaVariable = Ftxt.Readline 
+
+	For Each strItem In CSVParse(mavariable)
+	'    wscript.Echo strItem ' affiche le contenu du fichier csv, champs apres champs ...
+	'... inserer le code ici
+	Next
+	Loop
+	Ftxt.Close
+
+	Function CSVParse(ByVal strLine)
+		Dim arrFields
+		Dim blnIgnore
+		Dim intFieldCount
+		Dim intCursor
+		Dim intStart
+		Dim strChar
+		Dim strValue
+
+		Const QUOTE = """"
+		Const QUOTE2 = """"""
+
+		If (Len(Trim(strLine)) = 0) then
+			CSVParse = Array()
+			Exit Function
+		End If
+		blnIgnore = False
+		intFieldCount = 0
+		intStart = 1
+		arrFields = Array()
+		strLine = strLine & ","
+    
+		For intCursor = 1 To Len(strLine)
+       
+        strChar = Mid(strLine, intCursor, 1)
+        Select Case strChar
+            Case QUOTE
+             
+                blnIgnore = Not blnIgnore
+            Case ","
+                If Not blnIgnore Then
+                  
+                    ReDim Preserve arrFields(intFieldCount)
+                  
+                    If (intCursor - intStart > 0) Then
+                     
+                        strValue = Mid(strLine, intStart, _
+                            intCursor - intStart)
+                      
+                        If (Left(strValue, 1) = QUOTE) Then
+                            arrFields(intFieldCount) = _
+                                Replace(Mid(strValue, 2, _
+                                Len(strValue) - 2), QUOTE2, QUOTE)
+                        Else
+                            arrFields(intFieldCount) = strValue
+                        End If
+                    Else
+                        arrFields(intFieldCount) = Empty
+                    End If
+                
+                    intFieldCount = intFieldCount + 1
+                    intStart = intCursor + 1
+                End If
+
+			Case ";"
+                If Not blnIgnore Then
+                  
+                    ReDim Preserve arrFields(intFieldCount)
+                  
+                    If (intCursor - intStart > 0) Then
+                     
+                        strValue = Mid(strLine, intStart, _
+                            intCursor - intStart)
+                      
+                        If (Left(strValue, 1) = QUOTE) Then
+                            arrFields(intFieldCount) = _
+                                Replace(Mid(strValue, 2, _
+                                Len(strValue) - 2), QUOTE2, QUOTE)
+                        Else
+                            arrFields(intFieldCount) = strValue
+                        End If
+                    Else
+                        arrFields(intFieldCount) = Empty
+                    End If
+                
+                    intFieldCount = intFieldCount + 1
+                    intStart = intCursor + 1
+                End If
+
+			End Select
+		Next
+  
+		CSVParse = arrFields
+	End Function
+
+
+Liste des lecteurs réseau montés (méthode WMI)
+----------------------------------------------
+
+.. code:: vb.net
+
+	strComputer = "."
+	set objWMI = GetObject("winmgmts:\\" & strComputer & "\root\cimv2")
+	set colDrives = objWMI.ExecQuery("select * from Win32_MappedLogicalDisk")
+
+	for each objDrive in colDrives
+	WScript.Echo "ID: " & objDrive.DeviceID & vbcrlf & _
+				"Nom: " & objDrive.VolumeName & vbcrlf & _
+			"Taille: " & round(objDrive.Size / (1024*1024*1024),1) & " Go"
+	next
+
+
+Liste des lecteurs réseau montés (méthode native wsh)
+-----------------------------------------------------
+
+.. code:: vb.net
+
+	Set objNetwork = WScript.CreateObject("WScript.Network")
+	Set colDrives = objNetwork.EnumNetworkDrives
+	For i = 0 to colDrives.Count-1 Step 2
+		Wscript.Echo colDrives.Item(i) &" - "& colDrives.Item (i + 1)
+	Next
+
+
+Mappage conditionnel d'un lecteur réseau
+----------------------------------------
+
+.. code:: vb.net
+
+	Dim WshShell, EnvVars, objNetwork, client
+	Set WshShell = WScript.CreateObject("WScript.Shell")
+	Set objNetwork = Wscript.CreateObject("WScript.Network")
+	Set colDrives = objNetwork.EnumNetworkDrives
+	trouve = 0
+	For i = 0 to colDrives.Count-1 step 2
+		if coldrives.item(i) ="I:" then trouve = 1
+	Next
+	if trouve <> 1 then objNetwork.MapNetworkDrive "I:", "\\MONSERVEUR\App_Dipp"
+
+
+* Ici on ne teste que si la lettre du lecteur est déjà affectée. 

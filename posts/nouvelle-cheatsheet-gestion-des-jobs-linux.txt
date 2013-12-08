@@ -1,0 +1,24 @@
+.. link: 
+.. description: 
+.. tags: vie-du-site, cheat-sheet, linux, tips
+.. date: 2013/11/19 21:56:02
+.. title: Nouvelle Cheatsheet : Gestion des jobs Linux
+.. slug: nouvelle-cheatsheet-gestion-des-jobs-linux
+.. tribe: favicon
+
+
+   
+.. class:: alert alert-info
+
+Se repérer dans la jungle des process au premier ou second plan ...
+
+Inauguration de la Cheat-Sheet `Linux : Gestion des jobs </stories/cheat-sheet-linux-gestion-des-jobs.html>`_ !
+
+.. TEASER_END
+
+Toujours au même endroit ...
+
+.. class: btn btn-lg more
+
+`Accéder aux Cheat-sheets </stories/cheatsheets.html>`_
+

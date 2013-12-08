@@ -1,0 +1,39 @@
+.. link: 
+.. description: 
+.. tags: linux, grep, tips, bash
+.. date: 2013/12/03 10:25:33
+.. title: Recherche d'un pattern dans une liste de fichiers avec Grep
+.. slug: recherche-dun-pattern-dans-une-liste-de-fichiers-avec-grep
+.. tribe: shell
+
+
+.. class:: alert alert-info
+
+Comme c'est malin *grep* ...
+
+
+
+Usage
+-----
+
+* Affiche le nom du fichier contenant le pattern cible (regex / texte)
+
+.. code:: bash
+	
+	grep -il "pattern" emplacement/des/fichiers/*
+	
+	#Exemple
+	
+	[dje@ORD ~]$ grep -l "winRM" mydev/wibfi/posts/*
+	mydev/wibfi/posts/lister-les-etendues-dhcp-en-powershell.txt
+	mydev/wibfi/posts/lister-les-ip-reservees-dun-scope-dhcp-en-powershell.txt
+
+
+.. TEASER_END
+
+A noter
+-------
+
+* **-il**  : rend la recherche insensible à la casse (maj/min)
+* Réduire le périmetre de recherche en spécifiant un wildcard moins générique que **\***
+	

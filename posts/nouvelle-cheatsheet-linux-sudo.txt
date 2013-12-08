@@ -1,0 +1,23 @@
+.. link: 
+.. description: 
+.. tags: vie-du-site, cheat-sheet, linux, tips
+.. date: 2013/12/06 12:05:49
+.. title: Nouvelle Cheatsheet Linux : Sudo
+.. slug: nouvelle-cheatsheet-linux-sudo
+.. tribe: favicon
+
+
+   
+.. class:: alert alert-info
+
+Le `super-pouvoir le plus simple à invoquer <http://xkcd.com/149/>`_ ...
+
+Inauguration de la Cheat-Sheet `Linux : Sudo </stories/cheatsheet-linux-sudo.html>`_ !
+
+.. TEASER_END
+
+Toujours au même endroit ...
+
+.. class: btn btn-lg more
+
+`Accéder aux Cheat-sheets </stories/cheatsheets.html>`_

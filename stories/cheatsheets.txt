@@ -1,0 +1,23 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2013/10/17 22:14:58
+.. title: CheatSheets
+.. slug: cheatsheets
+
+CheatSheets 
+-----------
+
+* `Format rst </stories/cheatsheet-format-rst.html>`_
+* `vi </stories/cheatsheet-vi.html>`_
+* `regex </stories/cheatsheet-regex.html>`_
+* `cron </stories/cheatsheet-cron.html>`_
+* `nikola </stories/cheatsheet-nikola.html>`_
+* `Recherche - Gmail </stories/cheatsheet-recherche-gmail.html>`_
+* `Codes d'erreur Gmail </stories/cheatsheet-codes-derreurs-gmail.html>`_
+* `OpenWrt </stories/cheatsheet-openwrt.html>`_
+* `Capture d'écran sur un smartphone android </stories/cheatsheet-capture-decran-android.html>`_
+* `Linux : Gestion des jobs </stories/cheat-sheet-linux-gestion-des-jobs.html>`_
+* `Linux : sudo </stories/cheatsheet-linux-sudo.html>`_
+* `Wine </stories/cheat-sheet-wine.html>`_
+

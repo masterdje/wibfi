@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (opds)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/opds.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Tue, 03 Dec 2013 16:02:37 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Calibre2Opds 3.3 beta corrige pas mal de bugs</title><link>http://wibfi.virtua-peanuts.net/posts/calibre2opds-33-beta-corrige-pas-mal-de-bugs.html</link><description>&lt;p class="alert alert-info"&gt;Toujours agréable de constater qu'un soft apprécié est bien maintenu par ses dev. qui turbinent ...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Bon gros changelog/bugfixes, dont le maudit bug "je te recopie pas les ficheirs en cas de re-génération" !&lt;/li&gt;
+&lt;li&gt;A noter :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+The changes since 3.2 are:
+- New: &lt;span class="c"&gt;#c2o-155: Allow Calibre Custom Column values to be displayed in Book Details
+&lt;/span&gt;- New: &lt;span class="c"&gt;#c2o-160: Allow Books to be on a different URL to the catalog
+&lt;/span&gt;- Fix: &lt;span class="c"&gt;#c2o-161: The "Language as Tag" value being inverted when saved
+&lt;/span&gt;- Fix: &lt;span class="c"&gt;#c20-163: If you do multiple generation runs without reloading calibre2opds the catalogs are not correctly generated.
+&lt;/span&gt;- New: &lt;span class="c"&gt;#c2o-164: Option to Publish only the generated catalog in Publish mode when Books URL specified
+&lt;/span&gt;- Fix: &lt;span class="c"&gt;#c2o-166: HTML Downloads not generated if OPDS catalog not being generated
+&lt;/span&gt;- Fix: &lt;span class="c"&gt;#c2o-167: Option to Save bandwidth no longer makes sense so remove it
+&lt;/span&gt;- New: &lt;span class="c"&gt;#c2o-168: Omit counts from internal links when Minimize Changed Files selected
+&lt;/span&gt;- New: &lt;span class="c"&gt;#c2o-169: Option to exclude tags from cross-reference links
+&lt;/span&gt;- New: &lt;span class="c"&gt;#c2o-170: Provide direct links from a list of books to the related authors in HTML catalogs
+&lt;/span&gt;- Fix: &lt;span class="c"&gt;#c2o-171: Publication date does not show up in the book details page&lt;/span&gt;
+&lt;/pre&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;dispo en version &lt;em&gt;allplatform&lt;/em&gt; &lt;em&gt;.zip&lt;/em&gt; chez la page officielle &lt;a class="reference external" href="http://code.google.com/p/calibre2opds/downloads/list"&gt;http://code.google.com/p/calibre2opds/downloads/list&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><category>calibre</category><category>opds</category><category>ebook</category><category>bugfix</category><guid>http://wibfi.virtua-peanuts.net/posts/calibre2opds-33-beta-corrige-pas-mal-de-bugs.html</guid><pubDate>Sat, 02 Nov 2013 21:38:05 GMT</pubDate></item><item><title>Bibliothèque portable avec Calibre2opds en 5 minutes</title><link>http://wibfi.virtua-peanuts.net/posts/bibliotheque-portable-avec-calibre2opds-en-5-minutes.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Un générateur de web statique &lt;em&gt;mais costaud&lt;/em&gt; à partir d'une bibiothèque Calibre...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Départ en vacances, pc+calibre Off, Box adsl toujours up avec son port usb vide qui traine... hop hop hop idée !&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Télécharger la version de Calibre2Opds actuelle &lt;strong&gt;V3.2&lt;/strong&gt; ici : &lt;a class="reference external" href="http://calibre2opds.com/downloads/"&gt;http://calibre2opds.com/downloads/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/bibliotheque-portable-avec-calibre2opds-en-5-minutes.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>calibre</category><category>ebook</category><category>opds</category><category>java</category><guid>http://wibfi.virtua-peanuts.net/posts/bibliotheque-portable-avec-calibre2opds-en-5-minutes.html</guid><pubDate>Mon, 28 Oct 2013 20:17:19 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,97 @@
+<p class="alert alert-info">Pour le fun, j'ai voulu me monter une base des codes erreurs gmail...</p>
+<ul class="simple">
+<li>Et pour les avoir quelque part à dispo, aussi...</li>
+</ul>
+<div class="section" id="d-abord">
+<h2>D'abord</h2>
+<ul class="simple">
+<li>Sur le site de gmail, les pages d'erreurs sont numérotées et nommées selon le code erreur, donc les récupérer n'est pas compliqué</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="k">for </span>i in <span class="o">{</span>1..10000<span class="o">}</span>;
+<span class="k">do
+</span>wget https://support.google.com/mail/answer/<span class="nv">$i</span>  ;
+<span class="k">done</span>
+</pre>
+<ul class="simple">
+<li>On se retrouve avec +- 68 fichiers nommés XXXX (&lt;= code erreur)</li>
+</ul>
+<!-- TEASER_END -->
+</div>
+<div class="section" id="ensuite">
+<h2>Ensuite</h2>
+<ul class="simple">
+<li>Chance, la structure est identique dans chaque fichier. une étude rapide monte qu'il nous faut le contenu du <em>h1</em> et du div <em>suivant</em></li>
+<li>Création du fichier du contenu des articles :</li>
+</ul>
+<pre class="code python literal-block">
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s">'r'</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">=</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&lt;li&gt;&lt;strong&gt;Erreur: &lt;a name='{}'&gt;{}&lt;/a&gt;&lt;/strong&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">soup</span><span class="o">.</span><span class="n">h1</span><span class="p">))</span>
+<span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">'.main-section--answer'</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span><span class="s">'</span><span class="se">\n\t</span><span class="s">'</span><span class="p">))</span>
+<span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&lt;/li&gt;&quot;</span><span class="p">)</span>
+</pre>
+<ul class="simple">
+<li>Regex peu fonctionnelle du fait des div imbriqués, donc solution script vim , sed, ou awk testées et abandonnées.</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="c">#avec sed
+</span>cat 9377 | sed -e <span class="s1">'s/&lt;\/h1&gt;/&lt;\/h1&gt;\n/g'</span> | sed -n -e <span class="s1">'s/.*&lt;h1&gt;\(.*\)&lt;\/h1&gt;.*/\1/p'</span>
+<span class="c">#avec vim
+</span>vim +<span class="s2">&quot;argdo 4,5d | 1,2d | %s/.*&lt;h1&gt;/&lt;h1&gt;/g | %s/&lt;\/div&gt;.*/&lt;\/div&gt;/g | w | q&quot;</span> 9377
+<span class="c">#avec awk
+</span>awk <span class="s1">'/h1/{gsub(/.*&lt;h1&gt;/,&quot;&lt;h1&gt;&quot;);gsub(/&lt;\/div&gt;.*/,&quot;&lt;/div&gt;&quot;);print $0}'</span> 9377
+</pre>
+<ul class="simple">
+<li>Création du fichier contenant les articles expurgés</li>
+</ul>
+<pre class="code python literal-block">
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s">'r'</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">=</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&lt;li&gt;&lt;strong&gt;Erreur: &lt;a name='{}'&gt;{}&lt;/a&gt;&lt;/strong&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">soup</span><span class="o">.</span><span class="n">h1</span><span class="p">))</span>
+<span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">'.main-section--answer'</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span><span class="s">'</span><span class="se">\n\t</span><span class="s">'</span><span class="p">))</span>
+<span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&lt;/li&gt;&quot;</span><span class="p">)</span>
+</pre>
+<ul class="simple">
+<li>Création du fichier d'indéxation des articles :</li>
+</ul>
+<pre class="code python literal-block">
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s">'r'</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">=</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="k">print</span> <span class="p">(</span><span class="s">&quot;</span><span class="se">\t</span><span class="s">&lt;li&gt;&lt;strong&gt;&lt;a href='#{}'&gt;{} - {}&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">soup</span><span class="o">.</span><span class="n">h1</span><span class="o">.</span><span class="n">string</span><span class="p">))</span>
+</pre>
+<ul class="simple">
+<li>Exécution des scripts :</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="k">for </span>i in *;
+<span class="k">do </span><span class="nb">echo</span> <span class="nv">$i</span>;
+python gmail.py <span class="nv">$i</span> &gt;&gt; ../all.html;
+python .gmail-index.py <span class="nv">$i</span> &gt;&gt; ../all-index.html ;
+<span class="k">done</span>
+</pre>
+<ul class="simple">
+<li>Concaténation des fichiers</li>
+</ul>
+<pre class="code bash literal-block">
+cat wibfi/stories/cheatsheet-codes-derreurs-gmail.txt all-index.html all.html &gt; cheatsheet-codes-derreurs-gmail.txt
+</pre>
+<ul class="simple">
+<li><ul class="first">
+<li>Nettoyage des lignes vides</li>
+</ul>
+</li>
+<li>Gros coup de chapeau au <a class="reference external" href="http://www.nemocorp.info">maitre des regex</a> encore une fois plein de ressources...</li>
+</ul>
+</div>

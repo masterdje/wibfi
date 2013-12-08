@@ -1,0 +1,35 @@
+.. link: 
+.. description: 
+.. tags: ImageMagick, tips, image, bash
+.. date: 2013/09/17 22:16:16
+.. title: ImageMagick Trick 03
+.. slug: imagemagick-trick-03
+.. tribe: draw
+
+
+   
+   
+.. class:: alert alert-info
+
+Mes icônes sont affreuses, certes, de plus leur bordure est bien trop épaisse ... voila une mission pour la fonction **CROP**
+
+
+
+.. code:: bash
+	
+	for i in * ;do convert $i -gravity center -crop 56x56+0+0 -resize 48x48 mini-$i; done
+
+
+.. TEASER_END
+	
+	
+.. admonition:: **A noter:**
+
+	:-gravity: Indique que les valeurs de la zone à conserver sont mesurées à partir du centre de l'image
+	:-crop:	Indique la taille de la zone à conserver  
+	:-resize: On se refuse rien, on redimensionne aussi, tant qu'à y être.
+
+
+.. class:: alert alert-warning
+
+Attention, sans la combinaison avec **resize**, il faut veiller à rajouter **+repage** pour que la nouvelle image soit de la bonne taille et non entourée de "vide"

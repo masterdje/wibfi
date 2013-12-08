@@ -1,0 +1,41 @@
+.. link: 
+.. description: 
+.. tags: powershell, dhcp
+.. date: 2013/10/14 22:50:22
+.. title: Lister les étendues DHCP en Powershell
+.. slug: lister-les-etendues-dhcp-en-powershell
+.. tribe: powershell
+
+
+   
+.. class:: alert alert-info
+
+Mini script de liste des étendues d'un serveur DHCP distant
+
+* Il faut bien sur qu' *invoke-command* soit autorisé sur le serveur distant  Go go go *winRM* ...
+
+.. TEASER_END
+
+Code
+----
+
+.. code:: powershell
+
+	$scope = $args[0]
+	$a = Invoke-Command -ComputerName fqdn-du-serveur -scriptblock{netsh dhcp server XXX.XXX.XXX.XXX show scope}
+	$tabl= $a[7..($a.length-6)]
+	$ip = New-Object System.Collections.ArrayList
+	foreach($a in $tabl) {$ip.add( $a.trim().split("-")[0].trimend()) > $null }
+	$ip.sort()
+	$ip
+
+Usage
+-----
+
+* A copier dans un fichier *.ps1*
+
+
+Infos
+-----
+
+* Juste un wrap de **netsh** et un trim/split qui va bien derrière pour garder l'essentiel

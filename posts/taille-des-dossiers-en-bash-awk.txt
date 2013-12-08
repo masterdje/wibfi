@@ -1,0 +1,49 @@
+.. link: 
+.. description: 
+.. tags: bash, awk, tips
+.. date: 2013/10/15 16:49:11
+.. title: Taille des dossiers en bash / awk
+.. slug: taille-des-dossiers-en-bash-awk
+.. tribe: shell
+
+ 
+.. class:: alert alert-info
+
+Mini script trouvé quelque part et bien utile, affichage **du** amélioré via moulinette *awk*
+
+* Ajusté à mes besoins ...
+
+.. TEASER_END
+
+Code:
+-----
+
+.. code:: bash
+
+	#/bin/sh
+	du --max-depth=1 $1 | sort -n | awk '
+     BEGIN {
+        split("Ko,Mo,Go,To,Po", Unites, ",");
+     }
+     {
+        c = 1;
+        while ($1 >= 1024) {
+           $1 = $1 / 1024;
+           c += 1
+        }
+        $1 = sprintf("%.1f %s", $1, Unites[c]);
+        print $0;
+     }
+    '
+
+Usage:
+------
+    
+* chmod qui va bien et feu !
+	
+	sudo chmod a+x [fichier.sh]
+	
+* Exécution	
+
+	./[fichier.sh] /mon/emplacement/
+	

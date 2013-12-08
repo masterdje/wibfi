@@ -1,0 +1,26 @@
+.. link: 
+.. description: 
+.. tags: bash, shell, linux, tips
+.. date: 2013/11/13 22:37:02
+.. title: Compter les fichiers en bash
+.. slug: compter-les-fichiers-en-bash
+.. tribe: shell
+
+.. class:: alert alert-info
+
+Voila pourquoi j'ai commencé à noter tout ça, pour avoir un endroit où laisser ce genre d'info que j'oublie à la seconde où je m'en sers plus...
+
+Code
+----
+
+.. code:: bash
+
+	#commande :
+	ls -1 | wc -l
+	
+	#exemple:
+	[dje@pc01]$ ls -1 posts | wc -l
+	61
+
+
+* Clair et élégant, et je peux encore `laisser le champ' au frais <http://www.nemocorp.info/posts/il-est-la.html>`_ , moi ...

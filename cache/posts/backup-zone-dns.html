@@ -1,0 +1,20 @@
+<p class="alert alert-info">Micro script destiné à sauver frequement ( <em>task</em>) une zone DNS depuis 2 serveurs, en vue de comparaison ultérieure (si besoin) ou de re-importation (si besoin)</p>
+<ul class="simple">
+<li>Windows 2008 R2 / <strong>Tasks</strong> est ton ami pour la mise en oeuvre.</li>
+</ul>
+<!-- TEASER_END -->
+<pre class="code powershell literal-block">
+<span class="nv">$date</span> <span class="p">=</span> <span class="nb">get-date</span>
+<span class="nv">$vardate</span> <span class="p">=</span><span class="nv">$date</span><span class="p">.</span><span class="n">year</span><span class="p">.</span><span class="n">tostring</span><span class="p">()</span> <span class="p">+</span><span class="s2">&quot;-&quot;</span> <span class="p">+</span> <span class="nv">$date</span><span class="p">.</span><span class="n">month</span><span class="p">.</span><span class="n">tostring</span><span class="p">()</span> <span class="p">+</span> <span class="s2">&quot;-&quot;</span> <span class="p">+</span> <span class="nv">$date</span><span class="p">.</span><span class="n">day</span><span class="p">.</span><span class="n">tostring</span><span class="p">()</span>
+<span class="c">#[remplacer les noms de serveurs !]</span>
+<span class="n">rm</span> <span class="p">\\</span><span class="n">serveur01</span><span class="p">\</span><span class="n">c</span><span class="p">$\</span><span class="n">windows</span><span class="p">\</span><span class="n">system32</span><span class="p">\</span><span class="n">dns</span><span class="p">\</span><span class="nb">export-dns</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">dnscmd</span> <span class="n">serveur01</span> <span class="p">/</span><span class="n">zoneexport</span> <span class="n">zonedns</span><span class="p">.</span><span class="n">priv</span> <span class="nb">export-dns</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">cp</span> <span class="p">\\</span><span class="n">serveur01</span><span class="p">\</span><span class="n">c</span><span class="p">$\</span><span class="n">windows</span><span class="p">\</span><span class="n">system32</span><span class="p">\</span><span class="n">dns</span><span class="p">\</span><span class="nb">export-dns</span><span class="p">.</span><span class="n">txt</span> <span class="n">c</span><span class="err">:</span><span class="p">\</span><span class="n">diag</span><span class="p">\</span><span class="n">Diag-dns</span><span class="p">\</span><span class="nv">$vardate</span><span class="n">-serveur01</span><span class="p">.</span><span class="n">txt</span>
+
+<span class="n">rm</span> <span class="p">\\</span><span class="n">serveur02</span><span class="p">\</span><span class="n">c</span><span class="p">$\</span><span class="n">windows</span><span class="p">\</span><span class="n">system32</span><span class="p">\</span><span class="n">dns</span><span class="p">\</span><span class="nb">export-dns</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">dnscmd</span> <span class="n">serveur02</span> <span class="p">/</span><span class="n">zoneexport</span> <span class="n">cg31</span><span class="p">.</span><span class="n">priv</span> <span class="nb">export-dns</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">cp</span> <span class="p">\\</span><span class="n">serveur02</span><span class="p">\</span><span class="n">c</span><span class="p">$\</span><span class="n">windows</span><span class="p">\</span><span class="n">system32</span><span class="p">\</span><span class="n">dns</span><span class="p">\</span><span class="nb">export-dns</span><span class="p">.</span><span class="n">txt</span> <span class="n">c</span><span class="err">:</span><span class="p">\</span><span class="n">diag</span><span class="p">\</span><span class="n">Diag-dns</span><span class="p">\</span><span class="nv">$vardate</span><span class="n">-serveur02</span><span class="p">.</span><span class="n">txt</span>
+</pre>
+<ul class="simple">
+<li><strong>Dnscmd</strong> doit donc être présent sur le serveur d'éxécution du script,sinon, <em>invoke-command</em> !</li>
+</ul>

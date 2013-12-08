@@ -1,0 +1,77 @@
+.. link: 
+.. description: 
+.. tags: powershell
+.. date: 2013/12/02 12:25:39
+.. title: Variables d'environnement en powershell
+.. slug: variables-denvironnement-en-powershell
+.. tribe: powershell
+
+.. role:: red
+
+   
+.. class:: alert alert-info
+
+Les variables d'environnement c'est pain béni pour les scripts bricolés ...
+
+
+* Encore une fois, $env :red:`.` [nomdelavariable] ça n'aurait pas été plus logique ?
+
+Code
+----
+
+.. code:: powershell
+
+	# Avec l'accès au magasin de données 'env' :
+	get-item env:
+
+.. TEASER_END
+
+.. code:: powershell
+		
+	Name                           Value
+	----                           -----
+	Path                           C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\ESM;C:\ESM\AlertMan\Progra...
+	TEMP                           C:\DOCUME~1\user\LOCALS~1\Temp\1
+	SESSIONNAME                    RDP-Tcp#1
+	PATHEXT                        .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.PSC1
+	USERDOMAIN                     CG
+	PROCESSOR_ARCHITECTURE         x86
+	SystemDrive                    C:
+	APPDATA                        C:\Documents and Settings\user\Application Data
+	windir                         C:\WINDOWS
+	ESMDIR                         C:\ESM
+	TMP                            C:\DOCUME~1\user\LOCALS~1\Temp\1
+	UATDATA                        C:\WINDOWS\system32\CCM\UATData\D9F5-CAB8-491d-B8AC-179A1FE1BE77
+	USERPROFILE                    C:\Documents and Settings\user
+	ProgramFiles                   C:\Program Files
+	FP_NO_HOST_CHECK               NO
+	HOMEPATH                       \Documents and Settings\user
+	COMPUTERNAME                   SERVER01
+	USERNAME                       moi
+	NUMBER_OF_PROCESSORS           4
+	PROCESSOR_IDENTIFIER           x86 Family 15 Model 4 Stepping 1, GenuineIntel
+	ClusterLog                     C:\WINDOWS\Cluster\cluster.log
+	SystemRoot                     C:\WINDOWS
+	ComSpec                        C:\WINDOWS\system32\cmd.exe
+	LOGONSERVER                    \\HD-AD03
+	CommonProgramFiles             C:\Program Files\Fichiers communs
+	PROCESSOR_LEVEL                15
+	PROCESSOR_REVISION             0401
+	CLIENTNAME                     CP1320
+	PSModulePath                   C:\Documents and Settings\user\Mes documents\WindowsPowerShell\Modules;C:\WINDOW...
+	ALLUSERSPROFILE                C:\Documents and Settings\All Users
+	OS                             Windows_NT
+	USERDNSDOMAIN                  MONDOMAINE
+	HOMEDRIVE                      C:
+	
+
+Usage
+-----
+
+* Utilisation d'une valeur : *$env* :red:`:` *nomdelavariable*
+
+.. code:: powershell
+	
+	$env:os
+	Windows_NT
+	

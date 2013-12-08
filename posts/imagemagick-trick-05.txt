@@ -1,0 +1,42 @@
+.. link: 
+.. description: 
+.. tags: ImageMagick, tips, image, bash
+.. date: 2013/09/18 21:59:02
+.. title: ImageMagick Trick 05
+.. slug: imagemagick-trick-05
+.. tribe: draw
+
+
+   
+.. class:: alert alert-info
+
+Ces icônes sont pas terribles, et c'est tout ma faute. Cela dit, je peux peut-être arranger cette bordure hideuse.
+
+
+Pour ce faire, il faut un peu monter dans les tours avec ImageMagick, et jouer sur le `découpage <imagemagick-trick-03.html>`_, le `redimensionnement <imagemagick-trick-01.html>`_, et les notions de couches...
+
+
+.. code:: bash
+
+	for i in *; do convert \( $i -gravity center -crop 48x48+0+0 \) -repage +8+8  \( +clone -background black -shadow 60x2+2+2 \)  \( carbon3.jpg -gravity center -crop 64x64+0+0 +repage \)  -reverse -layers merge -resize 48x48 mini-$i; done
+
+
+.. TEASER_END
+
+
+.. admonition:: **A noter:**
+
+	:\\( . . .\\): Indication de groupement de commandes
+	:-repage +8+8: positionne l'image à +8x +8y (le coin sup gauche est 0x0y)
+	:+clone: Petit effet d'ombrage à base de clone de l'image dont on veut l'ombre
+	:-shadow 60x2+2+2: c'est à dire 60% d'opacité , 2px d'effet flou, 2px de décallage en X, 2px de décallage en Y 
+	:carbon etc: mon image de fond, *cropée* à 64x64 à partir du centre
+	:-reverse: la magie noire d'ImageMagick, oblige convert à inverser l'ordre des couches créées précédemment, et ça tombe bien pour nous
+	:-layers merge: force un rendu "à plat" de l'image.
+	:-resize 48x48: redimensionne l'image finale à 48x48 pixels.
+
+
+Le tout à la sauce `batch <imagemagick-trick-02.html>`_ ...
+
+
+	

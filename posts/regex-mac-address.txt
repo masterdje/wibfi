@@ -1,0 +1,42 @@
+.. link: 
+.. description: 
+.. tags: linux, tips
+.. date: 2013/10/03 16:37:57
+.. title: Regex : Mac-Address
+.. slug: regex-mac-address
+.. tribe: shell
+
+
+   
+.. class:: alert alert-info
+
+Simple et belle regex sur un pattern d'adresse MAC
+
+
+* Découpage en 6 couples de caractères alpha  délimités par **:** , **-** ,  **;** ,  **#**
+* Revue et corrigée par un `Expert ès regex <http://www.nemocorp.info>`_ , gloire à lui !
+
+.. code:: bash
+	
+	[flux entrant] |egrep  '([0-9A-Fa-f]{2}[-:;#]{1}){5}([0-9A-Fa-f]{2})'
+
+.. TEASER_END
+
+Par exemple :
+
+.. code:: bash
+
+	[dje@ORD13 ~]$ mac="00:aa:00:aa:09:ff"
+	[dje@ORD13 ~]$ echo  $mac |egrep  '([0-9A-Fa-f]{2}[-:;#]{1}){5}([0-9A-Fa-f]{2})'
+
+Retourne la mac :00:aa:00:aa:09:ff
+
+.. code:: bash
+	
+	[dje@ORD13 ~]$ mac="00:aa:00:aa:09:GG"
+	[dje@ORD13 ~]$ echo  $mac |egrep  '([0-9A-Fa-f]{2}[-:;#]{1}){5}([0-9A-Fa-f]{2})'
+
+Retourne *rien*
+	
+
+

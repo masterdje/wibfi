@@ -1,0 +1,38 @@
+.. link: 
+.. description: 
+.. tags: android, sauvegarde
+.. date: 2013/11/13 22:10:07
+.. title: Sauvegarde  d'un dossier local avec BTsync
+.. slug: sauvegarde-dun-dossier-local-avec-btsync
+.. tribe: android
+
+.. class:: alert alert-info
+
+Aie aie aie, J'ai parlé de sauvegarde, c'était de la synchro ! Gross malheur !
+
+* Je me suis mis dedans dans cet article : `<solution-de-sauvegarde-distante-avec-titanium-backup-btsync.html>`_ , dans lequel je décris la méthode pour que **Btsync** fonctionne en mode **synchro** de dossier.
+
+D'abord
+-------
+
+* La synchro c'est une sauvegarde bilatérale, et potentiellement dangereuse en cas de fausse manip sur un des membres !
+* La sauvegarde c'est unilatéral, du coup plus adapté à ... la sauvegarde !
+
+Ensuite
+-------
+
+*Configurer un dossier de sauvegarde c'est très simple :*
+
+* Depuis le téléphone / tablette Android : 
+* Exécuter **BTsync**
+* Onglet *Sauvegarde*
+* Rajouter un dossier local (sélection via l'icône) du genre */photos* , etc ...
+* *BTsync* va générer un **code**, que l'on peut noter ou s'envoyer par mail. malin.
+
+.. TEASER_END
+
+Enfin
+-----
+
+* Ce code doit être entré sur le PC réceptable de la sauvegarde via 'ajout de dossier / saisir code' depuis l'interface web locale `<127.0.0.1:8888>`_
+* Une fois validé coté PC, la sauvegarde se lancera automatiquement lorsque la liaison wifi sera effective entre les machines.

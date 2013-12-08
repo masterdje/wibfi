@@ -1,0 +1,67 @@
+.. link: 
+.. description: 
+.. tags: calibre, ebook, opds, java
+.. date: 2013/10/28 21:17:19
+.. title: Bibliothèque portable avec Calibre2opds en 5 minutes
+.. slug: bibliotheque-portable-avec-calibre2opds-en-5-minutes
+.. tribe: ebook
+
+
+   
+.. class:: alert alert-info
+
+Un générateur de web statique *mais costaud* à partir d'une bibiothèque Calibre...
+
+* Départ en vacances, pc+calibre Off, Box adsl toujours up avec son port usb vide qui traine... hop hop hop idée !
+
+
+D'abord
+-------
+
+* Télécharger la version de Calibre2Opds actuelle **V3.2** ici : `<http://calibre2opds.com/downloads/>`_
+
+.. TEASER_END
+
+* Java nécessaire. erk.
+
+.. code:: bash
+	
+	sudo pacman -S openjdk
+	
+
+Ensuite
+-------
+
+* Exécuter le .jar pour lancer l'installation
+
+.. code:: java
+
+	java -jar 'calibre2opds-derniereversion.jar'
+
+**ou**
+
+* Décompresser le .zip et lancer :
+
+.. code:: bash
+	
+	$sudo ./rungui.sh
+
+Enfin
+-----
+
+Dans **Calibre2Opds**, il faut surtout indiquer :
+
+* Quel est le chemin de la bibliothèque **Calibre** que l'on veut traiter
+* Quel est le dossier de génération voulu.
+* Ce que l'on veut comme type d'info affichée ... Garder en mémoire la cible (navigateur PC, smartphone, liseuse) pour optimiser la densité de l'affichage et la fluidité de navigation.
+
+* Ne pas oublier de sauvegarder les paramêtres,
+* Jouer et rejouer pour découvrir ce que bien vouloir dire certaines traductions hasardeuses.
+
+* Ne pas oublier que la version actuelle **3.2** est **BUGUéE** : il est nécessaire de relancer Calibre2Opds entre 2 générations, sinon la copie de fichier n'est pas réalisée.
+
+**Site/forum officiel** : `<http://wiki.mobileread.com/wiki/Calibre2OpdsRunning#Running_calibre2opds>`_
+
+
+
+

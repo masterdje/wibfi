@@ -1,0 +1,47 @@
+.. link: 
+.. description: 
+.. tags: bash, linux, tips
+.. date: 2013/11/06 22:03:12
+.. title: Fonction de log One-liner en bash
+.. slug: fonction-de-log-one-liner-en-bash
+.. tribe: shell
+
+
+.. class:: alert alert-info
+
+Le truc tout bête mais futé pour savoir quand/quoi a planté ...
+
+Code
+----
+
+* Rajouter cette fonction dans un script
+
+.. code:: bash
+
+	logthis(){ echo "$(date +%Y-%m-%d-%H:%M) [$0] - $1 a échoué" >> MonFichier.log ; }
+
+.. TEASER_END
+
+Usage
+-----
+
+* Appeler la fonction en cas d'échec :
+
+.. code:: bash
+
+	workon env2 || logthis "workon env2"
+	
+... Si *virtualenvwrapper* n'est pas lancé, ou si je suis *déjà* dans *env2*
+
+Résultat
+--------
+
+.. code:: bash
+	
+	[dje@pc01]$ cat MonFichier.log
+	2013-11-06-22:14 [./superlazy.sh] - workon env2 a echoué
+
+
+
+
+

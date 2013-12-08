@@ -1,0 +1,54 @@
+.. link: 
+.. description: 
+.. tags: powershell, dhcp
+.. date: 2013/11/09 21:06:03
+.. title: Rajout de propriétés à un element en Powershell
+.. slug: rajout-de-proprietes-a-un-element-en-powershell
+.. tribe: powershell
+
+
+.. class:: alert alert-info
+
+Lister les ip réservées c'est bien, les adresses mac associées c'est bien aussi...
+
+* Bref, on prend `une liste d'ip en powershell <lister-les-ip-reservees-dun-scope-dhcp-en-powershell.html>`_ et on fait mieux !
+ 
+.. TEASER_END
+
+
+Code
+----
+
+.. code:: powershell
+
+	$scope = $args[0]
+	$a = Invoke-Command -ComputerName monserveur.fqdn -scriptblock{netsh dhcp server monserveur.fqdn scope $args[0] show reservedip} -args $scope
+	$tabl= $a[7..($a.length-6)]
+	$ip = New-Object System.Collections.ArrayList
+	$col = @()
+   
+	foreach($a in $tabl) 
+	{
+		$addip= new-object System.Object
+		$addip |add-member -type NoteProperty -name ip -value $a.trim().split("-")[0].trimend()
+		$addip |add-member -type NoteProperty -name mac -value $a.trim().substring($a.trim().length -18,17)
+		$col += $addip
+	}
+	$col |out-file $env:temp\scope.txt
+
+Usage
+-----
+
+* **Add-member** permet de rajouter une propriété nommée **ip** de type *string*, alimentée par un trim cracra de la variable *tabl[x]*
+* ... et pareil pour **mac** ... en plus cracra vu la tête du *dump netsh*
+* et on rajoute tout ça à la variable **$col** bien initialisée en temps qu' *array* !! 
+
+A Noter
+-------
+
+* ça marche !
+
+
+
+
+

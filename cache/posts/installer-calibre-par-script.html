@@ -1,0 +1,7 @@
+<p class="alert alert-info">Calibre est indispensable à tout amateur d'ebooks. Et il est mis à jour à un rythme effréné.</p>
+<ul class="simple">
+<li>Du coup, son auteur offre la possibilité d'une reinstall en une ligne :</li>
+</ul>
+<pre class="code bash literal-block">
+<span class="nv">$ </span>sudo python -c <span class="s2">&quot;import sys; py3 = sys.version_info[0] &gt; 2; u = __import__('urllib.request' if py3 else 'urllib', fromlist=1); exec(u.urlopen('http://status.calibre-ebook.com/linux_installer').read()); main()&quot;</span>
+</pre>

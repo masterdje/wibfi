@@ -1,0 +1,66 @@
+<p class="alert alert-info">Evolution considérable, partant du VBscript, certes, mais du coup, si tu veux une inputbox, brosses-toi...</p>
+<ul class="simple">
+<li>La moins mauvaise solution est d'en coder une <em>from scratch</em>...</li>
+</ul>
+<!-- TEASER_END -->
+<pre class="code powershell literal-block">
+<span class="k">function</span> <span class="n">InputBox</span><span class="p">(</span><span class="no">[string]</span> <span class="nv">$titre</span><span class="p">,</span> <span class="no">[string]</span> <span class="nv">$message</span><span class="p">,</span> <span class="no">[string]</span> <span class="nv">$defaultText</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="no">[void] [System.Reflection.Assembly]</span><span class="err">::</span><span class="n">LoadWithPartialName</span><span class="p">(</span><span class="s2">&quot;System.Windows.Forms&quot;</span><span class="p">)</span>
+<span class="nv">$InputForm</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Form</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="nv">$titre</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">width</span> <span class="p">=</span> <span class="n">290</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">height</span> <span class="p">=</span> <span class="n">150</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">StartPosition</span> <span class="p">=</span> <span class="s2">&quot;CenterScreen&quot;</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">AutoSize</span> <span class="p">=</span> <span class="nv">$False</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">MinimizeBox</span> <span class="p">=</span> <span class="nv">$False</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">MaximizeBox</span> <span class="p">=</span> <span class="nv">$False</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">SizeGripStyle</span><span class="p">=</span> <span class="s2">&quot;Hide&quot;</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">WindowState</span> <span class="p">=</span> <span class="s2">&quot;Normal&quot;</span>
+<span class="c">#$InputForm.FormBorderStyle=&quot;Fixed3D&quot; #&lt;= moche en 3D, moche sans effet 3D...</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">Topmost</span> <span class="p">=</span> <span class="nv">$True</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">ShowIcon</span> <span class="p">=</span> <span class="nv">$true</span>
+
+<span class="nv">$OkBtn</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Button</span>
+<span class="nv">$OkBtn</span><span class="p">.</span><span class="n">Width</span><span class="p">=</span><span class="n">75</span>
+<span class="nv">$OkBtn</span><span class="p">.</span><span class="n">Height</span><span class="p">=</span><span class="n">23</span>
+<span class="nv">$OkBtn</span><span class="p">.</span><span class="n">Top</span><span class="p">=</span><span class="n">80</span>
+<span class="nv">$OkBtn</span><span class="p">.</span><span class="n">Left</span><span class="p">=</span><span class="n">115</span>
+<span class="nv">$OkBtn</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s2">&quot;OK&quot;</span>
+<span class="nv">$OkBtn</span><span class="p">.</span><span class="n">Add_Click</span><span class="p">({</span><span class="nv">$value</span><span class="p">=</span><span class="nv">$objTextBox</span><span class="p">.</span><span class="n">Text</span><span class="err">;</span><span class="nv">$InputForm</span><span class="p">.</span><span class="n">Close</span><span class="p">()})</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="nv">$OkBtn</span><span class="p">)</span>
+
+<span class="nv">$CancelBtn</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Button</span>
+<span class="nv">$CancelBtn</span><span class="p">.</span><span class="n">Width</span><span class="p">=</span><span class="n">75</span>
+<span class="nv">$CancelBtn</span><span class="p">.</span><span class="n">Height</span><span class="p">=</span><span class="n">23</span>
+<span class="nv">$CancelBtn</span><span class="p">.</span><span class="n">Top</span><span class="p">=</span><span class="n">80</span>
+<span class="nv">$CancelBtn</span><span class="p">.</span><span class="n">left</span> <span class="p">=</span><span class="n">195</span>
+<span class="nv">$CancelBtn</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s2">&quot;Annuler&quot;</span>
+<span class="nv">$CancelBtn</span><span class="p">.</span><span class="n">Add_Click</span><span class="p">({</span><span class="nv">$InputForm</span><span class="p">.</span><span class="n">Close</span><span class="p">()})</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="nv">$CancelBtn</span><span class="p">)</span>
+
+<span class="nv">$userLabel</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">Label</span>
+<span class="nv">$userLabel</span><span class="p">.</span><span class="n">top</span><span class="p">=</span><span class="n">20</span>
+<span class="nv">$userLabel</span><span class="p">.</span><span class="n">left</span><span class="p">=</span><span class="n">10</span>
+<span class="nv">$userlabel</span><span class="p">.</span><span class="n">width</span><span class="p">=</span><span class="n">280</span>
+<span class="nv">$userlabel</span><span class="p">.</span><span class="n">height</span><span class="p">=</span><span class="n">20</span>
+<span class="nv">$userLabel</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="nv">$message</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="nv">$userLabel</span><span class="p">)</span>
+
+<span class="nv">$objTextBox</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">TextBox</span>
+<span class="nv">$objTextBox</span><span class="p">.</span><span class="n">top</span><span class="p">=</span><span class="n">40</span>
+<span class="nv">$objTextBox</span><span class="p">.</span><span class="n">left</span><span class="p">=</span><span class="n">10</span>
+<span class="nv">$objTextBox</span><span class="p">.</span><span class="n">width</span><span class="p">=</span><span class="n">260</span>
+<span class="nv">$objTextBox</span><span class="p">.</span><span class="n">height</span><span class="p">=</span><span class="n">20</span>
+<span class="nv">$objTextBox</span><span class="p">.</span><span class="n">Text</span><span class="p">=</span><span class="nv">$defaultText</span>
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="nv">$objTextBox</span><span class="p">)</span>
+
+<span class="nv">$InputForm</span><span class="p">.</span><span class="n">Add_Shown</span><span class="p">({</span><span class="nv">$InputForm</span><span class="p">.</span><span class="n">Activate</span><span class="p">()})</span>
+<span class="no">[void]</span> <span class="nv">$InputForm</span><span class="p">.</span><span class="n">ShowDialog</span><span class="p">()</span>
+<span class="k">return</span> <span class="nv">$value</span>
+<span class="p">}</span>
+</pre>
+<ul class="simple">
+<li>Penser à le charger en debut de session =&gt; &quot; . inputbox.ps1 &quot; ou en appel de script.</li>
+<li>Le mieux étant de ne pas avoir besoin d'inputbox, forcement.</li>
+</ul>

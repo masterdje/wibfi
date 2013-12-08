@@ -1,0 +1,17 @@
+<p class="alert alert-info">Affichage des pilotes d'impressions installés sur un serveur distant (ou pc local) en powershell &amp; wmi</p>
+<!-- TEASER_END -->
+<pre class="code powershell literal-block">
+<span class="c"># Liste des pilotes d'impression installés sur un serveur/Pc</span>
+<span class="c"># usage : . list-printerdriver.pS1 &quot;nom du serveur&quot;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">]</span> <span class="o">-ne</span> <span class="nv">$Null</span><span class="p">)</span>
+        <span class="p">{</span><span class="nv">$serveur</span> <span class="p">=</span> <span class="nv">$args</span><span class="p">[</span><span class="n">0</span><span class="p">]}</span>
+<span class="k">else</span>
+        <span class="p">{</span><span class="nv">$serveur</span> <span class="p">=</span> <span class="s2">&quot;.&quot;</span><span class="p">}</span>
+
+<span class="nv">$liste</span><span class="p">=</span><span class="err">&#64;</span><span class="p">()</span>
+<span class="nv">$collection</span> <span class="p">=</span><span class="nb">Get-WmiObject</span> <span class="n">-computer</span> <span class="nv">$serveur</span> <span class="n">win32_Printerdriver</span> <span class="p">|</span> <span class="n">select</span> <span class="n">name</span><span class="p">,</span><span class="n">version</span><span class="p">,</span> <span class="n">supportedplatform</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$drivers</span> <span class="k">in</span> <span class="nv">$collection</span><span class="p">)</span>
+<span class="p">{</span> <span class="nv">$liste</span><span class="p">+=(</span><span class="nv">$drivers</span><span class="p">.</span><span class="n">name</span> <span class="n">-split</span> <span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="n">0</span><span class="p">]}</span> <span class="c">#split pour afficher juste le nom</span>
+<span class="nb">write-output</span> <span class="nv">$liste</span>
+</pre>

@@ -1,0 +1,16 @@
+.. link: 
+.. description: 
+.. tags: bookmark, gps, gpx, tcx
+.. date: 2013/11/03 15:44:07
+.. title: A bookmarker : mygpsfiles.com
+.. slug: a-bookmarker-mygpsfilescom
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Visualisateur / éditeur ultra-simple de trace GPS au format **gpx**, **tcx** , **tcs** avec rendu via *google map/earth*
+
+`<http://www.mygpsfiles.com/app/>`_
+
+

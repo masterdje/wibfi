@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (calibre)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/calibre.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Tue, 03 Dec 2013 16:02:37 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Tri / Nettoyage des ebooks en double avant import</title><link>http://wibfi.virtua-peanuts.net/posts/tri-nettoyage-des-ebooks-en-double-avant-import.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;&lt;em&gt;One-liner&lt;/em&gt; pour gagner du temps avant une mise à jour / import massif d'ebooks&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Bien utile quand la bibliothèque &lt;em&gt;Calibre&lt;/em&gt; est bien propre, et que le &lt;em&gt;.zip&lt;/em&gt; &lt;em&gt;"Domaine public / tout zola+hugo+balzac+inédits"&lt;/em&gt; donne envie, sauf l'étape du tri des doublons...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Récupérer &lt;em&gt;fdupes&lt;/em&gt; qui va faire le job à notre place!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+sudo pacman -Suy fdupes
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/tri-nettoyage-des-ebooks-en-double-avant-import.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>ebook</category><category>calibre</category><category>bash</category><category>awk</category><guid>http://wibfi.virtua-peanuts.net/posts/tri-nettoyage-des-ebooks-en-double-avant-import.html</guid><pubDate>Mon, 11 Nov 2013 20:47:06 GMT</pubDate></item><item><title>Calibre 1.10 corrige le bug "QDesktopServices"</title><link>http://wibfi.virtua-peanuts.net/posts/calibre-110-corrige-le-bug-qdesktopservices.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Suite à Maj, Calibre &lt;em&gt;kaputt&lt;/em&gt; ...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Avec un vilain message d'erreur :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;dje@pc01&lt;span class="nv"&gt;$ &lt;/span&gt;calibre
+Traceback &lt;span class="o"&gt;(&lt;/span&gt;most recent call last&lt;span class="o"&gt;)&lt;/span&gt;:
+File &lt;span class="s2"&gt;"site.py"&lt;/span&gt;, line 56, in main
+File &lt;span class="s2"&gt;"site-packages/calibre/gui2/__init__.py"&lt;/span&gt;, line 7, in &amp;lt;module&amp;gt;
+ImportError: cannot import name QDesktopServices
+&lt;/pre&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;bien évidement, télécharger la moitié du net en package plus ou moins liés à Qt s'avère inutile ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/calibre-110-corrige-le-bug-qdesktopservices.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>bug</category><category>calibre</category><category>ebook</category><category>bugfix</category><guid>http://wibfi.virtua-peanuts.net/posts/calibre-110-corrige-le-bug-qdesktopservices.html</guid><pubDate>Sun, 10 Nov 2013 20:32:49 GMT</pubDate></item><item><title>Calibre2Opds 3.3 beta corrige pas mal de bugs</title><link>http://wibfi.virtua-peanuts.net/posts/calibre2opds-33-beta-corrige-pas-mal-de-bugs.html</link><description>&lt;p class="alert alert-info"&gt;Toujours agréable de constater qu'un soft apprécié est bien maintenu par ses dev. qui turbinent ...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Bon gros changelog/bugfixes, dont le maudit bug "je te recopie pas les ficheirs en cas de re-génération" !&lt;/li&gt;
+&lt;li&gt;A noter :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+The changes since 3.2 are:
+- New: &lt;span class="c"&gt;#c2o-155: Allow Calibre Custom Column values to be displayed in Book Details
+&lt;/span&gt;- New: &lt;span class="c"&gt;#c2o-160: Allow Books to be on a different URL to the catalog
+&lt;/span&gt;- Fix: &lt;span class="c"&gt;#c2o-161: The "Language as Tag" value being inverted when saved
+&lt;/span&gt;- Fix: &lt;span class="c"&gt;#c20-163: If you do multiple generation runs without reloading calibre2opds the catalogs are not correctly generated.
+&lt;/span&gt;- New: &lt;span class="c"&gt;#c2o-164: Option to Publish only the generated catalog in Publish mode when Books URL specified
+&lt;/span&gt;- Fix: &lt;span class="c"&gt;#c2o-166: HTML Downloads not generated if OPDS catalog not being generated
+&lt;/span&gt;- Fix: &lt;span class="c"&gt;#c2o-167: Option to Save bandwidth no longer makes sense so remove it
+&lt;/span&gt;- New: &lt;span class="c"&gt;#c2o-168: Omit counts from internal links when Minimize Changed Files selected
+&lt;/span&gt;- New: &lt;span class="c"&gt;#c2o-169: Option to exclude tags from cross-reference links
+&lt;/span&gt;- New: &lt;span class="c"&gt;#c2o-170: Provide direct links from a list of books to the related authors in HTML catalogs
+&lt;/span&gt;- Fix: &lt;span class="c"&gt;#c2o-171: Publication date does not show up in the book details page&lt;/span&gt;
+&lt;/pre&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;dispo en version &lt;em&gt;allplatform&lt;/em&gt; &lt;em&gt;.zip&lt;/em&gt; chez la page officielle &lt;a class="reference external" href="http://code.google.com/p/calibre2opds/downloads/list"&gt;http://code.google.com/p/calibre2opds/downloads/list&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><category>calibre</category><category>opds</category><category>ebook</category><category>bugfix</category><guid>http://wibfi.virtua-peanuts.net/posts/calibre2opds-33-beta-corrige-pas-mal-de-bugs.html</guid><pubDate>Sat, 02 Nov 2013 21:38:05 GMT</pubDate></item><item><title>Bibliothèque portable avec Calibre2opds en 5 minutes</title><link>http://wibfi.virtua-peanuts.net/posts/bibliotheque-portable-avec-calibre2opds-en-5-minutes.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Un générateur de web statique &lt;em&gt;mais costaud&lt;/em&gt; à partir d'une bibiothèque Calibre...&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Départ en vacances, pc+calibre Off, Box adsl toujours up avec son port usb vide qui traine... hop hop hop idée !&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="d-abord"&gt;
+&lt;h2&gt;D'abord&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Télécharger la version de Calibre2Opds actuelle &lt;strong&gt;V3.2&lt;/strong&gt; ici : &lt;a class="reference external" href="http://calibre2opds.com/downloads/"&gt;http://calibre2opds.com/downloads/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/bibliotheque-portable-avec-calibre2opds-en-5-minutes.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</description><category>calibre</category><category>ebook</category><category>opds</category><category>java</category><guid>http://wibfi.virtua-peanuts.net/posts/bibliotheque-portable-avec-calibre2opds-en-5-minutes.html</guid><pubDate>Mon, 28 Oct 2013 20:17:19 GMT</pubDate></item><item><title>Cohabitation de deux instances de Calibre</title><link>http://wibfi.virtua-peanuts.net/posts/cohabitation-de-deux-instances-de-calibre.html</link><description>&lt;div&gt;&lt;p class="alert alert-info"&gt;Calibre offre un serveur web natif, mais la bascule de bibliothèque &lt;em&gt;depuis&lt;/em&gt; le site web n'est pas triviale.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Il est donc plus simple de paramétrer 2 instances du serveurs web&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+calibre-server --with-library&lt;span class="o"&gt;=[&lt;/span&gt;dossier bibliotheque &lt;span class="c"&gt;# 1] -p 8888 --daemonize
+&lt;/span&gt;calibre-server --with-library&lt;span class="o"&gt;=[&lt;/span&gt;dossier bibliotheque &lt;span class="c"&gt;# 2] -p 8889 --daemonize&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p class="more"&gt;&lt;a href="http://wibfi.virtua-peanuts.net/posts/cohabitation-de-deux-instances-de-calibre.html"&gt;Lire la suite…&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</description><category>ebook</category><category>tips</category><category>calibre</category><guid>http://wibfi.virtua-peanuts.net/posts/cohabitation-de-deux-instances-de-calibre.html</guid><pubDate>Sat, 28 Sep 2013 13:52:11 GMT</pubDate></item><item><title>Installer Calibre par script</title><link>http://wibfi.virtua-peanuts.net/posts/installer-calibre-par-script.html</link><description>&lt;p class="alert alert-info"&gt;Calibre est indispensable à tout amateur d'ebooks. Et il est mis à jour à un rythme effréné.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Du coup, son auteur offre la possibilité d'une reinstall en une ligne :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo python -c &lt;span class="s2"&gt;"import sys; py3 = sys.version_info[0] &amp;gt; 2; u = __import__('urllib.request' if py3 else 'urllib', fromlist=1); exec(u.urlopen('http://status.calibre-ebook.com/linux_installer').read()); main()"&lt;/span&gt;
+&lt;/pre&gt;</description><category>ebook</category><category>tips</category><category>calibre</category><guid>http://wibfi.virtua-peanuts.net/posts/installer-calibre-par-script.html</guid><pubDate>Sat, 28 Sep 2013 11:08:33 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,24 @@
+<p class="alert alert-info">Mauvaise manip de ma part ou mauvaise humeur de la sienne, en tout cas ma clé usb 32go classe 10 ( parce que sur une vieille 2go classe 4 noname, elle aurait fini direct poubelle ) plus moyen d'accéder en écriture nulle part, ni de modifier la table des partitions, PLUS un gros message GPT <strong>pas bien</strong></p>
+<ul>
+<li><p class="first"><strong>gnome-disks</strong> dans les choux ...</p>
+</li>
+<li><p class="first"><strong>Fdisk</strong> :</p>
+<blockquote>
+<p>Le périphérique ne contient pas de table de partitions reconnue
+Construction d'une nouvelle étiquette pour disque de type DOS avec identifiant de disque 0x31607b60.</p>
+</blockquote>
+</li>
+</ul>
+<p>Mais pas plus, et refus d'ajouter une nouvelle table de partitions / partitions, ni d'écrire sur la clé</p>
+<ul>
+<li><p class="first"><strong>Gparted</strong> :</p>
+<blockquote>
+<p>/dev/sdg contains GPT signatures, indicating that it has a GPT table.  However, it does not have a valid fake msdos partition table, as it should.  Perhaps it was corrupted -- possibly by a program that doesn't understand GPT partition tables.  Or perhaps you deleted the GPT table, and are now using an msdos partition table.  Is this a GPT partition table?
+The backup GPT table is not at the end of the disk, as it should be.  This might mean that another operating system believes the disk is smaller.  Fix, by moving the backup to the end (and removing the old backup)?
+Not all of the space available to /dev/sdg appears to be used, you can fix the GPT to use all of the space (an extra 59529216 blocks) or continue with the current setting?
+Unable to satisfy all constraints on the partition.</p>
+</blockquote>
+</li>
+</ul>
+<p>Mais j'ai pu formater le bouzin complet, et remettre une paire de partitions propres...</p>
+<p>Vainqueur : <strong>Gparted</strong></p>

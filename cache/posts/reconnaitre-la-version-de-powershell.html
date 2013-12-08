@@ -1,0 +1,37 @@
+<p class="alert alert-info">Truc tout simple à priori, sauf que ...</p>
+<div class="section" id="code">
+<h2>Code</h2>
+<pre class="code powershell literal-block">
+<span class="c"># Si powershell v2</span>
+
+<span class="nv">$PSversiontable</span><span class="p">.</span><span class="n">psversion</span>
+
+<span class="n">Major</span>  <span class="n">Minor</span>  <span class="n">Build</span>  <span class="n">Revision</span>
+<span class="p">-----</span>  <span class="p">-----</span>  <span class="p">-----</span>  <span class="p">--------</span>
+<span class="n">2</span>      <span class="n">0</span>      <span class="p">-</span><span class="n">1</span>     <span class="p">-</span><span class="n">1</span>
+</pre>
+<!-- TEASER_END -->
+<ul class="simple">
+<li>et en plus détaillée :</li>
+</ul>
+<pre class="code powershell literal-block">
+<span class="nv">$PSversiontable</span>
+
+<span class="n">Name</span>                           <span class="n">Value</span>
+<span class="p">----</span>                           <span class="p">-----</span>
+<span class="n">CLRVersion</span>                     <span class="n">2</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">50727</span><span class="p">.</span><span class="n">3082</span>
+<span class="n">BuildVersion</span>                   <span class="n">6</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">6002</span><span class="p">.</span><span class="n">18111</span>
+<span class="n">PSVersion</span>                      <span class="n">2</span><span class="p">.</span><span class="n">0</span>
+<span class="n">WSManStackVersion</span>              <span class="n">2</span><span class="p">.</span><span class="n">0</span>
+<span class="n">PSCompatibleVersions</span>           <span class="p">{</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">,</span> <span class="n">2</span><span class="p">.</span><span class="n">0</span><span class="p">}</span>
+<span class="n">SerializationVersion</span>           <span class="n">1</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span>
+<span class="n">PSRemotingProtocolVersion</span>      <span class="n">2</span><span class="p">.</span><span class="n">1</span>
+</pre>
+</div>
+<div class="section" id="a-noter">
+<h2>A noter</h2>
+<ul class="simple">
+<li><strong>$host</strong> est un alias de <strong>get-host</strong>  qui retourne les infos de la console / IDE utilisé, et non la version utilisée</li>
+<li><em>A vérifier</em> (pas sous la main) : en powershell V1, $psversiontable n'existerait pas ?! et se reporter sur $host</li>
+</ul>
+</div>

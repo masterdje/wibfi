@@ -1,0 +1,34 @@
+.. link: 
+.. description: 
+.. tags: calibre, opds, ebook, bugfix
+.. date: 2013/11/02 22:38:05
+.. title: Calibre2Opds 3.3 beta corrige pas mal de bugs
+.. slug: calibre2opds-33-beta-corrige-pas-mal-de-bugs
+.. tribe: ebook
+
+   
+.. class:: alert alert-info
+
+Toujours agréable de constater qu'un soft apprécié est bien maintenu par ses dev. qui turbinent ... 
+
+* Bon gros changelog/bugfixes, dont le maudit bug "je te recopie pas les ficheirs en cas de re-génération" !
+
+
+* A noter :
+
+.. code:: bash
+
+	The changes since 3.2 are:
+	- New: #c2o-155: Allow Calibre Custom Column values to be displayed in Book Details
+	- New: #c2o-160: Allow Books to be on a different URL to the catalog
+	- Fix: #c2o-161: The "Language as Tag" value being inverted when saved
+	- Fix: #c20-163: If you do multiple generation runs without reloading calibre2opds the catalogs are not correctly generated.
+	- New: #c2o-164: Option to Publish only the generated catalog in Publish mode when Books URL specified
+	- Fix: #c2o-166: HTML Downloads not generated if OPDS catalog not being generated
+	- Fix: #c2o-167: Option to Save bandwidth no longer makes sense so remove it
+	- New: #c2o-168: Omit counts from internal links when Minimize Changed Files selected
+	- New: #c2o-169: Option to exclude tags from cross-reference links
+	- New: #c2o-170: Provide direct links from a list of books to the related authors in HTML catalogs
+	- Fix: #c2o-171: Publication date does not show up in the book details page
+
+* dispo en version *allplatform* *.zip* chez la page officielle `<http://code.google.com/p/calibre2opds/downloads/list>`_

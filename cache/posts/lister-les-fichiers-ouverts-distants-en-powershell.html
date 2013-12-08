@@ -1,0 +1,37 @@
+<p class="alert alert-info">Mini script de liste des fichiers ouverts sur un serveur distant</p>
+<ul class="simple">
+<li>Script trouvé quelque part et utilisant [ADSI],  <em>mais ça marche</em> ...</li>
+</ul>
+<!-- TEASER_END -->
+<div class="section" id="code">
+<h2>Code</h2>
+<pre class="code powershell literal-block">
+    <span class="k">function</span> <span class="nb">get-openedfiles</span><span class="p">{</span>
+    <span class="k">param</span><span class="p">(</span>
+<span class="nv">$computername</span><span class="p">=</span><span class="err">&#64;</span><span class="p">(</span><span class="nv">$env:computername</span><span class="p">),</span> <span class="nv">$verbose</span><span class="p">=</span><span class="nv">$false</span><span class="p">)</span>
+<span class="nv">$tab</span> <span class="p">=</span> <span class="err">&#64;</span><span class="p">()</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$computer</span> <span class="k">in</span> <span class="nv">$computername</span><span class="p">){</span>
+            <span class="nv">$remotefile</span> <span class="p">=</span> <span class="no">[ADSI]</span><span class="s2">&quot;WinNT://$computer/LanmanServer&quot;</span>
+
+    <span class="nv">$remotefile</span><span class="p">.</span><span class="n">Invoke</span><span class="p">(</span><span class="s2">&quot;Resources&quot;</span><span class="p">)</span> <span class="p">|</span> <span class="k">foreach</span> <span class="p">{</span>
+        <span class="k">try</span><span class="p">{</span>
+            <span class="nv">$collection</span> <span class="p">+=</span> <span class="nb">New-Object</span> <span class="n">PsObject</span> <span class="n">-Property</span> <span class="err">&#64;</span><span class="p">{</span>
+              <span class="n">Id</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">InvokeMember</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s1">'GetProperty'</span><span class="p">,</span> <span class="nv">$null</span><span class="p">,</span> <span class="nv">$_</span><span class="p">,</span> <span class="nv">$null</span><span class="p">)</span>
+              <span class="n">itemPath</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">InvokeMember</span><span class="p">(</span><span class="s2">&quot;Path&quot;</span><span class="p">,</span> <span class="s1">'GetProperty'</span><span class="p">,</span> <span class="nv">$null</span><span class="p">,</span> <span class="nv">$_</span><span class="p">,</span> <span class="nv">$null</span><span class="p">)</span>
+              <span class="n">UserName</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">InvokeMember</span><span class="p">(</span><span class="s2">&quot;User&quot;</span><span class="p">,</span> <span class="s1">'GetProperty'</span><span class="p">,</span> <span class="nv">$null</span><span class="p">,</span> <span class="nv">$_</span><span class="p">,</span> <span class="nv">$null</span><span class="p">)</span>
+              <span class="n">LockCount</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">InvokeMember</span><span class="p">(</span><span class="s2">&quot;LockCount&quot;</span><span class="p">,</span> <span class="s1">'GetProperty'</span><span class="p">,</span> <span class="nv">$null</span><span class="p">,</span> <span class="nv">$_</span><span class="p">,</span> <span class="nv">$null</span><span class="p">)</span>
+              <span class="n">Server</span> <span class="p">=</span> <span class="nv">$computer</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">catch</span><span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$verbose</span><span class="p">){</span><span class="nb">write-warning</span> <span class="nv">$error</span><span class="p">[</span><span class="n">0</span><span class="p">]}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">Return</span> <span class="nv">$tab</span>
+    <span class="p">}</span>
+</pre>
+<ul class="simple">
+<li>A exécuter avec <em>dot-sourcing</em> ...</li>
+</ul>
+</div>
