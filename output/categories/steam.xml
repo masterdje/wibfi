@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Write it before forget it (steam)</title><link>http://wibfi.virtua-peanuts.net/</link><description></description><atom:link href="http://wibfi.virtua-peanuts.net/categories/steam.xml" type="application/rss+xml" rel="self"></atom:link><language>fr</language><lastBuildDate>Tue, 03 Dec 2013 16:02:37 GMT</lastBuildDate><generator>nikola</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Steam réclame une lib déjà présente ?</title><link>http://wibfi.virtua-peanuts.net/posts/steam.html</link><description>&lt;p class="alert alert-info"&gt;Tout à coup, Steam kaputt ...&lt;/p&gt;
-&lt;p&gt;J'ai eu beau réinstaller un énorme tas de paquets, Steam ne voulait rien savoir, jusqu'à ce que je trouve cette astuce...&lt;/p&gt;
-&lt;pre class="code bash literal-block"&gt;
-sudo ln -s /usr/lib/i386-linux-gnu/mesa/libGL.so.1 /usr/lib
-&lt;/pre&gt;
-&lt;p&gt;Bon ben ça fait le boulot.&lt;/p&gt;</description><category>steam</category><category>linux</category><guid>http://wibfi.virtua-peanuts.net/posts/steam.html</guid><pubDate>Fri, 13 Sep 2013 10:00:00 GMT</pubDate></item></channel></rss>
