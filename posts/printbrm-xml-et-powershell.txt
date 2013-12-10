@@ -1,0 +1,338 @@
+.. link: 
+.. description: 
+.. tags: powershell, impression, xml
+.. date: 2013/12/10 16:15:34
+.. title: PrintBRM, xml et Powershell
+.. slug: printbrm-xml-et-powershell
+.. tribe: powershell
+
+
+.. class:: alert alert-info
+
+*Printbrm* est plus robuste que *printmig.exe* , mais ...
+
+* Diverses manipulations utiles en cas d'import/export/catastrophe/backup/tsunami/bascule 64bit ...
+
+.. TEASER_END
+
+
+D'abord
+-------
+
+* Obtenir un backup via la mmc **Gestion de l'impression** du serveur d'impression : **monbackup.printerExport**
+
+.. code
+	
+	clic droit sur le serveur d'impression
+	Exporter les imprimantes vers un fichier
+
+.. TEASER_END
+	
+* Lancer cmd/Powershell pour décompresser le backup en mode administrateur
+
+.. code:: powershell
+
+	mkdir c:\users\moi\temp
+	
+	PS C:\Windows\system32\spool\tools\PrintBrm.exe -R -D c:\users\moi\temp -F C:\users\moi\Desktop\monbackup.printerExport
+	Mode d'opération : décompresser la sauvegarde vers un répertoire
+	Serveur cible : ordinateur local
+	Chemin du fichier cible : C:\users\moi\Desktop\monbackup.printerExport.
+	Répertoire cible : c:\users\moi\temp
+	Mode de publication de file d'attente : aucune
+	Mode de remplacement : conserver paramètres existants
+	Mode des listes de contrôle d'accès aux files d'attente : restaurer les listes de contrôle d'accès à partir d'une sauvegarde
+
+
+	L'opération s'est correctement exécutée.
+
+
+* Attention les chemins relatifs sont très mal gérés par *printbrm.exe*, autant donner le chemin complet.
+
+Ensuite
+-------
+
+* On se retrouve avec le contenu suivant
+
+.. code:: powershell
+	
+	PS C:\Windows\system32> ls C:\users\moi\temp
+
+    Répertoire : C:\users\moi\temp
+
+	Mode                LastWriteTime     Length Name
+	----                -------------     ------ ----
+	d----        10/12/2013     16:38            Drivers
+	d----        10/12/2013     16:38            LMONS
+	d----        10/12/2013     16:38            Printers
+	d----        10/12/2013     16:38            PRTPROCS
+	-a---        06/12/2013     16:50      25584 BrmDrivers.xml
+	-a---        06/12/2013     16:50         15 BrmForms.xml
+	-a---        06/12/2013     16:50        106 BRMLMons.xml
+	-a---        06/12/2013     16:50       6537 BrmPorts.xml
+	-a---        06/12/2013     16:37       2722 BrmPrinters.xml
+	-a---        06/12/2013     16:34        131 BrmSpoolerAttrib.xml
+	-a---        06/12/2013     16:37        732 PProcs.xml
+
+
+* Il est possible de parcourir les fichiers xml :
+
+.. code:: powershell
+	
+	#lecture du xml
+	[xml]$drivers= gc .\BrmDrivers.xml
+	$drivers
+
+	PRINTERDRIVERS
+	--------------
+	PRINTERDRIVERS
+
+	#on descend d'un cran dans le node:
+	$drivers.Printerdrivers
+
+	DRIVER
+	------
+	{DRIVER, DRIVER, DRIVER, DRIVER...}
+
+* pour arriver enfin à :
+
+.. code:: powershell
+	
+	$drivers.Printerdrivers.driver
+
+	cVersion       : 3
+	DriverName     : Lexmark Universal v2 PS3
+	Environment    : Windows x64
+	DriverPath     : PSCRIPT5.DLL
+	DataFile       : LMUD1N40.PPD
+	ConfigFile     : PS5UI.DLL
+	HelpFile       : PSCRIPT.HLP
+	MfgName        : Lexmark
+	OEMUrl         : http://www.lexmark.com
+	HardwareID     : usbprint\lexmarklexmark_unive1a7d
+	Provider       : Lexmark International
+	Binaries       : 1
+	DependentFiles : DependentFiles
+	DriverDate     : DriverDate
+	QDriverVersion : QDriverVersion
+
+	cVersion       : 3
+	DriverName     : KONICA MINOLTA 423SeriesPCL
+	Environment    : Windows x64
+	DriverPath     : KOAYXJ_G.DLL
+	DataFile       : KOAYXJ_G.DLL
+	ConfigFile     : KOAYXJ_C.DLL
+	HelpFile       : KOAYXJ__.HLP
+	MfgName        : KONICA MINOLTA
+	OEMUrl         : http://konicaminolta.com/
+	HardwareID     : usbprint\konica_minolta423_sef5e1
+	Provider       : KONICA MINOLTA
+	Binaries       : 1
+	DependentFiles : DependentFiles
+	DriverDate     : DriverDate
+	QDriverVersion : QDriverVersion
+
+	cVersion       : 3
+	DriverName     : HP Officejet Pro K5400 Series
+	Environment    : Windows x64
+	DriverPath     : UNIDRV.DLL
+	DataFile       : hpwk5403.GPD
+	ConfigFile     : UNIDRVUI.DLL
+	HelpFile       : UNIDRV.HLP
+	MfgName        : HP
+	OEMUrl         : http://go.microsoft.com/fwlink/?LinkID=37&prd=10798&sbp=Printers
+	HardwareID     : usbprint\hpofficejet_pro_k5404d7a
+	Provider       : HP
+	Binaries       : 1
+	DependentFiles : DependentFiles
+	DriverDate     : DriverDate
+	QDriverVersion : QDriverVersion
+
+	cVersion       : 3
+	DriverName     : EPSON B-310N
+	Environment    : Windows x64
+	DriverPath     : E_IMAIFLA.DLL
+	DataFile       : E_IVIFFLA.VIF
+	ConfigFile     : E_IUICFLA.DLL
+	HelpFile       : E_FHLDRFLA.CHM
+	MfgName        : EPSON
+	OEMUrl         : http://www.epson.com
+	HardwareID     : usbprint\epsonb-310n502c
+	Provider       : EPSON
+	Binaries       : 1
+	DependentFiles : DependentFiles
+	DriverDate     : DriverDate
+	QDriverVersion : QDriverVersion
+
+	cVersion       : 3
+	DriverName     : Brother MFC-8880DN Printer
+	Environment    : Windows x64
+	DriverPath     : BROHLA8A.DLL
+	DataFile       : BM8880DN.DSI
+	ConfigFile     : BRUIMA8A.DLL
+	HelpFile       : BROMF08A.CHM
+	MfgName        : Brother
+	OEMUrl         : http://www.brother.com
+	HardwareID     : usbprint\brothermfc-8880dn3a55
+	Provider       : Brother
+	Binaries       : 1
+	DependentFiles : DependentFiles
+	DriverDate     : DriverDate
+	QDriverVersion : QDriverVersion
+
+	cVersion       : 3
+	DriverName     : Brother MFC-8380DN Printer
+	Environment    : Windows x64
+	DriverPath     : BROHLA8A.DLL
+	DataFile       : BM8380DN.DSI
+	ConfigFile     : BRUIMA8A.DLL
+	HelpFile       : BROMF08A.CHM
+	MfgName        : Brother
+	OEMUrl         : http://www.brother.com
+	HardwareID     : usbprint\brothermfc-8380dnfbf0
+	Provider       : Brother
+	Binaries       : 1
+	DependentFiles : DependentFiles
+	DriverDate     : DriverDate
+	QDriverVersion : QDriverVersion
+
+	cVersion       : 3
+	DriverName     : Lexmark Universal v2 PS3
+	Environment    : Windows NT x86
+	DriverPath     : PSCRIPT5.DLL
+	DataFile       : LMUD1N40.PPD
+	ConfigFile     : PS5UI.DLL
+	HelpFile       : PSCRIPT.HLP
+	MfgName        : Lexmark
+	OEMUrl         : http://www.lexmark.com
+	HardwareID     : usbprint\lexmarklexmark_unive1a7d
+	Provider       : Lexmark International
+	Binaries       : 1
+	DependentFiles : DependentFiles
+	DriverDate     : DriverDate
+	QDriverVersion : QDriverVersion
+
+	cVersion       : 3
+	DriverName     : KONICA MINOLTA 423SeriesPCL
+	Environment    : Windows NT x86
+	DriverPath     : KOAYXJ_G.DLL
+	DataFile       : KOAYXJ_G.DLL
+	ConfigFile     : KOAYXJ_C.DLL
+	HelpFile       : KOAYXJ__.HLP
+	MfgName        : KONICA MINOLTA
+	OEMUrl         : http://konicaminolta.com/
+	HardwareID     : usbprint\konica_minolta423_sef5e1
+	Provider       : KONICA MINOLTA
+	Binaries       : 1
+	DependentFiles : DependentFiles
+	DriverDate     : DriverDate
+	QDriverVersion : QDriverVersion
+	
+	cVersion       : 3
+	DriverName     : HP Officejet Pro K5400 Series
+	Environment    : Windows NT x86
+	DriverPath     : UNIDRV.DLL
+	DataFile       : hpwk5403.GPD
+	ConfigFile     : UNIDRVUI.DLL
+	HelpFile       : UNIDRV.HLP
+	MfgName        : HP
+	OEMUrl         : http://go.microsoft.com/fwlink/?LinkID=37&prd=10798&sbp=Printers
+	HardwareID     : usbprint\hpofficejet_pro_k5404d7a
+	Provider       : HP
+	Binaries       : 1
+	DependentFiles : DependentFiles
+	DriverDate     : DriverDate
+	QDriverVersion : QDriverVersion
+
+	cVersion       : 3
+	DriverName     : Generic / Text Only
+	Environment    : Windows NT x86
+	DriverPath     : UNIDRV.DLL
+	DataFile       : TTY.GPD
+	ConfigFile     : UNIDRVUI.DLL
+	HelpFile       : UNIDRV.HLP
+	MfgName        : GÃ©nÃ©rique
+	HardwareID     : genericgeneric_/_tex8040
+	Provider       : Microsoft
+	Binaries       : 1
+	DependentFiles : DependentFiles
+	DriverDate     : DriverDate
+	QDriverVersion : QDriverVersion
+	...
+
+* En résumé :
+
+.. code:: powershell
+	
+	$drivers.Printerdrivers.driver |select Drivername,environment|sort drivername
+
+	DriverName                                                  Environment
+	----------                                                  -----------
+	Brother MFC-8380DN Printer                                  Windows x64
+	Brother MFC-8380DN Printer                                  Windows NT x86
+	Brother MFC-8880DN Printer                                  Windows x64
+	Brother MFC-8880DN Printer                                  Windows NT x86
+	EPSON B-310N                                                Windows NT x86
+	EPSON B-310N                                                Windows x64
+	Epson Stylus COLOR 980 ESC/P 2                              Windows NT x86
+	Generic / Text Only                                         Windows NT x86
+	HP Officejet Pro K5400 Series                               Windows NT x86
+	HP Officejet Pro K5400 Series                               Windows x64
+	KONICA MINOLTA 423SeriesPCL                                 Windows x64
+	KONICA MINOLTA 423SeriesPCL                                 Windows NT x86
+	Lexmark Universal v2 PS3                                    Windows x64
+	Lexmark Universal v2 PS3                                    Windows NT x86
+
+
+* Et là je vois de suite qu'il me manque la version 64b du pilote *Epson Stylus color 980*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
