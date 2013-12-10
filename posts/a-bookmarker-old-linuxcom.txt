@@ -1,0 +1,16 @@
+.. link: 
+.. description: 
+.. tags: bookmark, linux
+.. date: 2013/12/10 21:36:47
+.. title: A bookmarker : old-linux.com
+.. slug: a-bookmarker-old-linuxcom
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Envie de se faire du mal, où besoin de retrouver un vieux set de commandes (ou du paquet perdu mais peut etre encore dans l'iso d'origine...) ?
+
+* Une belle collections de distros 32b/64b depuis 1998... 
+
+`<http://old-linux.com/>`_
