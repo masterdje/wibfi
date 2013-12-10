@@ -1,0 +1,20 @@
+.. link: 
+.. description: 
+.. tags: vie-du-site, git
+.. date: 2013/12/10 10:07:28
+.. title: Wibfi chez github.com
+.. slug: wibfi-chez-githubcom
+.. tribe: favicon
+
+   
+.. class:: alert alert-info
+
+Un petit pas pour l'homme, un grand pas pour se passer de clé usb...
+
+
+* ... ou de ftp bidon avec un débit d'upload famélique pour pousser la sauvegarde...
+
+.. TEASER_END
+
+Enfin bref, le `dépot wibfi est monté <https://github.com/masterdje/wibfi.git>`_ !
+
