@@ -1,0 +1,26 @@
+.. link: 
+.. description: 
+.. tags: kobo, ebook, 
+.. date: 2013/12/12 21:10:50
+.. title: Mise à jour manuelle d'une Kobo
+.. slug: mise-a-jour-manuelle-dune-kobo
+.. tribe: ebook
+
+   
+.. class:: alert alert-info
+
+Le firmware des liseuses Kobo (mini-touch-glo-aura hd) peut etre mis à jour automatiquement ...
+
+* ou à la main, si les *nouveaux* bugs sont moins supportables que les *anciens*
+
+D'abord
+-------
+
+* Récupérer la version en cours (ou voulue) en suivant les indications de ce post chez `mobileread <http://www.mobileread.com/forums/showthread.php?t=185660>`_
+
+.. TEASER_END
+
+Ensuite
+-------
+* Pousser le fichier à la racine de la carte SD
+* Rebooter la liseuse.
