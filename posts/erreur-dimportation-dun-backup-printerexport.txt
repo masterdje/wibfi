@@ -1,0 +1,37 @@
+.. link: 
+.. description: 
+.. tags: impression
+.. date: 2013/12/12 08:38:46
+.. title: Erreurs d'importation d'un backup PrinterExport
+.. slug: erreur-dimportation-dun-backup-printerexport
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+La *mmc* **Gestion de l'impression** de Windows 2008R2 offre la possibilité pratique d'importer et exporter la conf d'un serveur d'impression ...
+
+* Mais ça peut coincer à l'import, ou à l'export, pas de jaloux ...
+
+.. TEASER_END
+
+Erreur 0x5 / Impossible de copier le fichier du processeur d'impression
+=======================================================================
+
+* Msg:
+
+| Lors de la restauration d’une file d’attente à l’impression à partir d’une sauvegarde, Printbrm.exe (Assistant Migration d’imprimantes ou outil de ligne de commande) n’a pas pu copier le fichier du processeur d’impression 
+| C:\Users\moi\AppData\Local\Temp\8CAD971E-6FA3-4F2C-AB80-2C829F509614\PRTPROCS\Windows x64\winprint.dll 
+| dans \\monserveur\prnproc$\x64\winprint.dll. Erreur 0x5. Accès refusé.. 
+| Cela peut se produire si Printbrm.exe ne parvient pas à trouver tous les fichiers d’une file d’attente à l’impression, ou si le service Spouleur d’impressions ne peut pas être arrêté durant l’installation du processeur d’impression. Si l’impression échoue, installez manuellement le processeur d’impression sur l’ordinateur de destination.
+
+* Contexte :
+
+| Backup d'un serveur 2003R2 32b contenant les versions x86 et x64 d'une dizaine de pilotes, 20 files 
+| Import sur un serveur 2008 R2 *tout neuf*
+
+* Contournement / Solution :
+
+Mise à jour du serveur cible en passant le **SP1** + windows update.
+
+
