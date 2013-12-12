@@ -1,0 +1,135 @@
+.. link: 
+.. description: 
+.. tags: powershell, impression, xml
+.. date: 2013/12/12 15:30:12
+.. title: PrintBRM, xml et Powershell - suite
+.. slug: printbrm-xml-et-powershell-suite
+.. tribe: powershell
+
+
+.. class:: alert alert-info
+
+Maintenant que *Printbrm* n'a plus de secrets ...
+
+* Encore faut-il savoir quoi rechercher ...
+
+.. TEASER_END
+
+
+D'abord
+-------
+
+* On en était `là <printbrm-xml-et-powershell.html>`_ ...
+
+.. code:: powershell
+
+	[xml] $drivers = gc .\BrmDrivers.xml
+	$drivers.Printerdrivers.driver |select Drivername,environment|sort drivername
+
+	DriverName                                                  Environment
+	----------                                                  -----------
+	Brother MFC-8380DN Printer                                  Windows x64
+	Brother MFC-8380DN Printer                                  Windows NT x86
+	Brother MFC-8880DN Printer                                  Windows x64
+	Brother MFC-8880DN Printer                                  Windows NT x86
+	EPSON B-310N                                                Windows NT x86
+	EPSON B-310N                                                Windows x64
+	Epson Stylus COLOR 980 ESC/P 2                              Windows NT x86
+	Generic / Text Only                                         Windows NT x86
+	HP Officejet Pro K5400 Series                               Windows NT x86
+	HP Officejet Pro K5400 Series                               Windows x64
+	KONICA MINOLTA 423SeriesPCL                                 Windows x64
+	KONICA MINOLTA 423SeriesPCL                                 Windows NT x86
+	Lexmark Universal v2 PS3                                    Windows x64
+	Lexmark Universal v2 PS3                                    Windows NT x86
+
+* On continue la lecture des fichiers xml
+
+.. code:: powershell
+	
+	[xml] $drivers = gc .\BrmDrivers.xml
+	[xml] $ports = gc .\BrmPorts.xml
+	[xml] $files = gc .\BrmPrinters.xml
+
+	#Détail du premier élément du tableau $ports
+	
+	$ports.printerports.spm[0]
+
+	PortName        : BGT-monimprimante
+	DataVersion     : 2
+	CoreUIVersion   : 0
+	Protocol        : 1
+	HostAddress     : BGT-monimprimante.fqdn
+	SNMPCom         :
+	DoubleSpool     : 0
+	Queue           :
+	PortNumber      : 9100
+	SNMPEnabled     : 0
+	SNMPDevIndex    : 1
+	PortMonMibIndex : 0
+
+	#Détail du premier élément du tableau $drivers
+
+	$drivers.printerdrivers.driver[0]
+
+	cVersion       : 3
+	DriverName     : Lexmark Universal v2 PS3
+	Environment    : Windows x64
+	DriverPath     : PSCRIPT5.DLL
+	DataFile       : LMUD1N40.PPD
+	ConfigFile     : PS5UI.DLL
+	HelpFile       : PSCRIPT.HLP
+	MfgName        : Lexmark
+	OEMUrl         : http://www.lexmark.com
+	HardwareID     : usbprint\lexmarklexmark_unive1a7d
+	Provider       : Lexmark International
+	Binaries       : 1
+	DependentFiles : DependentFiles
+	DriverDate     : DriverDate
+	QDriverVersion : QDriverVersion
+
+	#Détail du premier élément du tableau $files
+	
+	$files.printers.printqueue[0]
+
+	PrinterName                                                 FileName
+	-----------                                                 --------
+	BGT-monimprimante                                           3A9A7732-ECF4-4F8C-90A6-670E9AF0FC60.xml
+
+
+* On remarque le champs *Filename* dans **$files.printers.printqueue**, qui correspond à autant de fichiers contenus dans le sous-dossier **./printers**
+
+* Donc :
+
+.. code:: powershell
+
+	[xml] $mafile = gc ("./printers/" + $files.printers.printqueue[0].filename)
+	$mafile
+
+	PRINTQUEUE
+	----------
+	PRINTQUEUE
+
+	$mafile.printqueue
+
+	PrinterName    : BGT-monimprimante
+	ShareName      : BGT-monimprimante
+	PortName       : BGT-monimprimante.fqdn
+	DriverName     : Brother MFC-8880DN Printer
+	Comment        : W7 - N&B - R/V
+
+	Location       : BGT
+	SepFile        :
+	PrintProcessor : WinPrint
+	Datatype       : RAW
+	Parameters     :
+	Attributes     : 8728
+	Priority       : 1
+	DefPriority    : 0
+	StartTime      : 60
+	UntilTime      : 60
+	DEVMODE        : DEVMODE
+	SecDesc        : SecDesc
+	PRINTERDATA    : {PRINTERDATA, PRINTERDATA, PRINTERDATA, PRINTERDATA...}
+	
+	

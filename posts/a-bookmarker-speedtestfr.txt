@@ -1,0 +1,15 @@
+.. link: 
+.. description: 
+.. tags: bookmark
+.. date: 2013/12/12 14:52:30
+.. title: A bookmarker : Speedtest.fr
+.. slug: a-bookmarker-speedtestfr
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Un petit test de débit tout simple et rapide, compatible navigateur *light* type smartphone ...
+
+
+`<http://www.speedtest.fr/>`_
