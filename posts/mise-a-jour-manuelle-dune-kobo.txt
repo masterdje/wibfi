@@ -22,5 +22,6 @@ D'abord
 
 Ensuite
 -------
-* Pousser le fichier à la racine de la carte SD
+* Décompresser quelque part...
+* Pousser le fichier  ** KoboRoots.tgz**  & le dossier **updgrade** à la racine de la carte SD
 * Rebooter la liseuse.
