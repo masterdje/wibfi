@@ -1,0 +1,17 @@
+.. link: 
+.. description: 
+.. tags: bookmark
+.. date: 2013/12/13 16:09:05
+.. title: A bookmarker : youtube-mp3.org
+.. slug: a-bookmarker-youtube-mp3org
+
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Petit site utile pour générer du cache audio offline à partir de youtube
+
+
+`<http://www.youtube-mp3.org/fr>`_
+

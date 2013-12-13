@@ -111,7 +111,6 @@ D'abord
 	PRINTQUEUE
 
 	$mafile.printqueue
-
 	PrinterName    : BGT-monimprimante
 	ShareName      : BGT-monimprimante
 	PortName       : BGT-monimprimante.fqdn
