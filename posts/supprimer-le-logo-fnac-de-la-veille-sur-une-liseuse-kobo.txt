@@ -1,0 +1,34 @@
+.. link: 
+.. description: 
+.. tags: ebook, kobo, tips
+.. date: 2013/12/13 20:55:56
+.. title: Supprimer le logo Fnac de la veille sur une liseuse Kobo
+.. slug: supprimer-le-logo-fnac-de-la-veille-sur-une-liseuse-kobo
+.. tribe: ebook
+
+   
+.. class:: alert alert-info
+
+Envie d'afficher la couverture de l'ebook plutot que de la pub ...
+
+* ça tombe bien, c'est faisable...
+
+D'abord
+-------
+
+* Connecter la liseuse kobo (testé sur une touch, glo, et plein de firmwares...) au pc
+
+.. TEASER_END
+
+Ensuite
+-------
+
+* Editer le fichier **Affiliate.conf**
+* Supprimer la ligne contenant *fnac*
+* Enregistrer le fichier
+* Rebooter la liseuse
+
+A noter
+-------
+
+* Penser à refaire l'opération à chaque mise à jour de firmware...
