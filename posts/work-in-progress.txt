@@ -1,0 +1,46 @@
+.. link: 
+.. description: 
+.. tags: vie-du-site, rst, nikola
+.. date: 2013/12/14 13:50:57
+.. title: Work in progress...
+.. slug: work-in-progress
+.. tribe: favicon
+
+   
+.. class:: alert alert-info
+
+Article technique dédié à tester des bricoles ... `un peu de ce genre là ... <changer-la-couleur-du-texte-en-rst-restructuredtext.html>`_
+
+
+Rst Extended
+============
+
+
+Couleurs
+--------
+
+* test test test
+* test test test
+* test test test
+
+Mise en page
+------------
+
+* test test test
+* test test test
+* test test test
+
+Police
+------
+
+* test test test 
+* test test test
+* test test test
+
+
+Icones
+------
+
+* test test test
+* test test test
+* test test test
