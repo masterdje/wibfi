@@ -12,35 +12,174 @@
 Article technique dédié à tester des bricoles ... `un peu de ce genre là ... <changer-la-couleur-du-texte-en-rst-restructuredtext.html>`_
 
 
-Rst Extended
-============
+.. role:: red
+.. role:: blue
+.. role:: blue-vp
+.. role:: magenta
+.. role:: green
+.. role:: orange
 
+.. role:: underlined
+.. role:: striked
+.. role:: shadow-red
+.. role:: shadow-grey
+.. role:: shadow-blue
+
+.. role:: font-opensans
+.. role:: font-fresca
+.. role:: font-ubuntu
+
+.. |biohazard| image:: /res/biohazard.png
+.. |alert| image:: /res/alert.png
+.. |tips| image:: /res/tips.png
+
+
+
+
+rST Etendu
+==========
 
 Couleurs
 --------
 
-* test test test
-* test test test
-* test test test
+* Directives:
 
-Mise en page
-------------
+::
 
-* test test test
-* test test test
-* test test test
+.. role:: red
+.. role:: blue
+.. role:: orange
 
-Police
+* Exemples :
+
+::
+
+:red:`test test test`
+:blue:`test test test`
+:orange:`test test test`
+
+
+* Rendu Navigateur :
+
+| :red:`test test test`
+| :blue:`test test test`
+| :orange:`test test test`
+
+.. TEASER_END
+
+Effets de texte
+---------------
+
+* Directives : 
+
+::
+
+.. role:: underlined
+.. role:: striked
+.. role:: shadow-red
+.. role:: shadow-grey
+.. role:: shadow-blue
+
+* Exemples :
+
+::
+
+ :underlined:`test test test`
+ :striked:`test test test`
+ :shadow-blue:`test test test`
+ :shadow-red:`test test test`
+ :shadow-grey:`test test test`
+
+* Rendu Navigateur :
+
+| :underlined:`test test test`
+| :striked:`test test test`
+| :shadow-blue:`test test test`
+| :shadow-red:`test test test`
+| :shadow-grey:`test test test`
+
+Polices
+-------
+
+* Directives : 
+
+::
+
+.. role:: font-opensans
+.. role:: font-fresca
+.. role:: font-ubuntu
+
+* Exemples :
+
+::
+
+:font-opensans:`Portez ce vieux whisky au petit juge blond qui fume 0 1 2 3 4 5 6 7 8 9` test test test
+:font-ubuntu:`Portez ce vieux whisky au petit juge blond qui fume 0 1 2 3 4 5 6 7 8 9` test test test
+:font-fresca:`Portez ce vieux whisky au petit juge blond qui fume 0 1 2 3 4 5 6 7 8 9` test test test
+
+* Rendu navigateur :
+
+| :font-opensans:`Portez ce vieux whisky au petit juge blond qui fume 0 1 2 3 4 5 6 7 8 9` test test test
+| :font-ubuntu:`Portez ce vieux whisky au petit juge blond qui fume 0 1 2 3 4 5 6 7 8 9` test test test
+| :font-fresca:`Portez ce vieux whisky au petit juge blond qui fume 0 1 2 3 4 5 6 7 8 9` test test test
+
+
+Icônes
 ------
 
-* test test test 
-* test test test
-* test test test
+* Directives : 
+
+::
+
+.. |biohazard| image:: /res/biohazard.png
+.. |alert| image:: /res/alert.png
+.. |tips| image:: /res/tips.png
 
 
-Icones
-------
+* Exemples :
 
-* test test test
-* test test test
-* test test test
+::
+
+	test test test |biohazard| test test test
+	test test test |tips| test test test
+	test test test |alert| test test test
+
+* Rendu navigateur :
+
+| test test test |biohazard| test test test
+| test test test |tips| test test test
+| test test test |alert| test test test
+
+
+Mise à jour du CSS
+------------------
+
+* Toujours dans **custom.css**, modifications apportées pour supporter les styles décrits ici :
+
+.. code:: css
+
+	@import url(http://fonts.googleapis.com/css?family=Fresca|Open+Sans|Ubuntu);
+	
+	.blue {color: blue;}
+	.red {color: red;}
+	.green {color: green;}
+	.orange {color: orange;}
+	.blue-vp {color: #123789;}
+	.magenta {color: #ff00ff;}
+
+	.font-fresca {font-family: 'Fresca', sans-serif;}
+	.font-opensans {font-family: 'Open Sans', sans-serif;}
+	.font-ubuntu {font-family: 'Ubuntu', sans-serif;}
+
+	.underlined {text-decoration:underline;}
+	.striked {text-decoration:line-through;}
+
+	.shadow-red {text-shadow:2px 2px 1px red;}
+	.shadow-grey {text-shadow:2px 2px 1px grey;}
+	.shadow-blue {text-shadow:2px 2px 1px #123789;}
+
+
+A noter
+-------
+
+* Les images *inline* sont considérées comme des substitutions selon la nomenclature rST, c'est pourquoi on ne les trouve pas dans le CSS...

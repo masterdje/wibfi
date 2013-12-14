@@ -1,0 +1,21 @@
+.. role:: red
+.. role:: blue
+.. role:: blue-vp
+.. role:: magenta
+.. role:: green
+.. role:: orange
+
+.. role:: underlined
+.. role:: striked
+
+.. role:: shadow-red
+.. role:: shadow-grey
+.. role:: shadow-blue
+
+.. role:: font-opensans
+.. role:: font-fresca
+.. role:: font-ubuntu
+
+.. |biohazard| image:: /res/biohazard.png
+.. |alert| image:: /res/alert.png
+.. |tips| image:: /res/tips.png

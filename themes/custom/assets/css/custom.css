@@ -1,4 +1,4 @@
-/*@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700,700italic);*/
+@import url(http://fonts.googleapis.com/css?family=Fresca|Open+Sans|Ubuntu);
 
 .media > a > img {
 max-width:100% !important;
@@ -54,3 +54,15 @@ text-decoration:none;
 .orange {color: orange;}
 .blue-vp {color: #123789;}
 .magenta {color: #ff00ff;}
+
+
+.font-fresca {font-family: 'Fresca', sans-serif;}
+.font-opensans {font-family: 'Open Sans', sans-serif;}
+.font-ubuntu {font-family: 'Ubuntu', sans-serif;}
+
+.underlined {text-decoration:underline;}
+.striked {text-decoration:line-through;}
+
+.shadow-red {text-shadow:2px 2px 1px red;}
+.shadow-grey {text-shadow:2px 2px 1px grey;}
+.shadow-blue {text-shadow:2px 2px 1px #123789;}
