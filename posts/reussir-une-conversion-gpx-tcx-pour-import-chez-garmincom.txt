@@ -1,0 +1,40 @@
+.. link: 
+.. description: 
+.. tags: gps, garmin, tcx, gpx
+.. date: 2013/12/15 20:39:10
+.. title: Reussir une conversion gpx -> tcx pour import chez Garmin.com
+.. slug: reussir-une-conversion-gpx-tcx-pour-import-chez-garmincom
+.. tribe: gps
+
+
+.. class:: alert alert-info
+
+Gps en rade, mais envie de récuperer quand meme le parcourt et de l'importer sur l'interface web garmin, faisable ...
+
+* mais pas forcement du premier coup...
+
+
+D'abord
+-------
+
+* Selon *connect.garmin.com*, **Seuls les fichiers .tcx, .gpx et .fit sont pris en charge actuellement.** ...
+* Mais une fois trouvé `un site de waypoint qui fait le boulot <a-bookmarker-gpsiescom.html>`_ , c'est pas sorcier de récuperer un **.gpx**
+
+.. TEASER_END
+
+Ensuite
+-------
+
+* Les essais de sauvegarde du tracé chez *gpsies.com* en format *garmin* (route, points, etc) 
+* Tout comme l'import direct en format .gpx chez garmin sont inopérants dans ce cas là. fichiers mal formatés ?
+* Mais on peut s'en sortir en convertissant le fichier en **.tcx** à l'aide de **gpsbabel**
+
+.. code:: bash
+
+	gpsbabel -i gpx -f [monfichierexportéauformat].gpx -o gtrnctr -F [monfichiertransformé].tcx
+
+A noter
+-------
+
+* la syntaxe ci dessus utilise -o gtrnctr : le formalisme réservé à garmin selon *gpsbabel*
+* J'ai pas creusé la diférence entre un .tcx babélisé et un .tcx venu de gpsies.com ... pour l'instant...

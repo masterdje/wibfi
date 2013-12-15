@@ -1,0 +1,14 @@
+.. link: 
+.. description: 
+.. tags: bookmark, gps, gpx, tcx
+.. date: 2013/12/15 18:12:03
+.. title: A bookmarker : gpsies.com
+.. slug: a-bookmarker-gpsiescom
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Un besoin de créer un parcours géotaggué, le gps en rade ? c'est possible de reconstituer le parcours online grace à gpsies et de l'exporter
+
+`<http://www.gpsies.com/createTrack.do>`_
