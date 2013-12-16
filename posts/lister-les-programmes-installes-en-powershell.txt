@@ -1,0 +1,57 @@
+.. link: 
+.. description: 
+.. tags: powershell, wmi
+.. date: 2013/12/16 11:05:30
+.. title: Lister les programmes installés en powershell
+.. slug: lister-les-programmes-installes-en-powershell
+.. tribe: powershell
+
+
+   
+.. class:: alert alert-info
+
+et via une classe wmi, faute de mieux ...
+
+
+Code
+----
+
+* Cmdlet *get-wmiobject* ou son alias *gwmi*
+* Classe wmi *Win32_Product*
+
+* Usage :
+
+.. code:: powershell
+
+	gwmi -computername monserveur.fqdn -class Win32_Product 
+
+.. TEASER_END
+
+* Exemple :
+	
+.. code:: powershell	
+
+	gwmi -computername monserveur.fqdn -class Win32_Product | select name, version
+	Java AutoUpdater	2.1.9.0
+	SkypeT 6.7			6.7.102
+	...
+
+
+
+A noter
+-------
+
+* Si la commande échoue sur un message :
+
+::
+
+	Get-WmiObject : Classe non valide
+
+* Il faut installer le composant wmi qui est manquant sur le serveur cible (2003 - 2003R2)
+
+::
+
+	Ajout/suppression de programmes
+	-- 	Composants Windows
+	----	Outils de Gestion et d'analyse
+	------		Fournisseur Windows Installer WMI (0.6 mo)		
