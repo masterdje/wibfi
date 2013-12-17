@@ -20,4 +20,57 @@ Code
 
 .. code:: powershell
 
-	write-host 
+	clear-host
+	$serveur = "."
+	$cible = "Name LIKE '%xna%'"
+
+	$collection =@()
+
+	$soft = gwmi win32_product -filter $cible
+	write-host Serveur : $Serveur / Cible : $cible
+	$soft |select name, version |ft
+	$answer = Read-Host "Suppression totale ? oui / non"
+	while("oui","non" -notcontains $answer)
+	{
+		$answer = Read-Host "Suppression totale ? oui / non"
+	}
+	if ($answer -eq "non") { break}
+
+	foreach ($class in $soft) {
+		$ID = ("IdentifyingNumber=""" + $class.identifyingNumber + '",Name=' + '"' + $class.name + '",Version=' + '"' + $class.version + '"' )
+		$collection +=  $ID #("IdentifyingNumber=""" + $class.identifyingNumber + '",Name=' + '"' + $class.name + '",Version=' + '"' + $class.version + '"' )
+		([wmi]"\\$serveur\root\cimv2:win32_Product.$ID").uninstall() | out-null
+		write-host Désinstallation de $class.name : OK
+		}
+
+
+* Qui produira :
+
+.. code:: powershell
+
+	Serveur : . / Cible : Name LIKE '%xna%'
+	
+	name                                                        version
+	----                                                        -------
+	Microsoft XNA Game Studio 4.0 Refresh (Redists)             4.0.30901.0
+	Microsoft XNA Game Studio Platform Tools                    1.4.0.0
+	Microsoft XNA Game Studio 4.0 (XnaLiveProxy)                4.0.20823.0
+	Microsoft XNA Game Studio 4.0 Refresh Language Pack (fr-FR) 4.0.30912.0
+	Windows Phone SDK 7.1 Extensions for XNA Game Studio 4.0    4.0.30901.0
+	Microsoft XNA Game Studio 4.0 Refresh (ARP entry)           4.0.30901.0
+	Microsoft XNA Game Studio 4.0 Refresh (Shared Components)   4.0.30901.0
+	Microsoft XNA Game Studio 4.0 Refresh (Visual Studio)       4.0.30901.0
+	Microsoft XNA Framework Redistributable 4.0 Refresh         4.0.30901.0
+
+	Suppression totale ? oui / non: oui
+	Désinstallation de Microsoft XNA Game Studio 4.0 Refresh (Redists) : OK
+	Désinstallation de Microsoft XNA Game Studio Platform Tools : OK
+	Désinstallation de Microsoft XNA Game Studio 4.0 (XnaLiveProxy) : OK
+	Désinstallation de Microsoft XNA Game Studio 4.0 Refresh Language Pack (fr-FR) : OK
+	Désinstallation de Windows Phone SDK 7.1 Extensions for XNA Game Studio 4.0 : OK
+	Désinstallation de Microsoft XNA Game Studio 4.0 Refresh (ARP entry) : OK
+	Désinstallation de Microsoft XNA Game Studio 4.0 Refresh (Shared Components) : OK
+	Désinstallation de Microsoft XNA Game Studio 4.0 Refresh (Visual Studio) : OK
+	Désinstallation de Microsoft XNA Framework Redistributable 4.0 Refresh : OK
+
+
