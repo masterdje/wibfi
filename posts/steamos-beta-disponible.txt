@@ -1,0 +1,37 @@
+.. link: 
+.. description: 
+.. tags: steam, linux
+.. date: 2013/12/17 16:39:49
+.. title: SteamOS Beta disponible
+.. slug: steamos-beta-disponible
+.. tribe: linux
+
+   
+.. class:: alert alert-info
+
+Ici : `<http://store.steampowered.com/steamos/buildyourown>`_
+
+.. TEASER_END
+
+Infos d'installation selon Steam
+--------------------------------
+
+::
+
+	Custom Installation
+
+	The second method is based on the Debian Installer. It requires multiple configuration steps:
+
+    Download the custom SteamOS beta installation
+    Unzip the SteamOS.zip file to a blank, FAT32-formatted USB stick.
+    Put the USB stick in your target machine. Boot your machine and tell the BIOS to boot off the stick. (usually something like F8, F11, or F12 will bring up the BIOS boot menu).
+    Make sure you select the UEFI entry, it may look something like "UEFI: Patriot Memory PMAP". If there is no UEFI entry, you may need to enable UEFI support in your BIOS setup.
+    Selected "Automated install" from the menu.
+    The rest of the installation is unattended and will repartition the drive and install SteamOS.
+    After installation is complete, log onto the resulting system (using the Gnome session) with the predefined "steam" account. The password is "steam". Run steam, accept the EULA, and let it bootstrap. Logoff the steam account.
+    Log on with the "desktop" account. The password is "desktop".
+    From a terminal window, run ~/post_logon.sh. This will prompt for a password - enter "desktop". This script will perform the post-install customizations, delete itself, then reboot into the recovery partition capture utility.
+    Confirm "y" to continue and the recovery partition will be created. When it is finished, reboot into your freshly installed SteamOS.
+
+
+* ça sonne comme une bonne mini-quête du week-end, ça

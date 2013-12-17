@@ -1,0 +1,23 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2013/12/17 16:48:52
+.. title: Désinstaller les programmes en Powershell
+.. slug: desinstaller-les-programmes-en-powershell
+.. tribe: powershell
+
+
+   
+.. class:: alert alert-info
+
+Petit script de désinstallation, pour faire suite à la `liste <lister-les-programmes-installes-en-powershell.html>`_
+
+
+.. TEASER_END
+
+Code
+----
+
+.. code:: powershell
+
+	write-host 
