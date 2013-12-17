@@ -73,4 +73,20 @@ Code
 	Désinstallation de Microsoft XNA Game Studio 4.0 Refresh (Visual Studio) : OK
 	Désinstallation de Microsoft XNA Framework Redistributable 4.0 Refresh : OK
 
+A noter
+-------
+* **$collection** n'est pas utilisé dans le script mais me permettait d'avoir un array contenant toutes les concaténations destinées à permettre la désinstallation.
+* On doit pouvoir se passer de **$ID**  en escapant (prise de tête assurée) les quotes, car la chaine *wmi* impose d'etre entourée de quotes.
+* **$answer** est pas futé ici, faut que j'inverse le comportement... trop de risques, là.
 
+Bug mystérieux
+--------------
+* Au départ, je tentais :
+
+.. code:: powershell
+
+	([wmi]"\\$serveur\root\cimv2:win32_Product.$collection[$i]").uninstall()
+
+Avec incrémentation de *$i* , normal. sauf que j'obtenais une erreur fatale car ce n'était pas l'enregistrement d'index $i qui était pris en compte, mais *toute* la collection d'enregistrement. Et ça marchait pas terrible, du coup.
+
+* Je ne m'explique pas ce comportement d'un array normal.
