@@ -1,0 +1,15 @@
+.. link: 
+.. description: 
+.. tags: bookmark, conky
+.. date: 2013/12/18 18:56:08
+.. title: A bookmarker : pctechntweaks.com / conky-scripts
+.. slug: a-bookmarker-pctechntweakscom-conky-scripts
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Une belle collections de beaux scripts conky ...
+
+
+`<http://pctechntweaks.com/conky-scripts/>`_
