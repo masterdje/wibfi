@@ -1,0 +1,59 @@
+.. link: 
+.. description: 
+.. tags: vie-du-site, nikola, python
+.. date: 2013/12/19 20:59:16
+.. title: Tentative de compression avec yuicompressor
+.. slug: tentative-de-compression-avec-yuicompressor
+.. tribe: favicon
+
+
+   
+.. class:: alert alert-info
+
+Le *speed-o-meter* de google me dit de compresser les pages pour monter mon score...
+
+* Mais j'ai une c*****e dans le potage...
+
+* Je rajoute à mon **conf.py** 
+
+.. code:: python
+
+	from nikola import filters
+
+	FILTERS = {
+	".css": [filters.yui_compressor],
+	".js": [filters.yui_compressor],
+	}
+
+.. TEASER_END
+
+* et j'obtiens une superbe erreur de compilation lors du **build**
+
+::
+
+	.  copy_assets:output/assets/css/custom.css
+	########################################
+	TaskError - taskid:copy_assets:output/assets/css/custom.css
+	PythonAction Error
+	Traceback (most recent call last):
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/action.py", line 360, in execute
+		returned_value = self.py_callable(*self.args, **kwargs)
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/utils.py", line 550, in unlessLink
+		action(target)
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/filters.py", line 105, in yui_compressor
+		return runinplace(r'yui-compressor --nomunge %1 -o %2', infile)
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/filters.py", line 95, in runinplace
+		subprocess.check_call(command)
+	File "/usr/lib64/python2.7/subprocess.py", line 535, in check_call
+		retcode = call(*popenargs, **kwargs)
+	File "/usr/lib64/python2.7/subprocess.py", line 522, in call
+		return Popen(*popenargs, **kwargs).wait()
+	File "/usr/lib64/python2.7/subprocess.py", line 709, in __init__
+		errread, errwrite)
+	File "/usr/lib64/python2.7/subprocess.py", line 1326, in _execute_child
+		raise child_exception
+	OSError: [Errno 2] Aucun fichier ou dossier de ce type
+
+
+
+* Pas d'idées ...
