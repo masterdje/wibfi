@@ -17,6 +17,14 @@ SITE_URL = "http://wibfi.virtua-peanuts.net/"
 BLOG_EMAIL = "wibfi@virtua-peanuts.net"
 BLOG_DESCRIPTION = "Write it before forget it"
 
+#from nikola import filters
+
+#FILTERS = {
+#  ".css": [filters.yui_compressor],
+# ".js": [filters.yui_compressor],
+#}
+
+
 # Nikola is multilingual!
 #
 # Currently supported languages are:
@@ -228,9 +236,9 @@ DEPLOY_COMMANDS = ['lftp  -e "mirror --delete-first -R output/ .;exit" u45372881
 # }
 
 # Create a gzipped copy of each generated file. Cheap server-side optimization.
-# GZIP_FILES = False
+GZIP_FILES = True
 # File extensions that will be compressed
-# GZIP_EXTENSIONS = ('.txt', '.htm', '.html', '.css', '.js', '.json')
+GZIP_EXTENSIONS = ('.txt', '.htm', '.html', '.css', '.js', '.json')
 
 # #############################################################################
 # Image Gallery Options
