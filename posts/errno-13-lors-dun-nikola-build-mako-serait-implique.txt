@@ -1,0 +1,74 @@
+.. link: 
+.. description: 
+.. tags: nikola, python
+.. date: 2013/12/20 14:20:29
+.. title: Errno 13 lors d'un Nikola Build : mako serait impliqué...
+.. slug: errno-13-lors-dun-nikola-build-mako-serait-implique
+.. tribe: tips
+
+
+   
+.. class:: alert alert-info
+
+Depuis hier, *nikola build* échoue sur une erreur n° 13 : Permission non accordée
+
+::
+
+	#log nikola v6.2.1
+
+	[2013-12-20T13:18:59Z] WARNING: Nikola: Incomplete translation for language 'fr'.
+	Scanning posts....done!
+	Traceback (most recent call last):
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/doit_cmd.py", line 105, in run
+		return self.sub_cmds[command].parse_execute(args)
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/cmd_base.py", line 76, in parse_execute
+		return self.execute(params, args)
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/cmd_base.py", line 243, in execute
+		args)
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/main.py", line 150, in load_tasks
+		self.nikola.gen_tasks('render_site', "Task", 'Group of tasks to render the site.'))
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/loader.py", line 252, in generate_tasks
+		for task_dict, x_doc in flat_generator(gen_result, gen_doc):
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/loader.py", line 23, in flat_generator
+		for item in gen:
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/nikola.py", line 789, in gen_tasks
+		for task in flatten(pluginInfo.plugin_object.gen_tasks()):
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/nikola.py", line 783, in flatten
+		for t in task:
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/plugins/task/archive.py", line 93, in gen_tasks
+		context,
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/nikola.py", line 942, in generic_post_list_renderer
+		deps = self.template_system.template_deps(template_name)
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/nikola.py", line 550, in _get_template_system
+		self.config['CACHE_FOLDER'])
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/plugins/template/mako.py", line 78, in set_directories
+		shutil.rmtree(cache_dir)
+	File "/usr/lib64/python2.7/shutil.py", line 252, in rmtree
+		onerror(os.remove, fullname, sys.exc_info())
+	File "/usr/lib64/python2.7/shutil.py", line 250, in rmtree
+		os.remove(fullname)
+	OSError: [Errno 13] Permission non accordée: 'cache/.mako.tmp/post.tmpl.py'
+
+
+* ça sent les droits qu'ont sauté ...
+
+.. TEASER_END
+
+Contournement
+-------------
+
+* Si ça coince niveau droit, solution **AMX vs anophèle** :
+
+.. code:: bash
+	 
+	sudo nikola clean
+	[sudo] password for dje: 
+	[2013-12-20T13:26:25Z] WARNING: Nikola: Incomplete translation for language 'fr'.
+	Scanning posts....done!
+	.  render_tags:output/assets/js/tag_cloud_data.json
+
+* Ou en plus ciblé, vu que c'est le *.mako.temp* qui conçait
+
+.. code:: bash	
+
+	sudo rm -rf cache/.mako.tmp
