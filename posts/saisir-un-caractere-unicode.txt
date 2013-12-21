@@ -1,0 +1,32 @@
+.. link: 
+.. description: 
+.. tags: bash, tips, linux
+.. date: 2013/12/21 16:13:12
+.. title: Saisir un caractère unicode
+.. slug: saisir-un-caractere-unicode
+.. tribe: shell
+
+  
+   
+.. class:: alert alert-info
+
+Ah ha, je croyais n'avoir pas oublié la manip' jusqu'à ma recherche du caratère "micro" pour la `µ SD à remplacer <remplacement-de-la-carte-sd-interne-dune-kobo-glo.html>`_
+
+* Bon, ben si en fait.
+
+.. TEASER_END
+
+Manipulation avec les doigts
+----------------------------
+
+::
+
+	Ctrl + Shift  puis u suivi du code de caractère.
+	Dans le cas du symbole micro, c'est 00b5
+	donc Ctrl + Shift U00b5 
+	
+
+A noter
+-------
+
+* Fonctionne dans un terminal, vim, gedit, kate ... mais c'est joueur dans une page web si on est sur du doctype/ locale employé ...
