@@ -1,0 +1,45 @@
+.. link: 
+.. description: 
+.. tags: python, bash, linux
+.. date: 2013/12/22 22:01:09
+.. title: Virtualenvwrapper lancé en ouverture de session
+.. slug: virtualenvwrapper-lance-en-ouverture-de-session
+.. tribe: shell
+
+
+.. class:: alert alert-info
+
+Virtualenwrapper c'est très pratique, mais jouer . virtualenvwrapper_lazy.sh à chaque fois c'est fatiguant...
+
+* ... *.bashrc* à la rescousse.
+
+.. TEASER_END
+
+
+
+Modification du ~/.bashrc
+-------------------------
+
+* Rajouter :
+
+.. code:: bash
+
+	
+	export WORKON_HOME=$HOME/.virtualenvs
+	source /usr/bin/virtualenvwrapper.sh
+
+
+Vérification :
+--------------
+
+.. code:: bash
+
+	source ~/.bashrc
+	echo $WORKON_HOME
+	/home/dje/.virtualenvs
+	
+
+A noter
+-------
+
+* Bien sur remplacer **$HOME/.virtualenvs** par un dossier plus précis si ce n'est pas un installation par défaut...
