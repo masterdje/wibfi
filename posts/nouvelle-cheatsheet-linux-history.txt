@@ -4,5 +4,20 @@
 .. date: 2013/12/23 18:52:01
 .. title: Nouvelle CheatSheet : Linux / History
 .. slug: nouvelle-cheatsheet-linux-history
+.. tribe: favicon
 
-Write your post here.
+
+   
+.. class:: alert alert-info
+
+**History** c'est plus qu'une liste !
+
+Inauguration de la Cheat-Sheet `Linux : History </stories/cheat-sheet-linux-history.html>`_ !
+
+.. TEASER_END
+
+Toujours au même endroit ...
+
+.. class: btn btn-lg more
+
+`Accéder aux Cheat-sheets </stories/cheatsheets.html>`_
