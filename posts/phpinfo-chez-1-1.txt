@@ -1,0 +1,14 @@
+.. link: 
+.. description: 
+.. tags: php, tips, 1&1
+.. date: 2013/12/25 17:08:44
+.. title: phpinfo chez 1 & 1
+.. slug: phpinfo-chez-1-1
+.. tribe: tips
+
+   
+.. class:: alert alert-info
+
+1 & 1 fait un peu ce qu'il veut dans sa gestion des maj php, et du coup c'est délicat de savoir *quand* ou *si* il s'est passé un truc de leur coté ...
+
+`</repo/phpinfo.php>`_
