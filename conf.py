@@ -195,7 +195,6 @@ FEED_LENGTH = 10
 
 # Commands to execute to deploy. Can be anything, for example,
 # you may use rsync:
-# "rsync -rav output/* joe@my.site:/srv/www/site"
 # And then do a backup, or ping pingomatic.
 # To do manual deployment, set it to []
 DEPLOY_COMMANDS = ['lftp  -e "mirror --delete-first -R output/ .;exit" u45372881@virtua-peanuts.net/wibfi',
