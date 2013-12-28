@@ -1,0 +1,39 @@
+.. link: 
+.. description: 
+.. tags: ipod, linux, archlinux
+.. date: 2013/12/28 10:40:35
+.. title: Initialisation iPod Shuffle / Archlinux
+.. slug: initialisation-ipod-shuffle-archlinux
+.. tribe: shell
+
+ 
+.. class:: alert alert-info
+
+J'aime pas itunes... mini-challenge, mais internet est là !
+
+
+
+.. TEASER_END
+
+D'abord
+-------
+
+* 1 iPod shuffle 4g connecté usb (et reconnu)
+check lsusb
+
+Ensuite
+-------
+
+* Installer gnupod
+
+.. code:: bash
+	
+	#archlinux : dans les dépots AUR
+	yaourt -S gnupod
+
+* Jouer l'initialisation
+
+.. code:: bash
+	
+	
+
