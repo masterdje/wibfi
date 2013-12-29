@@ -1,0 +1,15 @@
+.. link: 
+.. description: 
+.. tags: tips, linux
+.. date: 2013/12/29 21:33:38
+.. title: Syslinux et dual-boot windows
+.. slug: syslinux-et-dual-boot-windows
+.. tribe: linux
+
+
+.. class:: alert alert-info
+
+
+
+D'abord
+-------
