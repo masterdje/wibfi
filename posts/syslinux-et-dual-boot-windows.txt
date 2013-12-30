@@ -9,7 +9,43 @@
 
 .. class:: alert alert-info
 
+Fausse manip, maj hasardeuse, envie de tester, "ça marche pas en vm" ?
 
+* y a plein d'excuses pour avoir besoin de booter sur une partition windows ...
 
 D'abord
 -------
+
+* Utiliser *syslinux* comme sélecteur.
+* Connaitre la partition sur laquelle windows est installé
+
+.. TEASER_END
+
+Ensuite
+-------
+
+Système avec un **bios** (et pas un **uefi**)
+
+* Editer */boot/syslinux/syslinux.cfg*
+
+.. code:: bash
+
+	sudo vi /boot/syslinux/syslinux.cfg
+	
+	
+* Rajouter (ou décommenter, selon les cas)
+
+.. code:: bash
+
+	LABEL windows
+	        MENU LABEL Partition Windows 
+	        COM32 chain.c32
+	        APPEND hd0 1
+
+A Noter
+-------
+
+Il peut être nécessaire d'éditer la dernière ligne :
+
+* **hd0** : Disque dur de rang 0 (= le premier)
+* **1** : Première partition du disque

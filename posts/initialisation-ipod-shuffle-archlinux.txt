@@ -19,7 +19,14 @@ D'abord
 -------
 
 * 1 iPod shuffle 4g connecté usb (et reconnu)
-check lsusb
+
+.. code:: bash
+
+	lsusb
+	...
+	Bus 002 Device 004: ID 05ac:1303 Apple, Inc. iPod Shuffle 4.Gen
+	...
+
 
 Ensuite
 -------
@@ -31,9 +38,19 @@ Ensuite
 	#archlinux : dans les dépots AUR
 	yaourt -S gnupod
 
+
+* Repérer le point de montage de l'iPod
+
+.. code:: bash
+
+	/run/media/dje/ipod
+	
+
 * Jouer l'initialisation
 
 .. code:: bash
 	
+	gnupod_INIT.pl -m /run/media/dje/ipod
+
 	
 
