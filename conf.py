@@ -17,12 +17,12 @@ SITE_URL = "http://wibfi.virtua-peanuts.net/"
 BLOG_EMAIL = "wibfi@virtua-peanuts.net"
 BLOG_DESCRIPTION = "Write it before forget it"
 
-#from nikola import filters
+from nikola import filters
 
-#FILTERS = {
-#  ".css": [filters.yui_compressor],
-# ".js": [filters.yui_compressor],
-#}
+FILTERS = {
+  ".css": [filters.yui_compressor],
+".js": [filters.yui_compressor],
+}
 
 
 # Nikola is multilingual!
