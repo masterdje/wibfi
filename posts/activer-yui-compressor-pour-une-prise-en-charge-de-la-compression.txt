@@ -1,0 +1,56 @@
+.. link: 
+.. description: 
+.. tags: python, bash, tips
+.. date: 2014/01/01 21:15:11
+.. title: Activer Yui-compressor pour une prise en charge de la compression
+.. slug: activer-yui-compressor-pour-une-prise-en-charge-de-la-compression
+.. tribe: python
+
+.. class:: alert alert-info
+
+Le retour de la mini-quête de compression des pages chez **nikola**
+
+* python, java, etc ...
+
+D'abord
+-------
+
+* `Installer yui-compressor <https://pypi.python.org/pypi/yuicompressor/2.4.2#downloads>`_
+* Attention, python 2.7 requis, ou alors faut déjà bidouiller...
+
+.. TEASER_END
+
+Ensuite
+-------
+
+* Editer *conf.py* , décommenter / rajouer :
+
+.. code:: bash
+
+	from nikola import filters
+
+	FILTERS = {
+	".css": [filters.yui_compressor],
+	".js": [filters.yui_compressor],
+	}
+
+
+* Editer *filters.py*
+
+.. code:: bash
+
+	# droits root pour écriture...
+	sudo vi /home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/filters.py
+	
+*  Indiquer le chemin correct et la syntaxe correcte :
+
+.. code:: bash
+
+	# Remplacer :
+
+	return runinplace(r'yui-compressor --nomunge %1 -o %2', infile)
+    
+    # par le chemin correct de l'installation
+    
+    return runinplace(r'/home/dje/dev/yui/bin/yuicompressor --nomunge %1 -o %2', infile)
+
