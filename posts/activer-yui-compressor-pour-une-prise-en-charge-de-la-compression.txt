@@ -1,6 +1,6 @@
 .. link: 
 .. description: 
-.. tags: python, bash, tips
+.. tags: python, bash, tips, nikola
 .. date: 2014/01/01 21:15:11
 .. title: Activer Yui-compressor pour une prise en charge de la compression
 .. slug: activer-yui-compressor-pour-une-prise-en-charge-de-la-compression
@@ -16,7 +16,27 @@ D'abord
 -------
 
 * `Installer yui-compressor <https://pypi.python.org/pypi/yuicompressor/2.4.2#downloads>`_
-* Attention, python 2.7 requis, ou alors faut déjà bidouiller...
+
+.. code:: bash
+	
+	...
+	...	
+	Creating directory '/home/dje/dev/yui/bin'.
+	Creating directory '/home/dje/dev/yui/parts'.
+	Creating directory '/home/dje/dev/yui/eggs'.
+	Creating directory '/home/dje/dev/yui/develop-eggs'.
+	Generated script '/home/dje/dev/yui/bin/buildout'.
+	
+	bin/buildout 
+	Getting distribution for 'zc.recipe.egg>=2.0.0a3'.
+	Got zc.recipe.egg 2.0.1.
+	Installing yuicompressor.
+	Getting distribution for 'yuicompressor'.
+	Got yuicompressor 2.4.8.
+	Generated script '/home/dje/dev/yui/bin/yuicompressor'.
+	
+
+* Attention, *python 2.7* requis, ou alors faut déjà bidouiller...
 
 .. TEASER_END
 
