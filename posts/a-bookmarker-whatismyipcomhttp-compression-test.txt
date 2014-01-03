@@ -1,0 +1,16 @@
+.. link: 
+.. description: 
+.. tags: bookmark, tips
+.. date: 2014/01/02 14:16:16
+.. title: A bookmarker : whatismyip.com/http-compression-test
+.. slug: a-bookmarker-whatismyipcomhttp-compression-test
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Comment vérifier que le flux web est effectivement compressé si on a pas les bons zoutils ? Grâce à cette page !
+
+
+
+`<http://www.whatsmyip.org/http-compression-test/>`_
