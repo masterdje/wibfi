@@ -337,7 +337,7 @@ document.write(Xt_i+'&ref='+Xt_r.replace(/[<>"]/g, '').replace(/&/g, '$')+'" tit
 
 
 
-CONTENT_FOOTER = '{date}         <a href="mailto:{email}">{author}</a> mais c\'est <a href="http://getnikola.com">Nikola</a> qui bosse.        {license} - {xiti}'
+CONTENT_FOOTER = '2013 - {date} <a href="mailto:{email}">{author}</a> mais c\'est <a href="http://getnikola.com">Nikola</a> qui bosse.        {license} - {xiti}'
 CONTENT_FOOTER = CONTENT_FOOTER.format(email=BLOG_EMAIL,
                                        author=BLOG_AUTHOR,
                                        date=time.gmtime().tm_year,
