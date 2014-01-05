@@ -1,5 +1,4 @@
 RemoveHandler .css
-
 AddType x-mapp-php5 .php .shtml .html .htm .txt .js .css
 
 AddType text/css .css
@@ -7,7 +6,5 @@ AddType text/css .css
 AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
 
 <FilesMatch "\\.(js|css|html|htm|php|xml)$">
-
 SetOutputFilter DEFLATE
-
 </FilesMatch>
