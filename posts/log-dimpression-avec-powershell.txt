@@ -1,0 +1,30 @@
+.. link: 
+.. description: 
+.. tags: powershell, impression
+.. date: 2014/01/06 16:54:21
+.. title: Log d'impression avec powershell
+.. slug: log-dimpression-avec-powershell
+.. tribe: powershell
+
+
+   
+.. class:: alert alert-info
+
+A la recherche des jobs d'impressions...
+
+
+Code
+----
+
+.. code:: powershell
+
+	$serveur = "monserveur.fqdn"
+	$resultats = get-eventlog -logname systeme -computername $serveur | where { $_.EventId -eq 10 -and $_.source -eq "Print" }
+	$resultats | select username, timewritten, replacementstrings
+	
+.. TEASER_END
+
+A Noter
+-------
+
+* W2003 R2
