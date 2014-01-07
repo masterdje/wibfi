@@ -9,11 +9,19 @@
 
 .. class:: alert alert-info
 
-Ah bon on peut pas faire ça en powershell ?
+Alors comme ça, on peut pas faire ça en powershell ? chiche.
 
-* Pataques dans le filesystem & redirection de "mes documents" en erreur ...
+* Pataquès dans le filesystem & redirection de "mes documents" en erreur ...
 
 .. TEASER_END
+
+
+D'abord
+-------
+
+* Code :
+
+.. code:: powershell
 
 	$folders = Get-ChildItem | where {$_.mode -match "d"} | select Psdrive, parent, name, fullname
 	foreach ($folder in $folders) { 
@@ -31,11 +39,13 @@ Ah bon on peut pas faire ça en powershell ?
 		write-host $folder.name  - $subfolder.name  - $_.exception.message	
 		}
 	}
+
+* Wip ...
 	
 	set-acl -AclObject -path .\F
 	set-acl -AclObject $obj  -path \hd-wf
 	
-	$obj = get-acl '.\Lacarrere.A\Mes documents'
+	$obj = get-acl '.\Mes documents'
 	$user = new-object system.security.principal.ntaccount("domain","user")
 	set-acl -AclObject $obj  -path 
 	
