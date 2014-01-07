@@ -9,9 +9,9 @@
 
 .. class:: alert alert-info
 
-P ...
+Ah bon on peut pas faire ça en powershell ?
 
-* Diverses manipulations utiles en cas d'import/export/catastrophe/backup/tsunami/bascule 64bit ...
+* Pataques dans le filesystem & redirection de "mes documents" en erreur ...
 
 .. TEASER_END
 
