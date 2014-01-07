@@ -351,7 +351,7 @@ COMMENT_SYSTEM = "disqus"
 # depends on what comment system you use. The default is
 # "nikolademo" which is a test account for Disqus. More information
 # is in the manual.
-COMMENT_SYSTEM_ID = "wibfi"
+COMMENT_SYSTEM_ID = "w2"
 
 # Create index.html for story folders?
 # STORY_INDEX = False
