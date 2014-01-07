@@ -1,0 +1,42 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2014/01/07 16:30:23
+.. title: Fixer le propriétaire d'un dossier en powershell
+.. slug: fixer-le-proprietaire-dun-dossier-en-powershell
+.. tribe: powershell
+
+
+.. class:: alert alert-info
+
+P ...
+
+* Diverses manipulations utiles en cas d'import/export/catastrophe/backup/tsunami/bascule 64bit ...
+
+.. TEASER_END
+
+	$folders = Get-ChildItem | where {$_.mode -match "d"} | select Psdrive, parent, name, fullname
+	foreach ($folder in $folders) { 
+		$subfolder= Get-ChildItem -Path $folder.name | where {$_.mode -match "d"} | select PSdrive, parent, name, fullname
+		write-host $folder.name  - $subfolder.name - (get-acl $subfolder.fullname).owner
+	}
+
+		try
+		{
+		$fullpath = "`"" + $subfolder.fullname + "`""
+		write-host $folder.name  - $subfolder.name  - (get-acl $fullpath -erroraction continue).owner
+		}
+		catch
+		{
+		write-host $folder.name  - $subfolder.name  - $_.exception.message	
+		}
+	}
+	
+	set-acl -AclObject -path .\F
+	set-acl -AclObject $obj  -path \hd-wf
+	
+	$obj = get-acl '.\Lacarrere.A\Mes documents'
+	$user = new-object system.security.principal.ntaccount("domain","user")
+	set-acl -AclObject $obj  -path 
+	
+	

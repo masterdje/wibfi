@@ -1,5 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Fresca|Open+Sans|Ubuntu);
 
+.navbar-nav.navbar-right:last-child {
+margin-right: 5px;
+}
+
 .media > a > img {
 max-width:100% !important;
 /*background-color:whitesmoke;*/
@@ -27,7 +31,7 @@ small {
 }
 
 h1, h2, h3, body, p {
-  font-family: "Abel", "Helvetica Neue", Helvetica, Arial, sans-serif;
+/*  font-family: "Abel", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   }
 
 .more > a { 
