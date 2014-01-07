@@ -1,0 +1,55 @@
+.. link: 
+.. description: 
+.. tags: nikola, python, bootstrap, css, vie-du-site
+.. date: 2014/01/07 10:34:50
+.. title: Nikola bootswatch_theme retourne une erreur avec le thême Yeti
+.. slug: nikola-bootswatch_theme-retourne-une-erreur
+.. tribe : python
+
+.. class:: alert alert-info
+
+Le chargement du dernier thême dispo chez bootstrap échoue ...
+
+
+.. code:: bash
+
+	nikola bootswatch_theme -n w2 -s yeti -p bootstrap3
+
+	[2014-01-07T09:16:13Z] NOTICE: bootswatch_theme: Creating 'w2' theme from 'yeti' and 'bootstrap3'
+	[2014-01-07T09:16:13Z] NOTICE: bootswatch_theme: Downloading: http://bootswatch.com//yeti/bootstrap.min.css
+	Traceback (most recent call last):
+	...
+	...
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/requests/adapters.py", line 356, in send
+		raise ConnectionError(e)
+	ConnectionError: HTTPConnectionPool(host=u'yeti', port=80): Max retries exceeded with url: /bootstrap.min.css (Caused by <class 'socket.gaierror'>: [Errno -2] Nom ou service inconnu)
+
+* On dirait bien que **`yeti <http://bootswatch.com/yeti/>_`** nous renvoie vers : **Nom ou service inconnu**
+
+.. TEASER_END
+
+
+Contournement 
+-------------
+* Dossier et fichiers du theme "à la main"
+
+.. code:: bash
+	
+	#depuis la racine du site ...
+
+	mkdir -p themes/yeti/assets/css
+	echo "bootstrap3" > themes/yeti/parent
+
+* un coup de cURL
+
+.. code:: bash
+
+	curl -o themes/yeti/assets/css/bootstrap.min.css  http://bootswatch.com/yeti/bootstrap.min.css
+	curl -o themes/yeti/assets/css/bootstrap.css http://bootswatch.com/yeti/bootstrap.css
+
+* Reste qu'à éditer le *conf.py*
+
+.. code:: bash
+
+	# Name of the theme to use.
+	THEME = "yeti"

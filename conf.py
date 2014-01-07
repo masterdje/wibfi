@@ -260,7 +260,7 @@ GZIP_EXTENSIONS = ('.txt', '.htm', '.html', '.css', '.js', '.json')
 # translated
 
 # Name of the theme to use.
-THEME = "custom"
+THEME = "w2"
 
 # Color scheme to be used for code blocks. If your theme provides
 # "assets/css/code.css" this is ignored.
