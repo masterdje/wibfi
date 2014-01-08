@@ -1,0 +1,14 @@
+.. link: 
+.. description: 
+.. tags: bookmark
+.. date: 2014/01/08 18:39:13
+.. title: A bookmarker : freetexthost.com
+.. slug: a-bookmarker-freetexthostcom
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Un PasteBin - like, avec génération d'url courte ET QR-code ...
+
+`<http://freetexthost.com/>`_
