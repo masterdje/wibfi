@@ -1,6 +1,6 @@
 .. link: 
 .. description: 
-.. tags: 
+.. tags: powershell, AD
 .. date: 2014/01/07 16:30:23
 .. title: Fixer le propriétaire d'un dossier en powershell
 .. slug: fixer-le-proprietaire-dun-dossier-en-powershell

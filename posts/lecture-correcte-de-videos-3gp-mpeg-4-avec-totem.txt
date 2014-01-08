@@ -1,0 +1,38 @@
+.. link: 
+.. description: 
+.. tags: archlinux, tips, bash
+.. date: 2014/01/08 11:05:06
+.. title: Lecture correcte de videos 3gp - Mpeg-4 avec Totem
+.. slug: lecture-correcte-de-videos-3gp-mpeg-4-avec-totem
+.. tribe: linux
+
+
+.. class:: alert alert-info
+
+La prise en charge des plugins de décompression mpeg-4 est incomplète si on installe pas ce qui manque...
+
+* Et il en manque... plein !
+
+
+.. TEASER_END
+
+* Faut donc les faire venir à coup de pacman
+
+.. code:: bash
+
+	sudo pacman -S gst-ffmpeg gst-plugins-ugly gstreamer xvidcore x264 gstreamer0.10-ffmpeg grilo-plugins libdmapsharing totem-plugin
+  
+
+A Noter
+-------
+
+* Grilo-plugins est **attendu** dans l'installation de base de totem, mais n'est pas présent, et ça couine un peu. d'où sa présence dans la liste des paquets. mais il n'a pas d'utilité pour une décompression mpeg-4...
+* Je continue à avoir des erreurs/warnings de plug-ins au démarrage de *totem*
+
+.. code:: bash
+	
+	totem
+	Grilo-WARNING **: [registry] grl-registry.c:793: Failed to open module: libgssdp-1.0.so.3: Ne peut ouvrir le fichier d'objet partagé: Aucun fichier ou dossier de ce type                                                                                                                                                 
+    (totem:3802): GrlDmap-WARNING **: error starting browser. code: 0 message: MDNS service is not running            
+    
+* A vue de nez il manque un plugin & MDNS est pas lancé. m'en fous. j'ai rien demandé.
