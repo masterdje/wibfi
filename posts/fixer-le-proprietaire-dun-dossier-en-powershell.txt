@@ -24,21 +24,26 @@ D'abord
 .. code:: powershell
 
 	$folders = Get-ChildItem | where {$_.mode -match "d"} | select Psdrive, parent, name, fullname
-	foreach ($folder in $folders) { 
-		$subfolder= Get-ChildItem -Path $folder.name | where {$_.mode -match "d"} | select PSdrive, parent, name, fullname
-		write-host $folder.name  - $subfolder.name - (get-acl $subfolder.fullname).owner
+	foreach ($folder in $folders) 
+	{ 
+		$subfolders= Get-ChildItem -Path $folder.name | where {$_.mode -match "d"} | select PSdrive, parent, name, fullname
+		foreach ($subfolder in $subfolders)
+		{ 
+			try
+			{
+				#$fullpath = "`"" + $subfolder.fullname + "`""		
+				$fullpath = $subfolder.fullname
+				write-host $subfolder.fullname - $fullpath
+				write-host Dossier: $folder.name  -Sous-Dossier: $subfolder.name  -Propriétaire: (get-acl -path $fullpath -erroraction continue).owner
+			}
+			catch
+			{
+				write-host Dossier: $folder.name  -Sous-Dossier: $subfolder.name  -backgroundcolor red -Erreur: $_.exception.message	
+			}
+		}
 	}
 
-		try
-		{
-		$fullpath = "`"" + $subfolder.fullname + "`""
-		write-host $folder.name  - $subfolder.name  - (get-acl $fullpath -erroraction continue).owner
-		}
-		catch
-		{
-		write-host $folder.name  - $subfolder.name  - $_.exception.message	
-		}
-	}
+
 
 * Wip ...
 	
