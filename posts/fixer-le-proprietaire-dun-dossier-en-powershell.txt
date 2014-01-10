@@ -23,17 +23,19 @@ D'abord
 
 .. code:: powershell
 
-	$folders = Get-ChildItem | where {$_.mode -match "d"} | select Psdrive, parent, name, fullname
+	$rootpath =	"."
+	$folders = Get-ChildItem -path $rootpath | where {$_.mode -match "d"} | select Psdrive, parent, name, fullname
 	foreach ($folder in $folders) 
 	{ 
-		$subfolders= Get-ChildItem -Path $folder.name | where {$_.mode -match "d"} | select PSdrive, parent, name, fullname
+		$subfolders= Get-ChildItem -Path $folder.fullname | where {$_.mode -match "d"} | select PSdrive, parent, name, fullname
 		foreach ($subfolder in $subfolders)
 		{ 
 			try
 			{
 				#$fullpath = "`"" + $subfolder.fullname + "`""		
 				$fullpath = $subfolder.fullname
-				write-host $subfolder.fullname - $fullpath
+	#			write-host $subfolder.fullname - $fullpath
+	
 				write-host Dossier: $folder.name  -Sous-Dossier: $subfolder.name  -Propriétaire: (get-acl -path $fullpath -erroraction continue).owner
 			}
 			catch
@@ -41,6 +43,7 @@ D'abord
 				write-host Dossier: $folder.name  -Sous-Dossier: $subfolder.name  -backgroundcolor red -Erreur: $_.exception.message	
 			}
 		}
+	read-host
 	}
 
 
