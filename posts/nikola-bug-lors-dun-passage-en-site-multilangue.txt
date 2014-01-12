@@ -1,0 +1,53 @@
+.. link: 
+.. description: 
+.. tags: nikola, vie-du-site, bug
+.. date: 2014/01/11 18:34:40
+.. title: Nikola, bug lors d'un passage en site multilangue
+.. slug: nikola-bug-lors-dun-passage-en-site-multilangue
+.. tribe: favicon
+
+.. class:: alert alert-info
+
+Partir en multilangue, c'est simple, d'apres le *conf.py* ... sauf que...
+
+
+* "fr" en langage principal, "en" en langage secondaire, mais le *build* est pas d'accord...
+
+.. code:: bash
+
+	nikola build
+	[2014-01-11T17:29:08Z] WARNING: Nikola: Could not guess locale for language en, using locale C
+	[2014-01-11T17:29:09Z] WARNING: Nikola: Incomplete translation for language 'fr'.
+	Scanning posts....done!
+	Traceback (most recent call last):
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/doit_cmd.py", line 105, in run
+		return self.sub_cmds[command].parse_execute(args)
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/cmd_base.py", line 76, in parse_execute
+		return self.execute(params, args)
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/cmd_base.py", line 243, in execute
+		args)
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/main.py", line 150, in load_tasks
+		self.nikola.gen_tasks('render_site', "Task", 'Group of tasks to render the site.'))
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/loader.py", line 252, in generate_tasks
+		for task_dict, x_doc in flat_generator(gen_result, gen_doc):
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/loader.py", line 23, in flat_generator
+		for item in gen:
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/nikola.py", line 789, in gen_tasks
+		for task in flatten(pluginInfo.plugin_object.gen_tasks()):
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/nikola.py", line 783, in flatten
+		for t in task:
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/plugins/task/archive.py", line 85, in gen_tasks
+		context["items"] = [[nikola.utils.LocaleBorg().get_month_name(int(month), lang), month] for month in months]
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/utils.py", line 736, in get_month_name
+		s = s.decode(self.encodings[lang])
+	TypeError: decode() argument 1 must be string, not None
+
+
+* 
+
+.. TEASER_END
+
+Contournement
+-------------
+
+* Partir sur un nouveau site

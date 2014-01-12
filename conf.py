@@ -61,7 +61,7 @@ DEFAULT_LANG = "fr"
 TRANSLATIONS = {
     DEFAULT_LANG: "",
     # Example for another language:
-    # "es": "./es",
+    "en": "./en",
 }
 
 # Links for the sidebar / navigation bar.
@@ -165,7 +165,7 @@ COMPILERS = {
 # INDEX_PATH = ""
 
 # Create per-month archives instead of per-year
-CREATE_MONTHLY_ARCHIVE = True
+CREATE_MONTHLY_ARCHIVE = False
 # Final locations for the archives are:
 # output / TRANSLATION[lang] / ARCHIVE_PATH / ARCHIVE_FILENAME
 # output / TRANSLATION[lang] / ARCHIVE_PATH / YEAR / index.html
