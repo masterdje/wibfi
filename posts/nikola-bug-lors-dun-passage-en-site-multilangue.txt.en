@@ -1,0 +1,71 @@
+.. link: 
+.. description: 
+.. tags: nikola, vie-du-site, bug
+.. date: 2014/01/11 18:34:40
+.. title: Nikola, bug when going multilingual
+.. slug: nikola-bug-lors-dun-passage-en-site-multilangue
+.. tribe: python
+
+.. class:: alert alert-info
+
+Seems easy, according the *conf.py* file ...but...
+
+
+* "fr" is my main language, "en" the secondary ...
+
+.. code:: bash
+
+	nikola build
+	[2014-01-11T17:29:08Z] WARNING: Nikola: Could not guess locale for language en, using locale C
+	[2014-01-11T17:29:09Z] WARNING: Nikola: Incomplete translation for language 'fr'.
+	Scanning posts....done!
+	Traceback (most recent call last):
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/doit/doit_cmd.py", line 105, in run
+	...
+	...
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/plugins/task/archive.py", line 85, in gen_tasks
+		context["items"] = [[nikola.utils.LocaleBorg().get_month_name(int(month), lang), month] for month in months]
+	File "/home/dje/.virtualenvs/env2/lib/python2.7/site-packages/nikola/utils.py", line 736, in get_month_name
+		s = s.decode(self.encodings[lang])
+	TypeError: decode() argument 1 must be string, not None
+
+
+*  There's something wrong with the month's name !!
+
+.. TEASER_END
+
+Workaround
+-------------
+
+* Edit *conf.py* to set "monthly_archive" to **false**
+
+.. code:: python
+	
+	# Create per-month archives instead of per-year
+	CREATE_MONTHLY_ARCHIVE = False
+
+
+More
+----
+
+* my locals
+
+.. code:: bash
+
+	locale
+	LANG=fr_FR.utf8
+	LC_CTYPE="fr_FR.utf8"
+	LC_NUMERIC="fr_FR.utf8"
+	LC_TIME="fr_FR.utf8"
+	LC_COLLATE="fr_FR.utf8"
+	LC_MONETARY="fr_FR.utf8"
+	LC_MESSAGES="fr_FR.utf8"
+	LC_PAPER="fr_FR.utf8"
+	LC_NAME="fr_FR.utf8"
+	LC_ADDRESS="fr_FR.utf8"
+	LC_TELEPHONE="fr_FR.utf8"
+	LC_MEASUREMENT="fr_FR.utf8"
+	LC_IDENTIFICATION="fr_FR.utf8"
+	LC_ALL=
+
+* Time to create a new bug report ...
