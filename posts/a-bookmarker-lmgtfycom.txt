@@ -1,0 +1,17 @@
+.. link: 
+.. description: 
+.. tags: bookmark, tips
+.. date: 2014/01/14 22:42:24
+.. title: A bookmarker : lmgtfy.com
+.. slug: a-bookmarker-lmgtfycom
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Un site qui *screencast* une recherche google... *let my google this for you*, comme son nom l'indique ... 
+
+* Au fait, une `p'tite recherche ? <http://lmgtfy.com/?q=wibfi+powershell+python+linux+dhcp+dns>`_
+
+
+`<http://lmgtfy.com//>`_
