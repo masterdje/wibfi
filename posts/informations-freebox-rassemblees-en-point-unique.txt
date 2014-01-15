@@ -1,0 +1,76 @@
+.. link: 
+.. description: 
+.. tags: tips, bash, 
+.. date: 2014/01/15 21:06:36
+.. title: Informations Freebox rassemblées en point unique
+.. slug: informations-freebox-rassemblees-en-point-unique
+.. tribe: tips
+
+.. class:: alert alert-info
+
+Encore une pépite cachée dans la freebox...
+
+* ça va le faire dans un conky, ça ...
+
+.. code:: bash
+
+	curl -o infos.txt http://192.168.1.1/pub/fbx_info.txt
+
+
+.. TEASER_END
+
+* Bien évidemment, 192.168.1.1 est à remplacer par l'adresse *exacte* de la freebox...
+
+
+Exemple
+-------
+
+::
+
+	cat infos.txt
+	______________________________________________________________________
+
+						Etat de la Freebox                           
+	______________________________________________________________________
+
+	Informations générales :
+	========================
+
+	Modèle                         Freebox ADSL            
+	Version du firmware            1.5.20                  
+	Mode de connection             Dégroupé                
+	Temps depuis la mise en route  4 jours, 12 heures, 37 minutes
+
+	Téléphone :
+	===========
+
+	Etat                           Ok                      
+	Etat du combiné                Raccroché               
+	Sonnerie                       Inactive                
+
+	Adsl :
+	======
+
+	Etat                           Showtime                
+	Protocole                      ADSL2+                  
+	Mode                           Interleaved             
+
+                         Descendant         Montant           
+                         --                 --                
+	Débit ATM              17432 kb/s         1213 kb/s         
+	Marge de bruit         5.10 dB            7.40 dB           
+	Atténuation            30.00 dB           15.40 dB          
+	FEC                    22816              82                
+	CRC                    367                0                 
+	HEC                    10                 24                
+
+	Journal de connexion adsl :
+	---------------------------
+
+	Date                   Etat               Débit (kb/s)      
+	--                     --                 --                
+	Mise en route          Connexion          17432 / 1025      
+	Mise en route          Déconnexion                      
+	...
+	...
+	
