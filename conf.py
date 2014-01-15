@@ -74,6 +74,13 @@ NAVIGATION_LINKS = {
         ('/categories/index.html', 'Tags'),
         ('/rss.xml', 'RSS'),        
     ),
+    "en": (
+		('en/stories/cheatsheets.html', "Cheat-Sheets"),
+        ('en/stories/what-s-next.html', "What's next"),
+        ('en/archive.html', 'Archives'),
+        ('en/categories/index.html', 'Tags'),
+        ('en/rss.xml', 'RSS'),        
+    ),
 }
 
 # Below this point, everything is optional
