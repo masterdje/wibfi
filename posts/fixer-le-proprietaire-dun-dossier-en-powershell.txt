@@ -23,27 +23,46 @@ D'abord
 
 .. code:: powershell
 
-	$rootpath =	"."
-	$folders = Get-ChildItem -path $rootpath | where {$_.mode -match "d"} | select Psdrive, parent, name, fullname
+	function Show-owner ($path)
+	{
+		try
+		{
+			return (get-acl -path $path -erroraction continue).owner
+		}
+		catch
+		{
+			return $_.exception.message	
+		}
+	}
+	
+	function get-folders ($path)
+	{
+		try
+		{
+			return Get-ChildItem -path $path -erroraction continue | where {$_.mode -match "d"} | select Psdrive, parent, name, fullname
+		}
+		catch
+		{
+			return $_.exception.message	
+		}
+	}
+
+	$rootpath =	"e:\users"
+	$folders= get-folders($rootpath)
 	foreach ($folder in $folders) 
 	{ 
-		$subfolders= Get-ChildItem -Path $folder.fullname | where {$_.mode -match "d"} | select PSdrive, parent, name, fullname
-		foreach ($subfolder in $subfolders)
-		{ 
-			try
-			{
-				#$fullpath = "`"" + $subfolder.fullname + "`""		
-				$fullpath = $subfolder.fullname
-	#			write-host $subfolder.fullname - $fullpath
-	
-				write-host Dossier: $folder.name  -Sous-Dossier: $subfolder.name  -Propriétaire: (get-acl -path $fullpath -erroraction continue).owner
-			}
-			catch
-			{
-				write-host Dossier: $folder.name  -Sous-Dossier: $subfolder.name  -backgroundcolor red -Erreur: $_.exception.message	
+		write-host "---------------------------------------------------------"
+		$proprietaire = Show-owner ($folder.fullname)
+		write-host Dossier: $folder.name  -Propriétaire: $proprietaire
+		$subfolders = get-folders($folder.fullname)
+		if ($subfolders.count -ne $null)
+		{	
+			foreach ($subfolder in $subfolders)
+			{ 
+				$proprietaire = Show-owner ($subfolder.fullname)
+				write-host Sous-dossier: $subfolder.name  -Propriétaire: $proprietaire
 			}
 		}
-	read-host
 	}
 
 
