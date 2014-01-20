@@ -1,14 +1,52 @@
 .. link: 
 .. description: 
-.. tags: 
+.. tags: android, 
 .. date: 2014/01/18 16:14:21
 .. title: Manette Sony Dualshock 3 et Smartphone Android
 .. slug: manette-sony-dualshock-3-et-smartphone-android
+.. tribe: android
 
-Write your post here.
+   
+.. class:: alert alert-info
 
-http://www.phonandroid.com/forum/partage-de-mapping-pour-jeux-t58244.html
+Le "tout tactile", c'est ok pour chasser des cochons à coup d'oiseaux, où crasher des bonbons. Les vrais jeux méritent mieux.
 
-https://play.google.com/store/apps/details?id=com.dancingpixelstudios.sixaxiscompatibilitychecker
+* Une manette Dualshock 3, par exemple ...
 
-https://play.google.com/store/apps/details?id=com.dancingpixelstudios.sixaxiscontroller
+.. TEASER_END
+
+D'abord
+-------
+
+* Il faut un smartphone / tablette / (tv-stick?) android **rooté** .
+* Une manette dualshock 3 officielle (meilleure compatibilité, parait-il)
+* Télécharger `Sixaxis compatibility checker <https://play.google.com/store/apps/details?id=com.dancingpixelstudios.sixaxiscompatibilitychecker>`_ , application gratuite sur le google play store.
+* *Optionnel avec un peu de chance* : un cable usb **OTG** (4€ chez amazon...)
+
+
+Ensuite
+-------
+
+* Valider la compatibilité du smartphone / tablette grâce à l'appli.
+* Si pb de bluetooth, tenter avec le cable usb OTG ... 
+* Ou connecter la manette à un PC pour fixer l'adresse mac bluetooth. 
+* Pour cela, installer **sixpair** (nécessite un dongle bluetooth sur le pc)
+
+.. code:: bash
+
+	# archilinux, dépots AUR
+	yaourt -S sixpair
+
+
+Enfin
+-----
+
+* Avec l'appli *Sixaxis compatibility checker* ET la manette connectée via le cable usb-OTG, on peut appairer le smartphone et ainsi utiliser la manette.
+* Pour 1.95€ `la version premium existe <https://play.google.com/store/apps/details?id=com.dancingpixelstudios.sixaxiscontroller>`_ et permet la connexion **sans-fil**
+
+A Noter
+-------
+
+* Il est judicieux de cocher *android gamepad* dans les réglages, vu qu'un nombre de jeu supporte nativement cette fonction.
+* Si le placement des contrôles n'est pas bon, créer un **touch profile** et l'associer au programme voulu.
+* Testé sur Wiko CinkFive (android 4.2.1) et Acer Iconia A500 (android 4.04)

@@ -1,0 +1,52 @@
+.. link: 
+.. description: 
+.. tags: android, 
+.. date: 2014/01/18 16:14:21
+.. title: Sony Dualshock 3 gamepad and Android smartphone
+.. slug: manette-sony-dualshock-3-et-smartphone-android
+.. tribe: android
+
+   
+.. class:: alert alert-info
+
+Touch-based gameplay is neat when it's all about wrecking pigs with birds, or crashing candies... But real games deserves better...
+
+* a dualshock3 gamepad, at least...
+
+.. TEASER_END
+
+First
+-----
+
+* A smartphone/tablet/usb tv-stick android **root** .
+* A genuine dualshock 3 gamepad (better compatibility, they said)
+* Get the app `Sixaxis compatibility checker <https://play.google.com/store/apps/details?id=com.dancingpixelstudios.sixaxiscompatibilitychecker>`_ , for free on the google play store.
+* *Optionnal with a bit of luck* : a usb **OTG** cable (4$ at amazon...)
+
+
+Then
+----
+
+* Uses the App to check if the smartphone/tablet is compatible
+* If there are bluetooth related issues, try connecting the pad through the otg cable
+* Or connect the pad on a PC to set the bluetooth mac address
+* Download **sixpair** (bluetooth device is mandatory) on a pc
+
+.. code:: bash
+
+	# archilinux, AUR repository
+	yaourt -S sixpair
+
+
+Then again
+----------
+
+* For 3$ `enjoy the premium version <https://play.google.com/store/apps/details?id=com.dancingpixelstudios.sixaxiscontroller>`_ witch allows a **wireless** connection
+
+More
+----
+
+* Within the app, check "android gamepad" to mimic a native pad
+* And create a custom profile if the button mapping is not ok.
+* This profile can be associated with an app (very usefull... emulators etc...)
+* Tested on my Wiko CinkFive (android 4.2.1) and my old Acer Iconia A500 (android 4.04)
