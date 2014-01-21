@@ -1,8 +1,22 @@
 .. link: 
 .. description: 
-.. tags: 
+.. tags: archlinux, sécurité, pacman
 .. date: 2014/01/21 16:37:37
 .. title: Dépot BlackArch pour Archlinux
 .. slug: depot-blackarch-pour-archlinux
+.. tribe: linux
 
-Write your post here.
+.. class:: alert alert-info
+
+
+
+* and play with it with conky ...
+
+
+Installation
+------------
+* Démarche tirée de la page officielle <>`ç
+
+su -
+
+
