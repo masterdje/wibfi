@@ -8,14 +8,14 @@
 
 .. class:: alert alert-info
 
+Un dépot contenant de quoi transformer l'archlinux de papa en couteau suisse de l'intrusion ...
 
-
-* and play with it with conky ...
+* Envie de jouer au "man in the middle ?"
 
 
 Installation
 ------------
-* Démarche tirée de la page officielle <>`ç
+* Démarche tirée de la page officielle `<>`_
 
 su -
 
