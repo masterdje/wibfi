@@ -37,8 +37,21 @@ D'abord
 Ensuite
 -------
 
-* Mise à jour de */etc/pacman.conf*
+* Mise à jour de */etc/pacman.conf* , rajouter :
 
-[blackarch]
-Server = http://blackarch.org/blackarch/$repo/os/$arch
+.. code:: bash
 
+	[blackarch]
+	Server = http://blackarch.org/blackarch/$repo/os/$arch
+
+* Puis rafraichir les dépots
+
+.. code:: bash
+
+	sudo pacman -Syyu
+	
+* Lister les paquets dispo :
+
+.. code:: bash
+	
+	sudo pacman -Sgg | grep blackarch | cut -d' ' -f2 | sort -u
