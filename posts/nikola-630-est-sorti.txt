@@ -1,0 +1,50 @@
+.. link: 
+.. description: 
+.. tags: nikola, python, vie-du-site
+.. date: 2014/01/24 11:20:13
+.. title: Nikola 6.3.0 est sorti
+.. slug: nikola-630-est-sorti
+.. tribe: python
+
+   
+.. class:: alert alert-info
+
+Mise à jour du moteur de blog statique **nikola** en 6.3.0
+
+* sauf que attention quand même...
+
+.. TEASER_END
+
+D'abord
+-------
+
+* Faut lire le p'tit paragraphe
+
+::
+
+	Compatibility Warnings
+
+	If you have your own locale files, you may want to check them. There were some
+	changes lately.
+
+	If you use any themes from the Themes Index, make sure to update them — and
+	make sure to upgrade the whole inheritance tree. For example, the
+	base-jinja theme has a new file (tagindex.tmpl).
+
+
+* Et imaginer de devoir vérifier à peu près tout...
+
+
+Ensuite
+-------
+
+* mise à jour via *git* , *pip* ou téléchargement direct
+
+
+Enfin
+-----
+
+* `Plus d'infos chez github <https://github.com/getnikola/nikola/releases/tag/v6.3.0>`_
+
+* Test de migration ce week end
+
