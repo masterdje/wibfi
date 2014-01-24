@@ -12,7 +12,7 @@
 *admin/admin* , 123456, *default* , les constructeurs se déchainent pour être originaux.
 
 
-Inauguration de la `Cheat-Sheet Capture d'écran sur un smartphone Android </stories/cheatsheet-imprimantes-mot-de-passe-par-defaut.html>`_ !
+Inauguration de la `Cheat-Sheet Mot de passe par défaut des imprimantes </stories/cheatsheet-imprimantes-mot-de-passe-par-defaut.html>`_ !
 
 .. TEASER_END
 
