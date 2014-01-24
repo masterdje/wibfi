@@ -1,0 +1,23 @@
+.. link: 
+.. description: 
+.. tags: cheat-sheet, vie-du-site, impression, tips
+.. date: 2014/01/24 15:58:37
+.. title: Nouvelle CheatSheet : Mot de passe par défaut des imprimantes
+.. slug: nouvelle-cheat-sheet-mot-de-passe-par-defaut-des-imprimantes
+.. tribe: favicon
+
+   
+.. class:: alert alert-info
+
+*admin/admin* , 123456, *default* , les constructeurs se déchainent pour être originaux.
+
+
+Inauguration de la `Cheat-Sheet Capture d'écran sur un smartphone Android </stories/cheatsheet-imprimantes-mot-de-passe-par-defaut.html>`_ !
+
+.. TEASER_END
+
+Toujours au même endroit ...
+
+.. class: btn btn-lg more
+
+`Accéder aux Cheat-sheets </stories/cheatsheets.html>`_

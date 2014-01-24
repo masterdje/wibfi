@@ -20,4 +20,5 @@ CheatSheets
 * `Linux : Gestion des jobs </stories/cheat-sheet-linux-gestion-des-jobs.html>`_
 * `Linux : sudo </stories/cheatsheet-linux-sudo.html>`_
 * `Wine </stories/cheat-sheet-wine.html>`_
+* `Mots de passe par défaut des Imprimantes </stories/cheatsheet-imprimantes-mot-de-passe-par-defaut.html>`_
 

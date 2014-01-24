@@ -1,0 +1,17 @@
+.. link: 
+.. description: 
+.. tags: 
+.. date: 2014/01/24 15:52:35
+.. title: CheatSheet Imprimantes / Mot de passe par defaut
+.. slug: cheatsheet-imprimantes-mot-de-passe-par-defaut
+
+==================================== ==========================================
+Constructeur / Modèle          			Login / Mot de passe
+==================================== ==========================================
+Brother MFC 8380 8880					(profil admin) access
+Epson Aculaser C3900					(profil administrateur) administrator
+Konica Minolta Bizhub 282 423 501		12345678
+==================================== ==========================================
+
+* Wip
+
