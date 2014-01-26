@@ -1,0 +1,7 @@
+
+[2014-01-26T15:39:18Z] WARNING: Nikola: Could not guess locale for language en, using locale C
+[2014-01-26T15:39:19Z] WARNING: Nikola: In order to USE_BUNDLES, you must install the "webassets" Python package.
+[2014-01-26T15:39:19Z] WARNING: Nikola: Setting USE_BUNDLES to False.
+
+Scanning posts.COMPILERS in conf.py does not tell me how to handle '.en' extensions.
+
