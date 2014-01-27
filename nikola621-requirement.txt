@@ -20,3 +20,5 @@ requests==2.0.1
 six==1.4.1
 wsgiref==0.1.2
 yuicompressor==2.4.8
+
+test
