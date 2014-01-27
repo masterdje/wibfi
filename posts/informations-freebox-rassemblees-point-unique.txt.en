@@ -2,15 +2,15 @@
 .. description: 
 .. tags: tips, bash, freebox, fai
 .. date: 2014/01/15 21:06:36
-.. title: Informations Freebox rassemblées en un point unique
-.. slug: informations-freebox-rassemblees-en-point-unique
+.. title: Freebox settings all-in-one
+.. slug: informations-freebox-rassemblees-point-unique
 .. tribe: tips
 
 .. class:: alert alert-info
 
-Encore une pépite cachée dans la freebox...
+Get some more from your freebox...
 
-* ça va le faire dans un conky, ça ...
+* and play with it with conky ...
 
 .. code:: bash
 
@@ -19,10 +19,10 @@ Encore une pépite cachée dans la freebox...
 
 .. TEASER_END
 
-* Bien évidemment, 192.168.1.1 est à remplacer par l'adresse *exacte* de la freebox...
+* Of course, set your freebox address instead of 192.168.1.1...
 
 
-Exemple
+Example
 -------
 
 ::

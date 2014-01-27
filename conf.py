@@ -17,14 +17,6 @@ SITE_URL = "http://wibfi.virtua-peanuts.net/"
 BLOG_EMAIL = "wibfi@virtua-peanuts.net"
 BLOG_DESCRIPTION = "Write it before forget it"
 
-from nikola import filters
-
-FILTERS = {
-  ".css": [filters.yui_compressor],
-".js": [filters.yui_compressor],
-}
-
-
 # Nikola is multilingual!
 #
 # Currently supported languages are:
@@ -52,6 +44,14 @@ FILTERS = {
 # If a specific post is not translated to a language, then the version
 # in the default language will be shown instead.
 
+
+from nikola import filters
+
+FILTERS = {
+  ".css": [filters.yui_compressor],
+".js": [filters.yui_compressor],
+}
+
 # What is the default language?
 DEFAULT_LANG = "fr"
 
@@ -63,6 +63,8 @@ TRANSLATIONS = {
     # Example for another language:
     "en": "./en",
 }
+
+TRANSLATIONS_PATTERN = "{path}.{ext}.{lang}"
 
 # Links for the sidebar / navigation bar.
 # You should provide a key-value pair for each used language.
@@ -82,6 +84,8 @@ NAVIGATION_LINKS = {
         ('en/rss.xml', 'RSS'),        
     ),
 }
+
+
 
 # Below this point, everything is optional
 
@@ -109,12 +113,12 @@ NAVIGATION_LINKS = {
 #
 
 POSTS = (
-    ("posts/*.txt", "posts", "post.tmpl"),
     ("posts/*.rst", "posts", "post.tmpl"),
+    ("posts/*.txt", "posts", "post.tmpl"),
 )
 PAGES = (
-    ("stories/*.txt", "stories", "story.tmpl"),
     ("stories/*.rst", "stories", "story.tmpl"),
+    ("stories/*.txt", "stories", "story.tmpl"),
 )
 
 # One or more folders containing files to be copied as-is into the output.
@@ -131,7 +135,7 @@ PAGES = (
 # 'markdown' is MarkDown
 # 'html' assumes the file is html and just copies it
 COMPILERS = {
-    "rest": ('.txt', '.rst'),
+    "rest": ('.rst', '.txt'),
     "markdown": ('.md', '.mdown', '.markdown'),
     "textile": ('.textile',),
     "txt2tags": ('.t2t',),
@@ -139,15 +143,11 @@ COMPILERS = {
     "wiki": ('.wiki',),
     "ipynb": ('.ipynb',),
     "html": ('.html', '.htm'),
-    # Pandoc detects the input from the source filename
-    # but is disabled by default as it would conflict
-    # with many of the others.
-    # "pandoc": ('.rst', '.md', '.txt'),
 }
 
 # Create by default posts in one file format?
 # Set to False for two-file posts, with separate metadata.
-# ONE_FILE_POSTS = True
+ONE_FILE_POSTS = True
 
 # If this is set to True, then posts that are not translated to a language
 # LANG will not be visible at all in the pages in that language.
@@ -162,7 +162,7 @@ COMPILERS = {
 # output / TRANSLATION[lang] / TAG_PATH / index.html (list of tags)
 # output / TRANSLATION[lang] / TAG_PATH / tag.html (list of posts for a tag)
 # output / TRANSLATION[lang] / TAG_PATH / tag.xml (RSS feed for a tag)
-# TAG_PATH = "categories"
+TAG_PATH = "categories"
 
 # If TAG_PAGES_ARE_INDEXES is set to True, each tag's page will contain
 # the posts themselves. If set to False, it will be just a list of links.

@@ -5,3 +5,5 @@
 
 Scanning posts.COMPILERS in conf.py does not tell me how to handle '.en' extensions.
 
+.. title: Informations Freebox rassemblées en un point unique
+.. slug: informations-freebox-rassemblees-en-point-unique
