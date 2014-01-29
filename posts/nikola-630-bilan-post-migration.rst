@@ -35,7 +35,7 @@ Ensuite
 [2014-01-26T15:39:19Z] WARNING: Nikola: In order to USE_BUNDLES, you must install the "webassets" Python package.
 [2014-01-26T15:39:19Z] WARNING: Nikola: Setting USE_BUNDLES to False.
 
-... et plante.
+et plante.
 
 * J'installe *webassets*
 
@@ -61,6 +61,18 @@ Scanning posts.COMPILERS in conf.py does not tell me how to handle '.en' extensi
 	.. slug: informations-freebox-rassemblees-en-point-unique
 
 * `rapport de bug en cours @ github <https://github.com/getnikola/nikola/issues/1007>`_
+
+* **MAJ** : les experts de nikola se sont penchés sur le cas, et recommendent un gros nettoyage:
+
+.. code:: bash
+
+	rm -rf __pycache__/
+	rm -rf cache/
+	rm -rf .doit.db
+	nikola clean
+
+* Et ça marche !!
+
 
 Et aussi
 --------
