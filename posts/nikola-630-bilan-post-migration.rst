@@ -32,8 +32,8 @@ Ensuite
 
 ::
 
-[2014-01-26T15:39:19Z] WARNING: Nikola: In order to USE_BUNDLES, you must install the "webassets" Python package.
-[2014-01-26T15:39:19Z] WARNING: Nikola: Setting USE_BUNDLES to False.
+	[2014-01-26T15:39:19Z] WARNING: Nikola: In order to USE_BUNDLES, you must install the "webassets" Python package.
+	[2014-01-26T15:39:19Z] WARNING: Nikola: Setting USE_BUNDLES to False.
 
 et plante.
 
@@ -48,7 +48,7 @@ et plante.
 
 ::
 
-Scanning posts.COMPILERS in conf.py does not tell me how to handle '.en' extensions.
+	Scanning posts.COMPILERS in conf.py does not tell me how to handle '.en' extensions.
 
 * Apres enquête, c'est un fichier qui provoque ce message.
 
