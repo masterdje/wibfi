@@ -45,12 +45,12 @@ BLOG_DESCRIPTION = "Write it before forget it"
 # in the default language will be shown instead.
 
 
-#from nikola import filters
+from nikola import filters
 
-#FILTERS = {
-#  ".css": [filters.yui_compressor],
-#".js": [filters.yui_compressor],
-#}
+FILTERS = {
+  ".css": [filters.yui_compressor],
+".js": [filters.yui_compressor],
+}
 
 # What is the default language?
 DEFAULT_LANG = "fr"
