@@ -55,6 +55,8 @@ FILTERS = {
 # What is the default language?
 DEFAULT_LANG = "fr"
 
+LOCALES = {'fr': 'fr_FR.utf8', 'en': 'en_US.utf8'}
+
 # What other languages do you have?
 # The format is {"translationcode" : "path/to/translation" }
 # the path will be used as a prefix for the generated pages location
@@ -77,11 +79,11 @@ NAVIGATION_LINKS = {
         ('/rss.xml', 'RSS'),        
     ),
     "en": (
-		('en/stories/cheatsheets.html', "Cheat-Sheets"),
-        ('en/stories/what-s-next.html', "What's next"),
-        ('en/archive.html', 'Archives'),
-        ('en/categories/index.html', 'Tags'),
-        ('en/rss.xml', 'RSS'),        
+		('/stories/cheatsheets.html', "Cheat-Sheets"),
+        ('/stories/what-s-next.html', "What's next"),
+        ('/archive.html', 'Archives'),
+        ('/categories/index.html', 'Tags'),
+        ('/rss.xml', 'RSS'),        
     ),
 }
 
@@ -172,7 +174,7 @@ TAG_PATH = "categories"
 # INDEX_PATH = ""
 
 # Create per-month archives instead of per-year
-CREATE_MONTHLY_ARCHIVE = False
+CREATE_MONTHLY_ARCHIVE = True
 # Final locations for the archives are:
 # output / TRANSLATION[lang] / ARCHIVE_PATH / ARCHIVE_FILENAME
 # output / TRANSLATION[lang] / ARCHIVE_PATH / YEAR / index.html
