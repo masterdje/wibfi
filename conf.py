@@ -79,11 +79,11 @@ NAVIGATION_LINKS = {
         ('/rss.xml', 'RSS'),        
     ),
     "en": (
-		('/stories/cheatsheets.html', "Cheat-Sheets"),
-        ('/stories/what-s-next.html', "What's next"),
-        ('/archive.html', 'Archives'),
-        ('/categories/index.html', 'Tags'),
-        ('/rss.xml', 'RSS'),        
+		('/en/stories/cheatsheets.html', "Cheat-Sheets"),
+        ('/en/stories/what-s-next.html', "What's next"),
+        ('/en/archive.html', 'Archives'),
+        ('/en/categories/index.html', 'Tags'),
+        ('/en/rss.xml', 'RSS'),        
     ),
 }
 

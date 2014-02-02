@@ -1,4 +1,4 @@
-.. title: Activer les archives mensuelles d'un site nikola multilangue
+.. title: Monthly archives on a multilingual nikola website
 .. slug: activer-les-archives-mensuelles-dun-site-nikola-multilangue
 .. date: 2014/02/01 14:42:42
 .. tags: nikola, python, tips, vie-du-site
@@ -9,11 +9,11 @@
 
 .. class:: alert alert-info
 
-Un pseudo-bug rencontré lors du passage en multilangue bloquait le build si on était en mode *archives mensuelles*
+A multilingual site wasn't building successfully if **create monthly archives** was set to **true**
 
-* encore un problème de *locale*
+* A *locale* issue ...
 
-J'avais ce méchant message :
+I was getting this error message:
  
 .. code:: python
 
@@ -30,14 +30,14 @@ J'avais ce méchant message :
 		s = s.decode(self.encodings[lang])
 	TypeError: decode() argument 1 must be string, not None
 
-* Y a un truc vide, et c'est la variable contenant les mois en anglais... 
+* something is empty...
 
 .. TEASER_END
 
-D'abord
--------
+First
+-----
 
-* Vérifier la cohérence des locales
+* Check the locales
 
 .. code:: bash
 
@@ -62,22 +62,22 @@ D'abord
 	fr_FR.utf8
 	POSIX
 
-Contournement
--------------
+Workaround
+----------
 
-* Rajouter la locale **en_US.utf8** : il suffit de la décommenter
+* Add the **en_US.utf8** locale : just uncomment it in
 
 .. code:: bash
 
 	vi /etc/locale.gen
 	
-* Recompiler les locales
+* Rebuild your locales
 
 .. code:: bash
 	
 	sudo locale-gen
 
-A noter
--------
+Footnotes
+---------
 
-* @kwpolska verrait bien une correction plus propre ... 
+* @kwpolska  is looking for a cleaner workaround, like locale fallback ... 
