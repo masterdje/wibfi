@@ -13,7 +13,7 @@ Epson Aculaser C3900					(profil administrateur) administrator
 Konica Minolta Bizhub 282 423 501		12345678
 Oki C830								root / 6 derniers caractères adresse mac
 Oki C831								admin / aaaaaa
-Sharp Mx-M314N							admin / admin
+Sharp Mx-M314N / Mx-M354N				admin / admin
 ==================================== ============================================
 
 * Wip
