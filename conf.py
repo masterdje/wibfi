@@ -126,7 +126,7 @@ PAGES = (
 # One or more folders containing files to be copied as-is into the output.
 # The format is a dictionary of "source" "relative destination".
 # Default is:
-FILES_FOLDERS = {'php.ini': '/posts/' }
+FILES_FOLDERS = { 'test': '', 'test': 'posts/','test': 'stories/'}
 
 # Which means copy 'files' into 'output'
 
