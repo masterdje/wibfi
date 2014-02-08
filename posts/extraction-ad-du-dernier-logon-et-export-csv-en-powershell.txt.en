@@ -1,0 +1,35 @@
+.. title: Last Logon AD extract and csv export with powershell
+.. slug: extraction-ad-du-dernier-logon-et-export-csv-en-powershell
+.. date: 2014/02/08 12:23:34
+.. tags: AD, wmi, powershell
+.. link: 
+.. description: 
+.. type: text
+.. tribe: powershell
+
+.. class:: alert alert-info
+
+AD check to find out some useless computers...
+
+* And csv export to report through excel ...
+
+.. TEASER_END
+
+Code
+----
+
+.. code:: powershell
+
+	$servers = Get-ADComputer -Filter { OperatingSystem -NotLike '*Server*' } -Properties OperatingSystem
+	$tabl =@()
+	foreach($server in $servers) {
+		$tabl += Get-ADComputer $server.Name -Properties lastlogontimestamp | Select-Object @{n="DN";e={$_.DistinguishedName}}, @{n="Nom";e={$_.Name}}, @{Name="Lastlogged"; Expression={[DateTime]::FromFileTime($_.lastLogonTimestamp)}}
+		}
+	$tabl |sort lastlogged -desc | Export-Csv liste.csv -Delimiter ";"
+	
+
+Foot Notes
+----------
+
+* Lazy intial query, must do better (os check, OU delimiter...) if you need this setting for **all** the computers (servers included)
+* **-delimiter ";"** is required to avoid ambiguities from the *distinguishedname* field ( *domain*, *OU*, and *canonical name* are comma separated within)
