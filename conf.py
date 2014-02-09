@@ -247,7 +247,7 @@ DEPLOY_COMMANDS = ['lftp  -e "mirror --delete-first -R output/ .;exit" u45372881
 # Create a gzipped copy of each generated file. Cheap server-side optimization.
 GZIP_FILES = True
 # File extensions that will be compressed
-GZIP_EXTENSIONS = ('.txt', '.htm', '.html', '.css', '.js', '.json')
+GZIP_EXTENSIONS = ('.txt','.rst', '.htm', '.html', '.css', '.js', '.json')
 
 # #############################################################################
 # Image Gallery Options
