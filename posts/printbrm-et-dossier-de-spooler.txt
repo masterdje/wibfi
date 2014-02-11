@@ -1,0 +1,38 @@
+.. link: 
+.. description: 
+.. tags: powershell, impression
+.. date: 2013/12/10 16:15:34
+.. title: PrintBRM, xml et Powershell
+.. slug: printbrm-et-dossier-de-spooler
+.. tribe: powershell
+
+
+.. class:: alert alert-info
+
+**Erreur 0x80070005** non bloquante affichée par *Printbrm* lors d'une importation via fichier ...
+
+* Texte original :
+::
+
+	Printbrm.exe (Assistant Migration d’imprimantes ou outil de ligne de commande) a correctement restauré la file d’attente à l’impression mais n’a pas pu changer l’emplacement du dossier de spouleur. Erreur 0x80070005. Accès refusé.
+	Printbrm.exe a utilisé l’emplacement du dossier de spouleur par défaut (%WINDIR%\System32\Spool\Printers). 
+	Cela peut se produire si la configuration de l’ordinateur source diffère de celle de l’ordinateur de destination. Aucune action utilisateur n’est requise à moins que vous ne vouliez utiliser un emplacement de dossier de spouleur personnalisé.
+
+.. TEASER_END
+
+
+D'abord
+-------
+
+* Vérification de l'erreur :
+
+.. code:: powershell
+
+	#serveur depuis lequel on a exporté :
+	$computer1 = monserveur.fqdn
+	(([microsoft.win32.registrykey]::OpenRemoteBaseKey('localmachine', $computer1)).opensubkey("system\\currentcontrolset\\control\\print\\printers")).getvalue("DefaultSpoolDirectory")
+	c:\Windows\system32\spool\PRINTERS
+	
+	#serveur sur lequel on importe : (si c'est l'host)
+	(Get-Itemproperty  hklm:\system\currentcontrolset\control\print\printers).defaultspooldirectory
+	d:\spool\PRINTERS
