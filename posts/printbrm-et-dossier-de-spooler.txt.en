@@ -1,0 +1,51 @@
+.. link: 
+.. description: 
+.. tags: powershell, impression, tips
+.. date: 2014/02/11 16:15:34
+.. title: PrintBrm et dossier de spooler personnalisé
+.. slug: printbrm-et-dossier-de-spooler
+.. type: text
+.. tribe: powershell
+
+
+.. class:: alert alert-info
+
+**Erreur 0x80070005** non bloquante affichée par *Printbrm* lors d'une *importation d'imprimantes depuis un fichier* ...
+
+* Texte original :
+
+::
+
+	Printbrm.exe (Assistant Migration d’imprimantes ou outil de ligne de commande) a correctement restauré la file d’attente à l’impression 
+	mais n’a pas pu changer l’emplacement du dossier de spouleur. Erreur 0x80070005. Accès refusé.
+	Printbrm.exe a utilisé l’emplacement du dossier de spouleur par défaut (%WINDIR%\System32\Spool\Printers). 
+	Cela peut se produire si la configuration de l’ordinateur source diffère de celle de l’ordinateur de destination. Aucune action utilisateur
+	n’est requise à moins que vous ne vouliez utiliser un emplacement de dossier de spouleur personnalisé.
+
+.. TEASER_END
+
+
+D'abord
+-------
+
+* Sachant que le *dossier de spool* est stocké dans une clé de registre : **hklm:\\system\\currentcontrolset\\control\\print\\printers** puis **defaultspooldirectory**, il faut vérifier cette valeur... c'est plus simple que d'ouvrir une **mmc** ...
+
+* Vérification:
+
+.. code:: powershell
+
+	#serveur depuis lequel on a exporté :
+	$computer1 = monserveur.fqdn
+	(([microsoft.win32.registrykey]::OpenRemoteBaseKey('localmachine', $computer1)).opensubkey("system\\currentcontrolset\\control\\print\\printers")).getvalue("DefaultSpoolDirectory")
+	c:\Windows\system32\spool\PRINTERS
+	
+	#serveur sur lequel on importe : (si c'est l'host)
+	(Get-Itemproperty  hklm:\system\currentcontrolset\control\print\printers).defaultspooldirectory
+	d:\spool\PRINTERS
+
+Contournement
+-------------
+
+* Modifier le dossier de spool et refaire un export.
+* *ou* Modifier le dossier de spool du serveur sur lequel on importe...
+* **wip** ou bien Editer le fichier d'export et modifier le dossier de spool dans l'archive ...
