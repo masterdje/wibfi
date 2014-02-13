@@ -1,0 +1,157 @@
+.. link: 
+.. description: 
+.. tags: powershell, impression, tips, wmi
+.. date: 2014/02/13 13:15:34
+.. title: Transformation des ports d'impression en FQDN en powershell
+.. slug: transformation-des-ports-dimpression-enfqdn-en-powershell
+.. type: text
+.. tribe: powershell
+
+
+.. class:: alert alert-info
+
+En prévision d'une bascule **W7-64b**, je vérifie que les ports ip déclarés sur le serveur d'impression sont tous en FQDN
+
+* J'ai pas envie de vérifier les serveurs un par un...
+
+.. TEASER_END
+
+
+Code
+----
+
+.. code:: powershell
+
+	param($server,$task)
+
+	write-host
+	write-host [?] Usage : script.ps1 Serveur-cible list [ou] fqdn
+
+	if ( ! $server ) 
+	{	
+		write-host [!] Param Serveur non renseigné, serveur local assumé.
+		$server = "."
+	}
+	else
+	{
+		write-host [Server] Cible : $server 
+	}
+	if (!$task)
+	{ 
+		write-host [!] Param Task non renseigné, mode list assumé.
+		$task="list"
+	}
+	else
+	{	
+		write-host [Task] Mode : $task 
+	}
+	write-host
+
+	$fqdn="fqdn" #<--- genre contoso.com
+
+	$colItems = get-wmiobject -class "Win32_TCPIPPrinterPort" -namespace "root\CIMV2" -computername $server
+	if ($colItems -eq $Null){ write-host "[X] Pas de ports TCP/IP sur le serveur $server" ; break}
+	foreach ($objItem in $colItems) { 
+
+	if ($objitem.hostaddress.toupper() -match $fqdn) 
+	{
+		write-host [!] FQDN Port OK --------------------------
+		write-host "Name: " $objItem.Name  
+		write-host "Host Address: " $objItem.HostAddress 
+		write-host ----------------------------------------</>
+		
+	} 
+	else 
+	{
+		write-host [X] FQDN Port NOK -------------------------
+		write-host "Name: " $objItem.Name  
+		write-host "Bad HostAddress: " $objItem.HostAddress 
+		if ($task -eq "fqdn")
+		{
+			write-host ---------- Creating FQDN Port -------------
+			$fqdnport= $objItem.Name+$fqdn			
+			createprinterport  $server  $objItem.Name $fqdnport |out-null
+			write-host "FQDN HostAddress :" $fqdnport		
+		}
+		write-host ----------------------------------------</>
+		
+	}
+    write-host 
+	} 
+
+	function CreatePrinterPort 
+    {
+        $server = $args[0] 
+        $port = ([WMICLASS]"\\$server\ROOT\cimv2:Win32_TCPIPPrinterPort").createInstance()
+        $port.Name = $args[1]
+        $port.SNMPEnabled = $false
+        $port.Protocol = 1
+		$port.HostAddress = $args[2]  
+        $port.Put() 
+    }
+
+* Qui produira :
+
+.. code:: powershell
+	
+	# mode "liste des ports"
+	.printport.ps1 monserveur.fqdn list
+
+	[?] Usage : script.ps1 Serveur-cible list [ou] fqdn
+	[Server] Cible : monserveur.fqdn
+	[Task] Mode : list
+
+	[X] FQDN Port NOK -------------------------
+	Name:  ACM-A-000.imp
+	Bad HostAddress:  ACM-A-000.imp
+	----------------------------------------</>
+
+	[X] FQDN Port NOK -------------------------
+	Name:  acm-a-002.imp
+	Bad HostAddress:  acm-a-002.imp
+	----------------------------------------</>
+
+	[X] FQDN Port NOK -------------------------
+	Name:  ACM-A-003.imp
+	Bad HostAddress:  ACM-A-003.imp
+	----------------------------------------</>
+	
+	...
+	...
+	
+	# mode "mise à jour fqdn"
+	. printport.ps1 monserveur.fqdn fqdn
+
+	[?] Usage : script.ps1 Serveur-cible list [ou] fqdn
+	[Server] Cible : monserveur.fqdn
+	[Task] Mode : fqdn
+
+	[X] FQDN Port NOK -------------------------
+	Name:  ACM-A-000.imp
+	Bad HostAddress:  ACM-A-000.imp
+	---------- Creating FQDN Port -------------
+	FQDN HostAddress : ACM-A-000.imp.fqdn
+	----------------------------------------</>
+
+	[X] FQDN Port NOK -------------------------
+	Name:  acm-a-002.imp
+	Bad HostAddress:  acm-a-002.imp
+	---------- Creating FQDN Port -------------
+	FQDN HostAddress : acm-a-002.imp.fqdn
+	----------------------------------------</>
+
+	[X] FQDN Port NOK -------------------------
+	Name:  ACM-A-003.imp
+	Bad HostAddress:  ACM-A-003.imp
+	---------- Creating FQDN Port -------------
+	FQDN HostAddress : ACM-A-003.imp.fqdn
+	----------------------------------------</>
+
+
+A Noter
+-------
+
+* Bien évidemment, ce genre de script n'est utile QUE si les files d'impressions sont basées sur des ports tcp/ip à partir d'alias DNS...
+* **FQDN** du domaine à remplacer par le bon, genre "contoso.com"
+* Testé sur du serveur w2003 R2 sp2 / W2008 R2 SP1.
+* Powershell v2 à la manoeuvre. pas de **Add-printerport** ici... pas encore...
