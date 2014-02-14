@@ -10,6 +10,57 @@
 
 .. class:: alert alert-info
 
-**Erreur 0x80070005** non bloquante affichée par *Printbrm* lors d'une *importation d'imprimantes depuis un fichier* ...
+Mise à jour du `script évoqué ici <mise-a-jour-de-drivers-dimpression-via-powershell.html>`_ , mais qui s'est révélé pénible à l'usage, sans powershell installé sur chaque serveur concerné ...
 
-* Texte original :
+* Et des serveurs d'impression, j'en ai un paquet à manipuler... des DC windows 2003 R2-Sp2, ... du coup, plan B...
+
+.. TEASER_END
+
+D'abord
+-------
+
+* Ce script contourne la difficulté initiale (pas de powershell installé) en **écrivant** un **.bat** sur le serveur distant ... ça implique que le lanceur de script dispose de ce droit là...
+* Le **.bat** généré, bien qu'encodé en utf-8, choppe des sales carateres spéciaux invisibles dans sa premiere ligne, d'où le *REM $serveur* inutile pour le code, mais qui évite de planter une ligne utile.
+
+Code
+----
+
+.. code:: powershell
+
+  $newdriver = "Lexmark Universal v2 PS3"
+  $olddriver ="Lexmark Universal XL"
+  $pattern = "where name like '%BL%'"
+  $server = "monserveur.fqdn"
+ 
+ $printers = gwmi -computername  $server -query "select * from win32_printer $pattern"
+ 
+  "REM Serveur $server"  | out-file "\\"$server"\c$\Maj-drivers.bat" -append    -encoding utf8
+  foreach($printer in $printers)
+  {
+    write-host [!] $printer.name $printer.drivername
+    $pilote = $printer.drivername
+    $name = $printer.name
+    if($pilote -eq $olddriver)
+    {
+        write-host [X] $name ==> $newdriver
+        "rundll32 printui.dll PrintUIEntry /Xs /n $name DriverName `"$newdriver`"" | out-file "\\"$server"\c$\Maj-drivers.bat" -append    -encoding utf8
+    }
+  }
+
+* Qui produira un **.bat** du genre
+
+.. code:: bat
+
+	REM Serveur monserveur.fqdn
+	rundll32 printui.dll PrintUIEntry /Xs /n BLC-A110-1 DriverName "Lexmark Universal v2 PS3"
+	rundll32 printui.dll PrintUIEntry /Xs /n BLC-A107-1 DriverName "Lexmark Universal v2 PS3"
+	rundll32 printui.dll PrintUIEntry /Xs /n BLC-A105-1 DriverName "Lexmark Universal v2 PS3"
+	rundll32 printui.dll PrintUIEntry /Xs /n BLC-A104-1 DriverName "Lexmark Universal v2 PS3"
+	rundll32 printui.dll PrintUIEntry /Xs /n BLC-A102-1 DriverName "Lexmark Universal v2 PS3"
+	rundll32 printui.dll PrintUIEntry /Xs /n BLC-A101-1 DriverName "Lexmark Universal v2 PS3"
+
+A Noter
+-------
+
+* **\\monserveur.fqdn\c$** c'est moche & cracra mais ça fait le boulot...
+* Faut que je trouve une solution pur powershell distant. TSE ça va 5 minutes.
