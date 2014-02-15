@@ -62,5 +62,5 @@ Code
 A Noter
 -------
 
-* **\\monserveur.fqdn\c$** c'est moche & cracra mais ça fait le boulot...
+* **\\\monserveur.fqdn\\c$** c'est moche & cracra mais ça fait le boulot...
 * Faut que je trouve une solution pur powershell distant. TSE ça va 5 minutes.
