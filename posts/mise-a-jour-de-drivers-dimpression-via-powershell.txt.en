@@ -1,0 +1,42 @@
+.. link: 
+.. description: 
+.. tags: powershell, impression, wmi
+.. date: 2013/10/28 09:08:46
+.. title: Mise à jour de drivers d'impression via Powershell
+.. slug: mise-a-jour-de-drivers-dimpression-via-powershell
+.. tribe: powershell
+
+.. class:: alert alert-info
+
+Quand il faut intervenir vite, bien, partout et surtout vite ...
+
+* Par exemple lors du déploiement d'une version de pilote en v.XXX +1 parce que l'ancien n'aime pas la cohabitation 32b/64b
+
+.. TEASER_END
+
+
+Code
+----
+
+.. code:: powershell
+	
+	# on cherche à remplacer l'info $oldriver par $newdriver sur toutes les files dont le nom contient le $pattern
+	
+	$newdriver = "Lexmark Universal v2 PS3"
+	$olddriver ="Lexmark Universal v2"
+	$pattern = "%B5%"
+	$server = "monserveur01"
+	$printers = gwmi -computername  $server -query "select * from win32_printer where name like '$pattern'"
+ 
+	foreach($printer in $printers){
+        write-host $printer.name $printer.drivername
+        $pilote = $printer.drivername
+        $name = $printer.name
+      if($pilote -eq $olddriver){
+            & rundll32 printui.dll PrintUIEntry /Xs /n $name DriverName $newdriver
+      write-host $name ==> $newdriver
+      }
+	}
+
+* Exécution **depuis** le serveur seulement : j'ai tenté avec *invoke-command*, qui accepte l'exécution de *rundll32* mais ça fait pas le job... à creuser
+* et ça met un temps relativement long (+-20sec) à jouer la requete WMI, sur un serveur costaud et pas surchargé ... à creuser aussi
