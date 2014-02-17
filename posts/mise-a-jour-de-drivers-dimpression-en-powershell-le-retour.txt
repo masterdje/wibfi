@@ -31,10 +31,10 @@ Code
   $olddriver ="Lexmark Universal XL"
   $pattern = "where name like '%BL%'"
   $server = "monserveur.fqdn"
- 
+ $commandes = "\\"+$server+"\c$\maj-drivers.bat"
  $printers = gwmi -computername  $server -query "select * from win32_printer $pattern"
  
-  "REM Serveur $server"  | out-file "\\"$server"\c$\Maj-drivers.bat" -append    -encoding utf8
+  "REM Serveur $server"  | out-file $commandes -append    -encoding utf8
   foreach($printer in $printers)
   {
     write-host [!] $printer.name $printer.drivername
@@ -43,7 +43,7 @@ Code
     if($pilote -eq $olddriver)
     {
         write-host [X] $name ==> $newdriver
-        "rundll32 printui.dll PrintUIEntry /Xs /n $name DriverName `"$newdriver`"" | out-file "\\"$server"\c$\Maj-drivers.bat" -append    -encoding utf8
+        "rundll32 printui.dll PrintUIEntry /Xs /n $name DriverName `"$newdriver`"" | out-file $commandes -append    -encoding utf8
     }
   }
 
