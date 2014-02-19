@@ -492,8 +492,7 @@ SEARCH_FORM = """
 <input type="hidden" name="k8" value="#444444"/>
 <input type="hidden" name="k9" value="#D51920"/>
 <input type="hidden" name="kt" value="h"/>
-<input type="text" name="q" maxlength="255"
- placeholder="Search&hellip;" class="span2 form-control input-sm" style=""/>
+<input type="text" name="q" maxlength="255" placeholder="Search&hellip;" class="span2 form-control input-sm" style="width:50%%"/>
 <input type="submit" value="DuckDuckGo Search" style="visibility: hidden;" />
 </form>
 <!-- End of custom search -->
