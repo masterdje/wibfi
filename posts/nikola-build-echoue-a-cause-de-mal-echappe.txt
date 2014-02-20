@@ -1,0 +1,53 @@
+.. title: Nikola build échoue à cause de % mal echappé
+.. slug: nikola-build-echoue-a-cause-de-mal-echappe
+.. date: 2014/02/20 20:55:56
+.. tags: nikola, python
+.. link: 
+.. description: 
+.. type: text
+.. tribe: python
+
+.. class:: alert alert-info
+
+Tentative d'inclusion du bloc de recherche...
+
+* Et Erreur de build dans la foulée :
+
+::
+
+	[2014-02-20T19:59:30Z] ERROR: Nikola: In conf.py line 69: TypeError: not enough arguments for format string
+
+
+.. TEASER_END
+
+
+Contournement
+-------------
+
+* Penser à *escaper* correctement **%** dans le bloc **style="width:50%"**
+
+
+.. code:: python
+
+	SEARCH_FORM = """
+	<!-- Custom search -->
+	<form method="get" id="search" action="http://duckduckgo.com/"
+	class="navbar-form pull-left">
+	<input type="hidden" name="sites" value="%s"/>
+	<input type="hidden" name="k8" value="#444444"/>
+	<input type="hidden" name="k9" value="#D51920"/>
+	<input type="hidden" name="kt" value="h"/>
+	<input type="text" name="q" maxlength="255" placeholder="Search&hellip;" class="span2 form-control input-sm" style="width:50%%"/>
+	<input type="submit" value="DuckDuckGo Search" style="visibility: hidden;" />
+	</form>
+	<!-- End of custom search -->
+	""" % SITE_URL
+
+
+A Noter
+-------
+
+* L'info **line 69** ne se réfere à rien de logique par rapport à mon fichier
+
+
+
