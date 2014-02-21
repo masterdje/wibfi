@@ -1,0 +1,22 @@
+.. title: Nouvelle CheatSheet : Indice de protection poussières-humidité
+.. slug: nouvelle-cheatsheet-indice-de-protection-poussieres-humidite
+.. date: 2014/02/21 13:04:28
+.. tags: vie-du-site, cheat-sheet, tips
+.. link: 
+.. description: 
+.. type: text
+
+
+.. class:: alert alert-info
+
+Y a **étanche**, *étanche*, et *résitant aux projections d'eau* ... Attention au piège !
+
+Inauguration de la Cheat-Sheet `Indice de protection Poussières-Humidité </stories/cheatsheet-indice-de-protection-poussieres-humidite.html>`_ !
+
+.. TEASER_END
+
+Toujours au même endroit ...
+
+.. class: btn btn-lg more
+
+`Accéder aux Cheat-sheets </stories/cheatsheets.html>`_
