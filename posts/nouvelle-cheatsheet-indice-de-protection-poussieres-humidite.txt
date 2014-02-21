@@ -5,7 +5,7 @@
 .. link: 
 .. description: 
 .. type: text
-
+.. tribe: favicon
 
 .. class:: alert alert-info
 
