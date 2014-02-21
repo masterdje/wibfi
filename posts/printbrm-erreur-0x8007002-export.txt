@@ -5,7 +5,7 @@
 .. title: PrintBrm : Erreur 0x8007002 lors de l'export vers un fichier
 .. slug: printbrm-erreur-0x8007002-export
 .. type: text
-.. tribe: impression
+.. tribe: windows
 
 
 .. class:: alert alert-info

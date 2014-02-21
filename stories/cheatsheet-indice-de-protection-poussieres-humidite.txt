@@ -6,10 +6,33 @@
 .. description: 
 .. type: text
 
+Principe
+--------
 
-===== ==================
-Norme  protection
-===== ==================
+**IP** [X <- indice poussière] [X <- indice humidité]
 
+========== =============================================================== ==========================================================================================================================================================================================================================================================================
+Indice  	Protection Poussières									Protection Humidité
+========== =============================================================== ==========================================================================================================================================================================================================================================================================
+0 			Aucune protection. 												Aucune protection.
+1 			Protection contre les solides de taille supérieure à 50 mm. 	Protégé contre les chutes verticales de gouttes d'eau.
+2 			Protection contre les solides de taille supérieure à 12 mm. 	Protégé contre les chutes de gouttes d'eau jusqu'à 15° de la verticale.
+3 			Protection contre les solides de taille supérieure à 2,5 mm. 	Protégé contre l'eau en pluie jusqu'à 60° de la verticale.
+4 			Protection contre les solides de taille supérieure à 1 mm. 		Protégé contre les projections d'eau de toutes directions.
+5 			**Protection contre les poussières**. 							Protégé contre les jets d'eau de toutes directions à la lance 
+6 			**Protection totale contre les poussières**. 					Protégé contre les jets d'eau de toutes directions à la lance 
+7 				- 															**Protégé contre les effets de l'immersion (jusqu'à 1 m)**.
+																			La pénétration d'eau en quantité nuisible ne sera pas possible lorsque l'équipement est immergé dans l'eau dans des conditions définies de pression et de temps (jusqu'à 1 m de submersion).
+8 				- 															**Matériel submersible dans des conditions spécifiées (immersion prolongée) au delà de 1 m.**
+																			Normalement, cela signifie que l'équipement est hermétiquement fermé. Cependant, avec certains types de matériel, cela peut signifier que l'eau peut pénétrer, mais seulement à condition qu'elle ne produise pas d'effets nuisibles. Protection contre la submersion.
+9 				- 															**Matériel submersible dans des conditions spécifiées (immersion prolongée) au delà de 1 m** et Protection contre le nettoyage à haute pression.
+																			Normalement, cela signifie que l'équipement est hermétiquement fermé et qu'il peut résister à une haute pression d'eau.
+9K 				- 															Matériel submersible dans des conditions spécifiées (immersion prolongée) au delà de 1 m et Protection contre le nettoyage à haute pression.
+																			Normalement, cela signifie que l'équipement est hermétiquement fermé et qu'il peut résister à une haute pression d'eau. Norme pour Alimentation/Cuisines/etc...
+========== =============================================================== ==========================================================================================================================================================================================================================================================================
+
+* Résumé : Protection minimale assurée à partir de l'**IP57**, mais rechercher **IP67** ou **IP68**
+
+* Merci Wikipédia...
 
 * Wip

@@ -9,7 +9,7 @@
 
 .. class:: alert alert-info
 
-Y a **étanche**, *étanche*, et *résitant aux projections d'eau* ... Attention au piège !
+Y a **étanche**, *étanche*, et *résistant aux projections d'eau* ... Attention au piège !
 
 Inauguration de la Cheat-Sheet `Indice de protection Poussières-Humidité </stories/cheatsheet-indice-de-protection-poussieres-humidite.html>`_ !
 
