@@ -1,0 +1,43 @@
+.. link: 
+.. description: 
+.. tags: powershell, impression, tips
+.. date: 2014/02/21 14:15:34
+.. title: PrintBrm : Erreur 0x8007002 lors de l'export vers un fichier
+.. slug: printbrm-erreur-0x8007002-export
+.. type: text
+.. tribe: impression
+
+
+.. class:: alert alert-info
+
+**Erreur 0x80070002** affichée par *Printbrm* lors d'une *exportation d'imprimantes depuis vers fichier* ...
+
+* Texte original :
+
+::
+	
+	Printbrm.exe (Assistant Migration d’imprimantes ou outil en ligne de commande) n’a pas pu sauvegarder la file d’attente 
+	à l’impression CNT-A040-2. Le processus de sauvegarde va se poursuivre, en ignorant cette file d’attente. 
+	Erreur : 0x80070002. Le fichier spécifié est introuvable.
+	
+* Ce qui ne fait pas nos affaires, étant donné que l'export vers un fichier, c'est pour un backup...
+
+.. TEASER_END
+
+
+Réparation
+----------
+
+* Installer le `fix indiqué chez microsoft <http://support.microsoft.com/kb/947821>`_
+
+* Relancer un coup de *windows update*
+
+* Reinstaller le pilote concerné
+
+* Vérifier si le moniteur d'impression en cause n'est pas *orphelin*
+
+.. code:: bash
+
+	C:\Windows\System32\spool\tools\printbrm -q -S \\monserveur.fqdn |findstr /i monitor
+	...
+	... Affiche la liste des moniteurs d'impressions installés sur le serveur distant
