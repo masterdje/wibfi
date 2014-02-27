@@ -1,0 +1,15 @@
+.. title: A bookmarker : versus.com/fr
+.. slug: a-bookmarker-versuscomfr
+.. date: 2014/02/27 21:03:23
+.. tags: bookmark, tips
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+.. class:: alert alert-info
+
+Un site de comparaison synthétique présentant les avantages factuels (dimensions, specs, etc) de produits (les plus divers) en face à face ...
+
+
+`<http://versus.com/fr/>`_
