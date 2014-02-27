@@ -1,0 +1,42 @@
+.. link: 
+.. description: 
+.. tags: android, tips
+.. date: 2014/02/27 14:15:34
+.. title: Vérifier la possibilité de déverrouiller le bootloader d'un smartphone Xperia 
+.. slug: verifier-lock-bootloader-xperia.txt
+.. type: text
+.. tribe: android
+
+
+.. class:: alert alert-info
+
+Flasher un bootloader c'est pas pour les débutants, mais c'est pas toujours possible non plus ...
+
+* Faut donc vérifier qu'on peut ...
+
+.. TEASER_END
+
+
+Manipulations
+-------------
+
+* Menu Téléphone , composer le :
+
+| *#*#7378423#*#*
+
+* ... Pour accéder au **menu service**, habituellement innaccessible.
+
+* Menu **Service Info**
+
+* Menu **Configuration**
+
+* Vérifier la mention ** Bootloader unlock allowed: Yes**
+
+* Si c'est **No**, aucun espoir...
+
+
+
+A Noter
+-------
+
+* Manip. testée sur Xperia M, Z, Z1
