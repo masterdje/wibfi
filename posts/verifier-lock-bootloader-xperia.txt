@@ -22,7 +22,9 @@ Manipulations
 
 * Menu Téléphone , composer le :
 
-| *#*#7378423#*#*
+::
+
+	*#*#7378423#*#*
 
 * ... Pour accéder au **menu service**, habituellement innaccessible.
 
