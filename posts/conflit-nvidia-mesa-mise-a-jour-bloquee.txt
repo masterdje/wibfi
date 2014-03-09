@@ -1,0 +1,66 @@
+.. title: Conflit nvidia / mesa : mise à jour bloquée
+.. slug: conflit-nvidia-mesa-mise-a-jour-bloquee
+.. date: 2014/03/09 16:17:20
+.. tags: archlinux, pacman, tips, nvidia
+.. link: 
+.. description: 
+.. type: text
+.. tribe: linux
+
+
+.. class:: alert alert-info
+
+Moi j'ai rien cassé, mais après une bonne grosse mise à jour, la suivante ne veut pas passer...
+
+* Pacman râle au sujet de fichiers déjà présents ...
+
+::
+
+	pacman -Suy
+	Synchronisation des bases de données de paquets...
+	core est à jour
+	extra est à jour
+	community est à jour
+	multilib                                                                                       113,0 KiB   693K/s 00:00 [#########################################################################] 100%
+	archlinuxfr est à jour
+	Début de la mise à jour complète du système...
+	résolution des dépendances...
+	recherche des conflits entre paquets...
+
+	Paquets (2): lib32-nvidia-libgl-334.21-2  lib32-nvidia-utils-334.21-2
+
+	Taille totale de téléchargement : 12,23 MiB
+	Taille totale installé :           54,69 MiB
+	Taille de mise à jour net :        0,91 MiB
+
+	Procéder à l’installation ? [O/n] 
+	Récupération des paquets...
+	lib32-nvidia-utils-334.21-2-x86_64                                                              12,2 MiB   623K/s 00:20 [#########################################################################] 100%
+	lib32-nvidia-libgl-334.21-2-x86_64                                                            1264,0   B  0,00B/s 00:00 [#########################################################################] 100%
+	(2/2) vérification des clés dans le trousseau                                                                            [#########################################################################] 100%
+	(2/2) vérification de l’intégrité des paquets                                                                            [#########################################################################] 100%
+	(2/2) chargement des fichiers des paquets                                                                                [#########################################################################] 100%
+	(2/2) analyse des conflits entre fichiers                                                                                [#########################################################################] 100%
+	erreur : la validation de la transaction a échoué (conflit de fichiers)
+	lib32-nvidia-libgl : /usr/lib32/libEGL.so est déjà présent dans le système de fichiers
+	lib32-nvidia-libgl : /usr/lib32/libEGL.so.1 est déjà présent dans le système de fichiers
+	lib32-nvidia-libgl : /usr/lib32/libGLESv1_CM.so est déjà présent dans le système de fichiers
+	lib32-nvidia-libgl : /usr/lib32/libGLESv1_CM.so.1 est déjà présent dans le système de fichiers
+	lib32-nvidia-libgl : /usr/lib32/libGLESv2.so est déjà présent dans le système de fichiers
+	lib32-nvidia-libgl : /usr/lib32/libGLESv2.so.2 est déjà présent dans le système de fichiers
+	Des erreurs se sont produites, aucun paquet n’a été mis à jour.
+
+* Et pas négociable, **pacman -R** ne veut pas passer non plus. **Nvidia** et/ou **mesa** sont coupables, *IMHO* ...
+
+.. TEASER_END
+
+Contournement
+-------------
+
+* Suppression à la main de fichiers mis en cause, et maj **pacman** dans la foulée :
+
+.. code:: bash
+
+	sudo rm -rf /usr/lib32/libEGL.so /usr/lib32/libEGL.so.1 /usr/lib32/libGLESv1_CM.so /usr/lib32/libGLESv1_CM.so.1 /usr/lib32/libGLESv2.so /usr/lib32/libGLESv2.so.1
+	sudo pacman -Suy
+

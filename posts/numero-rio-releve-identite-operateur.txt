@@ -1,0 +1,31 @@
+.. title: Numero RIO (Relevé Identité Opérateur)
+.. slug: numero-rio-releve-identite-operateur
+.. date: 2014/03/08 15:05:01
+.. tags: fai, tips
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Depuis 2011, plus de problème pour trouver le numéro RIO lié à son (futur) ex-opérateur télécom : il est devenu unique !
+
+* Et c'est le ...
+
+.. TEASER_END
+
+* Numéro RIO unique et c'est mieux comme ça :
+
+:: 
+
+	3179
+
+* Pas la peine de noter quoi que ce soit, un sms est envoyé dans la foulée avec les infos qui vont bien !
+
+
+A Noter
+-------
+
+* L'action de demander le num. RIO n'implique pas la résiliation : c'est le nouvel opérateur qui enclenche le processus...

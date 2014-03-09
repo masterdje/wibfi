@@ -1,0 +1,27 @@
+.. title: Cheat-Sheet Pacman
+.. slug: cheat-sheet-pacman
+.. date: 2014/03/08 16:04:28
+.. tags: 
+.. link: 
+.. description: 
+.. type: text
+
+* Pacman, le gestionnaire de paquets d'archlinux...
+
+Mise à jour des mirroirs de dépots
+----------------------------------
+
+.. code:: bash
+
+	pacman -Suyy
+	
+	
+Rechercher l'appartenance d'un fichier
+--------------------------------------
+
+.. code:: bash
+
+	pacman -Qo [chemin du fichier]
+	
+
+pacman -Rs $(pacman -Qqdt)
