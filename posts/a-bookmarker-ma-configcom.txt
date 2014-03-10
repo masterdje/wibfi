@@ -1,0 +1,14 @@
+.. title: A bookmarker : ma-config.com
+.. slug: a-bookmarker-ma-configcom
+.. date: 2014/03/10 21:09:45
+.. tags: bookmark, tips, cpu, gpu
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+.. class:: alert alert-info
+
+Site "boite à outils" permettant d'y voir plus clair vis à vis du matériel embarqué dans le PC , et des pilotes nécessaires au bon fonctionnement ...
+
+'<http://www.ma-config.com/fr>'_
