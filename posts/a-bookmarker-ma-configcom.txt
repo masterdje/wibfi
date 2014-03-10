@@ -11,4 +11,4 @@
 
 Site "boite à outils" permettant d'y voir plus clair vis à vis du matériel embarqué dans le PC , et des pilotes nécessaires au bon fonctionnement ...
 
-'<http://www.ma-config.com/fr>'_
+`<http://www.ma-config.com/fr>`_
