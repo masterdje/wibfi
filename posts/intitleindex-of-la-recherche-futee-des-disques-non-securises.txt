@@ -1,0 +1,47 @@
+.. title: intitle:"index of", la recherche futée des disques non-sécurisés
+.. slug: intitleindex-of-la-recherche-futee-des-disques-non-securises
+.. date: 2014/03/16 20:43:39
+.. tags: tips
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+.. class:: alert alert-info
+
+Quand la beauté d'un méta-tag bien utilisé rejoint la bétise humaine...
+
+* Faites de la place sur vos disques... 
+
+.. TEASER_END
+
+* Il suffit de lancer une recherche google avec la balise meta **intitle:"index of"**, suivie d'un mot clé supplémentaire... *iso, linux, public domain... ou mkv...*, pour remonter une indéxation des pages web qui ont homis de bloquer le parcours des fichiers...
+
+::
+	
+	intitle:"index of" iso linux
+	
+	Index of /linux/scientific/6.4/i386/iso
+	ftp.scientificlinux.org/linux/scientific/6.4/i386/iso/‎Traduire cette page
+	SHA256SUM.gpgsigned, 19-Apr-2013 08:24, 964. [ISO], SL-64-i386-2013-03-18-boot.iso, 18-Mar-2013 10:35, 159M. [ISO], SL-64-i386-2013-03-18-Install-DVD.
+	
+	Index of /linux/scientific/6.4/x86_64/iso
+	ftp1.scientificlinux.org/linux/scientific/6.4/x86.../iso/‎Traduire cette page
+	[ISO], SL-64-x86_64-2013-03-18-boot.iso, 18-Mar-2013 09:44, 198M. [ISO], SL-64-x86_64-2013-03-18-Install-DVD.iso, 18-Mar-2013 09:56, 4.0G. [ISO] ...
+	
+	Index of /Linux/Linpus - Parent Directory
+	ftp.twaren.net/Linux/Linpus/‎Traduire cette page
+	LinpusLinux9.5.iso, 13-Sep-2012 01:16, 3.1G. [ ], LinpusLinux9.5.iso.md5, 13-Sep-2012 01:16, 53. [ ], LinpusLinux9.6.iso, 13-Sep-2012 01:23, 3.6G.
+	
+	Index of /Linux/ubuntu-iso/CDs
+	ftp.riken.go.jp/Linux/ubuntu-iso/CDs/‎Traduire cette page
+	The following releases of Ubuntu are available: ... The cdimage server also hosts releases of other Ubuntu images not found on this server, such as builds for ...
+	
+	Index of /pub/linux/MandrivaLinux/official/iso - Distrib Coffee
+	distrib-coffee.ipsl.jussieu.fr/.../linux/MandrivaLinux/...‎Traduire cette page
+	
+	Index of /pub/linux/MandrivaLinux/official/iso ... mandriva-official-iso.txt, 06-Oct-2006 09:10, 42. [DIR], move/, 19-Oct-2004 19:37, -. [DIR], ppc/, 05-Apr-2004 11: ...
+	
+	Index of /pub/linux/Mageia/iso/1 - Distrib Coffee
+	distrib-coffee.ipsl.jussieu.fr/pub/linux/Mageia/iso/1/‎
+	mageia-dual-1.iso.sha1, 01-Jun-2011 10:25, 60. [ ], mageia-dual-1.iso.sha1.gpg, 01-Jun-2011 10:35, 655. [ ], mageia-dvd-1-i586.idx, 31-May-2011 01:34, 161K.
