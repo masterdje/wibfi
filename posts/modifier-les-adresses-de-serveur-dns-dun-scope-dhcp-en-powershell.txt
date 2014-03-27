@@ -1,0 +1,41 @@
+.. title: Modifier les adresses de serveur dns d'un scope DHCP en powershell
+.. slug: modifier-les-adresses-de-serveur-dns-dun-scope-dhcp-en-powershell
+.. date: 2014/03/27 16:50:57
+.. tags: dhcp, dns, powershell, tips
+.. link: 
+.. description: 
+.. type: text
+.. tribe: powershell
+
+.. class:: alert alert-info
+
+Besoin de *batch-modifier* la valeur et l'ordre des serveurs dns d'étendues dhcp...
+
+* Et comme y a plusieurs étendues et plusieurs serveurs, autant scripter...
+
+.. TEASER_END
+
+Code
+----
+
+	$scope = $args[0]
+	$server =  @("XXX.XXX.XXX.XX1","XXX.XXX.XXX.XX2")
+	$dnsaddress = @("XXX.XXX.XXX.XX3 XXX.XXX.XXX.XX2 XXX.XXX.XXX.XX4", "XXX.XXX.XXX.XX4 XXX.XXX.XXX.XX2 XXX.XXX.XXX.XX3")
+	netsh dhcp server $server[0] scope $scope set optionvalue 006 ipaddress $dnsaddress[0]
+	netsh dhcp server $server[1] scope $scope set optionvalue 006 ipaddress $dnsaddress[1]
+
+
+Usage
+-----
+
+.. code:: powershell
+
+	. monscript.ps1 [mon_scope_dhcp_à_modifier]
+	
+
+A Noter
+-------
+
+* A jouer depuis un serveur dhcp
+* XX1 & XX2 sont serveurs dhdp, XX3 XX4 et XX2 sont serveurs dns
+* Forcément je pourrais balayer chaque scope dhcp et modifier l'ensemble. sauf que j'ai un rythme à tenir, donc un par un.

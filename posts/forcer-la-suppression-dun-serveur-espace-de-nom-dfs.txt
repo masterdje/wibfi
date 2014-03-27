@@ -12,8 +12,6 @@
 
 Les espaces de noms DFS, c'est pratique. Supprimer une entrée quand le serveur concerné est offline / mort, c'est moins simple
 
-.. TEASER_END
-
 * Depuis la mmc **Gestion du système de fichiers distribués DFS** (w2003R2), on obtient un message d'erreur :
 
 ::
