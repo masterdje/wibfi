@@ -1,0 +1,60 @@
+.. title: Forcer la suppression d'un serveur "espace de nom DFS"
+.. slug: forcer-la-suppression-dun-serveur-espace-de-nom-dfs
+.. date: 2014/03/27 09:36:26
+.. tags: AD, dfs, tips
+.. link: 
+.. description: 
+.. type: text
+.. tribe: windows
+
+
+.. class:: alert alert-info
+
+Les espaces de noms DFS, c'est pratique. Supprimer une entrée quand le serveur concerné est offline / mort, c'est moins simple
+
+.. TEASER_END
+
+* Depuis la mmc **Gestion du système de fichiers distribués DFS** (w2003R2), on obtient un message d'erreur :
+
+::
+
+	Impossible de détecter l'espace de nom [mon espace de nom] sur [mon serveur offline/mort]. RPC pas disponible
+	Voulez-vous forcer la suppression ?
+	Si vous forcez la suppression, vous pourriez à l'avenir rencontrer des difficultés pour y créer des espaces de noms.
+	Dans ce cas utilisez dfsutil.exe pour supprimer l'espace de nom sur [mon serveur] dès qu'il revient en ligne. Si [mon serveur]
+	est désaffecté, vous pouvez forcer cette opération en toute sécurité.
+	
+* Allons-y !
+
+.. TEASER_END
+
+Suppression automatique depuis la mmc
+-------------------------------------
+
+* Avec un peu de chance, en appuyant sur OK, la suppression s'effectuera. Un avertissement à propos de l'impossibilité de supprimer les fichiers sur le serveur injoignable devrait quand même être affiché.
+
+
+Suppression via adsiedit.msc
+----------------------------
+
+* Lancer **Adsiedit.msc**
+* Ouvrir * puis **CN=System** => **CN=Dfs-Configuration**
+* Choisir le **CN=** du dfs concerné , clic droit => propriété **RemoteServerName**
+* Supprimer le serveur offline de la liste
+
+* Forcer une maj AD pour passer l'info :
+
+.. code:: powershell
+
+	repadmin /syncall
+
+
+Suppression à la main avec dfsutil
+----------------------------------
+
+* **Dfsutil.exe** est installé sur le serveur quand on lui donne un rôle DFS, avec les supports tools du cd2.
+* Exécuter :
+
+.. code:: bash
+
+	Dfsutil /UnmapFtRoot /Root:[mon nom dfs] /Server:[mon serveur offline] /Share:[le nom du partage dfs concerné]
