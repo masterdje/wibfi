@@ -1,0 +1,76 @@
+.. title: Plex et accès aux disques durs
+.. slug: plex-et-acces-aux-disques-durs
+.. date: 2014/05/17 09:41:43
+.. tags: plex, upnp, dlna, archlinux, chromecast
+.. link: 
+.. description: 
+.. type: text
+
+.. class:: alert alert-info
+
+J'ai voulu monter un serveur upnp/dlna avec archlinux, en vue d'un déport sur chromecast. Plex semble le plus adapté, mais il refusait d'acceder aux disques durs montés dans /run/media/[user] ....
+
+* Et les solutions d'internet c'est assez n'importe quoi.
+
+.. TEASER_END
+
+
+Installation de plex
+--------------------
+
+* Dépot aur
+
+.. code:: bash
+	
+	yaourt -S plexmediaserver
+
+* Lancement
+
+.. code:: bash
+
+	 sudo systemcl start plexmediaserver
+
+* Lancement au  demarrage 
+
+.. code:: bash
+
+	sudo systemcl enable plexmediaserver
+
+
+Manipulations souvent lues
+--------------------------
+
+
+* L'utilisateur **Plex** *aurait besoin* d'etre dans le groupe de l'utilisateur principal pour pouvoir acceder aux dossiers hors *home*, donc **groupadd** et cie...
+* Pareil *faudrait* un chmod 755 / 644 sur les fichiers/dossiers que l'on veut atteindre ...
+
+.. code:: bash
+
+	# ptit script malin pour plaquer ces droits là partout :
+	find /run/media/dje/[mondisque]/ -type d -exec chmod 755 {} \;; find /run/media/dje/[mondisque]/ -type f -exec chmod 644 {} \;
+
+::
+
+	Pas convaincu, j'ai tout fait ça, ça marchait pas plus.
+
+
+Solution qui fonctionne
+-----------------------
+
+* Créer un dossier "cible" pour le point de montage
+
+.. code:: bash
+
+	mkdir -p ~/plex/films
+	
+
+* Rajouter le disque explicitement dans */etc/fstab*
+
+.. code:: bash
+
+	vi /etc/fstab
+	
+	#rajouter (Attention, moi c'etait un disque / partition unique ntfs
+	/dev/sdd1 /home/dje/plex/films ntfs user,exec 0 0
+
+* un coup de **mount -a**, ou un reboot, et tout bien, **Plex** accède enfin au disque.
