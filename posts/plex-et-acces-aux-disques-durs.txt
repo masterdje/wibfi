@@ -5,10 +5,11 @@
 .. link: 
 .. description: 
 .. type: text
+.. tribe: linux
 
 .. class:: alert alert-info
 
-J'ai voulu monter un serveur upnp/dlna avec archlinux, en vue d'un déport sur chromecast. Plex semble le plus adapté, mais il refusait d'acceder aux disques durs montés dans /run/media/[user] ....
+J'ai voulu monter un serveur upnp/dlna avec archlinux, en vue d'un déport sur chromecast. Plex semble le plus adapté, mais il refusait d'accéder aux disques durs montés dans /run/media/[user] ....
 
 * Et les solutions d'internet c'est assez n'importe quoi.
 

@@ -1,0 +1,30 @@
+.. title: Activer les logs d'impression sur serveur windows 2008 R2
+.. slug: activer-les-logs-dimpression-sur-serveur-windows-2008-r2
+.. date: 2014/05/19 14:44:13
+.. tags: tips, windows, impression
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+.. class:: alert alert-info
+
+Quand ça marche, peut importe, quand ça marche pas, tout est bon à prendre...
+
+* par exemple les logs...
+
+.. TEASER_END
+
+Activer le log utilisateur
+--------------------------
+
+S'applique à Windows serveur 2008-R2 Standard
+
+* Ouvrir le **Gestionnaire de serveur**
+* **Diagnostics** -> **Observateur d'événements** -> **Journaux des applications et des services** -> **Microsoft** -> **Windows** -> **PrintService**
+* Clic *droit* sur **Opérationnel** et choisir **Activer**
+
+
+
+
+
