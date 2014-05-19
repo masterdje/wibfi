@@ -1,0 +1,27 @@
+.. title: (re)installation de .net 3.5.1 sur windows 2008 R2 en powershell
+.. slug: reinstallation-de-net-351-sur-windows-2008-r2-en-powershell
+.. date: 2014/05/19 16:07:19
+.. tags: tips, w2008R2, powershell
+.. link: 
+.. description: 
+.. type: text
+.. tribe: powershell
+
+.. class:: alert alert-info
+
+Windows 2008R2 Std fournit d'office la fonctionnalité **.net 3.5.1** , mais elle n'est pas forcément installée...
+
+* Le déploiement via la **mmc** ça va 5 minutes...
+
+.. TEASER_END
+
+Console mode admin
+------------------
+
+.. code:: powershell
+
+	
+    Import-Module ServerManager
+    Add-WindowsFeature as-net-framework
+    
+* Et, même s'il prétend qu'un reboot est inutile, il faut fermer la console active pour la prise en compte de la fonctionnalité.
