@@ -1,7 +1,7 @@
 .. title: Activer les logs d'impression sur serveur windows 2008 R2
 .. slug: activer-les-logs-dimpression-sur-serveur-windows-2008-r2
 .. date: 2014/05/19 14:44:13
-.. tags: tips, windows, impression
+.. tags: tips, w2008R2, impression
 .. link: 
 .. description: 
 .. type: text
