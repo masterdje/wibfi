@@ -23,8 +23,11 @@ Liste de ports bloqués
 
 * Une fois connecté sur le bon switch, en mode *en* 
 
+
 ::
+
 	sh interface status err-disabled
+
 
 * Et toujours, débloquage de ports en erreur, pour chaque port trouvé :
 
