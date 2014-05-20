@@ -1,0 +1,42 @@
+.. title: Liste des ports bloqués - switch cisco
+.. slug: liste-des-ports-bloques-switch-cisco
+.. date: 2014/05/20 09:39:48
+.. tags: tips, réseau, cisco
+.. link: 
+.. description: 
+.. type: text
+.. tribe: RJ45
+
+ 
+.. class:: alert alert-info
+
+Le B.A.BA du troubleshoot...
+
+
+* enfin, une fois qu'on a vérifié que le cable est branché ...
+
+.. TEASER_END
+
+
+Liste de ports bloqués
+----------------------
+
+* Une fois connecté sur le bon switch, en mode *en* 
+
+::
+	sh interface status err-disabled
+
+* Et toujours, débloquage de ports en erreur, pour chaque port trouvé :
+
+:: 
+
+	conf t
+	>>interface [n° de port]
+	>>shut
+	>>
+	>>
+	>>no shut
+	>>
+	>>
+	>>end
+	wr
