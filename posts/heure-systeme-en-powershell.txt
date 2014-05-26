@@ -1,0 +1,31 @@
+.. title: Heure système en powershell
+.. slug: heure-systeme-en-powershell
+.. date: 2014/05/26 18:50:35
+.. tags: tips, powershell, wmi
+.. link: 
+.. description: 
+.. type: text
+.. tribe: powershell
+
+.. class:: alert alert-info
+
+Attraper l'heure n'est pas si dur, surtout grâce à WMI...
+
+
+.. TEASER_END
+
+
+Code
+----
+
+.. code:: powershell
+
+	gwmi -class win32_localtime -computername vmp-monserveur01 | select __server, day,month,year, hour, minute,second |ft
+
+* Affiche :
+
+:: 
+
+	__SERVER                       day            month             year             hour           minute           second
+	--------                       ---            -----             ----             ----           ------           ------
+	VMP-monserveur01                26                5             2014               16               54               35

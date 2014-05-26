@@ -1,0 +1,15 @@
+.. title: A bookmarker : ariase.com - diagnostic numérique
+.. slug: a-bookmarker-ariasecom-diagnostic-numerique
+.. date: 2014/05/26 21:03:52
+.. tags: bookmark, fai, tips
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+.. class:: alert alert-info
+
+Un site dédié au diagnostic numérique : quels FAI, quels débits, quels réseaux ... il suffit de saisir une adresse géographique.
+
+
+`<http://www.ariase.com/fr/diagnostic-numerique/index.html>`_
