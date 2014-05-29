@@ -1,0 +1,57 @@
+.. title: Age du mot de passe en powershell
+.. slug: age-du-mot-de-passe-en-powershell
+.. date: 2014/05/29 20:43:34
+.. tags: powershell, AD, tips
+.. link: 
+.. description: 
+.. type: text
+.. tribe: powershell
+
+.. class:: alert alert-info
+
+Une bonne politique de gestion de mots de passe implique une durée de vie inférieure à 200 ans...
+
+* Mais on a toujours des surprises ...
+
+.. TEASER_END
+
+Du coup ça vaut la peine de lister l'age des mots de passe des utilisateurs de l'AD...
+
+Code
+----
+
+.. code:: powershell
+
+	function Get-Agepwd {
+	$usersad = Get-ADUser -Properties pwdLastSet -Filter *
+	$usersad | % {
+		$pwdlastSet = [DateTime]::FromFileTime($_.pwdLastSet)
+		$age = (New-TimeSpan $pwdlastset).Days
+		$info = $true | Select-Object Name, Age, LastSet
+		$info.Name = $_.SamAccountName
+		$info.Age = $age
+		$info.LastSet = $pwdlastset
+		$info
+	}
+	}
+
+	Import-Module ActiveDirectory -erroraction 0
+	$collec = get-agepwd
+
+	write-host "Nbre de mots de passes inf. à 180 j: "
+	($collec |select name, age, lastset  |where {$_.age -lt 180 }).count
+ 
+	#decommenter pour la liste 
+	#$collec |select name, age, lastset  |where {$_.age -lt 180 }  |sort $_.age
+
+	write-host "Nbre de mots de passes supérieurs à 180j et inf à 15000 : "
+	($collec |select name, age, lastset  |where {$_.age -gt 180 -and $_.age -lt 15000}).count
+	#decommenter pour la liste  
+	#$collec |select name, age, lastset  |where {$_.age -gt 180 -and $_.age -lt 15000} | sort $_.age
+
+
+A Noter:
+--------
+
+* *$collec* est alimenté par **tous** les utilisateurs de l'AD, sans filtrer les users inactifs ou autres...
+* Du coup on trouve pas mal d'utilisateurs avec des dates folkloriques (01/01/1601) correspondant à des mots de passe sans expiration.
