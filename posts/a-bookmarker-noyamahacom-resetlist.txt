@@ -1,0 +1,20 @@
+.. title: A bookmarker : no.yamaha.com / resetlist
+.. slug: a-bookmarker-noyamahacom-resetlist
+.. date: 2014/05/30 21:10:57
+.. tags: bookmark, tips, mao, midi 
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+.. class:: alert alert-info
+
+On peut remettre à zéro les synthés yamaha, suffit de savoir comment ...
+
+* Page dédiée aux **PSR**
+
+`<http://faq.yamaha.com/us/en/article/musical-instruments/keyboards/digitalkeyboards/portable_keyboards/psr-550/596/1820/factory_reset_procedure_for_a_yamaha_portable_keyboard>`_
+
+* Liste plus étendue:
+
+`<http://no.yamaha.com/no/support/reset_list/>`_

@@ -1,0 +1,42 @@
+.. title: Code PUK et Opérateurs Mobiles
+.. slug: code-puk-et-operateurs-mobiles
+.. date: 2014/05/31 12:45:12
+.. tags: tips, fai
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+.. class:: alert alert-info
+
+Le code **PUK** permet de débloquer une carte SIM si on a usé 3 essais à tenter le code PIN ...
+
+* Les opérateurs mobiles fournissent 
+
+.. TEASER_END
+
+
+A Savoir
+--------
+
+* Le code **PUK** est toujours fourni sur la carte contenant la carte SIM lors de l'envoi de celle ci.
+
+
+Retrouver le code PUK
+---------------------
+
+* Sur le site de son opérateur mobile :
+
+========= ==============================================================
+Opérateur Page
+========= ==============================================================
+Free		`Espace Abonné <https://mobile.free.fr/moncompte/index.php?page=coordonnees#>`_
+SFR - RED	`Espace Abonné <https://www.sfr.fr/routage/debloquer-ma-carte-sim>`_
+B&You		
+Bouygues T.	`Espace Abonné <https://www.espaceclientcarte.bouyguestelecom.fr/ECC/login.jsf?urlNext=/debloquerMaCarteSIMSaisieCode.jsf>`_
+Orange		`Espace Abonné <http://id.orange.fr/auth_user/bin/auth0user.cgi?date=1401536556&skey=ae1b178ebf15dfbc75b34e2fd16fd266>`_
+Sosh		
+Virgin M.	
+========= ==============================================================
+
+* Attention, en boutique SFR, un client "RED" n'est pas le bienvenu, et se verra proposer le débloquage contre 15€ ...
