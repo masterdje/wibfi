@@ -11,7 +11,7 @@
 
 Le code **PUK** permet de débloquer une carte SIM si on a usé 3 essais à tenter le code PIN ...
 
-* Les opérateurs mobiles fournissent 
+* Les opérateurs mobiles cette info, mais si on l'a paumé ... 
 
 .. TEASER_END
 
@@ -27,9 +27,9 @@ Retrouver le code PUK
 
 * Sur le site de son opérateur mobile :
 
-========= ==============================================================
+========= ======================================================================================================================================
 Opérateur Page
-========= ==============================================================
+========= ======================================================================================================================================
 Free		`Espace Abonné <https://mobile.free.fr/moncompte/index.php?page=coordonnees#>`_
 SFR - RED	`Espace Abonné <https://www.sfr.fr/routage/debloquer-ma-carte-sim>`_
 B&You		
@@ -37,6 +37,6 @@ Bouygues T.	`Espace Abonné <https://www.espaceclientcarte.bouyguestelecom.fr/EC
 Orange		`Espace Abonné <http://id.orange.fr/auth_user/bin/auth0user.cgi?date=1401536556&skey=ae1b178ebf15dfbc75b34e2fd16fd266>`_
 Sosh		
 Virgin M.	
-========= ==============================================================
+========= ======================================================================================================================================
 
 * Attention, en boutique SFR, un client "RED" n'est pas le bienvenu, et se verra proposer le débloquage contre 15€ ...
