@@ -1,0 +1,53 @@
+.. title: Mise en place de Leed sur serveur 1&1
+.. slug: mise-en-place-de-leed-sur-serveur-11
+.. date: 2014/06/05 19:18:27
+.. tags: tips, fai, rss,1&1, php
+.. link: 
+.. description: 
+.. type: text
+.. tribe: favicon
+
+.. class:: alert alert-info
+
+**Leed** (contraction de **Light Feed** ) est un petit agrégateur RSS bien fichu, facile à installer et configurable à souhait.
+
+* php 5.4 & mysql nécessaires
+
+.. TEASER_END
+
+Installation
+------------
+
+* Récupérer la derniere version dans le dépot GIT ou le `.zip <http://projet.idleman.fr/leed/?page=T%C3%A9l%C3%A9chargement>`_
+* Décompresser dans un dossier (ftp, etc)
+* Appliquer une permission récursive chmod 775 sur le dossier .
+* Lancer **install.php**
+
+Ensuite
+-------
+
+* Supprimer **install.php**
+* Mettre une cron ...
+* Plus d'infos sur `le site officiel <http://projet.idleman.fr/leed/?page=Installation>`_
+
+Enfin
+-----
+
+* Rajouter des flux, un par un ou par import **opml**
+
+Config. 1&1
+-----------
+
+*Serveur mutualisé qui ne veut pas prendre en compte la version "globale" de php 5.4*
+
+* Editer le **.htaccess** pour y rajouter ceci en haut :
+
+::
+
+	AddType x-mapp-php6 .php 
+	AddHandler x-mapp-php6 .php
+
+
+
+
+
