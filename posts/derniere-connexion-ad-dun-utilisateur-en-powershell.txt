@@ -1,0 +1,45 @@
+.. title: Dernière connexion AD d'un utilisateur en powershell
+.. slug: derniere-connexion-ad-dun-utilisateur-en-powershell
+.. date: 2014/06/10 16:43:30
+.. tags: powershell, tips, AD
+.. link: 
+.. description: 
+.. type: text
+.. tribe: powershell
+
+.. class:: alert alert-info
+
+Date de dernière connexion AD d'un utilisateur
+
+
+* avec test concurrent des différents DC.
+
+.. TEASER_END
+
+Code
+----
+
+.. code:: powershell
+
+	function Get-ADLastLogon([string]$userName)
+	{
+		$dcs = Get-ADDomainController -Filter {Name -like "*"}
+		$time = 0
+		$hostname = $null
+		foreach($dc in $dcs)
+		{ 
+			$hostname = $dc.HostName
+			$user = Get-ADUser $userName -Properties lastLogon -server $hostname -erroraction 0
+			if($user.LastLogon -gt $time) 
+			{
+			$time = $user.LastLogon
+			$lastdcloggedon= $hostname
+			}
+		}
+			Write-Host $username "Last logon : " [DateTime]::FromFileTime($time) " sur " $lastdcloggedon 
+	}
+	
+	Import-Module ActiveDirectory
+	Get-ADLastLogon -username [utilisateur AD]
+	
+	
