@@ -1,0 +1,40 @@
+.. title: Robocopy et le transfert d'ACL
+.. slug: robocopy-et-le-transfert-dacl
+.. date: 2014/06/10 08:25:06
+.. tags: tips, w2003R2, AD
+.. link: 
+.. description: 
+.. type: text
+.. tribe: windows
+
+   
+.. class:: alert alert-info
+
+**Xcalcs et subinacl** sont bien utiles, mais pour un petit travail de recopie fichiers + droits ( ACL ), robocopy peut suffire.
+
+
+* Disponible dans le Windows ressource Kit pour Windows 2003 (R2)
+
+.. TEASER_END
+
+Principe
+--------
+
+* Recopier un dossier source vers un serveur distant, en conservant l'arborescence (y compris noeuds vides) et les droits des fichiers.
+* Tout ça dans un .bat pour une meilleure lisibilité/rejouabilité ...
+
+.. code:: bash
+
+	SET SRV_DST=10.100.XX.XX
+	SET REP=Repsource
+	robocopy E:\%REP% \\%SRV_DST%\d$\%REP% *.* /SEC /E /FFT /TEE /log:c:\Robocopy.log
+	
+A Noter
+-------
+
+* /SEC impose la copie des fichiers **ET** des droits.
+* /TEE affiche le log à l'écran
+* /FFT utilise le fichier log définit par /log en l'écrasant.
+* /E copie aussi les dossiers vides.
+
+* d$ : penser à lancer le script avec des droits suffisants pour acceder à ce genre de partages cracras... si besoin, bien sur.( contexte cluster, clutch-admin powwa)
