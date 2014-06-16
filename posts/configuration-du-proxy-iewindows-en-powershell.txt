@@ -1,0 +1,45 @@
+.. title: Configuration du proxy IE/Windows en powershell
+.. slug: configuration-du-proxy-iewindows-en-powershell
+.. date: 2014/06/16 11:00:14
+.. tags: powershell, tips, 
+.. link: 
+.. description: 
+.. type: text
+.. tribe: powershell
+
+.. class:: alert alert-info
+
+Réglage qui évolue, GPO mal mise à jour, proxy ou pas, comment savoir ?
+
+* Via une pauvre requête au registre...
+
+.. TEASER_END
+
+Code
+----
+
+* Machine Locale :
+
+.. code:: powershell
+
+	(Get-ItemProperty "hkcu:\software\microsoft\windows\currentversion\internet settings") | select proxyserver, proxyenable, proxyoverride
+	
+
+A Noter 
+-------
+
+* Activer le proxy
+
+.. code:: powershell
+	
+	set-itemproperty "hkcu:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -name Proxyserver -value "[ADRESSE DU PROXY+PORT...]"
+	set-itemproperty "hkcu:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -name ProxyEnable -value 1
+	
+		
+* Désactiver le proxy
+
+.. code:: powershell
+	
+	set-itemproperty "hkcu:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -name ProxyEnable -value 0
+
+
