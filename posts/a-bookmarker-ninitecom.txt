@@ -1,0 +1,18 @@
+.. title: A bookmarker : ninite.com
+.. slug: a-bookmarker-ninitecom
+.. date: 2014/06/16 09:42:56
+.. tags: tips, ubuntu
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Reinstaller un système, c'est rien, mais les 40 logiciels "indispensables" c'est lourd. Ninite arrive à la rescousse ...
+
+* Et propose de se composer un bundle perso ...
+
+
+`<https://ninite.com/>`_
