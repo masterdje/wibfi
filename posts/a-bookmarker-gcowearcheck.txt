@@ -1,0 +1,15 @@
+.. title: A bookmarker : g.co/WearCheck
+.. slug: a-bookmarker-gcowearcheck
+.. date: 2014/07/01 20:57:47
+.. tags: bookmark, tips, android
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+.. class:: alert alert-info
+
+Android Wear ne sera pas compatible avec toutes les versions d'android ... ce site vérifiera votre smartphone ...
+
+
+`<http://g.co/WearCheck>`_
