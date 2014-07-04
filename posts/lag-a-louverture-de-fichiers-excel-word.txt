@@ -1,0 +1,23 @@
+.. title: Lag à l'ouverture de fichiers excel / Word
+.. slug: lag-a-louverture-de-fichiers-excel-word
+.. date: 2014/07/04 16:11:22
+.. tags: tips, réseau
+.. link: 
+.. description: 
+.. type: text
+.. tribe: RJ45
+
+   
+.. class:: alert alert-info
+
+**Xcalcs et subinacl** sont bien utiles, mais pour un petit travail de recopie fichiers + droits ( ACL ), robocopy peut suffire.
+
+
+* Disponible dans le Windows ressource Kit pour Windows 2003 (R2)
+
+.. TEASER_END
+
+Principe
+--------
+
+http://www.wireshark.org/download.html
