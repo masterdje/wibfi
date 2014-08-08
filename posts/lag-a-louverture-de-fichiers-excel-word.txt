@@ -10,14 +10,26 @@
    
 .. class:: alert alert-info
 
-**Xcalcs et subinacl** sont bien utiles, mais pour un petit travail de recopie fichiers + droits ( ACL ), robocopy peut suffire.
+45 secondes pour ouvrir un fichier office 2010 (excel ou word...) local ou distant, sur un poste w7 64b
 
 
-* Disponible dans le Windows ressource Kit pour Windows 2003 (R2)
+* Le problème vient de loin...
 
 .. TEASER_END
 
-Principe
---------
+Tests divers
+------------
 
-http://www.wireshark.org/download.html
+... inutiles ...
+
+* Nouveau profil, même resultat.
+* Desinstallation d'office, idem
+* Desinstallation des files d'impressions.
+
+* *AUCUN lag si le cable rj45 est débranché*
+
+Diagnostic
+----------
+
+* Utilisation de wireshark portable pour étudier la piste réseau
+
