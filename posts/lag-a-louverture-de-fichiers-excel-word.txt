@@ -20,16 +20,36 @@
 Tests divers
 ------------
 
-... inutiles ...
-
 * Nouveau profil, même resultat.
 * Desinstallation d'office, idem
-* Desinstallation des files d'impressions.
+* Desinstallation des files d'impressions, idem
 
-* *AUCUN lag si le cable rj45 est débranché*
+* *AUCUN* lag si le cable rj45 est débranché...
 
 Diagnostic
 ----------
 
-* Utilisation de wireshark portable pour étudier la piste réseau
+* Utilisation de wireshark portable pour étudier la piste réseau.
+
+La trace montre des erreurs *ICMP* : le pc échoue à tester la présence sur le réseau d'un autre PC ... et recommence deux ou trois fois... D'où les 30 secondes de lags.
+Sauf qu'il n'y a aucun raison de pinguer ce pc à ce moment là (ouverture d'un fichier office)
+
+* Etude du registre, recherche de l'ip - pc mis en cause.
+
+Et on le retrouve associé à un partage \logs , et dans tout un tas de clés liées à Procmon... 
+
+* Nettoyage de tout ça...
+
+Et le lag disparait !
+
+
+Fin d'enquete
+-------------
+
+le pc (indiqué dans le registre) avait servi de support à une expertise sur le poste (qui lag), avec utilisation de *procmon*. 
+Sauf que le crash de celui-ci a entrainé la non-suppression des modifications du registre sur le poste.
+
+
+
+
 
