@@ -1,0 +1,25 @@
+.. title: Aller plus loin avec les pages about. de firefox
+.. slug: aller-plus-loin-avec-les-pages-about-de-firefox
+.. date: 2014/08/11 09:28:07
+.. tags: tips, 
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+   
+.. class:: alert alert-info
+
+**About:config** est archi connu, mais il n'est pas tout seul...
+
+
+.. TEASER_END
+
+Firefox regorge d'infos sur sa mécanique interne, et un grand nombre de pages y sont dédiées :
+
+**about:about**
+
+On y retrouve des infos indispensables sur la gestion de la mémoire, réseau, sécurité, etc...
+
+
+
