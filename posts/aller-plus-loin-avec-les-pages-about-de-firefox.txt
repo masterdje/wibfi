@@ -22,4 +22,43 @@ Firefox regorge d'infos sur sa mécanique interne, et un grand nombre de pages y
 On y retrouve des infos indispensables sur la gestion de la mémoire, réseau, sécurité, etc...
 
 
+::
+
+	about:
+	about:about
+	about:accounts
+	about:addons
+	about:app-manager
+	about:buildconfig
+	about:cache
+	about:config
+	about:credits
+	about:customizing
+	about:downloads
+	about:healthreport
+	about:home
+	about:license
+	about:logo
+	about:memory
+	about:mozilla
+	about:networking
+	about:newtab
+	about:permissions
+	about:plugins
+	about:preferences
+	about:privatebrowsing
+	about:rights
+	about:robots
+	about:sessionrestore
+	about:support
+	about:sync-log
+	about:sync-progress
+	about:sync-tabs
+	about:telemetry
+	about:webrtc
+	about:welcomeback
+
+
+La page **about:memory** est un régal de précision quand on recherche une fuite de mémoire...
+
 
