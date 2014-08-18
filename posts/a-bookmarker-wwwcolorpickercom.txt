@@ -1,0 +1,15 @@
+.. title: A bookmarker : www.colorpicker.com
+.. slug: a-bookmarker-wwwcolorpickercom
+.. date: 2014/08/18 13:42:39
+.. tags: bookmark, tips
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+   
+.. class:: alert alert-info
+
+Une palette de sélection de couleur (colorpicker) simple et efficace, en ligne, avec génération des couleurs complémentaires ...
+
+`<http://www.colorpicker.com>`_
