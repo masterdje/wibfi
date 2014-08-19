@@ -1,0 +1,22 @@
+.. title: Nouvelle Cheatsheet : les alias couleurs html
+.. slug: nouvelle-cheatsheet-les-alias-couleurs-html
+.. date: 2014/08/19 12:33:28
+.. tags: vie-du-site, cheat-sheet, tips
+.. link: 
+.. description: 
+.. type: text
+.. tribe: favicon
+
+.. class:: alert alert-info
+
+Pourquoi **Darkgray** est-il plus clair que **Gray** ? Et les autres ? Y en a combien ?
+
+Inauguration de la Cheat-Sheet `Les Alias couleurs Html </stories/cheat-sheet-les-alias-couleurs-html.html>`_ !
+
+.. TEASER_END
+
+Toujours au même endroit ...
+
+.. class: btn btn-lg more
+
+`Accéder aux Cheat-sheets </stories/cheatsheets.html>`_

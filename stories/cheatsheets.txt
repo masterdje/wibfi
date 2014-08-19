@@ -8,6 +8,8 @@
 CheatSheets 
 -----------
 
+* `Les Alias Couleurs Html </stories/cheat-sheet-les-alias-couleurs-html.html>`_ 
+
 * `nikola </stories/cheatsheet-nikola.html>`_
 * `Format rst </stories/cheatsheet-format-rst.html>`_
 
