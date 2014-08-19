@@ -1,12 +1,3 @@
-.. title: Cheat-sheet Les alias couleurs Html
-.. slug: cheat-sheet-les-alias-couleurs-html
-.. date: 2014/08/19 12:34:18
-
-.. class:: alert alert-info
-
-* Le but n'est pas un affichage parfait mais une information disponible.
-
-
 .. raw:: html
 
 	<ul class="list-unstyled bricks">
@@ -150,4 +141,3 @@
     <li title="Yellow - #FFFF00 - RGB: 255,255,0 " style="text-align:center; width: 24%;display:inline-block;box-shadow: 1px 1px 1px gray;background-color:#FFFF00;line-height:2.5em;color:white;text-shadow:0 0 1px black, 1px 1px 1px black;font-weight=bold;"><ul style="margin:0;padding:0;"><li style="display:inline;">Yellow </li> <li style="display:inline;">#FFFF00</li></ul></li>
     <li title="YellowGreen - #9ACD32 - RGB: 154,205,50 " style="text-align:center; width: 24%;display:inline-block;box-shadow: 1px 1px 1px gray;background-color:#9ACD32;line-height:2.5em;color:white;text-shadow:0 0 1px black, 1px 1px 1px black;font-weight=bold;"><ul style="margin:0;padding:0;"><li style="display:inline;">YellowGreen </li> <li style="display:inline;">#9ACD32</li></ul></li>
     </ul>
-

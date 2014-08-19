@@ -1,0 +1,64 @@
+.. title: Making Of cheatsheet couleurs html
+.. slug: making-of-cheatsheet-couleurs-html
+.. date: 2014/08/19 16:27:42
+.. tags: cheatsheet, awk
+.. link: 
+.. description: 
+.. type: text
+
+Encore une fois **awk** fait le boulot !
+
+.. TEASER_END
+
+D'abord
+-------
+
+* Récupération d'une liste propre et exploitable :
+
+::
+
+	[extrait de colors.txt]
+
+	AntiqueWhite	FAEBD7	250,235,215
+	Aqua	00FFFF	0,255,255
+	Aquamarine	7FFFD4	127,255,212
+	Azure	F0FFFF	240,255,255
+	Beige	F5F5DC	245,245,220
+	Bisque	FFE4C4	255,228,196
+	Black	000000	0,0,0
+	BlanchedAlmond	FFEBCD	255,235,205
+	Blue	0000FF	0,0,255
+	BlueViolet	8A2BE2	138,43,226
+	Brown	A52A2A	165,42,42
+	BurlyWood	DEB887	222,184,135
+	CadetBlue	5F9EA0	95,158,160
+	Chartreuse	7FFF00	127,255,0
+	Chocolate	D2691E	210,105,30
+	Coral	FF7F50	255,127,80
+	CornflowerBlue	6495ED	100,149,237
+	Cornsilk	FFF8DC	255,248,220
+	...
+	...
+
+Ensuite
+-------
+
+Un petit script **awk** qui va transformer ça en html
+
+.. code:: bash
+
+	BEGIN {print ".. raw:: html\n\n	<ul class=\"list-unstyled bricks\">"}
+	{print "    <li title=\""$1" - #"$2" - RGB: "$3" \" style=\"text-align:center; width: 24%;display:inline-block;box-shadow: 1px 1px 1px gray;background-color:#"$2";line-height:2.5em;color:white;text-shadow:0 0 1px black, 1px 1px 1px black;font-weight=bold;\"><ul style=\"margin:0;padding:0;\"><li style=\"display:inline;\">"$1" </li> <li style=\"display:inline;\">#"$2"</li></ul></li>"}
+	END {print "    </ul>"}
+
+* Joué par :
+
+.. code:: bash
+	
+	cat colors.txt | awk -f make-colors.awk > dev/wibfi/files/res/colors.txt
+
+	
+Enfin
+-----
+
+Une page présentable : http://wibfi.virtua-peanuts.net/stories/cheat-sheet-les-alias-couleurs-html.html
