@@ -5,6 +5,7 @@
 .. link: 
 .. description: 
 .. type: text
+.. tribe: favicon
 
 Encore une fois **awk** fait le boulot !
 
