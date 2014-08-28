@@ -1,0 +1,27 @@
+.. title: Installation Forticlient VPN sur windows 8.1
+.. slug: installation-forticlient-vpn-sur-windows-81
+.. date: 2014/08/28 19:31:11
+.. tags: vpn, tips, windows
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Installation OK, lancement OK, connexion OK ...
+
+* mais bloquage à 98 % 
+
+.. TEASER_END
+
+Contournement
+-------------
+
+* Désinstaller le forticlient
+* Supprimer les traces résiduelles (ie, connexion vpn...)
+* Re-télécharger le `forticlient VPN <http://www.forticlient.com>`_
+* Créér un utilisateur local avec droit **admin local**
+* Se déconnecter - Se reconnecter avec cet utilisateur admin local
+* Réinstaller le forticlient VPN.
