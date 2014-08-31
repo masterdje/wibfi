@@ -1,0 +1,15 @@
+.. title: Se debarrasser des contenus recommandés type outbrain, zergnet et autres saletés
+.. slug: se-debarrasser-des-contenus-recommandes-type-outbrain-zergnet-et-autres-saletes
+.. date: 2014/08/31 13:14:02
+.. tags: tips, 
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+
+.. class:: alert alert-info
+
+Moi j'ai rien cassé, mais après une bonne grosse mise à jour, la suivante ne veut pas passer...
+
+* Pacman râle au sujet de fichiers déjà présents ...
