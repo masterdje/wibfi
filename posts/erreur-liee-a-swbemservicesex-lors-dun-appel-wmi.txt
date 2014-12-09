@@ -28,6 +28,6 @@ Le script *vbs* exécuté lance un appel wmi pour attraper les partages du serve
 La feinte
 ---------
 
-* Remplacer le nom du partage cible par son chemin *unc* type **monserveur.fqdn\d$\dossiertruc\partage**
+* Remplacer le nom du partage cible par son chemin *unc* type **monserveur.fqdn\\d$\\dossiertruc\\partage**
 
 
