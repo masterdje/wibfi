@@ -1,0 +1,33 @@
+.. title: Erreur liée à SWbemServicesEx lors d'un appel wmi
+.. slug: erreur-liee-a-swbemservicesex-lors-dun-appel-wmi
+.. date: 2014/12/09 11:23:01
+.. tags: wmi, w2008R2, w2003R2, vbs
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+  
+.. class:: alert alert-info
+
+Un script vbs, lancé sous W2003R2 pour rechercher les acls positionnés sur les partage de plusieurs serveurs...
+
+
+* **2003 r2**, tout bien,
+* **2008 R2**, pas moyen !
+
+.. TEASER_END
+
+D'abord
+-------
+
+Le message d'erreur affiché met en cause **SWbemServicesEx** .
+Le script *vbs* exécuté lance un appel wmi pour attraper les partages du serveur distant.
+
+
+
+La feinte
+---------
+
+* Remplacer le nom du partage cible par son chemin *unc* type **monserveur.fqdn\d$\dossiertruc\partage**
+
+

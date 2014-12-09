@@ -1,0 +1,61 @@
+.. title: Nettoyage AD d'un DC offline
+.. slug: nettoyage-ad-dun-dc-offline
+.. date: 2014/12/09 11:11:48
+.. tags: tips, w2003R2, AD, dns
+.. link: 
+.. description: 
+.. type: text
+.. tribe: windows
+
+   
+.. class:: alert alert-info
+
+**Parfois** on peut dépromouvoir proprement un contrôleur de domaine, et *parfois* on a pas pu...
+
+
+* **Ntdsutils** en mode roots
+
+.. TEASER_END
+
+D'abord
+-------
+
+* Se logguer sur un DC fonctionnel.
+* Depuis une fenetre **cmd**
+* lancer *ntdsutil*
+* -> *metadata cleanup*
+* -> *connections*
+* -> *connect to server* [serveur DC online]
+* -> *quit*
+* -> *select operation target*
+* -> *list sites*
+* -> *select site* [numéro du site concerné]
+* -> *list servers in site*
+* -> *select server* [numero du serveur]
+* -> *list domain*
+* -> *select domain* [numero du domaine]
+* -> *quit*
+* -> *remove selected server* ... et confirmer au popup !
+
+Ensuite
+-------
+
+* Lancer la mmc *Site et services AD*
+* Trouver le site concerné
+* Clic droit sur le serveur offline et *supprimer*
+
+Enfin
+-----
+
+* Lancer la mmc *utilisateurs et ordinateurs* (dsa.msc)
+* Ouvrir l'OU *Domain Controllers*
+* Supprimer le serveur offline
+
+Et aussi
+--------
+
+* Lancer la mmc *gestion du Dns* (dnsmgmt.msc)
+* Clic droit sur le domaine, *Propriétés*
+* Onglet Serveurs de noms*, supprimer le serveur Offline
+* Rechercher les enregistrements dns du serveur offline et les supprimer
+
