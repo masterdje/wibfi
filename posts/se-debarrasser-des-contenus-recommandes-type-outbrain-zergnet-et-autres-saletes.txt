@@ -1,7 +1,7 @@
 .. title: Se debarrasser des contenus recommandés type outbrain, zergnet et autres saletés
 .. slug: se-debarrasser-des-contenus-recommandes-type-outbrain-zergnet-et-autres-saletes
 .. date: 2014/08/31 13:14:02
-.. tags: tips, 
+.. tags: tips
 .. link: 
 .. description: 
 .. type: text
@@ -10,6 +10,26 @@
 
 .. class:: alert alert-info
 
-Moi j'ai rien cassé, mais après une bonne grosse mise à jour, la suivante ne veut pas passer...
+Refusons le modèle economique basé sur les contenus sponsorisés !
 
-* Pacman râle au sujet de fichiers déjà présents ...
+* Encore une fois addblock à la rescousse ...
+
+.. TEASER_END
+
+
+D'abord
+-------
+
+* Trouver une page avec des contenus sponsorisés (taboola, zergnet, outbrain, etc)
+
+Ensuite
+-------
+
+* Lancer la console Addblock et reperer le fichier source *.js* 
+* Le mettre en liste noire.
+
+Enfin
+-----
+
+* Profiter d'un web nettoyé.
+
