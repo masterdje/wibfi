@@ -15,7 +15,7 @@ SITE_URL = "http://wibfi.virtua-peanuts.net/"
 # If not set, defaults to SITE_URL
 # BASE_URL = "http://getnikola.com/"
 BLOG_EMAIL = "wibfi@virtua-peanuts.net"
-BLOG_DESCRIPTION = "Write it before forget it"
+BLOG_DESCRIPTION = "Write it before forget it !"
 
 # Nikola is multilingual!
 #
