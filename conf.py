@@ -7,7 +7,7 @@ import time
 
 # Data about this site
 BLOG_AUTHOR = "Dje"
-BLOG_TITLE = "Write it before forget it"
+BLOG_TITLE = "Write it before forget it!"
 # This is the main URL for your site. It will be used
 # in a prominent link
 SITE_URL = "http://wibfi.virtua-peanuts.net/"
