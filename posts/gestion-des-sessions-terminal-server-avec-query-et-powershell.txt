@@ -1,0 +1,202 @@
+.. title: Gestion des sessions Terminal Server avec query et powershell
+.. slug: gestion-des-sessions-terminal-server-avec-query-et-powershell
+.. date: 2015/02/27 16:37:30
+.. tags: tips, powershell, wmi
+.. link: 
+.. description: 
+.. type: text
+.. tribe: powershell
+
+.. class:: alert alert-info
+
+Un pseudo module bien utile pour manager les sessions laissées par les autres admins ...
+
+* 2 sessions c'est pas assez. faisons de la place
+
+.. TEASER_END
+
+Code
+----
+
+.. code:: powershell
+
+	##-----------------------------------------------------#
+	# Gestion des sessions Terminal Server
+	##-----------------------------------------------------#
+	# JD - - | 02/2015 | Tu touches, tu casses, tu payes
+	##-----------------------------------------------------#
+
+	function Get-TSSession
+	{
+
+	Param(
+        [Parameter(
+            Mandatory = $false,
+            Position = 0,
+            ValueFromPipeline = $True)]
+            [string[]]$computername, 
+		[Parameter(
+            Mandatory = $false,ValueFromPipeline = $false)]
+			[string]$OU
+           
+		   )
+
+	Begin {
+    
+     
+	$strlogfile = "\\serveur2log.fqdn.priv\logs\TermServ.csv"
+	import-module activedirectory -ErrorAction silentlycontinue
+	# Log Init.
+	Add-content -path $strlogfile -value((get-date).tostring() + ", Get-TSSession Start")
+
+	$ord=@()
+	$report = @()
+
+	}
+	process
+	{
+	if ($ou) 
+	{
+	
+	$ord =Get-ADComputer -searchbase $ou -filter * -searchscope 1
+	ForEach($c in $ord)
+	{
+		$sessions=""
+		$temp=""
+		$cmd = "query session /server:"+$c.dnshostname
+		
+		$sessions = invoke-expression $cmd 
+		if ($sessions)
+		{
+	
+		1..($sessions.count -1) | % {
+				$temp = "" | Select Computer,SessionName, Username, Id, State, Type, Device
+				$temp.Computer = $c.dnshostname
+				$temp.SessionName = $sessions[$_].Substring(1,18).Trim()
+				$temp.Username = $sessions[$_].Substring(19,20).Trim()
+				$temp.Id = $sessions[$_].Substring(39,9).Trim()
+				$temp.State = $sessions[$_].Substring(48,8).Trim()
+				$temp.Type = $sessions[$_].Substring(56,12).Trim()
+				$temp.Device = $sessions[$_].Substring(68).Trim()
+				$report += $temp 
+				$temp = ""
+			}
+		}
+		else
+		{
+
+			$temp = "" | Select Computer,SessionName, Username, Id, State, Type, Device
+			$temp.computer = $c.dnshostname
+			$temp.state= "hors ligne"
+			Add-content -path $strlogfile -value((get-date).tostring() + ", get-TSSession , " + $temp.computer + " " + $temp.state )
+			$report += $temp		
+			$temp = ""
+		}		
+	}
+	}
+	else
+	{
+	ForEach($c in $computername)
+	{
+		$sessions = query session /server:$c
+        if ($sessions)
+		{
+		1..($sessions.count -1) | % {
+                $temp = "" | Select Computer,SessionName, Username, Id, State, Type, Device
+                $temp.Computer = $c
+                $temp.SessionName = $sessions[$_].Substring(1,18).Trim()
+                $temp.Username = $sessions[$_].Substring(19,20).Trim()
+                $temp.Id = $sessions[$_].Substring(39,9).Trim()
+                $temp.State = $sessions[$_].Substring(48,8).Trim()
+                $temp.Type = $sessions[$_].Substring(56,12).Trim()
+                $temp.Device = $sessions[$_].Substring(68).Trim()
+                $report += $temp 
+			}
+		}
+		else
+		{
+			$temp = "" | Select Computer,SessionName, Username, Id, State, Type, Device
+			$temp.computer = $computername
+			$temp.state= "hors ligne"
+			Add-content -path $strlogfile -value((get-date).tostring() + ", get-TSSession , " + $temp.computer + " " + $temp.state )
+			$report += $temp
+			
+		}
+
+	}
+	}
+	}
+	end
+	{$report}
+	}
+
+	function Remove-TSSession
+	{
+	Param(
+        [Parameter(
+            Mandatory = $false,
+            Position = 0,
+            ValueFromPipeline = $false)]
+            [string[]]$computername, 
+		[Parameter(
+            Mandatory = $false,ValueFromPipeline = $false)]
+			[string]$ID,[Parameter(
+            Mandatory = $false,ValueFromPipeline = $false)]
+			[string]$username
+           
+		   )
+
+	   
+	$strlogfile = "\\serveur2log.fqdn.priv\logs\TermServ.csv"
+	import-module activedirectory -ErrorAction silentlycontinue
+	# Log Init.
+	Add-content -path $strlogfile -value((get-date).tostring() + ", remove-TSSession Start")
+
+	$ord=@()
+	$report = @()
+
+	if (! $computername){ write-host "<!> Nom de serveur manquant" ; break}
+	if (! $username -and ! $ID ){ write-host "<!> Nom d' utilisateur ou id de session manquant" ; break}
+	if ($id)
+	{
+		$cmd = "rwinsta " + $id + " /server:" + $computername
+		Add-content -path $strlogfile -value((get-date).tostring() + ", remove-TSSession , " + $cmd )
+		invoke-expression $cmd
+		break;
+	}
+	
+	ForEach($c in $computername)
+	{
+		$sessions = query session /server:$c
+        if ($sessions)
+		{
+			1..($sessions.count -1) | % {
+                $temp = "" | Select Computer,SessionName, Username, Id, State, Type, Device
+                $temp.Computer = $c
+                $temp.SessionName = $sessions[$_].Substring(1,18).Trim()
+                $temp.Username = $sessions[$_].Substring(19,20).Trim()
+                $temp.Id = $sessions[$_].Substring(39,9).Trim()
+                $temp.State = $sessions[$_].Substring(48,8).Trim()
+                $temp.Type = $sessions[$_].Substring(56,12).Trim()
+                $temp.Device = $sessions[$_].Substring(68).Trim()
+                $report += $temp 
+			}
+		}
+		else
+		{
+			$temp = "" | Select Computer,SessionName, Username, Id, State, Type, Device
+			$temp.computer = $computername
+			$temp.state= "hors ligne"
+			Add-content -path $strlogfile -value((get-date).tostring() + ", remove-TSSession , " + $temp.computer + " " + $temp.state )
+			$report += $temp
+		}
+		 
+	}
+	$result = $report |select computer, id, username | where {$_.username -like $username -and $_.computer -like $computername}
+	if ($result.id) 
+	{
+	$cmd = "rwinsta " + $result.id + " /server:" + $result.computer
+	Add-content -path $strlogfile -value((get-date).tostring() + ", remove-TSSession , " + $cmd )
+	invoke-expression $cmd
+	}
+	}

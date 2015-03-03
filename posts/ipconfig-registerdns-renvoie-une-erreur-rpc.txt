@@ -1,0 +1,43 @@
+.. title: ipconfig /registerdns renvoie une erreur RPC
+.. slug: ipconfig-registerdns-renvoie-une-erreur-rpc
+.. date: 2015/01/22 15:59:54
+.. tags: tips, w2008R2, W7, AD, dns
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+.. class:: alert alert-info
+
+Mon pc windows 7 change d'adresse IP mais son enregistrement DNS ne suit pas ...
+
+* et **ipconfig /registerdns** renvoie une erreur...
+
+.. TEASER_END
+
+Erreur
+------
+
+:: 
+	
+	L'inscription des fichiers d'enregistrements DNS a échoué : Le serveur RPC n'est pas disponible
+	
+* Sauf que bien entendu mon DC est dispo...
+
+
+Correction
+----------
+
+L'erreur provient du service client **dns** qui n'est pas activé.
+
+* Réactiver le service client dns ( **dnscache**), en **cmd** ou **mmc**
+* rejouer la commande *ipconfig /registerdns*
+
+Vérification
+------------
+
+-- code :: powershell
+
+	(get-service dnscache).Status
+	Running
+

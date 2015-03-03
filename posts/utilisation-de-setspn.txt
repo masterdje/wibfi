@@ -1,0 +1,49 @@
+.. title: Utilisation de setspn
+.. slug: utilisation-de-setspn
+.. date: 2015/02/27 16:40:18
+.. tags: tips, w2003R2, AD, w2008R2
+.. link: 
+.. description: 
+.. type: text
+.. tribe: windows
+
+.. class:: alert alert-info
+
+
+* Moins chercher partout si on reçoit une demande concernant l'utilisation de cette commande 
+
+.. TEASER_END
+
+Rappel
+------
+
+::
+
+	Reads, modifies, and deletes the Service Principal Names (SPN) directory property for an Active Directory service account. You use SPNs to locate a target principal name for running a service. You can use setspn to view the current SPNs, reset the account's default SPNs, and add or delete supplemental SPNs.
+	Setspn is a command-line tool that is built into Windows Server 2008. It is available if you have the Active Directory Domain Services (AD DS) server role installed. To use setspn, you must run the setspn command from an elevated command prompt.
+
+Usage
+-----
+
+* Se positionner sur le serveur cible et non un DC. 
+
+Supprimer
+
+* **setspn -d** nom-de-machine/compte-a-supprimer.fqdn compte-valide
+
+Ajouter
+-------
+
+* **setspn -s** nom-de-machine/compte-a-ajouter.fqdn compte-a-ajouter 
+
+Vérifier qu'il n'y a pas de doublons
+------------------------------------
+
+* **setspn -x**
+
+Attention
+---------
+
+* Comme dit microsoft, faut etre identifié admin du domaine ou jouer du runas
+* Sur un serveur 2003, utiliser setspn -A pour ajouter un SPN , sur un 2008 (et+), utiliser setspn -S !
+* Pour ajouter un spn de manière correcte, le compte doit au moins une fois avoir été "initialisé" sur le serveur cible : il suffit d'ouvrir une session. 

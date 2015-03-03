@@ -1,0 +1,49 @@
+.. title: Mp3 non reconnus sur 3DS
+.. slug: mp3-non-reconnus-sur-3ds
+.. date: 2015/02/27 16:33:58
+.. tags: tips, 3DS, mp3
+.. link: 
+.. description: 
+.. type: text
+.. tribe: tips
+
+.. class:: alert alert-info
+
+La Nintendo 3DS intégre un lecteur mp3 pas trop mal fichu, avec visualisations et modifications en temps réél du son ...
+
+
+* sauf que parfois, le fichier n'est pas reconnu, où carrement introuvable...
+
+.. TEASER_END
+
+D'abord
+-------
+
+* Se souvenir que nintendo recommande du mp3 classique 192kb Stéréo pas trop complexe.
+* Au lancement du programme, lors de la selection du dossier à parcourir, la 3DS indexe les morceaux et n'affiche que ceux qu'elle a reconnu...
+* ... sauf quand elle l'indexe mais envoie un message d'erreur "fichier illisible", par exemple un **.m4a** issu de youtube
+
+Correction
+----------
+
+* La non-indexation du fichier tient à la non-reconnaissance de certains tags ID3, notamment les images intégrées.
+* Le logiciel **eyeD3** (python) permet le traiment par lot.
+
+Installation
+------------
+
+.. code:: bash
+
+	sudo apt-get install eyeD3
+
+Utilisation
+-----------
+
+.. code:: bash
+	
+	# Supprimer les tags
+	eyeD3 --remove-all /dossier-des-mp3/*.mp3
+	
+	# Supprimer les images intégrées
+	eyeD3 --remove-images /dossier-des-mp3/*.mp3
+	
